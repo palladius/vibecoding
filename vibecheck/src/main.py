@@ -8,6 +8,14 @@ from vibecheck.utils.cache import get_cache, set_cache
 
 import datetime
 
+import re
+
+def clean_rich_text(text):
+    """
+    Removes rich-style formatting tags from a string.
+    """
+    return re.sub(r"\[.*?\]", "", text)
+
 def write_markdown_report(results):
     """
     Writes the collected results to a markdown file.
@@ -22,7 +30,8 @@ def write_markdown_report(results):
             for check_name, result in checks.items():
                 status = result.get("status", "info")
                 emoji = "✅" if status == "success" else "❌" if status == "error" else "➡️"
-                f.write(f"- **{check_name.replace('_', ' ').title()}**: {emoji} {result['summary']}\n")
+                summary = clean_rich_text(result['summary'])
+                f.write(f"- **{check_name.replace('_', ' ').title()}**: {emoji} {summary}\n")
             f.write("\n")
 
 def main():
