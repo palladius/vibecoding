@@ -1,4 +1,0 @@
-rich
-pyyaml
-psutil
-docker

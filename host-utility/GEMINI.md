@@ -13,10 +13,12 @@ The main goal of this application is to provide a quick overview of the system's
 ## Functional requirements
 
 * the stdout should be very colorful (use red, green, and yellow/orange for warnings, errors, and successes). Use cyan and blue for file names.
-* Usage of a library like `rich` (Python) or `chalk` (JavaScript) for terminal styling.
+* Usage of a library like `rich` (if Python) or `chalk` (if JavaScript) for terminal styling.
 * Heavy usage of emoji to convey emotions and context with a single emoji, eg 💾 for a file.
 * Code is in git. Use git to understand history!
 * Think of this as declarative: if this file specifies to create 5 functions and you see 6, dont delete one, there is probably a reason for that to be. Again, `git log` / `git diff` is your friend.
+* add a `justfile` for common functionalities like: install, run, and maybe some more interesting invokation (eg a an invocation of main with plenty of --options which is worth remembering, like debug or YOLO or disable cache).
+* keep running `git add` of the files worth adding and `git status` which maybe teaches you to ignore some files.
 
 ## Core Functionality
 
@@ -79,3 +81,9 @@ Let's make sure that code folders reflect *exactly* the modules and tests (the R
 Let's start by outlining the project structure and core components.
 
 Choose a language between Go, ruby, Python, javascript, rust. Whichever language has the most appropriate libraries to get the job done without bloating the code. Explain your reasoning to me, and keep adding it to a `AI_REASONING.md` file.
+
+## Language
+
+* If you choose `python`, do not use pip. Use some idempotent framework like `uv` so i can lay all the dependencies
+  out easily for my computers.
+* Same with ruby, use `rbenv` and `bundler`.

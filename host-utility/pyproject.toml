@@ -1,0 +1,9 @@
+[project]
+name = "vibecheck"
+version = "0.1.0"
+dependencies = [
+    "rich",
+    "pyyaml",
+    "psutil",
+    "docker",
+]

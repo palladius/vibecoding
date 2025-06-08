@@ -26,5 +26,47 @@
     "type": "user",
     "message": "yes please",
     "timestamp": "2025-06-08T09:58:18.558Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 3,
+    "type": "user",
+    "message": "do not use pip. Use some idempotent framework like `uv` so i can lay all the dependencies out easily for my computers.",
+    "timestamp": "2025-06-08T10:00:26.632Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 4,
+    "type": "user",
+    "message": "Im installing uv for you: brew install uv",
+    "timestamp": "2025-06-08T10:02:23.258Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 5,
+    "type": "user",
+    "message": "done",
+    "timestamp": "2025-06-08T10:02:43.042Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 6,
+    "type": "user",
+    "message": "yes do them all please, but first lets test each functionality one by one.",
+    "timestamp": "2025-06-08T10:06:29.722Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 7,
+    "type": "user",
+    "message": "* keep running `git add` of the files worth adding and `git status` which maybe teaches you to ignore some files.",
+    "timestamp": "2025-06-08T10:08:25.283Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 8,
+    "type": "user",
+    "message": "I agree re logs.json but please keep it in git since i need to blog about it and need to record all the json logs ;)",
+    "timestamp": "2025-06-08T10:10:34.102Z"
   }
 ]

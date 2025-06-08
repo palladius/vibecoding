@@ -2,3 +2,6 @@
 .env
 .ondir.was.here.touch
 .git-privatize
+__pycache__/
+*.pyc
+.venv/

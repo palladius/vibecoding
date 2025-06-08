@@ -8,7 +8,7 @@ modules:
     disk_space:
         node_modules:
             description: "Find all node_modules/ under ~/git/ recursively, gets their size, and if bigger than min_size offer to clean them up."
-            enabled: true
+            enabled: false
             followup_action: "prompt-user" # Options: auto-accept, prompt-user, disabled
             min_size: "100MB" # If bigger than this, offer cleanup
         docker_images:
@@ -17,7 +17,7 @@ modules:
             followup_action: "prompt-user"
         apt_size:
             description: "Check the size of apt/brew cache and suggest cleanup."
-            enabled: true
+            enabled: false
             followup_action: "disabled"
     assertions:
         gic_migration_2024_06_25:
