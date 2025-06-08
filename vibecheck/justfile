@@ -1,28 +1,24 @@
 # VibeCheck Justfile
 
 # Default task to run the checks
-default: list
+default: run
 
 # Set the shell to bash for all recipes
 set shell := ["bash", "-c"]
 
 # --- Development Tasks ---
 
-# List available commands
-list:
-    @just -l
-
 # Setup the virtual environment and install dependencies
 setup:
     @echo "Setting up virtual environment..."
-    cd vibecheck && uv venv
-    cd vibecheck && uv sync
-    @echo "✅ Done! Activate with 'source vibecheck/.venv/bin/activate'"
+    uv venv
+    uv sync
+    @echo "✅ Done! Activate with 'source .venv/bin/activate'"
 
 # Run the main application
 run:
     @echo "🚀 Running VibeCheck..."
-    source vibecheck/.venv/bin/activate && python vibecheck/src/main.py
+    source .venv/bin/activate && python src/main.py
 
 # --- Utility Tasks ---
 
