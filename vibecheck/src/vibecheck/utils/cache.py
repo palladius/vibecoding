@@ -36,3 +36,10 @@ def set_cache(key, payload):
     }
     with open(cache_file, "w") as f:
         json.dump(data, f)
+
+def clear_cache():
+    """
+    Clears the entire cache directory.
+    """
+    for item in CACHE_DIR.iterdir():
+        item.unlink()

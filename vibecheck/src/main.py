@@ -4,7 +4,7 @@ import argparse
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
-from vibecheck.utils.cache import get_cache, set_cache
+from vibecheck.utils.cache import get_cache, set_cache, clear_cache
 
 import datetime
 
@@ -46,10 +46,17 @@ def main():
     parser = argparse.ArgumentParser(description="VibeCheck - A system health checker.")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output.")
     parser.add_argument("--run-cleanup", action="store_true", help="Run cleanup actions.")
+    parser.add_argument("--no-cache", action="store_true", help="Disable caching for this run.")
     args = parser.parse_args()
 
     console = Console()
     console.print(Panel(Text("VibeCheck", justify="center", style="bold magenta")))
+
+    # Handle cache clearing
+    if args.no_cache:
+        console.print("[bold yellow]Cache is disabled for this run.[/bold yellow]")
+        clear_cache()
+        console.print("✅ Cache cleared.")
 
     # Load configuration
     try:
@@ -76,7 +83,11 @@ def main():
                 if check_config.get("enabled", False):
                     cache_key = f"{module_name}.{check_name}"
                     result = None
-                    cached_data = get_cache(cache_key, duration=cache_duration)
+
+                    # Caching logic
+                    cached_data = None
+                    if not args.no_cache:
+                        cached_data = get_cache(cache_key, duration=cache_duration)
                     
                     try:
                         module_path = f"vibecheck.modules.{module_name}.{check_name}"
@@ -88,9 +99,6 @@ def main():
                         # If the check was run (no cache), store the new result.
                         if cached_data is None and result and "summary" in result:
                             set_cache(cache_key, result)
-                        
-                        if args.run_cleanup and hasattr(check_module, "cleanup"):
-                            check_module.cleanup(console, check_config, result)
 
                     except ImportError:
                         console.print(f"[bold red]Error: Could not import module {module_path}[/bold red]")
@@ -104,8 +112,21 @@ def main():
                         if not args.verbose:
                              console.print(f"  - {check_name}: {result['summary']}")
 
+    # Run cleanup actions if requested
+    if args.run_cleanup:
+        console.print("\n[bold yellow]Running cleanup actions...[/bold yellow]")
+        for module_name, checks in all_results.items():
+            for check_name, result in checks.items():
+                module_path = f"vibecheck.modules.{module_name}.{check_name}"
+                check_module = importlib.import_module(module_path)
+                if hasattr(check_module, "cleanup"):
+                    check_module.cleanup(console, config["modules"][module_name][check_name], result)
+
     write_markdown_report(all_results, output_folder)
     console.print(f"\n[bold green]✅ Markdown report generated in '{output_folder}'.[/bold green]")
+
+    if not args.run_cleanup:
+        console.print("\nTo run cleanup actions, use: [bold cyan]just cleanup[/bold cyan]")
 
 if __name__ == "__main__":
     main()

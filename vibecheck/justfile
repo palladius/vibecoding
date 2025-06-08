@@ -29,6 +29,11 @@ run-verbose:
     @echo "🚀 Running VibeCheck (verbose)..."
     uv run python src/main.py --verbose
 
+# Run the main application without using the cache
+run-nocache:
+    @echo "🚀 Running VibeCheck (no cache)..."
+    uv run python src/main.py --no-cache
+
 # --- Utility Tasks ---
 
 # Run cleanup actions
