@@ -20,12 +20,15 @@ modules:
             enabled: true
             # brew cleanup
             followup_action: "prompt-user"
+        overall_disk_usage:
+            description: "Check the overall disk usage of the root partition."
+            enabled: true
     assertions:
-        gic_migration_2024_06_25:
-            description: "Assert that the gic repository is using the new GitHub remote."
+        repos_exist:
+            description: "Check that all essential repositories exist on the filesystem."
             enabled: true
-            command: "grep git@github.com:palladius/gic25.git ~/git/gic/.git/config"
-        sakura_repo_exists:
-            description: "Assert that the sakura repository exists in ~/git/sakura."
-            enabled: true
-            path: "~/git/sakura"
+            repositories:
+                - path: "~/git/sakura"
+                  description: "My public personal repo"
+                - path: "~/git/gic"
+                  description: "My personal private repo"

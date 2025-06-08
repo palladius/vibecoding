@@ -30,13 +30,36 @@ def write_markdown_report(results, output_folder):
     
     with open(filename, "w") as f:
         f.write("# VibeCheck Report\n\n")
+
+        # Overall Disk Usage Summary
+        if "disk_space" in results and "overall_disk_usage" in results["disk_space"]:
+            usage_result = results["disk_space"]["overall_disk_usage"]
+            f.write(f"## 💾 Overall Disk Usage\n\n")
+            f.write(f"> {clean_rich_text(usage_result['summary'])}\n\n")
+
         for module_name, checks in results.items():
             f.write(f"## {module_name.replace('_', ' ').title()}\n\n")
             for check_name, result in checks.items():
+                # Skip overall_disk_usage here as it's already displayed
+                if check_name == 'overall_disk_usage':
+                    continue
+
                 status = result.get("status", "info")
                 emoji = "✅" if status == "success" else "❌" if status == "error" else "➡️"
                 summary = clean_rich_text(result['summary'])
                 f.write(f"- **{check_name.replace('_', ' ').title()}**: {emoji} {summary}\n")
+
+                # Detailed lists for specific checks
+                if check_name == 'repos_exist' and result.get("data"):
+                    for repo in result["data"]:
+                        f.write(f"  - `{repo['path']}`: {repo['description']}\n")
+                elif check_name == 'node_modules' and result.get("data"):
+                    # Sort by size for the report
+                    sorted_dirs = sorted(result["data"], key=lambda d: d['size'], reverse=True)
+                    for dir_info in sorted_dirs:
+                        if dir_info['size'] > 0:
+                            size_mb = dir_info['size'] / (1024 * 1024)
+                            f.write(f"  - `{dir_info['path']}` ({size_mb:.2f} MB)\n")
             f.write("\n")
 
 def main():
@@ -73,6 +96,15 @@ def main():
     cache_duration = config.get("cache_duration", 86400)
     output_folder = config.get("output_folder", "./reports")
     all_results = {}
+
+    # Run the overall disk usage check first and display it
+    try:
+        disk_module = importlib.import_module("vibecheck.modules.disk_space.overall_disk_usage")
+        disk_result = disk_module.run(console, {}, False) # Not verbose, no cache
+        if disk_result and disk_result.get("summary"):
+            console.print(f"[bold cyan]Overall Disk Usage:[/] {disk_result['summary']}")
+    except (ImportError, Exception) as e:
+        console.print(f"[bold red]Could not run overall disk usage check: {e}[/bold red]")
 
     # Run modules
     if "modules" in config:
