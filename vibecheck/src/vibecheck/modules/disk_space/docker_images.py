@@ -32,48 +32,53 @@ def get_docker_client(console):
 
     return None
 
-def run(console, config):
+def run(console, config, verbose):
     """
     The main function for the docker_images check.
     """
-    console.print("[bold green]Running docker_images check...[/bold green]")
+    if verbose:
+        console.print("[bold green]Running docker_images check...[/bold green]")
 
-    client = get_docker_client(console)
-
-    if not client:
+    client = get_docker_client(console) if verbose else None
+    if verbose and not client:
         console.print("[bold red]Error: Could not connect to Docker.[/bold red]")
-        console.print("Please ensure Docker is running and the socket is accessible.")
-        return
+        return None
 
     try:
-        images = client.images.list()
+        images = client.images.list() if client else []
     except docker.errors.DockerException as e:
-        console.print(f"[bold red]Error listing Docker images: {e}[/bold red]")
-        return
+        if verbose:
+            console.print(f"[bold red]Error listing Docker images: {e}[/bold red]")
+        return None
 
     if not images:
-        console.print("No Docker images found. ✨")
-        return
+        if verbose:
+            console.print("No Docker images found. ✨")
+        return {"summary": "No images found."}
 
-    table = Table(title="Docker Image Analysis", row_styles=["", "dim"])
-    table.add_column("Repository", justify="left", style="cyan", no_wrap=True, max_width=60)
-    table.add_column("Tag", justify="left", style="green", no_wrap=True)
-    table.add_column("Size", justify="right", style="magenta", no_wrap=True)
+    total_size = sum(image.attrs['Size'] for image in images)
+    summary = f"Found {len(images)} images, total size: [bold yellow]{total_size / 1024 / 1024:.2f} MB[/bold yellow]"
 
-    total_size = 0
-    for image in images:
-        size = image.attrs['Size']
-        total_size += size
-        repo_tags = image.tags if image.tags else ["<none>"]
-        # If an image has multiple tags, we only want to list it once with its size.
-        # We'll show the first tag and note if others exist.
-        first_tag = repo_tags[0]
-        repo, tag_str = first_tag.split(':') if ':' in first_tag else (first_tag, '<none>')
+    if verbose:
+        table = Table(title="Docker Image Analysis", row_styles=["", "dim"])
+        table.add_column("Repository", justify="left", style="cyan", no_wrap=True, max_width=60)
+        table.add_column("Tag", justify="left", style="green", no_wrap=True)
+        table.add_column("Size", justify="right", style="magenta", no_wrap=True)
+
+        for image in images:
+            size = image.attrs['Size']
+            repo_tags = image.tags if image.tags else ["<none>"]
+            first_tag = repo_tags[0]
+            repo, tag_str = first_tag.split(':') if ':' in first_tag else (first_tag, '<none>')
+            
+            if len(repo_tags) > 1:
+                repo = f"{repo} (+{len(repo_tags) - 1} more)"
+
+            table.add_row(repo, tag_str, f"{size / 1024 / 1024:.2f} MB")
         
-        if len(repo_tags) > 1:
-            repo = f"{repo} (+{len(repo_tags) - 1} more)"
+        console.print(table)
+        console.print(f"Total size of all images: [bold yellow]{total_size / 1024 / 1024:.2f} MB[/bold yellow]")
+    else:
+        console.print(f"  - docker_images: {summary}")
 
-        table.add_row(repo, tag_str, f"{size / 1024 / 1024:.2f} MB")
-
-    console.print(table)
-    console.print(f"Total size of all images: [bold yellow]{total_size / 1024 / 1024:.2f} MB[/bold yellow]")
+    return {"summary": summary, "data": images}

@@ -20,9 +20,9 @@ setup:
     @echo "✅ Done! Activate with 'source vibecheck/.venv/bin/activate'"
 
 # Run the main application
-run:
+run *ARGS:
     @echo "🚀 Running VibeCheck..."
-    source vibecheck/.venv/bin/activate && python vibecheck/src/main.py
+    source vibecheck/.venv/bin/activate && python vibecheck/src/main.py {{ARGS}}
 
 # --- Utility Tasks ---
 
