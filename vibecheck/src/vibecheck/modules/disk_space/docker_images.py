@@ -33,33 +33,46 @@ def get_docker_client(console, verbose=False):
 
     return None
 
-def run(console, config, verbose):
+def run(console, config, verbose, cached_data=None):
     """
     The main function for the docker_images check.
     """
     if verbose:
         console.print("[bold green]Running docker_images check...[/bold green]")
 
-    client = get_docker_client(console, verbose)
-    if not client:
+    if cached_data:
         if verbose:
-            console.print("[bold red]Error: Could not connect to Docker.[/bold red]")
-        return {"summary": "Could not connect to Docker.", "status": "error"}
+            console.print("✅ Using cached data.")
+        images_data = cached_data["data"]
+        total_size = sum(d['size'] for d in images_data)
+    else:
+        client = get_docker_client(console, verbose)
+        if not client:
+            if verbose:
+                console.print("[bold red]Error: Could not connect to Docker.[/bold red]")
+            return {"summary": "Could not connect to Docker.", "status": "error"}
 
-    try:
-        images = client.images.list()
-    except docker.errors.DockerException as e:
-        if verbose:
-            console.print(f"[bold red]Error listing Docker images: {e}[/bold red]")
-        return {"summary": f"Error listing Docker images: {e}", "status": "error"}
+        try:
+            images = client.images.list()
+        except docker.errors.DockerException as e:
+            if verbose:
+                console.print(f"[bold red]Error listing Docker images: {e}[/bold red]")
+            return {"summary": f"Error listing Docker images: {e}", "status": "error"}
 
-    if not images:
-        if verbose:
-            console.print("No Docker images found. ✨")
-        return {"summary": "No images found.", "status": "info"}
+        if not images:
+            if verbose:
+                console.print("No Docker images found. ✨")
+            return {"summary": "No images found.", "status": "info"}
 
-    total_size = sum(image.attrs['Size'] for image in images)
-    summary = f"Found {len(images)} images, total size: [bold yellow]{total_size / (1024*1024):.2f} MB[/bold yellow]"
+        images_data = []
+        for image in images:
+            images_data.append({
+                'tags': image.tags,
+                'size': image.attrs['Size']
+            })
+        total_size = sum(d['size'] for d in images_data)
+
+    summary = f"Found {len(images_data)} images, total size: [bold yellow]{total_size / (1024*1024):.2f} MB[/bold yellow]"
 
     if verbose:
         table = Table(title="Docker Image Analysis", row_styles=["", "dim"])
@@ -67,9 +80,9 @@ def run(console, config, verbose):
         table.add_column("Tag", justify="left", style="green", no_wrap=True)
         table.add_column("Size", justify="right", style="magenta", no_wrap=True)
 
-        for image in images:
-            size = image.attrs['Size']
-            repo_tags = image.tags if image.tags else ["<none>"]
+        for image_data in images_data:
+            size = image_data['size']
+            repo_tags = image_data['tags'] if image_data['tags'] else ["<none>"]
             first_tag = repo_tags[0]
             repo, tag_str = first_tag.split(':') if ':' in first_tag else (first_tag, '<none>')
             
@@ -80,13 +93,6 @@ def run(console, config, verbose):
         
         console.print(table)
         console.print(f"Total size of all images: [bold yellow]{total_size / (1024*1024):.2f} MB[/bold yellow]")
-
-    images_data = []
-    for image in images:
-        images_data.append({
-            'tags': image.tags,
-            'size': image.attrs['Size']
-        })
 
     return {"summary": summary, "status": "info", "data": images_data}
 

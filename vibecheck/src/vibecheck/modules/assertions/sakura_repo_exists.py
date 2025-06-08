@@ -1,7 +1,7 @@
 from pathlib import Path
 from rich.console import Console
 
-def run(console, config, verbose):
+def run(console, config, verbose, cached_data=None):
     """
     Checks if a specified path exists.
     """

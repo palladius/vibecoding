@@ -77,27 +77,27 @@ def main():
                     cache_key = f"{module_name}.{check_name}"
                     result = None
                     cached_data = get_cache(cache_key, duration=cache_duration)
+                    
+                    try:
+                        module_path = f"vibecheck.modules.{module_name}.{check_name}"
+                        check_module = importlib.import_module(module_path)
+                        
+                        # Pass down verbosity, config, and cached data
+                        result = check_module.run(console, check_config, args.verbose, cached_data)
+                        
+                        # If the check was run (no cache), store the new result.
+                        if cached_data is None and result and "summary" in result:
+                            set_cache(cache_key, result)
+                        
+                        if args.run_cleanup and hasattr(check_module, "cleanup"):
+                            check_module.cleanup(console, check_config, result)
 
-                    if cached_data:
-                        result = cached_data
-                    else:
-                        try:
-                            module_path = f"vibecheck.modules.{module_name}.{check_name}"
-                            check_module = importlib.import_module(module_path)
-                            
-                            # Pass down verbosity and config
-                            result = check_module.run(console, check_config, args.verbose)
-                            
-                            if result and "summary" in result:
-                                set_cache(cache_key, result)
-                            
-                            if args.run_cleanup and hasattr(check_module, "cleanup"):
-                                check_module.cleanup(console, check_config, result)
-
-                        except ImportError:
-                            console.print(f"[bold red]Error: Could not import module {module_path}[/bold red]")
-                        except Exception as e:
-                            console.print(f"[bold red]Error running check {check_name}: {e}[/bold red]")
+                    except ImportError:
+                        console.print(f"[bold red]Error: Could not import module {module_path}[/bold red]")
+                        result = None # Ensure result is None on error
+                    except Exception as e:
+                        console.print(f"[bold red]Error running check {check_name}: {e}[/bold red]")
+                        result = None # Ensure result is None on error
                     
                     if result:
                         all_results[module_name][check_name] = result

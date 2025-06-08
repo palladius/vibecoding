@@ -4,7 +4,7 @@ from rich.console import Console
 
 from rich.prompt import Confirm
 
-def run(console, config, verbose):
+def run(console, config, verbose, cached_data=None):
     """
     Checks the size of package manager caches.
     """
