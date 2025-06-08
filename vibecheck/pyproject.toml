@@ -1,9 +1,13 @@
 [project]
 name = "vibecheck"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
     "rich",
     "pyyaml",
     "psutil",
     "docker",
 ]
+
+[tool.setuptools]
+packages = ["vibecheck"]
+package_dir = {"" = "src"}

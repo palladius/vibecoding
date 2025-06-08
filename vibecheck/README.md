@@ -4,27 +4,34 @@ A modular system health check and maintenance tool.
 
 ## Setup
 
-This project uses `uv` for dependency management. If you don't have it installed, you can install it with:
+This project uses `uv` for dependency management and `just` as a command runner.
 
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
+1.  **Install `uv` and `just`**:
+    ```bash
+    # Install uv
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    # Install just (macOS)
+    brew install just
+    ```
 
-Once `uv` is installed, you can create a virtual environment and install the dependencies:
-
-```bash
-uv venv
-uv sync
-```
+2.  **Setup the environment**:
+    From this directory (`vibecheck`), run:
+    ```bash
+    just setup
+    ```
+    This will create a virtual environment and install all necessary dependencies.
 
 ## Usage
 
-With the virtual environment activated (`source .venv/bin/activate`), you can run the application:
-
+To run the application, simply use:
 ```bash
-python host-utility/main.py
+just run
+```
+Or, to be explicit:
+```bash
+just
 ```
 
 ## Configuration
 
-The application is configured through the `config.yaml` file. See the comments in the file for details on the available options.
+The application is configured through the `config.yaml` file located in this directory. See the comments in the file for details on the available options.

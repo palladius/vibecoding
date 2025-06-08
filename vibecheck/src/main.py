@@ -13,7 +13,7 @@ def main():
 
     # Load configuration
     try:
-        with open("host-utility/config.yaml", "r") as f:
+        with open("config.yaml", "r") as f:
             config = yaml.safe_load(f)
         console.print("✅ Configuration loaded.")
     except FileNotFoundError:
