@@ -3,7 +3,8 @@
 # Global settings
 cache_duration: 86400 # 24 hours in seconds
 report_email: "palladiusbonton@gmail.com"
-
+# not used yet, but will be used to send reports
+out_folder: "vibecheck_reports/"
 modules:
     disk_space:
         node_modules:
@@ -17,10 +18,10 @@ modules:
             followup_action: "prompt-user"
         apt_size:
             description: "Check the size of apt/brew cache and suggest cleanup."
-            enabled: false
+            enabled: true
             followup_action: "disabled"
     assertions:
         gic_migration_2024_06_25:
             description: "Assert that the gic repository is using the new GitHub remote."
-            enabled: false
+            enabled: true
             command: "grep git@github.com:palladius/gic25.git ~/git/gic/.git/config"

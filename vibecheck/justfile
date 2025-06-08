@@ -1,7 +1,7 @@
 # VibeCheck Justfile
 
 # Default task to run the checks
-default: run
+default: list
 
 # Set the shell to bash for all recipes
 set shell := ["bash", "-c"]
