@@ -7,10 +7,29 @@ output_folder: "./reports"
 modules:
     disk_space:
         node_modules:
-            description: "Find all node_modules/ under ~/git/ recursively, gets their size, and if bigger than min_size offer to clean them up."
+            module: "folder_scanner"
+            name: "Node.js (node_modules)"
+            description: "Find all node_modules/ folders and calculate their total size."
             enabled: true
-            followup_action: "prompt-user" # Options: auto-accept, prompt-user, disabled
-            min_size: "100MB" # If bigger than this, offer cleanup
+            followup_action: "prompt-user"
+            start_path: "~/git"
+            folder_patterns: ["**/node_modules"]
+        python_temp_folders:
+            module: "folder_scanner"
+            name: "Python (__pycache__, .venv)"
+            description: "Find and calculate the size of Python temporary folders."
+            enabled: true
+            followup_action: "prompt-user"
+            start_path: "~/git"
+            folder_patterns: ["**/__pycache__", "**/.venv"]
+        ruby_temp_folders:
+            module: "folder_scanner"
+            name: "Ruby (vendor/bundle)"
+            description: "Find and calculate the size of Ruby temporary folders."
+            enabled: true
+            followup_action: "prompt-user"
+            start_path: "~/git"
+            folder_patterns: ["**/vendor/bundle"]
         docker_images:
             description: "Analyze Docker images and offer to prune dangling images."
             enabled: true

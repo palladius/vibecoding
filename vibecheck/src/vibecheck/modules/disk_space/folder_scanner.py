@@ -19,10 +19,13 @@ def get_dir_size(path):
 
 def run(console, config, verbose, cached_data=None):
     """
-    Finds and calculates the size of Python temporary folders.
+    Finds and calculates the size of folders based on a list of patterns.
     """
+    folder_patterns = config.get("folder_patterns", [])
+    check_name = config.get("name", "Folder Scan") # Get a display name from config
+
     if verbose:
-        console.print("[bold green]Checking for Python temporary folders...[/bold green]")
+        console.print(f"[bold green]Scanning for {check_name}...[/bold green]")
 
     if cached_data:
         if verbose: console.print("✅ Using cached data.")
@@ -30,17 +33,17 @@ def run(console, config, verbose, cached_data=None):
         total_size = data.get("total_size", 0)
         found_folders = data.get("found_folders", [])
     else:
-        start_path = Path.home() / "git"
+        start_path = Path(config.get("start_path", "~/git")).expanduser()
         found_folders = []
         total_size = 0
-        for folder_name in ["__pycache__", ".venv"]:
-            for path in start_path.rglob(f"**/{folder_name}"):
+        for pattern in folder_patterns:
+            for path in start_path.rglob(pattern):
                 if path.is_dir():
                     size = get_dir_size(path)
                     total_size += size
                     found_folders.append({"path": str(path), "size": size})
 
-    summary = f"Found {len(found_folders)} Python temp folders, total size: [bold yellow]{total_size / (1024*1024):.2f} MB[/bold yellow]"
+    summary = f"Found {len(found_folders)} {check_name} folders, total size: [bold yellow]{total_size / (1024*1024):.2f} MB[/bold yellow]"
     
     if verbose:
         console.print(summary)
@@ -52,4 +55,4 @@ def run(console, config, verbose, cached_data=None):
     }
 
 def cleanup(console, config, result):
-    console.print("Cleanup for Python temp folders is not implemented yet.")
+    console.print(f"Cleanup for {config.get('name', 'folders')} is not implemented yet.")

@@ -53,9 +53,9 @@ def write_markdown_report(results, output_folder):
                 if check_name == 'repos_exist' and result.get("data"):
                     for repo in result["data"]:
                         f.write(f"  - `{repo['path']}`: {repo['description']}\n")
-                elif check_name == 'node_modules' and result.get("data"):
+                elif result.get("data") and "found_folders" in result["data"]:
                     # Sort by size for the report
-                    sorted_dirs = sorted(result["data"], key=lambda d: d['size'], reverse=True)
+                    sorted_dirs = sorted(result["data"]["found_folders"], key=lambda d: d['size'], reverse=True)
                     for dir_info in sorted_dirs:
                         if dir_info['size'] > 0:
                             size_mb = dir_info['size'] / (1024 * 1024)
@@ -122,7 +122,9 @@ def main():
                         cached_data = get_cache(cache_key, duration=cache_duration)
                     
                     try:
-                        module_path = f"vibecheck.modules.{module_name}.{check_name}"
+                        # Determine the module to load
+                        module_to_load = check_config.get("module", check_name)
+                        module_path = f"vibecheck.modules.{module_name}.{module_to_load}"
                         check_module = importlib.import_module(module_path)
                         
                         # Pass down verbosity, config, and cached data

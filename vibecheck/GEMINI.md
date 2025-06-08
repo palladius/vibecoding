@@ -98,3 +98,10 @@ Ensure these features are implemented. Some might be, some mightn't.
 
 3. Ensure the README.md contains a tidy list of `tree .` output and has a one liner description of each file.
 4. Ensure the README.md spends a ## paragraph explainng how the caching works and where is the .cache folder :)
+
+
+5. Im a bit unhappy about needing 3 different files for nodemodules, python and
+  ruby. can't we have a superclass and these 3 to just inherit from it with very
+  few changes, like a regex, or list of files/dirs? These 3 files should differ at
+  most a couople of lines. can u make it happen? i committed just in case ;)
+
