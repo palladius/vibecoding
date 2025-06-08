@@ -28,4 +28,4 @@ modules:
         sakura_repo_exists:
             description: "Assert that the sakura repository exists in ~/git/sakura."
             enabled: true
-            command: "test -d ~/git/sakura"
+            path: "~/git/sakura"

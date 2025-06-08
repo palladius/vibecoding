@@ -1,6 +1,6 @@
 from rich.console import Console
 
-def run(console, config):
+def run(console, config, verbose):
     """
     The main function for the gic_migration_2024_06_25 assertion.
     """

@@ -222,5 +222,40 @@
     "type": "user",
     "message": "yes",
     "timestamp": "2025-06-08T11:58:17.869Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 31,
+    "type": "user",
+    "message": "1 and then 2",
+    "timestamp": "2025-06-08T11:59:44.086Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 32,
+    "type": "user",
+    "message": "a few things which seem broken. If I run with --verbose more things happen and it takes longer. this IMHO shouldnt happen. without verbose, it says i have ZEOR images, but with verbose i get MANY and the size is in the order of 10+  please check the twoGB!",
+    "timestamp": "2025-06-08T12:03:50.316Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 33,
+    "type": "user",
+    "message": "ok. after that lets work on another bug, see normal output for sakura_repo_exists test.",
+    "timestamp": "2025-06-08T12:06:05.133Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 34,
+    "type": "user",
+    "message": "weird, still gives me this error:   - sakura_repo_exists: Error: 'path' not specified in config.",
+    "timestamp": "2025-06-08T12:06:47.227Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 35,
+    "type": "user",
+    "message": "pleae run `just run`. youll see the error is still there",
+    "timestamp": "2025-06-08T12:07:37.979Z"
   }
 ]

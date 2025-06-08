@@ -78,7 +78,7 @@ def main():
                     result = None
                     cached_data = get_cache(cache_key, duration=cache_duration)
 
-                    if cached_data and not args.verbose:
+                    if cached_data:
                         result = cached_data
                     else:
                         try:

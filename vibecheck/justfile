@@ -35,3 +35,8 @@ run-verbose:
 cleanup:
     @echo "🧹 Running cleanup actions..."
     uv run python src/main.py --run-cleanup
+
+# Show a random report using `glow`. If you don't have it installed, your problem!
+show-random-report:
+    @echo "📊 Showing random report via glow..."
+    glow reports/output-20250608.md

@@ -1,18 +1,43 @@
 import platform
+import subprocess
 from rich.console import Console
 
-def run(console, config):
+from rich.prompt import Confirm
+
+def run(console, config, verbose):
     """
-    The main function for the apt_size check.
+    Checks the size of package manager caches.
     """
-    console.print("[bold green]Running apt_size/brew_cache check...[/bold green]")
-    
+    return {"summary": "apt_size check is not yet implemented.", "status": "info"}
+
+def cleanup(console, config, result):
+    """
+    Offers to clean up package manager caches.
+    """
+    followup_action = config.get("followup_action", "disabled")
+    if followup_action == "disabled":
+        return
+
     system = platform.system()
+    command = ""
     if system == "Linux":
-        # Logic for apt cache size on Linux
-        console.print("APT cache check (Linux) is not yet implemented.")
+        command = "sudo apt-get autoremove -y"
     elif system == "Darwin":
-        # Logic for Homebrew cache size on macOS
-        console.print("Homebrew cache check (macOS) is not yet implemented.")
-    else:
-        console.print(f"Unsupported operating system: {system}")
+        command = "brew cleanup"
+
+    if not command:
+        return
+
+    if followup_action == "auto-accept":
+        do_cleanup = True
+    else: # prompt-user
+        do_cleanup = Confirm.ask(f"Run `{command}`?")
+
+    if do_cleanup:
+        try:
+            console.print(f"Running `{command}`...")
+            # We use shell=True here because of sudo and potential user interaction
+            subprocess.run(command, shell=True, check=True)
+            console.print("✅ Cleanup complete.")
+        except (subprocess.CalledProcessError, FileNotFoundError) as e:
+            console.print(f"[bold red]Error running cleanup: {e}[/bold red]")
