@@ -31,8 +31,7 @@ run-verbose:
 
 # --- Utility Tasks ---
 
-# Clean up temporary files
-clean:
-    @echo "Cleaning up..."
-    find . -type f -name '*.pyc' -delete
-    find . -type d -name '__pycache__' -delete
+# Run cleanup actions
+cleanup:
+    @echo "🧹 Running cleanup actions..."
+    uv run python src/main.py --run-cleanup

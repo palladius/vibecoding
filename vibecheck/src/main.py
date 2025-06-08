@@ -16,12 +16,17 @@ def clean_rich_text(text):
     """
     return re.sub(r"\[.*?\]", "", text)
 
-def write_markdown_report(results):
+from pathlib import Path
+
+def write_markdown_report(results, output_folder):
     """
     Writes the collected results to a markdown file.
     """
+    output_path = Path(output_folder)
+    output_path.mkdir(parents=True, exist_ok=True)
+    
     today = datetime.date.today().strftime("%Y%m%d")
-    filename = f"output-{today}.md"
+    filename = output_path / f"output-{today}.md"
     
     with open(filename, "w") as f:
         f.write("# VibeCheck Report\n\n")
@@ -40,6 +45,7 @@ def main():
     """
     parser = argparse.ArgumentParser(description="VibeCheck - A system health checker.")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output.")
+    parser.add_argument("--run-cleanup", action="store_true", help="Run cleanup actions.")
     args = parser.parse_args()
 
     console = Console()
@@ -58,6 +64,7 @@ def main():
         return
 
     cache_duration = config.get("cache_duration", 86400)
+    output_folder = config.get("output_folder", "./reports")
     all_results = {}
 
     # Run modules
@@ -83,6 +90,9 @@ def main():
                             
                             if result and "summary" in result:
                                 set_cache(cache_key, result)
+                            
+                            if args.run_cleanup and hasattr(check_module, "cleanup"):
+                                check_module.cleanup(console, check_config, result)
 
                         except ImportError:
                             console.print(f"[bold red]Error: Could not import module {module_path}[/bold red]")
@@ -94,8 +104,8 @@ def main():
                         if not args.verbose:
                              console.print(f"  - {check_name}: {result['summary']}")
 
-    write_markdown_report(all_results)
-    console.print("\n[bold green]✅ Markdown report generated.[/bold green]")
+    write_markdown_report(all_results, output_folder)
+    console.print(f"\n[bold green]✅ Markdown report generated in '{output_folder}'.[/bold green]")
 
 if __name__ == "__main__":
     main()
