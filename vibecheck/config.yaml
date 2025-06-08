@@ -23,6 +23,14 @@ modules:
         overall_disk_usage:
             description: "Check the overall disk usage of the root partition."
             enabled: true
+        python_temp_folders:
+            description: "Find and calculate the size of Python temporary folders (__pycache__, .venv)."
+            enabled: true
+            followup_action: "auto-accept"
+        ruby_temp_folders:
+            description: "Find and calculate the size of Ruby temporary folders (vendor/bundle)."
+            enabled: true
+            followup_action: "prompt-user"
     assertions:
         repos_exist:
             description: "Check that all essential repositories exist on the filesystem."
@@ -32,3 +40,5 @@ modules:
                   description: "My public personal repo"
                 - path: "~/git/gic"
                   description: "My personal private repo"
+                - path: "~/Desktop"
+                  description: "Desktop folder shoudl exist"

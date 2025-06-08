@@ -158,6 +158,15 @@ def main():
     console.print(f"\n[bold green]✅ Markdown report generated in '{output_folder}'.[/bold green]")
 
     if not args.run_cleanup:
+        total_savings = 0
+        for module_name, checks in all_results.items():
+            for check_name, result in checks.items():
+                if result and result.get("data") and "total_size" in result["data"]:
+                    total_savings += result["data"]["total_size"]
+        
+        if total_savings > 0:
+            savings_mb = total_savings / (1024 * 1024)
+            console.print(f"\n[bold yellow]You can save up to {savings_mb:.2f} MB of disk space.[/bold yellow]")
         console.print("\nTo run cleanup actions, use: [bold cyan]just cleanup[/bold cyan]")
 
 if __name__ == "__main__":

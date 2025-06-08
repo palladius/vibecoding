@@ -90,6 +90,11 @@ Choose a language between Go, ruby, Python, javascript, rust. Whichever language
 
 ## Further features
 
-1. The code in `vibecheck/src/vibecheck/modules/assertions/sakura_repo_exists.py` is ugly and not generic. I'd rather have something functional like `ensure_repo_exists.py` which can be called multiple times. Since a YAML doesnt allow multiple keys called the same, probably this meand that check needs to have an array of paths with a reason why they're there (in form of title or description). Please refactor it so we have this info and checks in the taml.:
-2. ~/git/sakura -> My public personal repo
-3. ~/git/gic -> My personal private repo
+Ensure these features are implemented. Some might be, some mightn't.
+
+1. [DONE] The code in `vibecheck/src/vibecheck/modules/assertions/sakura_repo_exists.py` is ugly and not generic. I'd rather have something functional like `ensure_repo_exists.py` which can be called multiple times. Since a YAML doesnt allow multiple keys called the same, probably this meand that check needs to have an array of paths with a reason why they're there (in form of title or description). Please refactor it so we have this info and checks in the YAML:
+   * ~/git/sakura -> My public personal repo
+   * ~/git/gic -> My personal private repo
+
+3. Ensure the README.md contains a tidy list of `tree .` output and has a one liner description of each file.
+4. Ensure the README.md spends a ## paragraph explainng how the caching works and where is the .cache folder :)
