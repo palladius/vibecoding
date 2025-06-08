@@ -8,17 +8,26 @@ set shell := ["bash", "-c"]
 
 # --- Development Tasks ---
 
+# List available commands
+list:
+    @just -l
+
 # Setup the virtual environment and install dependencies
 setup:
-    @echo "Setting up virtual environment..."
+    @echo "Setting up virtual environment for VibeCheck..."
     uv venv
     uv sync
-    @echo "✅ Done! Activate with 'source .venv/bin/activate'"
+    @echo "✅ Done!"
 
-# Run the main application
+# Run the main application concisely
 run:
-    @echo "🚀 Running VibeCheck..."
-    source .venv/bin/activate && python src/main.py
+    @echo "🚀 Running VibeCheck (concise)..."
+    uv run python src/main.py
+
+# Run the main application with verbose output
+run-verbose:
+    @echo "🚀 Running VibeCheck (verbose)..."
+    uv run python src/main.py --verbose
 
 # --- Utility Tasks ---
 
