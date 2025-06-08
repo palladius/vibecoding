@@ -1,0 +1,30 @@
+[
+  {
+    "sessionId": 1749376366,
+    "messageId": 0,
+    "type": "user",
+    "message": "help me create the app under host-utility/",
+    "timestamp": "2025-06-08T09:53:15.571Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 0,
+    "type": "user",
+    "message": "lets start create a skeleton for the app, and a name. what do u suggest?",
+    "timestamp": "2025-06-08T09:53:54.323Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 1,
+    "type": "user",
+    "message": "yes but use .yaml extension. hit it!",
+    "timestamp": "2025-06-08T09:54:58.404Z"
+  },
+  {
+    "sessionId": 1749376406,
+    "messageId": 2,
+    "type": "user",
+    "message": "yes please",
+    "timestamp": "2025-06-08T09:58:18.558Z"
+  }
+]

@@ -3,7 +3,8 @@
 list:
     just -l
 
-install:
+# runs gemini-cli
+run:
     npx https://github.com/google-gemini/gemini-cli#early-access
 
 

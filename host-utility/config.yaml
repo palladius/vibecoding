@@ -1,0 +1,26 @@
+# VibeCheck Configuration
+
+# Global settings
+cache_duration: 86400 # 24 hours in seconds
+report_email: "palladiusbonton@gmail.com"
+
+modules:
+    disk_space:
+        node_modules:
+            description: "Find all node_modules/ under ~/git/ recursively, gets their size, and if bigger than min_size offer to clean them up."
+            enabled: true
+            followup_action: "prompt-user" # Options: auto-accept, prompt-user, disabled
+            min_size: "100MB" # If bigger than this, offer cleanup
+        docker_images:
+            description: "Analyze Docker images and offer to prune dangling images."
+            enabled: true
+            followup_action: "prompt-user"
+        apt_size:
+            description: "Check the size of apt/brew cache and suggest cleanup."
+            enabled: true
+            followup_action: "disabled"
+    assertions:
+        gic_migration_2024_06_25:
+            description: "Assert that the gic repository is using the new GitHub remote."
+            enabled: false
+            command: "grep git@github.com:palladius/gic25.git ~/git/gic/.git/config"
