@@ -1,5 +1,8 @@
 import os
 import sqlite3
+import json
+import subprocess
+import argparse
 import google.generativeai as genai
 from datetime import datetime
 
@@ -21,7 +24,7 @@ if os.environ.get("GOOGLE_GENAI_USE_VERTEXAI", "false").lower() == "true":
 
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-def get_joplin_summary():
+def get_joplin_summary(query):
     """
     Summarizes Joplin notes from the 'salute' and 'Viaggi' folders.
     """
@@ -31,31 +34,51 @@ def get_joplin_summary():
     c = conn.cursor()
 
     # Get the folder IDs
-    c.execute("SELECT id, title FROM folders WHERE title IN ('salute', 'Viaggi')")
+    c.execute("SELECT id FROM folders WHERE title IN ('salute', 'Viaggi')")
     folders = c.fetchall()
     folder_ids = [folder[0] for folder in folders]
 
-    # Get the note titles
-    c.execute(f"SELECT title FROM notes WHERE parent_id IN ({','.join(['?']*len(folder_ids))})", folder_ids)
+    # Get the note titles and bodies
+    c.execute(f"SELECT title, body FROM notes WHERE parent_id IN ({','.join(['?']*len(folder_ids))})", folder_ids)
     notes = c.fetchall()
-    note_titles = [note[0] for note in notes]
 
     # Create the prompt
     prompt = f"""
-    You are a helpful assistant. Your task is to summarize the following Joplin notes.
-    The notes are from the 'salute' and 'Viaggi' folders.
+    You are a helpful assistant. Your task is to answer the following query based on the provided Joplin notes.
 
-    Here are the note titles:
-    {note_titles}
+    Query: {query}
 
-    Please provide a concise summary of these notes.
+    Here are the notes:
     """
+
+    for title, body in notes:
+        prompt += f"## {title}\n{body}\n\n"
+
 
     # Generate content using the model
     response = model.generate_content(prompt)
 
-    # Print the response
-    print(response.text)
+    # Check if glow is installed
+    try:
+        subprocess.run(["which", "glow"], check=True, capture_output=True)
+        glow_installed = True
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        glow_installed = False
+
+    if glow_installed:
+        process = subprocess.run(["glow"], input=response.text, text=True, capture_output=True)
+        print(process.stdout)
+    else:
+        print(response.text)
+
 
 if __name__ == "__main__":
-    get_joplin_summary()
+    parser = argparse.ArgumentParser(description="Summarize Joplin notes.")
+    parser.add_argument(
+        "--query",
+        type=str,
+        default="tell me my next work events AND health events in calendar style for the next 3 weeks.",
+        help="The query to ask about the notes."
+    )
+    args = parser.parse_args()
+    get_joplin_summary(args.query)

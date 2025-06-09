@@ -40,6 +40,14 @@ Give me a calendar update of my health and work trips.
 
 Cache all health and travel and communicate to me a bullet point of ideas.
 
+The ouytput should be MARKDOWN and if
+* I want it a bit structured. Give me FIRST a list of all folders with a folder emoji (unless
+  you find the folder emoji which is actually stored inside joplin). if not, a generic folder 📁 is fine.
+* the output NEEDS to be markdown compliant, and if `glow` is installed it should be "piped" into it to see beautiful
+  colors and bolds and bullets.
+* *the joplin script to support a --query, where i can ask a generic query and gemini will
+  read all the notes and provide an answer :) Default query would be: tell me my next work events AND health events in
+  calendar style for the next 3 weeks.
 
 ## 3. Septober MCP
 

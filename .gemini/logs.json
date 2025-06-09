@@ -369,5 +369,19 @@
     "type": "user",
     "message": "i've symlinked the DB in etc/ so you can start ascertaining the schema and check ther tables",
     "timestamp": "2025-06-09T17:04:15.729Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 16,
+    "type": "user",
+    "message": "This is AMAZING! now I want it a bit more structured. Give me FIRST a list of all folders with a folder emoji (unless you find the folder emoji which is actually stored inside joplin). if not, a generic folder 📁 is fine. Also the output NEEDS to be markdown compliant, so if `glow` is installed i can fit into it (actually help me with it).",
+    "timestamp": "2025-06-09T17:07:53.450Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 17,
+    "type": "user",
+    "message": "this is amazing! Now I want the joplin script to support a --query, where i can ask a generic query and gemini will read all the notes and provide an answer :) Default query would be: tell me my next work events AND health events in calendar style for the next 3 weeks.",
+    "timestamp": "2025-06-09T17:10:07.330Z"
   }
 ]

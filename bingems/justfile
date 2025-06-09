@@ -12,10 +12,10 @@ install:
     uv pip install -e .
 
 # Run the Joplin reader
-joplin:
-    uv run --active python src/joplin_reader.py
+run-joplin *ARGS:
+    uv run --active python src/joplin_reader.py {{ARGS}}
 
 # Run the weather and sport forecaster
 # Make sure GOOGLE_CLOUD_PROJECT is set in your environment
-run:
+run-zuri-weather:
     uv run --active python src/weather_sport_forecaster.py
