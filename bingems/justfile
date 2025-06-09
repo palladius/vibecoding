@@ -1,0 +1,14 @@
+# justfile for bingems
+
+# List all available commands
+list:
+    @just -l
+
+# Install dependencies
+install:
+    uv pip install -r requirements.txt
+
+# Run the weather and sport forecaster
+# Make sure GOOGLE_CLOUD_PROJECT is set in your environment
+run:
+    export GOOGLE_GENAI_USE_VERTEXAI=true && uv run python src/weather_sport_forecaster.py
