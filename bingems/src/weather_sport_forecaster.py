@@ -35,12 +35,15 @@ def get_weather_and_sports_forecast():
     1.  **Weather in Zurich for today:** Is it sunny, rainy, or something else?
     2.  **Lake Zurich water temperature:** Is it 20°C or warmer?
     3.  **Hallenbad City opening hours:** Is it open today?
+    4.  **Cycling conditions:** Identify the hours of the day with a temperature of at least 18°C (12°C in winter).
 
     Based on this information, recommend whether to **swim**, **run**, or **cycle**.
     Remember:
     *   I can run in the rain.
     *   I cannot cycle in the rain.
     *   I can only swim in the lake if the water is 20°C or warmer.
+    *   I cycle for 2-4 hours.
+    *   In winter, I prefer to go to the gym or swim.
     """
 
     # Format the prompt with the current date

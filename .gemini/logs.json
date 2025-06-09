@@ -285,5 +285,89 @@
     "type": "user",
     "message": "do a git diff and propose a good git commit",
     "timestamp": "2025-06-09T09:53:20.379Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 4,
+    "type": "user",
+    "message": "so a few mistakes here. 1 missing TOML for uv. 2 missing .env.dist. 3. Youre not invoking .env in justfile",
+    "timestamp": "2025-06-09T09:55:43.178Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 5,
+    "type": "user",
+    "message": "amazing. now add CHANGELOG as instructed in @GEMINI.md",
+    "timestamp": "2025-06-09T09:56:32.441Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 6,
+    "type": "user",
+    "message": "I've changed my prompt in @bingems/GEMINI.md . please update code.",
+    "timestamp": "2025-06-09T09:59:23.559Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 7,
+    "type": "user",
+    "message": "just run is now broken.",
+    "timestamp": "2025-06-09T10:00:56.233Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 8,
+    "type": "user",
+    "message": "the load-env target is broken. justfile has a different way to load env, its a directive.",
+    "timestamp": "2025-06-09T10:01:50.862Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 9,
+    "type": "user",
+    "message": "just run seems to hang forever. i dont understand it used to work",
+    "timestamp": "2025-06-09T10:03:27.069Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 10,
+    "type": "user",
+    "message": "now create a 1-2 liner bash/ptyhon script which invokes and wraps the ' just run' and is callable from WHEREVER in my filesystem. i want to call it as weather_sport_forecaster.sh by adding it to path, and same for the other tools.",
+    "timestamp": "2025-06-09T16:35:02.031Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 11,
+    "type": "user",
+    "message": "move it to bin/ so i can add other scripts later. time to then move to script #2 on Joplin. Enumerate the notes titles",
+    "timestamp": "2025-06-09T16:40:24.172Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 12,
+    "type": "user",
+    "message": "i moved it. now you make sure that from WHEREVER i call bin/....sh it works. now it only works from ./",
+    "timestamp": "2025-06-09T16:42:14.911Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 13,
+    "type": "user",
+    "message": "how do i add ~/git/vibecoding/bingems/bin/ to my PATH? give m,e the cat >> command pls",
+    "timestamp": "2025-06-09T17:00:07.214Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 14,
+    "type": "user",
+    "message": "wait i use bash so it would be ~/.bashrc",
+    "timestamp": "2025-06-09T17:02:02.712Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 15,
+    "type": "user",
+    "message": "i've symlinked the DB in etc/ so you can start ascertaining the schema and check ther tables",
+    "timestamp": "2025-06-09T17:04:15.729Z"
   }
 ]

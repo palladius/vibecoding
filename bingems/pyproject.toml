@@ -1,0 +1,12 @@
+[project]
+name = "bingems"
+version = "0.1.0"
+description = "A collection of binary gems using Gemini."
+authors = [{ name = "Riccardo", email = "palladiusbonton@gmail.com" }]
+dependencies = [
+    "google-generativeai",
+    "google-api-python-client",
+]
+
+[tool.uv]
+dev-dependencies = []

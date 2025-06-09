@@ -23,6 +23,8 @@ I'm an ironman and do train when I can. In the morning, the first thing I need t
 1. Check weather for the day: is it going to be sunny, or not?
 2. Check Zurich see lake water temperature: is it swimmable? I can swim if there's a temperature of 20deg (Centigrad).
 3. Check if the Hallenbad City is open today, sometimes it closes exp in July for 2 weeks.
+4. I usually cycle 3-4 hours on weekends and ~2h on week days. It's important to identify the hours of day when i can cycle. My threshold for cycling in Spring-autumn is 18 degrees. In winter I can go down to 12 but its NOT fun. So assume 18 °C in March-October range.
+5. In winter I'm going to do gym at work or swim.
 
 Based on that, suggest if it's better to swim run or cycle.
 

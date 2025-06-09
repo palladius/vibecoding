@@ -1,14 +1,21 @@
 # justfile for bingems
 
+# Load environment variables from .env file automatically
+set dotenv-load := true
+
 # List all available commands
 list:
     @just -l
 
 # Install dependencies
 install:
-    uv pip install -r requirements.txt
+    uv pip install -e .
+
+# Run the Joplin reader
+joplin:
+    uv run --active python src/joplin_reader.py
 
 # Run the weather and sport forecaster
 # Make sure GOOGLE_CLOUD_PROJECT is set in your environment
 run:
-    export GOOGLE_GENAI_USE_VERTEXAI=true && uv run python src/weather_sport_forecaster.py
+    uv run --active python src/weather_sport_forecaster.py
