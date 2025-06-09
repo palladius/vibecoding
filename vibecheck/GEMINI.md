@@ -1,3 +1,5 @@
+Dear Gemini, Make sure to read `../GEMINI.md` too: I DRY-ed some config instructions from there.
+
 I want to create an application to be run on my ~5 Mac/Linux machines.
 
 I want it to be modular and to run a number of tests.
@@ -105,3 +107,7 @@ Ensure these features are implemented. Some might be, some mightn't.
   few changes, like a regex, or list of files/dirs? These 3 files should differ at
   most a couople of lines. can u make it happen? i committed just in case ;)
 
+## Testing
+
+Occasionally, test the `just run` and `just run-verbose` maybe with `time` before to ensure they
+complete in a few seconds. Look at output errors and fix them.

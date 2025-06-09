@@ -59,5 +59,14 @@ modules:
                   description: "My public personal repo"
                 - path: "~/git/gic"
                   description: "My personal private repo"
-                - path: "~/Desktop"
-                  description: "Desktop folder shoudl exist"
+                - path: "~/git/DropboxOC/"
+                  description: "OneCloud Riccardo pseudo-Dropbox repository"
+                - path: "~/git/DropboxNC/"
+                  description: "NextCloud Riccardo pseudo-Dropbox repository"
+
+        applications_exist:
+            module: "application_exists"
+            description: "Check that all essential applications are installed."
+            enabled: true
+            applications:
+                - name: "Joplin"

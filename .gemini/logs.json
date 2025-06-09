@@ -257,5 +257,33 @@
     "type": "user",
     "message": "pleae run `just run`. youll see the error is still there",
     "timestamp": "2025-06-08T12:07:37.979Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 0,
+    "type": "user",
+    "message": "lets implement the bingems",
+    "timestamp": "2025-06-09T09:42:36.158Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 1,
+    "type": "user",
+    "message": "## LLM\n\nIf using the python library, make sure to use the VErtex AI (not API KEY) version since quota is usually better.\nCheck config in  in `~/git/vibecoding/.env`, and make sure `GOOGLE_CLOUD_PROJECT` is set.\n```\nexport GOOGLE_GENAI_USE_VERTEXAI=true",
+    "timestamp": "2025-06-09T09:46:03.308Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 2,
+    "type": "user",
+    "message": "Do not use SERPAPI_API unless required: it's expensive.",
+    "timestamp": "2025-06-09T09:49:59.616Z"
+  },
+  {
+    "sessionId": 1749462140,
+    "messageId": 3,
+    "type": "user",
+    "message": "do a git diff and propose a good git commit",
+    "timestamp": "2025-06-09T09:53:20.379Z"
   }
 ]
