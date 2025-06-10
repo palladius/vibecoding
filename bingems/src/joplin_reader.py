@@ -54,6 +54,22 @@ def get_joplin_summary(query):
     for title, body in notes:
         prompt += f"## {title}\n{body}\n\n"
 
+    prompt += """
+    Present the answer in a calendar style, with each event on a new line.
+    The format should be:
+    - DOW Mon Day: Event (Category)
+
+    Where:
+    - DOW is the 3-letter day of the week (e.g., Wed)
+    - Mon is the 3-letter month (e.g., Jun)
+    - Day is the day of the month (e.g., 18th)
+    - Event is the name of the event.
+    - Category is either (Work) or (Health).
+
+    Do not include days with no events.
+    Be as concise as possible.
+    """
+
 
     # Generate content using the model
     response = model.generate_content(prompt)

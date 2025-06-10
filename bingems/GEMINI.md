@@ -48,6 +48,10 @@ The ouytput should be MARKDOWN and if
 * *the joplin script to support a --query, where i can ask a generic query and gemini will
   read all the notes and provide an answer :) Default query would be: tell me my next work events AND health events in
   calendar style for the next 3 weeks.
+* Calendar should be as simple and dry as possible (do not say "nothing on day X"). Also its important you add a 3letter DOW. Example:
+  • Wed Jun 18th: RailsHock @ Renuo Zurich (Work)
+  • Thu Jun 19th: /dev/day Romandie (Work)
+  Use 3 letter for DOW and 3 letters for month. I'm an engineer: perfect tabbing over completeness :)
 
 ## 3. Septober MCP
 
