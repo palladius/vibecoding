@@ -1,0 +1,39 @@
+steps:
+  # 1. Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Build
+    args:
+      - 'build'
+      - '-t'
+      - 'europe-west1-docker.pkg.dev/ricc-genai/portfolio/portfolio-app:$COMMIT_SHA'
+      - '.'
+
+  # 2. Push the container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Push
+    args:
+      - 'push'
+      - 'europe-west1-docker.pkg.dev/ricc-genai/portfolio/portfolio-app:$COMMIT_SHA'
+    waitFor: ['Build']
+
+  # 3. Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: Deploy
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'portfolio-app' # This will be the name of your Cloud Run service
+      - '--image=europe-west1-docker.pkg.dev/ricc-genai/portfolio/portfolio-app:$COMMIT_SHA'
+      - '--region=europe-west1'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--quiet'
+    waitFor: ['Push']
+
+# Store the image in Artifact Registry
+images:
+  - 'europe-west1-docker.pkg.dev/ricc-genai/portfolio/portfolio-app:$COMMIT_SHA'
+
+# Set a timeout for the build
+timeout: '1200s'

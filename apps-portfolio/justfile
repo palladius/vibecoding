@@ -27,3 +27,15 @@ test:
 # Import data from YAML to SQLite
 import:
     npx tsx scripts/import-yaml.ts
+
+# Build the Docker image
+docker-build:
+    docker build -t portfolio-app .
+
+# Run the Docker container
+docker-run:
+    docker run -p 3000:3000 portfolio-app
+
+# Trigger the Cloud Build pipeline
+cloud-build:
+    gcloud builds submit --config cloudbuild.yaml .
