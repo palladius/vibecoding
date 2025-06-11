@@ -42,7 +42,7 @@ An event should have a title, day, description, ..
 - There should be some sort of status, like applied for CfP vs confirmed vs delivered.
 * Riccardo gives 0+ talks to an event, usually one.
 
-### **article**/**resource** model (for the future)
+### **article** or **resource** model (for the future)
 
 I'd like in the future to also have an array of articles and workshop resources. Maybe we could call it "resource" and have some sort of `type` field to specialize it.
 * it will have: `title`, `description`, `URL` and `publish_date`. Depending on what it is, it might have additional fields.
@@ -73,6 +73,8 @@ These are:
 * `etc/talks.md`: a list of my talks (90% exaustive)
 
 I'm going to paste here some sample event/talks.
+
+* Take inspirations from all the fields here for possible string fields (CfP, SessionURL, ..)
 
 ## 2024/25 talks (not exaustive!)
 

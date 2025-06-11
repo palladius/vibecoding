@@ -6,3 +6,5 @@ __pycache__/
 *.pyc
 .venv/
 output-*.md
+.echodo_history
+**/.gemini/logs.json

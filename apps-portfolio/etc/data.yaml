@@ -1,0 +1,144 @@
+
+# This file contains the portfolio data for Riccardo Carlesso.
+# It is used to seed the database for local development and can be used to
+# populate the production Firestore database.
+#
+# The schema is versioned to allow for future changes.
+#
+# Schema Version: 1.0
+#
+
+schema_version: "1.0"
+
+talks:
+  - title: "SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)"
+    event: "CloudConf"
+    date: "2025-03-26"
+    location: "Turin, Italy"
+    session_url: "https://2025.cloudconf.it/en/schedule.html"
+    status: "confirmed"
+    tags: ["SRE", "CloudConf"]
+  - title: "Keynote: SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)"
+    event: "SRE Day"
+    date: "2024-11-21"
+    location: "Amsterdam, Netherlands"
+    session_url: "https://sreday.com/2024-amsterdam/#modal-speaker-0"
+    status: "delivered"
+    tags: ["SRE", "Keynote", "Culture"]
+  - title: "News Crawler via Langchain.RB and Gemini APIs"
+    event: "GDG Devfest"
+    date: "2024-11-08"
+    location: "Pescara, Italy"
+    session_url: "https://sessionize.com/app/speaker/session/739236"
+    status: "delivered"
+    tags: ["GenAI", "Gemini", "Ruby"]
+  - title: "News Crawler via Langchain.RB and Gemini APIs"
+    event: "GDG Devfest"
+    date: "2024-10-12"
+    location: "Modena, Italy"
+    session_url: "https://sessionize.com/app/speaker/session/745608"
+    status: "delivered"
+    tags: ["GenAI", "Gemini", "Ruby"]
+  - title: "Keynote: Dove l'SRE può andare storto"
+    event: "DevSecOps day"
+    date: "2024-10-11"
+    location: "Bologna, Italy"
+    session_url: "https://www.devsecopsday.it/talks_speakers/"
+    status: "delivered"
+    tags: ["SRE", "Keynote", "Culture"]
+  - title: "SRE Jumpstart"
+    event: "GDG Budapest"
+    date: "2024-09-17"
+    location: "Budapest, Hungary (remote)"
+    status: "delivered"
+    tags: ["SRE", "Culture"]
+  - title: "Workshop: Bring your Ruby app in the Cloud"
+    event: "Euruko 2024"
+    date: "2024-09-11"
+    location: "Sarajevo, Bosnia and Herzegovina"
+    session_url: "https://2024.euruko.org/speakers/riccardo_carlesso"
+    status: "delivered"
+    tags: ["GenAI", "Gemini", "Ruby", "Keynote"]
+  - title: "News Crawler via Langchain.RB and Gemini APIs"
+    event: "Railshöck at Puzzle"
+    date: "2024-08-21"
+    location: "Zurich, Switzerland"
+    status: "delivered"
+    tags: ["GenAI", "Gemini", "Ruby"]
+  - title: "News Crawler via Langchain.RB and Gemini APIs"
+    event: "RubyDay"
+    date: "2024-05-31"
+    location: "Verona, Italy"
+    session_url: "https://2024.rubyday.it/talks_speakers/"
+    status: "delivered"
+    tags: ["GenAI", "Gemini", "Ruby"]
+  - title: "Software development with Google"
+    event: "CloudConf"
+    date: "2024-05-29"
+    location: "Turin, Italy"
+    session_url: "https://2024.cloudconf.it/index.html"
+    status: "delivered"
+    tags: ["Culture", "SWE"]
+  - title: "Goodbye, deployment headaches: Cloud Deploy and Vertex AI unite"
+    event: "Cloud Next"
+    date: "2024-04-11"
+    location: "Las Vegas, NV, USA"
+    session_url: "https://cloud.withgoogle.com/next?session=DEV302"
+    video_url: "https://www.youtube.com/watch?v=_NlGk9Ao_oA"
+    slides_url: "https://assets.swoogo.com/uploads/3794522-661c3c8fe0cf9.pdf"
+    status: "delivered"
+    tags: ["CloudDeploy", "MLOps"]
+
+articles:
+  - title: "Autotranslate my Hugo blog with Gemini"
+    url: "https://ricc.rocks/en/blog/autotranslate-my-hugo-blog-with-gemini/"
+    publish_date: "2024-02-05"
+    tags: ["GenAI", "Hugo"]
+  - title: "A deep dive in Cloud Run for Rails"
+    url: "https://ricc.rocks/en/blog/a-deep-dive-in-cloud-run-for-rails/"
+    publish_date: "2024-01-23"
+    tags: ["CloudRun", "Rails"]
+  - title: "My 2023 in review"
+    url: "https://ricc.rocks/en/blog/my-2023-in-review/"
+    publish_date: "2024-01-12"
+    tags: ["Personal"]
+  - title: "Hey Gemini, explain me these pictures - in bash"
+    url: "https://ricc.rocks/en/blog/hey-gemini-explain-me-these-pictures-in-bash/"
+    publish_date: "2023-12-29"
+    tags: ["GenAI", "Bash"]
+  - title: "Hey Bard, write a responsive Javascript Search Engine app for me.."
+    url: "https://medium.com/@palladiusbonton/hey-bard-write-a-responsive-javascript-search-engine-app-for-me-b2585e55385e"
+    publish_date: "2023-11-20"
+    tags: ["GenAI", "Javascript"]
+  - title: "Automated insights on Medium articles with GenAI and Ruby!"
+    url: "https://blog.devops.dev/parse-medium-articles-with-genai-and-add-some-fun-02fe9d30475a"
+    publish_date: "2023-11-16"
+    tags: ["GenAI", "Medium", "Ruby"]
+  - title: "My Mac’s battery🔋 on Google Cloud Monitoring — send SMS if low 🪫"
+    url: "https://medium.com/google-cloud/my-macs-battery-on-google-cloud-monitoring-with-sms-if-its-low-a1ccd70485fe?source=rss-b5293b96912f------2"
+    publish_date: "2022-01-01" # Approximated date
+    tags: ["GCP", "Monitoring"]
+  - title: "Migrate ☁️ GCP projects across organizations, the gcloud way"
+    url: "https://medium.com/google-cloud/how-to-migrate-projects-across-organizations-c7e254ab90af?source=rss-b5293b96912f------2"
+    publish_date: "2023-04-18"
+    tags: ["GCP", "gcloud"]
+  - title: "🐤 Canary Deployment on GCP with Cloud Deploy"
+    url: "https://medium.com/google-cloud/draft-canarying-on-gcp-with-cloud-deploy-91b3e4d0ee9a"
+    publish_date: "2022-02-13"
+    tags: ["cicd", "cloud_deploy", "cloud_build", "canary"]
+  - title: "Setting a ★ Cloud Build trigger with Pulumi in Python"
+    url: "https://medium.com/google-cloud/setting-cloudbuild-with-pulumi-in-python-330e8b54b2cf"
+    publish_date: "2022-01-01" # Approximated date
+    tags: ["GCP", "Pulumi", "Python"]
+  - title: "Vodafone: A DevOps approach to AI/ML through cloud-native CI/CD pipelines"
+    url: "https://cloud.google.com/blog/products/devops-sre/how-vodafone-uses-cicd-to-speed-up-ml-pipelines"
+    publish_date: "2022-01-01" # Approximated date
+    tags: ["MLOps", "Vodafone"]
+  - title: "Reimagining customer services with GenAI and multi-modal interaction"
+    url: "https://www.youtube.com/watch?v=WRNncVe5yJQ"
+    publish_date: "2023-01-01" # Approximated date
+    tags: ["GenAI", "UX"]
+  - title: "The Art of SLOs"
+    url: "https://www.youtube.com/watch?v=E3ReKuJ8ewA"
+    publish_date: "2021-01-01" # Approximated date
+    tags: ["SRE", "SLOs"]

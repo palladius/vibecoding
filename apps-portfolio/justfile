@@ -1,0 +1,29 @@
+# Justfile for the portfolio application
+
+# List all available commands
+list:
+    @just -l
+
+# Run the development server
+run:
+    npm run dev
+
+# Install dependencies
+install:
+    npm install
+
+# Run the development server and log output
+run-dev:
+    npm run dev &> log/dev.log
+
+# View the development log
+log:
+    cat log/dev.log
+
+# Run tests
+test:
+    npm test
+
+# Import data from YAML to SQLite
+import:
+    npx tsx scripts/import-yaml.ts
