@@ -1,13 +1,13 @@
 
 import sqlite3 from "sqlite3";
-import { open } from "sqlite";
+import { open, Database } from "sqlite";
 
-let db: any;
+let db: Database | null = null;
 
 export async function getDb() {
   if (!db) {
     db = await open({
-      filename: "./portfolio.db",
+      filename: "./db/portfolio.sqlite3",
       driver: sqlite3.Database,
     });
   }

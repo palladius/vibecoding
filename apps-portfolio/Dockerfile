@@ -5,10 +5,9 @@ FROM node:20-slim
 WORKDIR /app
 
 # Install dependencies.
-# Using --production flag to avoid installing devDependencies.
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install --production
+RUN npm install
 
 # Copy the rest of the application's code.
 COPY . .
