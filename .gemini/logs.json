@@ -390,5 +390,40 @@
     "type": "user",
     "message": "* Calendar should be as simple and dry as possible (do not say \"nothing on day X\"). Also its important you add a 3letter DOW. Example:\n  • Wed Jun 18th: RailsHock @ Renuo Zurich (Work)\n  • Thu Jun 19th: /dev/day Romandie (Work)\n  Use 3 letter for DOW and 3 letters for month. I'm an engineer: perfect tabbing over completeness :)",
     "timestamp": "2025-06-09T17:13:53.924Z"
+  },
+  {
+    "sessionId": 1749563350,
+    "messageId": 0,
+    "type": "user",
+    "message": "which tools can u use?",
+    "timestamp": "2025-06-10T13:49:22.258Z"
+  },
+  {
+    "sessionId": 1749563350,
+    "messageId": 1,
+    "type": "user",
+    "message": "show me MCP tools from turborails",
+    "timestamp": "2025-06-10T13:49:40.378Z"
+  },
+  {
+    "sessionId": 1749563350,
+    "messageId": 2,
+    "type": "user",
+    "message": "retrieve AppMetadata",
+    "timestamp": "2025-06-10T13:50:16.843Z"
+  },
+  {
+    "sessionId": 1749563350,
+    "messageId": 3,
+    "type": "user",
+    "message": "give me the response JSON in bulletpoints.",
+    "timestamp": "2025-06-10T13:55:42.479Z"
+  },
+  {
+    "sessionId": 1749563350,
+    "messageId": 4,
+    "type": "user",
+    "message": "retrieve AppMetadata again",
+    "timestamp": "2025-06-10T13:55:58.943Z"
   }
 ]
