@@ -2,7 +2,6 @@ steps:
   # 1. Build the container image
   - name: 'gcr.io/cloud-builders/docker'
     id: Build
-    dir: 'apps-portfolio'
     args:
       - 'build'
       - '-t'
@@ -30,6 +29,7 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--quiet'
+      - '--set-env-vars=NEXT_PUBLIC_API_URL=https://portfolio-app-272932496670.europe-west1.run.app'
     waitFor: ['Push']
 
 # Store the image in Artifact Registry
