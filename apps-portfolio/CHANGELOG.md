@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2025-06-12
+
+### Added
+
+- Resource type and emoji to talk and article pages.
+- Images to talk and article pages.
+- Clickable resource links to talk pages.
+
+### Changed
+
+- Header is now leaner with a black background and yellow text.
+- Main background is now a darker shade.
+- Article and Talk cards now have a dark theme.
+- Images on talk and article pages are now larger.
+
+### Fixed
+
+- Corrected the CHANGELOG link in the footer.
+- Fixed an issue where the date was not displaying for talks.
+- Fixed an issue where talks were not generating permalinks correctly.
+- Correctly ignored environment files in `.gitignore`.
+- Removed `.env2` from git history.
+
 ## [0.7.1] - 2025-06-12
 
 1. Riccardo: committed plenty of stuff including AboutMe.
