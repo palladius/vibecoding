@@ -46,7 +46,8 @@ docker-build:
 # [DOCKER] Run the Docker container
 docker-run:
     mkdir -p log
-    docker run -p 8080:8080 portfolio-app:v`cat VERSION` &> log/docker.log
+    docker run -it -p 8081:8080 portfolio-app:v`cat VERSION`
+    # &> log/docker.log
 
 # Print environment variables                       │
 env-print:
@@ -89,3 +90,8 @@ cloud-build-show-log build_id:
 generate-screenshots:
     @echo "Generating screenshots..."
     npx tsx scripts/generate-screenshots.ts
+
+check-port-8080:
+     sudo lsof -i :8080
+check-port-3001:
+     sudo lsof -i :3001

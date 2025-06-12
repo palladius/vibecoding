@@ -238,24 +238,17 @@ talks:
       to SRE, then try to explain what failures patterns he's observed (partly
       contained in Enterprise Roadmap to SRE report)
 
-
       Topics:
-
-      What SRE is.
-
-      What SRE is not.
-
-      Anti-patterns in SRE adoption
-
-      How to make it work for your company
-
+      - What SRE is.
+      - What SRE is not.
+      - Anti-patterns in SRE adoption
+      - How to make it work for your company
 
       DevOpsDays Warsaw: https://devopsdays.pl/
     status: delivered
     tags:
       - SRE
       - Culture
-      - highlight
     image: /images/generated/DevOpsDays-Warsaw-2023-2023-12-31.jpeg
   - title: 'Goodbye, deployment headaches: Cloud Deploy and Vertex AI unite'
     event: Cloud Next
