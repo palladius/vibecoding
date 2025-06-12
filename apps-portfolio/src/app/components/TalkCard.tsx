@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Image from 'next/image';
 
@@ -12,30 +13,30 @@ interface Talk {
 
 const TalkCard: React.FC<{ talk: Talk }> = ({ talk }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <Image width={600} height={400} className="w-full" src={talk.image} alt={talk.title} />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{talk.title}</div>
-        <p className="text-gray-700 text-base">
-          {talk.event} - {talk.date}
-        </p>
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white">
+      <div className="aspect-w-4 aspect-h-3">
+        <Image className="object-cover" src={talk.image} alt={talk.title} layout="fill" />
       </div>
-      <div className="px-6 pt-4 pb-2 flex justify-between items-center">
-        <div>
-          {talk.tags.split(',').map((tag) => (
-            <span
-              key={tag}
-              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            >
-              #{tag}
-            </span>
-          ))}
+      <div className="p-4">
+        <h3 className="text-lg font-bold mb-2">{talk.title}</h3>
+        <p className="text-sm text-cyan-400 mb-2">{talk.event} - {talk.date}</p>
+        <div className="flex justify-between items-center">
+          <div>
+            {talk.tags.split(',').map((tag) => (
+              <span
+                key={tag}
+                className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full px-2 py-1 text-xs font-semibold mr-2 mb-2"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+          <img
+            src={`https://flagcdn.com/w40/${talk.country_code.toLowerCase()}.png`}
+            width="30"
+            alt={talk.country_code}
+          />
         </div>
-        <img
-          src={`https://flagcdn.com/w40/${talk.country_code.toLowerCase()}.png`}
-          width="40"
-          alt={talk.country_code}
-        />
       </div>
     </div>
   );

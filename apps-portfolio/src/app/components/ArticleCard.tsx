@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 
@@ -12,23 +11,25 @@ interface Article {
 
 const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <Image width={600} height={400} className="w-full" src={article.image} alt={article.title} />
-      <div className="px-6 py-4">
-        <a href={article.url} target="_blank" rel="noopener noreferrer" className="font-bold text-xl mb-2 hover:underline">
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white">
+      <div className="aspect-w-4 aspect-h-3">
+        <Image className="object-cover" src={article.image} alt={article.title} layout="fill" />
+      </div>
+      <div className="p-4">
+        <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-lg font-bold mb-2 hover:underline">
           {article.title}
         </a>
-        <p className="text-gray-700 text-base">{article.publish_date}</p>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        {article.tags.split(',').map((tag) => (
-          <span
-            key={tag}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-          >
-            #{tag}
-          </span>
-        ))}
+        <p className="text-sm text-gray-600 mb-2">{article.publish_date}</p>
+        <div>
+          {article.tags.split(',').map((tag) => (
+            <span
+              key={tag}
+              className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full px-2 py-1 text-xs font-semibold mr-2 mb-2"
+            >
+              #{tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
