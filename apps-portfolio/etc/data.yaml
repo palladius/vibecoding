@@ -144,25 +144,20 @@ articles:
       - Hugo
     image: /images/articles/geminocks.png
   - title: A deep dive in Cloud Run for Rails
-    url: https://ricc.rocks/en/blog/a-deep-dive-in-cloud-run-for-rails/
+    url: https://ricc.rocks/en/posts/medium/2024-10-19-level-up-rails/
     publish_date: '2024-01-23'
     tags:
       - CloudRun
       - Rails
     image: /images/generated/A-deep-dive-in-Cloud-Run-for-Rails.jpeg
-  - title: My 2023 in review
-    url: https://ricc.rocks/en/blog/my-2023-in-review/
-    publish_date: '2024-01-12'
-    tags:
-      - Personal
-    image: /images/generated/My-2023-in-review.jpeg
   - title: Hey Gemini, explain me these pictures - in bash
-    url: https://ricc.rocks/en/blog/hey-gemini-explain-me-these-pictures-in-bash/
+    url: >-
+      https://blog.devops.dev/hey-gemini-explain-me-these-pictures-in-bash-06c03d0d0512
     publish_date: '2023-12-29'
     tags:
       - GenAI
       - Bash
-    image: /images/generated/Hey-Gemini,-explain-me-these-pictures---in-bash.jpeg
+    image: /images/generated/Hey-Gemini--explain-me-these-pictures---in-bash.jpeg
   - title: Hey Bard, write a responsive Javascript Search Engine app for me..
     url: >-
       https://medium.com/@palladiusbonton/hey-bard-write-a-responsive-javascript-search-engine-app-for-me-b2585e55385e
