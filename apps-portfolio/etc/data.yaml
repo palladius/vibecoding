@@ -5,6 +5,8 @@ bio: >
   with a love for Ruby, Bash, and all things cloud. When he's not coding, you
   can find him speaking at conferences, writing articles, or watching Sacha
   Baron Cohen movies.
+
+  Note: this is a public facing version of my pvt go/ricc-conferences where I hold state (like Manager/Wife approval).
 talks:
   - title: Building a Multi-Agent Real AI Travel Agent with Python and Ruby and MCP
     event: DevFest Pescara 2025
@@ -74,7 +76,6 @@ talks:
     session_url: https://2025.euruko.org/speakers/riccardo_carlesso
     event_url: https://2025.euruko.org/
     status: cfp_applied
-    type: workshop
     tags:
       - Ruby
       - Rails

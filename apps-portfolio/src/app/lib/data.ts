@@ -45,7 +45,7 @@ export async function getHighlightedTalks() {
 }
 
 export async function getHighlightedArticles() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/highlights/articles`);
+  const res = await fetch(`/api/highlights/articles`);
   const articles: Article[] = await res.json();
   return articles;
 }
