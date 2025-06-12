@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
-import { getDb, setupDb } from '../src/lib/db.js';
+import { getDb, setupDb } from '../src/lib/db.ts';
 
 interface Talk {
   title: string;
