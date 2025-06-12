@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Display event name in Calendar view for talks.
 
+## [0.8.6] - 2025-06-12
+
+### Added
+
+- Display event name in Calendar view for talks.
+
 ## [0.8.5] - 2025-06-12
 
 fix: Resolve ERR_MODULE_NOT_FOUND in Docker build
