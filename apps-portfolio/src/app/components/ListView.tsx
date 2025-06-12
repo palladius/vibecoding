@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import moment from 'moment';
 import { Talk, Article } from '../../lib/types';
 
 interface ListViewProps {
@@ -7,6 +8,18 @@ interface ListViewProps {
 }
 
 const ListView: React.FC<ListViewProps> = ({ items }) => {
+  const currentYear = moment().year();
+
+  const formatDate = (dateString: string | undefined) => {
+    if (!dateString) return '';
+    const date = moment(dateString);
+    if (date.year() === currentYear) {
+      return date.format('D MMM');
+    } else {
+      return date.format('YYYY-MM-DD');
+    }
+  };
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-gray-800 text-white">
@@ -23,12 +36,12 @@ const ListView: React.FC<ListViewProps> = ({ items }) => {
             <tr key={item.id}>
               <td className="py-2 px-4 border-b border-gray-700">
                 <Link href={item.type === 'talk' ? `/talks/${item.slug}` : `/articles/${item.slug}`} className="text-blue-400 hover:underline">
-                  {item.title}
+                  {item.title} {item.type === 'talk' && item.event && `@ ${item.event}`}
                 </Link>
               </td>
               <td className="py-2 px-4 border-b border-gray-700">{item.type}</td>
               <td className="py-2 px-4 border-b border-gray-700">
-                {'publish_date' in item ? item.publish_date : item.date}
+                {formatDate('publish_date' in item ? item.publish_date : item.date)}
               </td>
               <td className="py-2 px-4 border-b border-gray-700">
                 {item.tags && item.tags.split(',').map((tag) => (
