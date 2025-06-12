@@ -25,7 +25,8 @@ log:
 
 # Run tests
 test:
-    npm test
+    @echo "Running tests... Riccardo 2 gemini: note this code tends to execute for >5min so refrain from running it yourself"
+    time npm test
 
 # Import data from YAML to SQLite
 import:

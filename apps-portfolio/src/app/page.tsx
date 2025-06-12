@@ -1,17 +1,6 @@
 import TalksList from "./components/TalksList";
 import ArticlesList from "./components/ArticlesList";
-
-async function getTalks() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/talks`);
-  const talks = await res.json();
-  return talks;
-}
-
-async function getArticles() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`);
-  const articles = await res.json();
-  return articles;
-}
+import { getTalks, getArticles } from "./lib/data";
 
 export default async function Home() {
   const talks = await getTalks();
