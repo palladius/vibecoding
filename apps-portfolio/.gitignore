@@ -37,7 +37,6 @@ next-env.d.ts
 
 # riccardo
 .env2
-db/
 log/
 .DS_Store
 t.sh
