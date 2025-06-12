@@ -19,7 +19,7 @@ talks:
     event_url: "https://2025.cloudconf.it/en/"
     status: "confirmed"
     tags: ["SRE", "CloudConf"]
-    image: "/images/placeholder-image.png"
+    image: "/images/events/cloudconf25-riccardo.jpg"
   - title: "Keynote: SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)"
     event: "SRE Day"
     date: "2024-11-21"
@@ -29,9 +29,9 @@ talks:
     event_url: "https://sreday.com/2024-amsterdam/"
     status: "delivered"
     tags: ["SRE", "Keynote", "Culture"]
-    image: "/images/events/SREDAY-2024.png"
+    image: "/images/events/ricc-sreday-2024.jpg" # SREDAY-2024.png
   - title: "News Crawler via Langchain.RB and Gemini APIs"
-    event: "GDG Devfest"
+    event: "GDG Devfest Pescara"
     date: "2024-11-08"
     location: "Pescara, Italy"
     country_code: "it"
@@ -39,7 +39,7 @@ talks:
     event_url: "https://devfest.gdgpescara.it/"
     status: "delivered"
     tags: ["GenAI", "Gemini", "Ruby"]
-    image: "/images/placeholder-image.png"
+    image: "/images/events/gdg-pescara24.jpg"
   - title: "News Crawler via Langchain.RB and Gemini APIs"
     event: "GDG Devfest"
     date: "2024-10-12"
@@ -64,8 +64,10 @@ talks:
     location: "Budapest, Hungary (remote)"
     country_code: "hu"
     status: "delivered"
-    tags: ["SRE", "Culture"]
-    image: "/images/placeholder-image.png"
+    tags: ["SRE", "Culture", "GDG" ]
+    image: "/images/events/gdg-budapest-24.png"
+    # TODO(gemini): Add functionality when available
+    video: 'https://www.youtube.com/watch?v=i96qBPyn2dw'
   - title: "Workshop: Bring your Ruby app in the Cloud"
     event: "Euruko 2024"
     date: "2024-09-11"

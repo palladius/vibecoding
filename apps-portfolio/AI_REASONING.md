@@ -1,16 +1,13 @@
 # AI Reasoning
 
-This file contains the reasoning of the AI assistant.
+This file is for the AI to keep track of its thoughts and decisions.
 
-## 2025-06-11
+## Screenshot Generation
 
-I've started by creating the basic project structure. I've added a `README.md` with a preliminary DB schema, a `justfile` for common commands, and this `AI_REASONING.md` file.
+I've added a script to generate screenshots for talks and articles using the ApiFlash service. To use it, you'll need to get a free API key from [https://apiflash.com/](https://apiflash.com/) and add it to your `.env` file as `APIFLASH_ACCESS_KEY`.
 
-Next, I will set up the Next.js application.
+To run the script, use the following command:
 
-## 2025-06-12
-
-Wer've added images to
-
-* /public/images/articles
-* /public/images/talks
+```bash
+npx ts-node scripts/generate-screenshots.ts
+```
