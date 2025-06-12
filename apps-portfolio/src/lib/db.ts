@@ -1,17 +1,8 @@
 
 import Database from 'better-sqlite3';
 
-let db: Database.Database | null = null;
-
-export function getDb() {
-  if (!db) {
-    db = new Database('./db/portfolio.sqlite3');
-  }
-  return db;
-}
-
 export function setupDb() {
-  const db = getDb();
+  const db = new Database('./db/portfolio.sqlite3');
   db.exec(`
     CREATE TABLE IF NOT EXISTS talks (
       id INTEGER PRIMARY KEY AUTOINCREMENT,

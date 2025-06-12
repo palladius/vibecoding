@@ -33,7 +33,10 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.tslog/
+next-env.d.ts
+
+# Riccardo BEGIN
 log/
 TODO-ricc.md
 t.sh
+# Riccardo END

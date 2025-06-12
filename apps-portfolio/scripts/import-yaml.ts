@@ -1,11 +1,11 @@
-
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
-import { getDb, setupDb } from '../src/lib/db.js';
+import { setupDb } from '../src/lib/db.js';
+import Database from 'better-sqlite3';
 
 async function importData() {
   setupDb();
-  const db = getDb();
+  const db = new Database('./db/portfolio.sqlite3');
 
   // Clear existing data
   db.exec('DROP TABLE IF EXISTS talks');
