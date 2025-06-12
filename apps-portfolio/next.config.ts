@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
         port: '8081',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'portfolio-app-272932496670.europe-west1.run.app',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   typescript: {
