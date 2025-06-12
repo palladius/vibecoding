@@ -65,3 +65,13 @@ terraform-init:
 # Apply Terraform configuration
 terraform-apply:
     terraform -chdir=iac apply -var-file=terraform.tfvars -auto-approve
+
+
+# List latest 10 CB builds, possible the first might still be running
+cloud-build-list:
+    gcloud builds list --project=palladius-genai --limit=10
+
+# Show the log of a specific Cloud Build, eg 7c82188e-485a-4735-a70d-fb303fbfe5a0
+cloud-build-show-log build_id:
+    @echo "Showing log for build ID: ${build_id}. Use --stream to follow the log indefinitely (you can do it, but I want Gemini NOT to do it)."
+    gcloud builds log {{build_id}} --project=palladius-genai
