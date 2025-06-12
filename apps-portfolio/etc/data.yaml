@@ -6,6 +6,23 @@ bio: >
   can find him speaking at conferences, writing articles, or watching Sacha
   Baron Cohen movies.
 talks:
+  - title: '[workshop][tentative] Create a responsive Rails 8 app with Gemini'
+    event: Euruko 2025
+    date: '2025-09-19'
+    location: Viana do Castelo, Portugal
+    country_code: pt
+    session_url: https://2025.euruko.org/speakers/riccardo_carlesso # todo
+    event_url: https://2025.euruko.org/
+    status: tentative
+    talk_description: |
+      In this workshop, we will create a Rails app from scratch, using the latest
+      features of Ruby on Rails. We will cover topics such as:
+      - Setting up a Rails app with Docker
+      - Using Google Cloud Run to deploy the app
+      - Using Google Cloud Build to automate the deployment process
+      - Using Google Cloud Monitoring to monitor the app
+      - Using Google Cloud Logging to log the app
+      - Using Google Cloud Storage to store files
   - title: 'From Monolith 🗿 to Magic ✨: An AI-Powered DevOps Workshop'
     event: We are Developers 2025
     date: '2025-07-10'
