@@ -13,7 +13,12 @@ talks:
     country_code: pt
     session_url: https://2025.euruko.org/speakers/riccardo_carlesso
     event_url: https://2025.euruko.org/
-    status: tentative
+    status: cfp_applied
+    tags:
+      - Ruby
+      - Rails
+      - workshop
+      #- highlight
     talk_description: >
       In this workshop, we will create a Rails 8 app from scratch, using the
       latest

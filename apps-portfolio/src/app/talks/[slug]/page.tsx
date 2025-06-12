@@ -24,6 +24,9 @@ export default async function TalkPage({ params }: { params: { slug:string } }) 
         <div>
           <h1 className="text-4xl font-bold mb-4">{talk.title}</h1>
           <p className="text-lg text-gray-400 mb-4">{talk.event} - {talk.date}</p>
+          {talk.status && (
+            <p className="text-lg text-gray-400 mb-4">Status: {talk.status}</p>
+          )}
           <p className="text-lg text-gray-400 mb-4">
             {emoji} {resourceType.charAt(0).toUpperCase() + resourceType.slice(1)}
           </p>

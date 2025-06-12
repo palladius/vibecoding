@@ -2,6 +2,10 @@
 
 This file is for the AI to keep track of its thoughts and decisions.
 
+## Talk Detail Page Enhancements (2025-06-12)
+
+Added the `status` field to the talk detail page (`src/app/talks/[slug]/page.tsx`) to display the talk's status if available.
+
 ## Screenshot Generation (2025-06-12)
 
 Updated the `generate-screenshots.ts` script to handle cases where the `image` field is missing in `talk` or `article` objects in `etc/data.yaml`. The script will now generate a screenshot if the `image` field is either missing or set to `/images/placeholder-image.png`.
