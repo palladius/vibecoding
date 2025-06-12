@@ -97,6 +97,12 @@ It's very important to me that the VERSION in the app is captured by the docker 
 
 I'll also have a cloud build trigger to trigger atuomatically upon pushes to main.
 
+### Cloud Build notes
+
+If you manage Cloud Build, great! Two things:
+1. I want a connection to github, so any git push to main will trigger cloudbuild.yaml. This is how I want it. Note this is not fully automateable with gcloud or terraform, and requires user to actually authenticate to github.
+2. Check Cloud Build logs. If you see N failures, check the FIRST failure in chronological orders and use `gcloud builds log` to understand why it failed.
+
 ### Terraform / Pulumi
 
 Whenever we write GCP code for the above, its very easy to lose track of what we do, for instance:
