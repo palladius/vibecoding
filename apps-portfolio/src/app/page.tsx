@@ -10,8 +10,12 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const talks = await getTalks();
-      const articles = await getArticles();
+      const talksData = await getTalks();
+      const articlesData = await getArticles();
+      
+      const talks = talksData.map((talk: any) => ({ ...talk, type: 'talk' }));
+      const articles = articlesData.map((article: any) => ({ ...article, type: 'article' }));
+
       setItems([...talks, ...articles]);
     };
     fetchData();

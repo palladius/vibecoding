@@ -42,19 +42,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white`}
         suppressHydrationWarning
       >
-        <nav className="bg-gray-800 p-4">
+        <nav className="bg-black p-2">
           <div className="container mx-auto flex justify-between">
             <div className="flex space-x-4">
-              <Link href="/" className="text-white hover:text-gray-300">
+              <Link href="/" className="text-yellow-400 hover:text-yellow-300">
                 Talks
               </Link>
-              <Link href="/articles" className="text-white hover:text-gray-300">
+              <Link href="/articles" className="text-yellow-400 hover:text-yellow-300">
                 Articles
               </Link>
-              <Link href="/about" className="text-white hover:text-gray-300">
+              <Link href="/about" className="text-yellow-400 hover:text-yellow-300">
                 About Me
               </Link>
             </div>

@@ -23,6 +23,7 @@ export interface Article {
   publish_date?: string;
   tags?: string;
   image?: string;
+  resource_type?: string;
   created_at: string;
   updated_at: string;
   type: 'article';

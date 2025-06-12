@@ -22,6 +22,7 @@ interface Article {
   publish_date: string;
   tags: string[];
   image: string;
+  resource_type: string;
 }
 
 interface Data {
@@ -64,8 +65,8 @@ async function importData() {
 
   // Insert articles
   const insertArticle = await db.prepare(
-    `INSERT INTO articles (title, url, publish_date, tags, image)
-     VALUES (?, ?, ?, ?, ?)`
+    `INSERT INTO articles (title, url, publish_date, tags, image, resource_type)
+     VALUES (?, ?, ?, ?, ?, ?)`
   );
   for (const article of data.articles) {
     await insertArticle.run(
@@ -73,7 +74,8 @@ async function importData() {
       article.url,
       article.publish_date,
       article.tags.join(','),
-      article.image
+      article.image,
+      article.resource_type
     );
   }
 

@@ -35,11 +35,12 @@ export default function ItemsList({ items }: { items: Item[] }) {
           const talkWithDefaults = {
             ...item,
             event: item.event || '',
-            date: item.date || '',
+            publish_date: item.date || '',
             location: item.location || '',
             tags: item.tags || '',
             image: item.image || '/images/placeholder-image.png',
             country_code: item.country_code || 'xx',
+            slug: item.slug || '',
           };
           return <TalkCard key={`talk-${item.id}`} talk={talkWithDefaults} />;
         } else {

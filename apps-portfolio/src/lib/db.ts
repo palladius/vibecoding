@@ -40,6 +40,7 @@ export async function setupDb() {
       publish_date TEXT,
       tags TEXT,
       image TEXT,
+      resource_type TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );

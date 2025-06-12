@@ -171,6 +171,7 @@ articles:
       - GenAI
       - Hugo
     image: /images/articles/geminocks.png
+    resource_type: article
   - title: A deep dive in Cloud Run for Rails
     url: https://ricc.rocks/en/posts/medium/2024-10-19-level-up-rails/
     publish_date: '2024-01-23'
@@ -178,6 +179,7 @@ articles:
       - CloudRun
       - Rails
     image: /images/generated/A-deep-dive-in-Cloud-Run-for-Rails.jpeg
+    resource_type: article
   - title: Hey Gemini, explain me these pictures - in bash
     url: >-
       https://blog.devops.dev/hey-gemini-explain-me-these-pictures-in-bash-06c03d0d0512
@@ -186,6 +188,7 @@ articles:
       - GenAI
       - Bash
     image: /images/generated/Hey-Gemini--explain-me-these-pictures---in-bash.jpeg
+    resource_type: article
   - title: Hey Bard, write a responsive Javascript Search Engine app for me..
     url: >-
       https://medium.com/@palladiusbonton/hey-bard-write-a-responsive-javascript-search-engine-app-for-me-b2585e55385e
@@ -195,6 +198,7 @@ articles:
       - Javascript
     image: >-
       /images/generated/Hey-Bard,-write-a-responsive-Javascript-Search-Engine-app-for-me...jpeg
+    resource_type: article
   - title: Automated insights on Medium articles with GenAI and Ruby!
     url: >-
       https://blog.devops.dev/parse-medium-articles-with-genai-and-add-some-fun-02fe9d30475a
@@ -205,6 +209,7 @@ articles:
       - Ruby
     image: >-
       /images/generated/Automated-insights-on-Medium-articles-with-GenAI-and-Ruby-.jpeg
+    resource_type: article
   - title: My Mac’s battery🔋 on Google Cloud Monitoring — send SMS if low 🪫
     url: >-
       https://medium.com/google-cloud/my-macs-battery-on-google-cloud-monitoring-with-sms-if-its-low-a1ccd70485fe?source=rss-b5293b96912f------2
@@ -214,6 +219,7 @@ articles:
       - Monitoring
     image: >-
       /images/generated/My-Mac-s-battery---on-Google-Cloud-Monitoring---send-SMS-if-low---.jpeg
+    resource_type: article
   - title: Migrate ☁️ GCP projects across organizations, the gcloud way
     url: >-
       https://medium.com/google-cloud/how-to-migrate-projects-across-organizations-c7e254ab90af?source=rss-b5293b96912f------2
@@ -223,6 +229,7 @@ articles:
       - gcloud
     image: >-
       /images/generated/Migrate----GCP-projects-across-organizations--the-gcloud-way.jpeg
+    resource_type: article
   - title: 🐤 Canary Deployment on GCP with Cloud Deploy
     url: >-
       https://medium.com/google-cloud/draft-canarying-on-gcp-with-cloud-deploy-91b3e4d0ee9a
@@ -233,6 +240,7 @@ articles:
       - cloud_build
       - canary
     image: /images/generated/---Canary-Deployment-on-GCP-with-Cloud-Deploy.jpeg
+    resource_type: article
   - title: Setting a ★ Cloud Build trigger with Pulumi in Python
     url: >-
       https://medium.com/google-cloud/setting-cloudbuild-with-pulumi-in-python-330e8b54b2cf
@@ -243,6 +251,7 @@ articles:
       - Python
     image: >-
       /images/generated/Setting-a---Cloud-Build-trigger-with-Pulumi-in-Python.jpeg
+    resource_type: article
   - title: 'Vodafone: A DevOps approach to AI/ML through cloud-native CI/CD pipelines'
     url: >-
       https://cloud.google.com/blog/products/devops-sre/how-vodafone-uses-cicd-to-speed-up-ml-pipelines
@@ -252,6 +261,7 @@ articles:
       - Vodafone
     image: >-
       /images/generated/Vodafone--A-DevOps-approach-to-AI-ML-through-cloud-native-CI-CD-pipelines.jpeg
+    resource_type: article
   - title: Reimagining customer services with GenAI and multi-modal interaction
     url: https://www.youtube.com/watch?v=WRNncVe5yJQ
     publish_date: '2023-01-01'
@@ -260,6 +270,7 @@ articles:
       - UX
     image: >-
       /images/generated/Reimagining-customer-services-with-GenAI-and-multi-modal-interaction.jpeg
+    resource_type: video
   - title: The Art of SLOs
     url: https://www.youtube.com/watch?v=E3ReKuJ8ewA
     publish_date: '2021-01-01'
@@ -268,3 +279,4 @@ articles:
       - SLOs
       - highlight
     image: /images/generated/The-Art-of-SLOs.jpeg
+    resource_type: video
