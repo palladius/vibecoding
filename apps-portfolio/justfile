@@ -14,7 +14,8 @@ install:
 
 # Run the development server and log output
 run-dev:
-    npm run dev &> log/dev.log
+    mkdir -p log
+    npm run dev -- -p 3001 &> log/dev.log
 
 # View the development log
 log:
@@ -34,8 +35,20 @@ docker-build:
 
 # Run the Docker container
 docker-run:
-    docker run -p 3000:3000 portfolio-app
+    mkdir -p log
+    docker run -p 8080:8080 portfolio-app &> log/docker.log &
 
 # Trigger the Cloud Build pipeline
 cloud-build:
-    gcloud builds submit --config cloudbuild.yaml .
+    @export $(cat .env | grep -v '^#' | xargs) && gcloud builds submit --project=$GOOGLE_PROJECT_ID --config cloudbuild.yaml --substitutions=_PROJECT_ID=$GOOGLE_PROJECT_ID,_TAG=v$(cat VERSION) .
+
+# Find processes on ports 3001 and 8080
+ps:
+    @netstat -anp | grep LISTEN | egrep '3001|8080' || echo "No processes found listening on ports 3001 or 8080"
+    @# Alternative:     @lsof -iTCP:3001,8080 -sTCP:LISTEN || echo "No processes found listening on ports 3001 or 8080"
+
+# Curl the Cloud Run service as ricc@google.com
+curl-cloudrun-as-riccardo:
+    @URL=$(gcloud run services describe portfolio-app --platform=managed --region=europe-west1 --project=ricc-genai --format='value(status.url)'); \
+    echo "Riccardo, I will now curl $URL for you, great success!"; \
+    curl -H "Authorization: Bearer $(gcloud auth print-identity-token --impersonate-service-account=portfolio-invoker@ricc-genai.iam.gserviceaccount.com --audiences=$URL --include-email)" $URL

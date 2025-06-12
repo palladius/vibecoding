@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2025-06-12
+
+### Added
+
+- Cloud Build pipeline for automated builds and deployments.
+- Project-independent configuration for Cloud Build.
+- Justfile commands for building and deploying the application.
+
 ## [0.1.0] - 2025-06-11
 
 ### Added
