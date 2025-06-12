@@ -23,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({ appName, version, repoUrl, appProdUrl }
           gemini-cli
         </a>{' '}
         🤖 -{' '}
-        <a href={`${repoUrl}/blob/main/apps-portfolio/CHANGELOG.md`} target="_blank" rel="noopener noreferrer" className="hover:underline">
+        <a href={`${repoUrl}/blob/main/CHANGELOG.md`} target="_blank" rel="noopener noreferrer" className="hover:underline">
           Changelog
         </a>
       </p>
