@@ -1,48 +1,54 @@
 "use client";
 
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import React from 'react';
 import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { Talk } from '../../lib/types';
 
-const localizer = momentLocalizer(moment);
-
-interface Event {
-  title: string;
-  start: Date;
-  end: Date;
-  resource: Talk;
-}
+const statusEmojis: { [key: string]: string } = {
+  cfp_applied: '📝',
+  confirmed: '✅',
+  delivered: '🎤',
+};
 
 export default function CalendarView({ talks }: { talks: Talk[] }) {
-  const events: Event[] = talks.map(talk => ({
-    title: talk.title,
-    start: moment(talk.date).toDate(),
-    end: moment(talk.date).toDate(),
-    resource: talk,
-  }));
+  // Sort talks by date in ascending order
+  const sortedTalks = [...talks].sort((a, b) => {
+    const dateA = moment(a.date);
+    const dateB = moment(b.date);
+    return dateA.diff(dateB);
+  });
+
+  let currentMonthYear = '';
 
   return (
-    <div className="h-[500px] border border-red-500">
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500 }}
-        eventPropGetter={(event) => {
-          const status = event.resource.status;
-          let backgroundColor = '';
-          if (status === 'confirmed') {
-            backgroundColor = 'green';
-          } else if (status === 'delivered') {
-            backgroundColor = 'blue';
-          } else {
-            backgroundColor = 'gray';
+    <div className="container mx-auto px-4 py-8">
+      {
+        sortedTalks.map((talk) => {
+          const talkDate = moment(talk.date);
+          const monthYear = talkDate.format('MMMM YYYY');
+
+          const displayMonthYear = monthYear !== currentMonthYear;
+          if (displayMonthYear) {
+            currentMonthYear = monthYear;
           }
-          return { style: { backgroundColor } };
-        }}
-      />
+
+          return (
+            <React.Fragment key={talk.id}>
+              {displayMonthYear && (
+                <h2 className="text-2xl font-bold mt-8 mb-4">{monthYear}</h2>
+              )}
+              <p className="text-lg mb-2">
+                <span className="font-semibold">{talkDate.format('MMM DD')}</span> - {talk.title}
+                {talk.status && (
+                  <span className="ml-2 text-gray-400">
+                    {statusEmojis[talk.status]} {talk.status.charAt(0).toUpperCase() + talk.status.slice(1)}
+                  </span>
+                )}
+              </p>
+            </React.Fragment>
+          );
+        })
+      }
     </div>
   );
 }
