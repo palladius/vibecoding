@@ -17,13 +17,13 @@ interface Event {
 export default function CalendarView({ talks }: { talks: Talk[] }) {
   const events: Event[] = talks.map(talk => ({
     title: talk.title,
-    start: new Date(talk.date as string),
-    end: new Date(talk.date as string),
+    start: moment(talk.date).toDate(),
+    end: moment(talk.date).toDate(),
     resource: talk,
   }));
 
   return (
-    <div className="h-[500px]">
+    <div className="h-[500px] border border-red-500">
       <Calendar
         localizer={localizer}
         events={events}

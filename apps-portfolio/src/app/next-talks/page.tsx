@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getFutureTalks } from "../lib/data";
 import { Talk } from "../../lib/types";
 import TalkCard from "../components/TalkCard";
+import CalendarView from "../components/CalendarView";
 
 export default function NextTalksPage() {
   const [talks, setTalks] = useState<Talk[]>([]);

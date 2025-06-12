@@ -2,18 +2,18 @@
 
 import { useEffect, useState } from "react";
 import ItemsList from "../components/ItemsList";
-import { getArticles } from "../lib/data";
-import { Article } from "../../lib/types";
+import { getTalks } from "../lib/data";
+import { Talk } from "../../lib/types";
 import ListView from "../components/ListView";
 
-export default function ArticlesPage() {
-  const [items, setItems] = useState<Article[]>([]);
+export default function TalksPage() {
+  const [items, setItems] = useState<Talk[]>([]);
   const [view, setView] = useState('card'); // Default to card view
 
   useEffect(() => {
     const fetchData = async () => {
-      const articles = await getArticles();
-      setItems(articles);
+      const talks = await getTalks();
+      setItems(talks);
     };
     fetchData();
   }, []);
