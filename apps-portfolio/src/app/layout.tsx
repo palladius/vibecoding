@@ -5,6 +5,7 @@ import "./globals.css";
 import Footer from "./components/Footer";
 import fs from "fs";
 import path from "path";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"));
   const appName = packageJson.name;
   const repoUrl = packageJson.repository ? packageJson.repository.replace(/\.git$/, '') : '';
+  const appProdUrl = "https://portfolio-app-272932496670.europe-west1.run.app/";
 
   return (
     <html lang="en">
@@ -43,8 +45,23 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
+        <nav className="bg-gray-800 p-4">
+          <div className="container mx-auto flex justify-between">
+            <div className="flex space-x-4">
+              <Link href="/" className="text-white hover:text-gray-300">
+                Talks
+              </Link>
+              <Link href="/articles" className="text-white hover:text-gray-300">
+                Articles
+              </Link>
+              <Link href="/about" className="text-white hover:text-gray-300">
+                About Me
+              </Link>
+            </div>
+          </div>
+        </nav>
         <main className="flex-grow">{children}</main>
-        <Footer appName={appName} version={version} repoUrl={repoUrl} />
+        <Footer appName={appName} version={version} repoUrl={repoUrl} appProdUrl={appProdUrl} />
       </body>
     </html>
   );

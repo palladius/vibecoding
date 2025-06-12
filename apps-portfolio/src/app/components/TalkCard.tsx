@@ -30,9 +30,10 @@ const TalkCard: React.FC<{ talk: Talk }> = ({ talk }) => {
               </span>
             ))}
           </div>
-          <img
+          <Image
             src={`https://flagcdn.com/w40/${talk.country_code.toLowerCase()}.png`}
             width="30"
+            height="20"
             alt={talk.country_code}
           />
         </div>

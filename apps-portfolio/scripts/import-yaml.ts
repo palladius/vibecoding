@@ -3,6 +3,33 @@ import * as yaml from 'js-yaml';
 import { setupDb } from '../src/lib/db.js';
 import Database from 'better-sqlite3';
 
+interface Talk {
+  title: string;
+  event: string;
+  date: string;
+  location: string;
+  country_code: string;
+  session_url: string;
+  video_url: string;
+  slides_url: string;
+  status: string;
+  tags: string[];
+  image: string;
+}
+
+interface Article {
+  title: string;
+  url: string;
+  publish_date: string;
+  tags: string[];
+  image: string;
+}
+
+interface Data {
+  talks: Talk[];
+  articles: Article[];
+}
+
 async function importData() {
   setupDb();
   const db = new Database('./db/portfolio.sqlite3');
@@ -14,7 +41,7 @@ async function importData() {
 
 
   const fileContents = fs.readFileSync('etc/data.yaml', 'utf8');
-  const data = yaml.load(fileContents) as any;
+  const data = yaml.load(fileContents) as Data;
 
   // Insert talks
   const insertTalk = db.prepare(

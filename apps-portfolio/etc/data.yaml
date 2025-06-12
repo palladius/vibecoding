@@ -1,4 +1,6 @@
 schema_version: '1.2'
+bio: |
+  Riccardo Carlesso is a Developer Advocate at Google Cloud, where he helps developers build amazing applications. He is a passionate software engineer with a love for Ruby, Bash, and all things cloud. When he's not coding, you can find him speaking at conferences, writing articles, or watching Sacha Baron Cohen movies.
 talks:
   - title: 'SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
     event: CloudConf
@@ -241,4 +243,5 @@ articles:
     tags:
       - SRE
       - SLOs
+      - highlight
     image: /images/generated/The-Art-of-SLOs.jpeg

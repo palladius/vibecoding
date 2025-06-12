@@ -12,6 +12,26 @@ if (!APIFLASH_ACCESS_KEY) {
   process.exit(1);
 }
 
+interface Talk {
+  title: string;
+  image: string;
+  event_url?: string;
+  session_url?: string;
+  event: string;
+  date: string;
+}
+
+interface Article {
+  title: string;
+  image: string;
+  url: string;
+}
+
+interface Data {
+  talks: Talk[];
+  articles: Article[];
+}
+
 function sanitizeFileName(fileName: string) {
   return fileName.replace(/[^a-zA-Z0-9-]/g, '-');
 }
@@ -26,7 +46,7 @@ async function generateScreenshot(url: string, path: string) {
 
 async function processData() {
   const fileContents = fs.readFileSync('etc/data.yaml', 'utf8');
-  const data = yaml.load(fileContents) as any;
+  const data = yaml.load(fileContents) as Data;
   let generatedCount = 0;
 
   for (const talk of data.talks) {

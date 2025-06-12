@@ -1,4 +1,5 @@
-I am riccardo Carlesso and I work in Google Cloud as a Developer Advocate. My job is to create demo apps, do presentations and participate at events.
+I am riccardo Carlesso (my prnouncs are he/him and my emojis are '💛') and I work in Google Cloud as a Developer Advocate.
+My job is to create demo apps such as this one, do presentations and participate at events.
 
 I would like to create a shiny "Portfolio" application in JS and whatever. this portfolio should highlight my **demos** and **talks**.
 Since a talk can have a demo, we need to conflate both objects in a similar Blob. We'll use GCP Firestore for schemaless data,
