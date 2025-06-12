@@ -53,7 +53,6 @@ talks:
       - python
       - demo
       - wow
-      - highlight
     talk_description: >
       In 2025, an LLM agent needs to do more than just talk. It needs to do.
       This presentation is a hands-on look at building a truly useful AI travel
@@ -75,6 +74,7 @@ talks:
     session_url: https://2025.euruko.org/speakers/riccardo_carlesso
     event_url: https://2025.euruko.org/
     status: cfp_applied
+    type: workshop
     tags:
       - Ruby
       - Rails
