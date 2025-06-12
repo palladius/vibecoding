@@ -97,7 +97,8 @@ talks:
       - GenAI
       - Gemini
       - Ruby
-    image: /images/placeholder-image.png
+      - Zurich
+    image: "/images/events/railshock2024.png"
   - title: News Crawler via Langchain.RB and Gemini APIs
     event: RubyDay
     date: '2024-05-31'
