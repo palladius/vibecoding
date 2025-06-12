@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 import yaml from 'js-yaml';
 import fetch from 'node-fetch';
@@ -31,13 +30,16 @@ async function processData() {
   let generatedCount = 0;
 
   for (const talk of data.talks) {
-    if (generatedCount < 10 && talk.image === '/images/placeholder-image.png' && talk.session_url) {
-      const imageName = `${sanitizeFileName(talk.event)}-${talk.date}.jpeg`;
-      const imagePath = `public/images/generated/${imageName}`;
-      await generateScreenshot(talk.session_url, imagePath);
-      talk.image = `/images/generated/${imageName}`;
-      console.log(`Generated screenshot for talk: ${talk.title}`);
-      generatedCount++;
+    if (generatedCount < 10 && talk.image === '/images/placeholder-image.png') {
+      const url = talk.event_url || talk.session_url;
+      if (url) {
+        const imageName = `${sanitizeFileName(talk.event)}-${talk.date}.jpeg`;
+        const imagePath = `public/images/generated/${imageName}`;
+        await generateScreenshot(url, imagePath);
+        talk.image = `/images/generated/${imageName}`;
+        console.log(`Generated screenshot for talk: ${talk.title}`);
+        generatedCount++;
+      }
     }
   }
 

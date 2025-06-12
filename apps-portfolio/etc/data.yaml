@@ -37,19 +37,21 @@ talks:
       - GenAI
       - Gemini
       - Ruby
+      - DevFest
     image: /images/events/gdg-pescara24.jpg
   - title: News Crawler via Langchain.RB and Gemini APIs
-    event: GDG Devfest
+    event: GDG Devfest Modena
     date: '2024-10-12'
     location: Modena, Italy
     country_code: it
     session_url: https://sessionize.com/app/speaker/session/745608
+    event_url: https://devfest.modena.it/
     status: delivered
     tags:
       - GenAI
       - Gemini
       - Ruby
-    image: /images/generated/GDG-Devfest-2024-10-12.jpeg
+    image: /images/generated/GDG-Devfest-Modena-2024-10-12.jpeg
   - title: 'Keynote: Dove l''SRE può andare storto'
     event: DevSecOps day
     date: '2024-10-11'
@@ -98,7 +100,7 @@ talks:
       - Gemini
       - Ruby
       - Zurich
-    image: "/images/events/railshock2024.png"
+    image: /images/events/railshock2024.png
   - title: News Crawler via Langchain.RB and Gemini APIs
     event: RubyDay
     date: '2024-05-31'
