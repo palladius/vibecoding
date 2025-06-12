@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
+import { getVersion } from "./components/Version";
 import fs from "fs";
 import path from "path";
 
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const version = fs.readFileSync(path.join(process.cwd(), "VERSION"), "utf8").trim();
+  const version = getVersion();
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"));
   const appName = packageJson.name;
 
@@ -31,7 +32,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const version = fs.readFileSync(path.join(process.cwd(), "VERSION"), "utf8").trim();
+  const version = getVersion();
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"));
   const appName = packageJson.name;
   const repoUrl = packageJson.repository.url.replace(/\.git$/, '');

@@ -1,8 +1,6 @@
-
 "use client";
 
-import { useState, useEffect } from "react";
-import { getDb } from "../../lib/db";
+import { useState } from "react";
 import ArticleCard from "./ArticleCard";
 
 interface Article {
@@ -14,19 +12,8 @@ interface Article {
   image: string;
 }
 
-async function getArticles() {
-  const db = await getDb();
-  const articles: Article[] = await db.all("SELECT * FROM articles ORDER BY publish_date DESC");
-  return articles.map(article => ({ ...article, image: 'https://placehold.co/600x400' }));
-}
-
-export default function ArticlesList() {
-  const [articles, setArticles] = useState<Article[]>([]);
+export default function ArticlesList({ articles }: { articles: Article[] }) {
   const [view, setView] = useState("list"); // "list" or "card"
-
-  useEffect(() => {
-    getArticles().then(setArticles);
-  }, []);
 
   return (
     <div>

@@ -1,8 +1,6 @@
-
 "use client";
 
-import { useState, useEffect } from "react";
-import { getDb } from "../../lib/db";
+import { useState } from "react";
 import TalkCard from "./TalkCard";
 
 interface Talk {
@@ -15,19 +13,8 @@ interface Talk {
   image: string;
 }
 
-async function getTalks() {
-  const db = await getDb();
-  const talks: Talk[] = await db.all("SELECT * FROM talks ORDER BY date DESC");
-  return talks.map(talk => ({ ...talk, image: 'https://placehold.co/600x400' }));
-}
-
-export default function TalksList() {
-  const [talks, setTalks] = useState<Talk[]>([]);
+export default function TalksList({ talks }: { talks: Talk[] }) {
   const [view, setView] = useState("list"); // "list" or "card"
-
-  useEffect(() => {
-    getTalks().then(setTalks);
-  }, []);
 
   return (
     <div>
