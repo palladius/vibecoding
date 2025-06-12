@@ -40,3 +40,5 @@ next-env.d.ts
 db/
 log/
 .DS_Store
+t.sh
+TODO-ricc.md
