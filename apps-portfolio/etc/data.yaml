@@ -31,6 +31,7 @@ talks:
       - Using Google Cloud Logging to log the app
 
       - Using Google Cloud Storage to store files
+    image: /images/generated/Euruko-2025-2025-09-18.jpeg
   - title: 'From Monolith 🗿 to Magic ✨: An AI-Powered DevOps Workshop'
     event: We are Developers 2025
     date: '2025-07-10'
@@ -250,6 +251,7 @@ talks:
       - SRE
       - Culture
       - highlight
+    image: /images/generated/DevOpsDays-Warsaw-2023-2023-12-31.jpeg
   - title: 'Goodbye, deployment headaches: Cloud Deploy and Vertex AI unite'
     event: Cloud Next
     date: '2024-04-11'
