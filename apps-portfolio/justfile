@@ -10,7 +10,7 @@ list:
 
 # Run the development server
 run:
-    npm run dev -- -p 3003
+    npm run dev -- -p 3001
 
 # Install dependencies
 install:
@@ -19,7 +19,7 @@ install:
 # Run the development server and log output
 run-dev:
     mkdir -p log
-    npm run dev -- -p 3002 &> log/dev.log
+    npm run dev -- -p 3001 &> log/dev.log
 
 # View the development log
 log:
@@ -79,3 +79,9 @@ cloud-build-list:
 cloud-build-show-log build_id:
     @echo "Showing log for build ID: {{build_id}}. Use --stream to follow the log indefinitely (you can do it, but I want Gemini NOT to do it)."
     gcloud builds log {{build_id}} --project=palladius-genai
+
+
+# [JOB] Generate screenshots for the portfolio application
+generate-screenshots:
+    @echo "Generating screenshots..."
+    npx tsx scripts/generate-screenshots.ts

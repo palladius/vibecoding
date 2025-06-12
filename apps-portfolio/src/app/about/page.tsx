@@ -1,20 +1,34 @@
-import React from 'react';
-import fs from 'fs';
-import yaml from 'js-yaml';
+"use client";
+
+import React, { useEffect, useState } from 'react';
 import { getHighlightedTalks, getHighlightedArticles } from '../lib/data';
 import ItemsList from '../components/ItemsList';
+import { Talk, Article } from '../../lib/types';
 
-const AboutPage = async () => {
-  const fileContents = fs.readFileSync('etc/data.yaml', 'utf8');
-  const data = yaml.load(fileContents) as { bio: string };
-  const highlightedTalks = await getHighlightedTalks();
-  const highlightedArticles = await getHighlightedArticles();
-  const items = [...highlightedTalks.map(t => ({...t, type: 'talk'})), ...highlightedArticles.map(a => ({...a, type: 'article'}))];
+const AboutPage = () => {
+  const [bio, setBio] = useState('');
+  const [items, setItems] = useState<(Talk | Article)[]>([]);
+
+  useEffect(() => {
+    const fetchBio = async () => {
+      const res = await fetch('/api/bio');
+      const data = await res.json();
+      setBio(data.bio);
+    };
+
+    const fetchData = async () => {
+      const highlightedTalks = await getHighlightedTalks();
+      const highlightedArticles = await getHighlightedArticles();
+      setItems([...highlightedTalks, ...highlightedArticles]);
+    };
+    fetchBio();
+    fetchData();
+  }, []);
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">About Me</h1>
-      <p>{data.bio}</p>
+      <p>{bio}</p>
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4">Highlights</h2>
         <ItemsList items={items} />

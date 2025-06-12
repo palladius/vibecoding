@@ -6,22 +6,22 @@ import ArticleCard from "./ArticleCard";
 interface Talk {
   id: number;
   title: string;
-  event: string;
-  date: string;
-  location: string;
-  tags: string;
-  image: string;
-  country_code: string;
+  event?: string;
+  date?: string;
+  location?: string;
+  tags?: string;
+  image?: string;
+  country_code?: string;
   type: 'talk';
 }
 
 interface Article {
   id: number;
   title: string;
-  url: string;
-  publish_date: string;
-  tags: string;
-  image: string;
+  url?: string;
+  publish_date?: string;
+  tags?: string;
+  image?: string;
   type: 'article';
 }
 
@@ -32,9 +32,25 @@ export default function ItemsList({ items }: { items: Item[] }) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {items.map((item) => {
         if (item.type === 'talk') {
-          return <TalkCard key={`talk-${item.id}`} talk={item} />;
+          const talkWithDefaults = {
+            ...item,
+            event: item.event || '',
+            date: item.date || '',
+            location: item.location || '',
+            tags: item.tags || '',
+            image: item.image || '/images/placeholder-image.png',
+            country_code: item.country_code || 'xx',
+          };
+          return <TalkCard key={`talk-${item.id}`} talk={talkWithDefaults} />;
         } else {
-          return <ArticleCard key={`article-${item.id}`} article={item} />;
+          const articleWithDefaults = {
+            ...item,
+            url: item.url || '',
+            publish_date: item.publish_date || '',
+            tags: item.tags || '',
+            image: item.image || '/images/placeholder-image.png',
+          };
+          return <ArticleCard key={`article-${item.id}`} article={articleWithDefaults} />;
         }
       })}
     </div>

@@ -100,8 +100,13 @@ I'll also have a cloud build trigger to trigger atuomatically upon pushes to mai
 ### Cloud Build notes
 
 If you manage Cloud Build, great! Two things:
+
 1. I want a connection to github, so any git push to main will trigger cloudbuild.yaml. This is how I want it. Note this is not fully automateable with gcloud or terraform, and requires user to actually authenticate to github.
 2. Check Cloud Build logs. If you see N failures, check the FIRST failure in chronological orders and use `gcloud builds log` to understand why it failed.
+
+To troubleshoot CloudBuild:
+1. Trigger cloudbuild from CLI, `gcloud builds submit` and check errors.
+2. try to build docker `docker build` locally, if the machine allows you. If so, you might also want to test it or ask user to test it.
 
 ### Terraform / Pulumi
 
