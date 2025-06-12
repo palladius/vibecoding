@@ -15,7 +15,7 @@ interface Article {
 }
 
 export default function ArticlesList({ articles, initialView = 'list' }: { articles: Article[], initialView?: 'list' | 'card' }) {
-  const [view, setView] = useState(initialView);
+  const [view] = useState(initialView);
 
   return (
     <div>

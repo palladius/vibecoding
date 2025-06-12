@@ -17,7 +17,7 @@ interface Talk {
 }
 
 export default function TalksList({ talks, initialView = 'list' }: { talks: Talk[], initialView?: 'list' | 'card' }) {
-  const [view, setView] = useState(initialView);
+  const [view] = useState(initialView);
 
   return (
     <div>

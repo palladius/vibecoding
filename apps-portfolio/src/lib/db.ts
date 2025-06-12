@@ -1,9 +1,21 @@
+import { open } from "sqlite";
+import sqlite3 from "sqlite3";
 
-import Database from 'better-sqlite3';
+let db = null;
 
-export function setupDb() {
-  const db = new Database('./db/portfolio.sqlite3');
-  db.exec(`
+export async function getDb() {
+  if (!db) {
+    db = await open({
+      filename: "./db/portfolio.sqlite3",
+      driver: sqlite3.Database,
+    });
+  }
+  return db;
+}
+
+export async function setupDb() {
+  const db = await getDb();
+  await db.exec(`
     CREATE TABLE IF NOT EXISTS talks (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
@@ -16,7 +28,6 @@ export function setupDb() {
       slides_url TEXT,
       status TEXT,
       tags TEXT,
-      image TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
@@ -27,7 +38,6 @@ export function setupDb() {
       url TEXT,
       publish_date TEXT,
       tags TEXT,
-      image TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
