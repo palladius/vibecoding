@@ -2,6 +2,7 @@ steps:
   # 1. Build the container image
   - name: 'gcr.io/cloud-builders/docker'
     id: Build
+    dir: 'apps-portfolio'
     args:
       - 'build'
       - '-t'

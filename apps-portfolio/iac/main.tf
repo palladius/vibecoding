@@ -19,13 +19,14 @@ resource "google_cloudbuild_trigger" "default" {
     step {
       name = "gcr.io/cloud-builders/docker"
       id   = "Build"
+      dir  = "apps-portfolio"
       args = [
         "build",
         "-t",
         "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest",
         ".",
         "--file",
-        "apps-portfolio/Dockerfile"
+        "Dockerfile"
       ]
     }
     step {

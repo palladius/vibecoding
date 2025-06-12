@@ -45,10 +45,14 @@ env-print:
     @echo "Project ID: ${GOOGLE_PROJECT_ID}"
     @echo "Region: ${GOOGLE_REGION}"
 
-# Trigger a Cloud Build for the portfolio application using current VERSION.
-cloud-build:
+# Trigger a Cloud Build using the local source
+build:
     @echo "Building and deploying to project ${GOOGLE_PROJECT_ID}..."
-    @gcloud builds submit --project="${GOOGLE_PROJECT_ID}" --config cloudbuild.yaml --substitutions=_PROJECT_ID="${GOOGLE_PROJECT_ID}",_TAG=v`cat VERSION` .
+    @gcloud builds submit --project="${GOOGLE_PROJECT_ID}" --config cloudbuild.yaml .
+
+# Trigger the Cloud Build pipeline from the git repository
+trigger-build:
+    gcloud builds triggers run tf-portfolio-app-main --branch=main --project=palladius-genai
 
 # authenticate with Google Cloud
 auth:
@@ -61,7 +65,3 @@ terraform-init:
 # Apply Terraform configuration
 terraform-apply:
     terraform -chdir=iac apply -var-file=terraform.tfvars -auto-approve
-
-# Trigger the Cloud Build pipeline
-trigger-terraform-build:
-    gcloud builds triggers run tf-portfolio-app-main --branch=main --project=palladius-genai
