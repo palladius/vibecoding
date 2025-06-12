@@ -66,8 +66,10 @@ Every folder should have:
 
 * a `README.md` , `GEMINI.md` and `AI_REASONING.md` as I've said before.
 * You maintain everything except `GEMINI.md` which the author maintains.
-* A `justfile` for important actions, starting with `just list` which shows the list (`just -l`). this is a great way to illustrate as code how to invoke our scripts. The most obvious and simple invocation should be a `just run`.
+* A `justfile` for important actions, starting with `just list` which shows the list (`just -l`). this is a great way to illustrate as code how to invoke our scripts. The most obvious and simple invocation should be a `just run`. It shall use `set dotenv-load := true` to import ENVs in `.env`.
 * a `test/` folder for tests. I should be always able to invoke ALL tests via `just test`.
+* a `.env` file for ENV variables, some of which are to be kept secret. This shall be git-ignored.
+* a `.env.dist` file to check in code and to showcase the ENV vars that are needed, with foo values and rich comments.
 
 ## Testing
 

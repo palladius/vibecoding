@@ -6,6 +6,10 @@ so we can iterate fast on data without having to adhere to a strong schema.
 
 I'm a Ruby on Rails developer so I think in Rails terms, as you can see.
 
+Please read `../GEMINI.md` for additional generic practices. In the doc you can see that I want docker images built
+with `portfolio-app:v$VERSION`, not `portfolio-app`. Tell me if you can't read that file, it's really important to me.
+
+PLEASE DO WARN ME if you CANNOT read `../GEMINI.md`!! I need to know and fix it!
 
 ## Functional requirements.
 
@@ -59,6 +63,32 @@ P2. Change the code.
 
 It would be really nice if my events are actually stored in YAML so I just edit the YAML and an import script pushes this to sqlite3 (local) or Firestore (dev/prod).
 
+## Google Cloud
+
+* ensure there's a `.env` file with google project id and region so we write it down once. Do NOT check it in source code
+  in case it starts to host private information.
+* Keep a `.env.dist` in sync with needed info for users to be able to copy my demo.
+* Add the one-off IAM, CB, SM, AR setups on a `iac/` folder for terraform. It needs to pick up ENVs from our `.env/`
+* CloudBuild: ensure it both builds the `v$VERSION` and also `latest` (which basically always symlinks/points to the latest version we update).
+
+## Feedback loop (me and you)
+
+I want you (Gemini) to be as independent to fix errors as you can.
+
+This is why we've agreed that I run `just run-dev` for you (hopefully in port 3001 - make sure it runs on that port) so you can inspect `log/dev.log`
+and trigger anything by just curl'ing localhost on the endpoint you wanna test!
+
+Similarly I want you to be able to call `docker build` by yourself and trigger a Cloud Build from CLI so you can "listen"
+to its errors and course-correct by yourself!
+
+This is to minimize user interaction. If you're ever blocked (eg, "drag and drop the first card onto the second card"), I'm here for you.
+
+Do NOT enter in infinite loops like:
+* `just run`
+* `just run-dev`. I run this for you, on port 3000. Check logs under log/
+* `just docker-run`. I can run this for you, on port 8080, upon request. figure out a way to log under `log/docker.log`
+
+as you're unable to exit these loops, and this forces me to kill our chat. I'll run them for you upon request.
 
 # Samples Data
 
