@@ -39,8 +39,8 @@ const ListView: React.FC<ListViewProps> = ({ items }) => {
                   {item.title}
                 </Link>
                 {item.type === 'talk' && item.event && (
-                  <span className="ml-2 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                    @ {item.event}
+                  <span className="ml-2">
+                    @ <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{item.event}</span>
                   </span>
                 )}
               </td>
