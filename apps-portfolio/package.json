@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -22,8 +22,8 @@
     "react-dom": "^18.3.1",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
-    "tsx": "^4.16.2",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.16.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.8",
@@ -37,11 +37,12 @@
     "@types/sqlite3": "^3.1.11",
     "@vitejs/plugin-react": "^4.5.2",
     "autoprefixer": "^10.4.21",
-    "eslint": "^8",
-    "eslint-config-next": "15.3.3",
+    "eslint": "^9.28.0",
+    "eslint-config-next": "^15.3.3",
     "jsdom": "^24.1.1",
     "postcss": "^8",
     "typescript": "^5",
+    "typescript-eslint": "^8.34.0",
     "vitest": "^2.0.4"
   }
 }
