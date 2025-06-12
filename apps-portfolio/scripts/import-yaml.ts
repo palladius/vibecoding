@@ -1,4 +1,3 @@
-
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import { getDb, setupDb } from '../src/lib/db.js';
@@ -19,8 +18,8 @@ async function importData() {
   // Insert talks
   for (const talk of data.talks) {
     await db.run(
-      `INSERT INTO talks (title, event, date, location, country_code, session_url, video_url, slides_url, status, tags)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO talks (title, event, date, location, country_code, session_url, video_url, slides_url, status, tags, image)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       talk.title,
       talk.event,
       talk.date,
@@ -30,19 +29,21 @@ async function importData() {
       talk.video_url,
       talk.slides_url,
       talk.status,
-      talk.tags.join(',')
+      talk.tags.join(','),
+      talk.image
     );
   }
 
   // Insert articles
   for (const article of data.articles) {
     await db.run(
-      `INSERT INTO articles (title, url, publish_date, tags)
-       VALUES (?, ?, ?, ?)`,
+      `INSERT INTO articles (title, url, publish_date, tags, image)
+       VALUES (?, ?, ?, ?, ?)`,
       article.title,
       article.url,
       article.publish_date,
-      article.tags.join(',')
+      article.tags.join(','),
+      article.image
     );
   }
 

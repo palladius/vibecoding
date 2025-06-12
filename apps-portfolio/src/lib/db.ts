@@ -1,6 +1,5 @@
-
-import { Database, open } from "sqlite";
 import sqlite3 from "sqlite3";
+import { open, Database } from "sqlite";
 
 let db: Database | null = null;
 
@@ -29,6 +28,7 @@ export async function setupDb() {
       slides_url TEXT,
       status TEXT,
       tags TEXT,
+      image TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
@@ -39,6 +39,7 @@ export async function setupDb() {
       url TEXT,
       publish_date TEXT,
       tags TEXT,
+      image TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );

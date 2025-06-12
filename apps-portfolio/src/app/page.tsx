@@ -1,4 +1,3 @@
-
 import TalksList from "./components/TalksList";
 import ArticlesList from "./components/ArticlesList";
 import { getDb } from "../lib/db";
@@ -6,16 +5,13 @@ import { getDb } from "../lib/db";
 async function getTalks() {
   const db = await getDb();
   const talks = await db.all("SELECT * FROM talks ORDER BY date DESC");
-  return talks.map(talk => ({ 
-    ...talk, 
-    image: talk.title.includes('SRE Day') ? '/images/events/SREDAY-2024.png' : '/images/placeholder-image.png' 
-  }));
+  return talks;
 }
 
 async function getArticles() {
   const db = await getDb();
   const articles = await db.all("SELECT * FROM articles ORDER BY publish_date DESC");
-  return articles.map(article => ({ ...article, image: '/images/placeholder-image.png' }));
+  return articles;
 }
 
 export default async function Home() {
