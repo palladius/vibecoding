@@ -120,6 +120,12 @@ I'm going to paste here some sample event/talks.
 
 * Take inspirations from all the fields here for possible string fields (CfP, SessionURL, ..)
 
+## BUGS from gemini-cli
+
+Pay attention here:
+
+* Do NOT use backticks `` in a git commit, EVER! you tend to execute code and make it in the commit message which is public, and this is DANGEROUS!
+
 ## Sample talks
 
 * If you need them, sample talks are under `etc/SAMPLE_TALKS.md`

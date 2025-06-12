@@ -8,6 +8,12 @@ const resourceTypeEmojis: { [key: string]: string } = {
   workshop: '🛠️',
 };
 
+const statusEmojis: { [key: string]: string } = {
+  cfp_applied: '📝',
+  confirmed: '✅',
+  delivered: '🎤',
+};
+
 export default async function TalkPage({ params }: { params: { slug:string } }) {
   const talk = await getTalk(params.slug);
 
@@ -25,7 +31,9 @@ export default async function TalkPage({ params }: { params: { slug:string } }) 
           <h1 className="text-4xl font-bold mb-4">{talk.title}</h1>
           <p className="text-lg text-gray-400 mb-4">{talk.event} - {talk.date}</p>
           {talk.status && (
-            <p className="text-lg text-gray-400 mb-4">Status: {talk.status}</p>
+            <p className="text-lg text-gray-400 mb-4">
+              {statusEmojis[talk.status]} {talk.status.charAt(0).toUpperCase() + talk.status.slice(1)}
+            </p>
           )}
           <p className="text-lg text-gray-400 mb-4">
             {emoji} {resourceType.charAt(0).toUpperCase() + resourceType.slice(1)}

@@ -10,7 +10,14 @@ interface Talk {
   image: string;
   country_code: string;
   slug: string;
+  status?: string;
 }
+
+const statusEmojis: { [key: string]: string } = {
+  cfp_applied: '📝',
+  confirmed: '✅',
+  delivered: '🎤',
+};
 
 const TalkCard: React.FC<{ talk: Talk }> = ({ talk }) => {
   return (
@@ -22,6 +29,11 @@ const TalkCard: React.FC<{ talk: Talk }> = ({ talk }) => {
         <div className="p-4">
           <h3 className="text-lg font-bold mb-2">{talk.title}</h3>
           <p className="text-sm text-cyan-300 mb-2">{talk.event} - {talk.publish_date}</p>
+          {talk.status && (
+            <p className="text-sm text-gray-400 mb-2">
+              {statusEmojis[talk.status]} {talk.status.charAt(0).toUpperCase() + talk.status.slice(1)}
+            </p>
+          )}
           <div className="flex justify-between items-center">
             <div>
               {talk.tags.split(',').map((tag) => (
