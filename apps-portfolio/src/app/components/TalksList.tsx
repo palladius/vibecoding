@@ -1,7 +1,9 @@
+
 "use client";
 
 import { useState } from "react";
 import TalkCard from "./TalkCard";
+import Link from "next/link";
 
 interface Talk {
   id: number;
@@ -11,21 +13,20 @@ interface Talk {
   location: string;
   tags: string;
   image: string;
+  country_code: string;
 }
 
-export default function TalksList({ talks }: { talks: Talk[] }) {
-  const [view, setView] = useState("list"); // "list" or "card"
+export default function TalksList({ talks, initialView = 'list' }: { talks: Talk[], initialView?: 'list' | 'card' }) {
+  const [view, setView] = useState(initialView);
 
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">Talks</h2>
-        <button
-          onClick={() => setView(view === "list" ? "card" : "list")}
-          className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md"
-        >
-          Toggle View
-        </button>
+        <div>
+          <Link href="/" className={`px-4 py-2 rounded-md ${view === 'list' ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}>List</Link>
+          <Link href="/cards" className={`px-4 py-2 rounded-md ${view === 'card' ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}>Cards</Link>
+        </div>
       </div>
       {view === "list" ? (
         <ul>

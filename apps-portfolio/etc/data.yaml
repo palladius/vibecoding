@@ -16,6 +16,7 @@ talks:
     location: "Turin, Italy"
     country_code: "it"
     session_url: "https://2025.cloudconf.it/en/schedule.html"
+    event_url: "https://2025.cloudconf.it/en/"
     status: "confirmed"
     tags: ["SRE", "CloudConf"]
     image: "/images/placeholder-image.png"
@@ -25,6 +26,7 @@ talks:
     location: "Amsterdam, Netherlands"
     country_code: "nl"
     session_url: "https://sreday.com/2024-amsterdam/#modal-speaker-0"
+    event_url: "https://sreday.com/2024-amsterdam/"
     status: "delivered"
     tags: ["SRE", "Keynote", "Culture"]
     image: "/images/events/SREDAY-2024.png"
@@ -34,6 +36,7 @@ talks:
     location: "Pescara, Italy"
     country_code: "it"
     session_url: "https://sessionize.com/app/speaker/session/739236"
+    event_url: "https://devfest.gdgpescara.it/"
     status: "delivered"
     tags: ["GenAI", "Gemini", "Ruby"]
     image: "/images/placeholder-image.png"

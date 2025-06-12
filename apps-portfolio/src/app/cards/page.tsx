@@ -1,5 +1,6 @@
-import TalksList from "./components/TalksList";
-import ArticlesList from "./components/ArticlesList";
+
+import TalksList from "../components/TalksList";
+import ArticlesList from "../components/ArticlesList";
 
 async function getTalks() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/talks`);
@@ -13,7 +14,7 @@ async function getArticles() {
   return articles;
 }
 
-export default async function Home() {
+export default async function CardsPage() {
   const talks = await getTalks();
   const articles = await getArticles();
 
@@ -21,8 +22,8 @@ export default async function Home() {
     <div className="min-h-screen p-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-16">
         <h1 className="text-4xl font-bold text-center">Riccardo Carlesso&apos;s Portfolio</h1>
-        <TalksList talks={talks} initialView="list" />
-        <ArticlesList articles={articles} initialView="list" />
+        <TalksList talks={talks} initialView="card" />
+        <ArticlesList articles={articles} initialView="card" />
       </main>
     </div>
   );
