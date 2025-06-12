@@ -1,7 +1,7 @@
 const slugify = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
 export async function getTalks() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/talks`);
+  const res = await fetch(`/api/talks`);
   const talks: Talk[] = await res.json();
   return talks.map((talk: Talk) => ({
     ...talk,
@@ -10,7 +10,7 @@ export async function getTalks() {
 }
 
 export async function getArticles() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`);
+  const res = await fetch(`/api/articles`);
   const articles: Article[] = await res.json();
   return articles.map((article: Article) => ({
     ...article,
@@ -29,7 +29,7 @@ export async function getArticle(slug: string) {
 }
 
 export async function getFutureTalks() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/talks`);
+  const res = await fetch(`/api/talks`);
   const talks: Talk[] = await res.json();
   const futureTalks = talks.filter((talk: Talk) => new Date(talk.date as string) > new Date());
   return futureTalks.map((talk: Talk) => ({
@@ -39,7 +39,7 @@ export async function getFutureTalks() {
 }
 
 export async function getHighlightedTalks() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/highlights/talks`);
+  const res = await fetch(`/api/highlights/talks`);
   const talks: Talk[] = await res.json();
   return talks;
 }
