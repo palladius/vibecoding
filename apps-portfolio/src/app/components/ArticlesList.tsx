@@ -1,5 +1,5 @@
 
-import { getDb } from "@/lib/db";
+import { getDb } from "../../lib/db";
 
 async function getArticles() {
   const db = await getDb();

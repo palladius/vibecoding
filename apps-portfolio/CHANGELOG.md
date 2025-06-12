@@ -12,6 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Project-independent configuration for Cloud Build.
 - Justfile commands for building and deploying the application.
 
+### Changed
+
+- Exposed port 8080 in the Dockerfile and updated the start script.
+- Fixed import paths in ArticlesList and TalksList components.
+
 ## [0.1.0] - 2025-06-11
 
 ### Added
