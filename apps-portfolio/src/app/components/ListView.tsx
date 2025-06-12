@@ -36,8 +36,13 @@ const ListView: React.FC<ListViewProps> = ({ items }) => {
             <tr key={item.id}>
               <td className="py-2 px-4 border-b border-gray-700">
                 <Link href={item.type === 'talk' ? `/talks/${item.slug}` : `/articles/${item.slug}`} className="text-blue-400 hover:underline">
-                  {item.title} {item.type === 'talk' && item.event && `@ ${item.event}`}
+                  {item.title}
                 </Link>
+                {item.type === 'talk' && item.event && (
+                  <span className="ml-2 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                    @ {item.event}
+                  </span>
+                )}
               </td>
               <td className="py-2 px-4 border-b border-gray-700">{item.type}</td>
               <td className="py-2 px-4 border-b border-gray-700">
