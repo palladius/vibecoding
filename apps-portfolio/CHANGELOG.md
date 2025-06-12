@@ -6,6 +6,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [0.8.20] - 2025-06-12
+
+### Fixed (BUG 🐛)
+
+- **Empty UI on Cloud Run/Docker:** Resolved the critical issue where the UI displayed zero talks/articles.
+    - **Root Cause:** The frontend was incorrectly configured to use `NEXT_PUBLIC_API_URL` for API calls, which is inlined at build time and was not correctly set in the Docker build environment.
+    - **Solution:** Reverted `src/app/lib/data.ts` to use **relative paths** (e.g., `/api/talks`) for all API calls, aligning with the project's intended client-side fetching strategy.
+    - **Reverted:** Removed `NEXT_PUBLIC_API_URL` environment variable from `cloudbuild.yaml` (`--set-env-vars`) and `justfile` (`docker-run-riccardo-test-8081` command) as it was causing misconfiguration.
+- **Dockerfile Path in Cloud Build:** Corrected the `lstat /workspace/apps-portfolio/Dockerfile: no such file or directory` error.
+    - **Solution:** Removed `dir: 'apps-portfolio'` from the `Build` step in `cloudbuild.yaml`.
+- **Image Loading on Cloud Run:** Ensured images load correctly in deployed environments.
+    - **Solution:** Added the Cloud Run application URL (`https://portfolio-app-272932496670.europe-west1.run.app`) to `next.config.ts` `images.remotePatterns`.
+- **`VERSION` file not included in Docker:** Ensured the application version is available in the Docker image.
+    - **Solution:** Added `COPY --from=build /app/VERSION ./VERSION` to `Dockerfile`.
+
+### Changed
+
+- **UI Enhancements (List View):**
+    - Displays event type.
+    - Formats dates to "D MMM" for current year, "YYYY-MM-DD" otherwise.
+    - Shows "Title @ Event" with only title linked and event styled with a bold, gradient text (with unstyled '@').
+    - Replaced type column with emoji (🗣️ for talks, ✍️ for articles).
+- **UI Enhancements (Calendar View):**
+    - Applied consistent gradient styling to event names.
+- **Debugging Additions (and subsequent removal/reversion):**
+    - Added `echo` statements to `entrypoint.sh` for environment variables.
+    - `justfile`'s `docker-run-riccardo-test-8081` command updated to use current `VERSION` and `DEBUG='*'`.
+- **Database Path in Docker:** `src/lib/db.ts` to use absolute path for SQLite database within Docker.
+
+### Removed
+
+- Redundant `scripts/setup-db.ts` file.
+- `type: workshop` field from `etc/data.yaml`.
+- Temporary `console.log` statements from API routes and frontend data fetching (as part of `src/app/lib/data.ts` reversion).
+
+
 ## [0.8.19] - 2025-06-12
 
 ### Fixed
@@ -27,8 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `src/app/components/ListView.tsx`:
     - Displays event type.
-    - Formats dates to "D MMM" for current year, "YYYY-MM-DD" otherwise.
-    - Shows "Title @ Event" with only title linked and event styled with a bold, gradient text (with unstyled '@').
+    - Format dates to "D MMM" for current year, "YYYY-MM-DD" otherwise.
+    - Show "Title @ Event" with only title linked and event styled with a bold, gradient text (with unstyled '@').
     - Replaced type column with emoji (🗣️ for talks, ✍️ for articles).
 - `src/app/components/CalendarView.tsx` to apply consistent gradient styling to event names.
 - `src/lib/db.ts` to use absolute path for SQLite database within Docker.
