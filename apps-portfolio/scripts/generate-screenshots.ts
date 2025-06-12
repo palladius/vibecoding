@@ -36,11 +36,40 @@ function sanitizeFileName(fileName: string) {
   return fileName.replace(/[^a-zA-Z0-9-]/g, '-');
 }
 
-async function generateScreenshot(url: string, path: string) {
-  const response = await fetch(`https://api.apiflash.com/v1/urltoimage?access_key=${APIFLASH_ACCESS_KEY}&url=${url}&format=jpeg&quality=90&width=1200&height=900&response_type=image`);
-  if (response.body) {
-    const dest = fs.createWriteStream(path);
-    response.body.pipe(dest);
+async function generateScreenshot(url: string, path: string): Promise<boolean> {
+  try {
+    const response = await fetch(`https://api.apiflash.com/v1/urltoimage?access_key=${APIFLASH_ACCESS_KEY}&url=${url}&format=jpeg&quality=90&width=1200&height=900&response_type=image`);
+
+    if (!response.ok) {
+      console.error(`API Flash error for ${url}: ${response.status} ${response.statusText}`);
+      const errorText = await response.text();
+      console.error(`Error details: ${errorText}`);
+      return false;
+    }
+
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.startsWith('image/')) {
+      console.error(`API Flash returned non-image content for ${url}. Content-Type: ${contentType}`);
+      const errorText = await response.text();
+      console.error(`Content details: ${errorText}`);
+      return false;
+    }
+
+    if (response.body) {
+      const dest = fs.createWriteStream(path);
+      await new Promise((resolve, reject) => {
+        response.body!.pipe(dest);
+        response.body!.on('end', resolve);
+        dest.on('error', reject);
+      });
+      return true;
+    } else {
+      console.error(`API Flash returned no body for ${url}.`);
+      return false;
+    }
+  } catch (error) {
+    console.error(`Failed to generate screenshot for ${url}:`, error);
+    return false;
   }
 }
 
@@ -50,15 +79,17 @@ async function processData() {
   let generatedCount = 0;
 
   for (const talk of data.talks) {
-    if (generatedCount < 10 && (!talk.image || talk.image === '/images/placeholder-image.png')) {
+    if (true) { // Temporarily force regeneration
       const url = talk.event_url || talk.session_url;
       if (url) {
         const imageName = `${sanitizeFileName(talk.event)}-${talk.date}.jpeg`;
         const imagePath = `public/images/generated/${imageName}`;
-        await generateScreenshot(url, imagePath);
-        talk.image = `/images/generated/${imageName}`;
-        console.log(`Generated screenshot for talk: ${talk.title}`);
-        generatedCount++;
+        const success = await generateScreenshot(url, imagePath);
+        if (success) {
+          talk.image = `/images/generated/${imageName}`;
+          console.log(`Generated screenshot for talk: ${talk.title}`);
+          generatedCount++;
+        }
       }
     }
   }
@@ -67,10 +98,12 @@ async function processData() {
     if (generatedCount < 10 && (!article.image || article.image === '/images/placeholder-image.png') && article.url) {
       const imageName = `${sanitizeFileName(article.title)}.jpeg`;
       const imagePath = `public/images/generated/${imageName}`;
-      await generateScreenshot(article.url, imagePath);
-      article.image = `/images/generated/${imageName}`;
-      console.log(`Generated screenshot for article: ${article.title}`);
-      generatedCount++;
+      const success = await generateScreenshot(article.url, imagePath);
+      if (success) {
+        article.image = `/images/generated/${imageName}`;
+        console.log(`Generated screenshot for article: ${article.title}`);
+        generatedCount++;
+      }
     }
   }
 

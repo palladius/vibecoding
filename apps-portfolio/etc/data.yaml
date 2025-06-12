@@ -6,6 +6,58 @@ bio: >
   can find him speaking at conferences, writing articles, or watching Sacha
   Baron Cohen movies.
 talks:
+  - title: Building a Multi-Agent Real AI Travel Agent with Python and Ruby and MCP
+    event: DevFest Modena 2025
+    date: '2025-10-04'
+    location: Modena, Italy
+    country_code: it
+    event_url: https://devfest.modena.it/
+    tags:
+      - GenAI
+      - python
+      - demo
+      - wow
+    talk_description: >
+      In 2025, an LLM agent needs to do more than just talk. It needs to do.
+      This presentation is a hands-on look at building a truly useful AI travel
+      agent with a multi-agent framework. Forget abstract concepts; we're diving
+      straight into the code of a live demo that queries real APIs for flights,
+      hotels 🏨, and AirB&Bs. We will cover how to structure a multi-agent
+      system to handle complex, real-world tasks: validating budgets, managing
+      user preferences, and visualizing results. You will learn how to implement
+      an advanced, modular system that can be deployed on any cloud with any
+      LLM. This is a technical L200-L300 session designed for developers who
+      want to see how to coordinate agents and tools to create a seamless,
+      end-to-end user experience.
+    image: /images/generated/GDG-Devfest-Modena-2024-10-12.jpeg
+  - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
+    event: Codemotion Milan 2025
+    date: '2025-10-14'
+    location: Milan, Italy
+    country_code: it
+    session_url: https://sessionize.com/app/speaker/session/953469
+    event_url: https://conferences.codemotion.com/milan2025/
+    status: cfp_applied
+    tags:
+      - GenAI
+      - python
+      - demo
+      - wow
+      - highlight
+    talk_description: >
+      In 2025, an LLM agent needs to do more than just talk. It needs to do.
+      This presentation is a hands-on look at building a truly useful AI travel
+      agent with a multi-agent framework. Forget abstract concepts; we're diving
+      straight into the code of a live demo that queries real APIs for flights,
+      hotels 🏨, and AirB&Bs. We will cover how to structure a multi-agent
+      system to handle complex, real-world tasks: validating budgets, managing
+      user preferences, and visualizing results. You will learn how to implement
+      an advanced, modular system that can be deployed on any cloud with any
+      LLM. This is a technical L200-L300 session designed for developers who
+      want to see how to coordinate agents and tools to create a seamless,
+      end-to-end user experience.
+    #image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
+    image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
   - title: '[workshop][tentative] Create a responsive Rails 8 app with Gemini'
     event: Euruko 2025
     date: '2025-09-18'
@@ -18,7 +70,6 @@ talks:
       - Ruby
       - Rails
       - workshop
-      #- highlight
     talk_description: >
       In this workshop, we will create a Rails 8 app from scratch, using the
       latest
@@ -238,10 +289,7 @@ talks:
       to SRE, then try to explain what failures patterns he's observed (partly
       contained in Enterprise Roadmap to SRE report)
 
-      Topics:
-      - What SRE is.
-      - What SRE is not.
-      - Anti-patterns in SRE adoption
+      Topics: - What SRE is. - What SRE is not. - Anti-patterns in SRE adoption
       - How to make it work for your company
 
       DevOpsDays Warsaw: https://devopsdays.pl/

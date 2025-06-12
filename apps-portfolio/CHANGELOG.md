@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [0.8.5] - 2025-06-12
+
+fix: Resolve ERR_MODULE_NOT_FOUND in Docker build
+
+- Explicitly copied src/lib to the production stage in Dockerfile.
+- Updated import path in scripts/import-yaml.ts to correctly reference .ts file."
+
+
 ## [0.8.4] - 2025-06-12
 
 ### Changed
