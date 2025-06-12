@@ -2,38 +2,39 @@
   "name": "apps-portfolio",
   "version": "0.1.0",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/palladius/vibecoding.git"
-  },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start -p 8080",
-    "lint": "next lint"
+    "start": "next start",
+    "lint": "next lint",
+    "generate-screenshots": "tsx -r dotenv/config scripts/generate-screenshots.ts"
   },
   "dependencies": {
-    "@types/sqlite3": "^3.1.11",
-    "better-sqlite3": "^11.10.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "better-sqlite3": "^11.1.2",
+    "dotenv": "^16.4.5",
+    "geist": "^1.3.1",
+    "js-yaml": "^4.1.0",
     "next": "15.3.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "node-fetch": "^3.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
-    "yaml": "^2.8.0"
+    "tsx": "^4.16.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/better-sqlite3": "^7.6.13",
+    "@types/better-sqlite3": "^7.6.11",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@types/node-fetch": "^2.6.11",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/sqlite3": "^3.1.11",
+    "eslint": "^8",
     "eslint-config-next": "15.3.3",
-    "tailwindcss": "^4",
-    "tsx": "^4.20.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }
