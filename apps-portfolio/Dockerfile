@@ -25,9 +25,14 @@ COPY --from=build /app/.next ./.next
 COPY --from=build /app/public ./public
 COPY --from=build /app/package.json ./package.json
 COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/db ./db
+COPY --from=build /app/scripts ./scripts
+COPY --from=build /app/entrypoint.sh ./entrypoint.sh
+COPY etc/data.yaml ./etc/data.yaml
 
 # Expose the port the app runs on
 EXPOSE 8080
 
 # The command to run the application
+ENTRYPOINT ["./entrypoint.sh"]
 CMD ["npm", "start"]
