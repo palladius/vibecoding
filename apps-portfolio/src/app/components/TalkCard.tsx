@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 
@@ -15,7 +14,7 @@ const TalkCard: React.FC<{ talk: Talk }> = ({ talk }) => {
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white">
       <div className="relative" style={{ paddingBottom: '75%' }}>
-        <Image src={talk.image} alt={talk.title} layout="fill" objectFit="cover" />
+        <Image src={talk.image} alt={talk.title} fill style={{ objectFit: 'cover' }} />
       </div>
       <div className="p-4">
         <h3 className="text-lg font-bold mb-2">{talk.title}</h3>
