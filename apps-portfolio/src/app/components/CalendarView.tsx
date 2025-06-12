@@ -38,7 +38,7 @@ export default function CalendarView({ talks }: { talks: Talk[] }) {
                 <h2 className="text-2xl font-bold mt-8 mb-4">{monthYear}</h2>
               )}
               <p className="text-lg mb-2">
-                🗓️ <span className="font-semibold">{talkDate.format('ddd, MMM DD')}</span> - <a href={`/talks/${talk.slug}`} className="text-blue-400 hover:underline">{talk.title}</a>
+                🗓️ <span className="font-semibold">{talkDate.format('ddd, MMM DD')}</span> - <a href={`/talks/${talk.slug}`} className="text-blue-400 hover:underline">{talk.title}</a> ({talk.event})
                 {talk.status && (
                   <span className="ml-2 text-gray-400">
                     {statusEmojis[talk.status]} {talk.status.charAt(0).toUpperCase() + talk.status.slice(1)}
