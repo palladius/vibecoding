@@ -176,6 +176,36 @@ talks:
       - Culture
       - SWE
     image: /images/generated/CloudConf-2024-05-29.jpeg
+  - title: How to fail your SRE adoption (for Enterprises) | DOD Warsaw 2023
+    event: DevOpsDays Warsaw 2023
+    date: '2023-12-31' # todo change
+    location: Warsaw, Poland
+    country_code: pl
+    session_url: https://www.youtube.com/watch?v=iSOSsnV1tJ0 # video
+    event_url:  https://2023.devopsdays.pl/ #  https://devopsdays.pl/
+    event_description: |
+      What is DevOpsDays Warsaw?
+
+      DevOpsDays is more than just a conference—it’s a global movement bringing together DevOps enthusiasts, developers, IT operations, management, CTOs, CEOs, sysadmins, and even sales & marketing teams. It’s where software development meets IT infrastructure, and where innovation, automation, security, and culture collide.
+
+      The first-ever Polish edition took place over a decade ago, drawing in experts from all over Europe. Now, we’re back with an even bigger and better edition—ready to inspire, educate, and connect.
+
+    talk_description: |
+      I’ve been talking to customers re their SRE adoption since 2019. Oftentimes, they struggled in their effort to apply the Google methodology within their company. In this talk Riccardo will first set an introduction to SRE, then try to explain what failures patterns he's observed (partly contained in Enterprise Roadmap to SRE report)
+
+      Topics:
+      What SRE is.
+      What SRE is not.
+      Anti-patterns in SRE adoption
+      How to make it work for your company
+
+      DevOpsDays Warsaw: https://devopsdays.pl/
+    status: delivered
+    tags:
+      - SRE
+      - Culture
+      - highlight
+    #image: /images/
   - title: 'Goodbye, deployment headaches: Cloud Deploy and Vertex AI unite'
     event: Cloud Next
     date: '2024-04-11'
@@ -298,8 +328,9 @@ articles:
     tags:
       - GenAI
       - UX
-    image: >-
+    image_old: >-
       /images/generated/Reimagining-customer-services-with-GenAI-and-multi-modal-interaction.jpeg
+    image: /images/events/georgeux-conf.png
     resource_type: video
   - title: The Art of SLOs
     url: https://www.youtube.com/watch?v=E3ReKuJ8ewA

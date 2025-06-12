@@ -35,6 +35,10 @@ test:
 import:
     npx tsx scripts/import-yaml.ts
 
+# [JOB] Show database content
+db-show:
+    npx tsx scripts/show-db.ts
+
 # [DOCKER] Build the Docker image
 docker-build:
     docker build -t portfolio-app:v`cat VERSION` .

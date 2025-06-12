@@ -51,21 +51,27 @@ async function importData() {
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   );
   for (const talk of data.talks) {
-    await insertTalk.run(
-      talk.title,
-      talk.event,
-      talk.date,
-      talk.location,
-      talk.country_code,
-      talk.session_url,
-      talk.video_url,
-      talk.slides_url,
-      talk.status,
-      talk.tags.join(','),
-      talk.image,
-      talk.event_description,
-      talk.talk_description
-    );
+    try {
+      const tags = Array.isArray(talk.tags) ? talk.tags : [];
+      await insertTalk.run(
+        talk.title,
+        talk.event,
+        talk.date,
+        talk.location,
+        talk.country_code,
+        talk.session_url,
+        talk.video_url,
+        talk.slides_url,
+        talk.status,
+        tags.join(','),
+        talk.image,
+        talk.event_description,
+        talk.talk_description
+      );
+    } catch (error) {
+      console.error(`Error importing talk "${talk.title}":`, error);
+      process.exit(1);
+    }
   }
 
   // Insert articles
@@ -74,15 +80,21 @@ async function importData() {
      VALUES (?, ?, ?, ?, ?, ?, ?)`
   );
   for (const article of data.articles) {
-    await insertArticle.run(
-      article.title,
-      article.url,
-      article.publish_date,
-      article.tags.join(','),
-      article.image,
-      article.resource_type,
-      article.description
-    );
+    try {
+      const tags = Array.isArray(article.tags) ? article.tags : [];
+      await insertArticle.run(
+        article.title,
+        article.url,
+        article.publish_date,
+        tags.join(','),
+        article.image,
+        article.resource_type,
+        article.description
+      );
+    } catch (error) {
+      console.error(`Error importing article "${article.title}":`, error);
+      process.exit(1);
+    }
   }
 
   console.log('Data imported successfully!');
