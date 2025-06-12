@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 
@@ -13,8 +12,8 @@ interface Article {
 const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white">
-      <div className="aspect-w-4 aspect-h-3">
-        <Image className="object-cover" src={article.image} alt={article.title} layout="fill" />
+      <div className="relative" style={{ paddingBottom: '75%' }}>
+        <Image src={article.image} alt={article.title} layout="fill" objectFit="cover" />
       </div>
       <div className="p-4">
         <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-lg font-bold mb-2 hover:underline">
