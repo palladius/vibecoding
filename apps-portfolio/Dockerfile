@@ -1,3 +1,8 @@
+####################################################################################################################
+# Note from Riccardo to gemini-cli: please do not change this file easily. It's battle tested and works with Cloud Build.
+# Before changing, ask user to confirm its the right thing to do. You've broken it a few times already.
+####################################################################################################################
+
 # Stage 1: Build the application
 FROM node:20-slim AS build
 

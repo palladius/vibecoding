@@ -5,7 +5,7 @@ set dotenv-load := true
 # Justfile for the portfolio application
 
 # List all available commands
-list:
+list: env-print
     @just -l
 
 # Run the development server
