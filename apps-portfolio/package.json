@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-screenshots": "tsx -r dotenv/config scripts/generate-screenshots.ts"
+    "generate-screenshots": "tsx -r dotenv/config scripts/generate-screenshots.ts",
+    "test": "vitest run"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -24,6 +25,8 @@
     "tsx": "^4.16.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
     "@types/better-sqlite3": "^7.6.11",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20",
@@ -31,10 +34,14 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/sqlite3": "^3.1.11",
+    "@vitejs/plugin-react": "^4.5.2",
+    "autoprefixer": "^10.4.21",
     "eslint": "^8",
     "eslint-config-next": "15.3.3",
+    "jsdom": "^24.1.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^2.0.4"
   }
 }
