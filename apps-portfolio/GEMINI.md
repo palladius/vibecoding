@@ -68,8 +68,21 @@ It would be really nice if my events are actually stored in YAML so I just edit 
 * ensure there's a `.env` file with google project id and region so we write it down once. Do NOT check it in source code
   in case it starts to host private information.
 * Keep a `.env.dist` in sync with needed info for users to be able to copy my demo.
-* Add the one-off IAM, CB, SM, AR setups on a `iac/` folder for terraform. It needs to pick up ENVs from our `.env/`
+* Use terraform for infra seand one-off setups (eg, ensure that SvcAcct exists and has the right powers, ..)
 * CloudBuild: ensure it both builds the `v$VERSION` and also `latest` (which basically always symlinks/points to the latest version we update).
+* Note that `google.com` policy doesn't allow Cloudrun to add with `allUsers`. No biggie. Teach me to see it on my browser as ricc@google.com
+
+### Terraform
+
+Terraform should lay the foundations of our setup, so that changing the project id and do a terraform apply should be all we need to get our app in a new project.
+
+* Add the one-off IAM, Cloud build, SM, AR setups on a `iac/` folder for terraform.
+* It needs to pick up ENVs from our `.env/` (ok to have redundant PROJECT_ID and TFSTATE_PROJECT_ID if need be)
+* All Terraform artifacts (VMs, Service Accounts, secrets, ..) will start with a "tf-" prefix, to ensure I can distiguish manual from automated.
+    * If the entity supports a description, the description should start with a common string: "[Created with 🌍 Terraform] "
+* Very few things cannot be 100% automated (eg I remember a Cloud Build Trigger triggering on github push requires the flow done by human to complete the github auth flow).
+  If you find yourself blocked there, please update the README.md under a "## Terraform Setup" H2 stanza.
+* Once again, I want YOU to do terraform setup and terraform apply to catch the errors.
 
 ## Feedback loop (me and you)
 

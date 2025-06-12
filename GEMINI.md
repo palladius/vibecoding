@@ -109,6 +109,10 @@ Whenever we write GCP code for the above, its very easy to lose track of what we
 
 You will help me keep track of these resources by writing Terraform or Pulumi code to manage them, under a `iac/` folder.
 
+If you need to run one-off commands, please add them to a `bin/gcp-init.sh` file and/or to the `README.md` under an Installation H2.
+Example: `gcloud services enable cloudbuild.googleapis.com --project=foobar`. This allows us to group together and document
+initialization procedures (the gcloud services enable can be particularly DRYed into a single one).
+
 ## Secrets
 
 I'll keep all secrets under a `.env` file which is NOT under git. Make sure all needed ENVs are listed in a `.env.dist` file (which is under git) for documentation purposes.

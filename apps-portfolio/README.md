@@ -2,6 +2,26 @@
 
 This is a portfolio application to showcase my talks and demos.
 
+## Installation
+
+1.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
+2.  **Set up Environment:**
+    Copy the `.env.dist` file to `.env` and fill in your Google Cloud project ID and region.
+3.  **Initialize Google Cloud:**
+    Run the following script to enable the necessary Google Cloud APIs:
+    ```bash
+    ./bin/gcp-init.sh
+    ```
+4.  **Connect GitHub Repository:**
+    Before applying the Terraform configuration, you need to connect your GitHub repository to Google Cloud Build.
+    *   Go to the [Cloud Build triggers page](https://console.cloud.google.com/cloud-build/triggers) in the Google Cloud Console.
+    *   Click **Connect repository**.
+    *   Select **GitHub** as the source.
+    *   Follow the on-screen instructions to authorize Google Cloud Build to access your GitHub account and select your repository.
+
 ## DB Schema
 
 ```mermaid
@@ -42,27 +62,4 @@ npm run dev
 
 ## Deployment
 
-This application is set up for continuous deployment with Google Cloud Build and Cloud Run.
-
-### Prerequisites
-
-1.  **Enable APIs:** Make sure the following APIs are enabled in your Google Cloud project:
-    *   Cloud Build API
-    *   Artifact Registry API
-    *   Cloud Run API
-2.  **Create Artifact Registry Repository:** Create a Docker repository in Artifact Registry. The `cloudbuild.yaml` is configured to use a repository named `portfolio` in the `europe-west1` region.
-3.  **Grant IAM Roles:** The Cloud Build service account needs the following IAM roles:
-    *   `Cloud Run Admin` (`roles/run.admin`)
-    *   `Artifact Registry Writer` (`roles/artifactregistry.writer`)
-
-### Cloud Build Trigger
-
-To set up automatic deployments on every push to the `main` branch, create a Cloud Build trigger with the following settings:
-
-*   **Name:** A descriptive name for your trigger (e.g., `deploy-on-push`).
-*   **Event:** Push to a branch.
-*   **Repository:** Your Git repository.
-*   **Branch:** `main`.
-*   **Build configuration:** Cloud Build configuration file (yaml or json).
-*   **Location:** Repository.
-*   **Cloud Build configuration file location:** `cloudbuild.yaml`.
+This application is set up for continuous deployment with Google Cloud Build and Cloud Run. See the `cloudbuild.yaml` file for details. The Terraform configuration in the `iac` directory will set up the necessary infrastructure.
