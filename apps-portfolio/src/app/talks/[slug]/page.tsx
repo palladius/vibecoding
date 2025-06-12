@@ -39,7 +39,19 @@ export default async function TalkPage({ params }: { params: { slug:string } }) 
         </div>
       </div>
       <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-4">Resources</h2>
+        {talk.event_description && (
+          <>
+            <h2 className="text-2xl font-bold mb-4">Event Description</h2>
+            <p>{talk.event_description}</p>
+          </>
+        )}
+        {talk.talk_description && (
+          <>
+            <h2 className="text-2xl font-bold mb-4 mt-8">Talk Description</h2>
+            <p>{talk.talk_description}</p>
+          </>
+        )}
+        <h2 className="text-2xl font-bold mb-4 mt-8">Resources</h2>
         <ul>
           {talk.session_url && (
             <li>
@@ -64,7 +76,6 @@ export default async function TalkPage({ params }: { params: { slug:string } }) 
           )}
         </ul>
       </div>
-      <p className="mt-8">{talk.description}</p>
     </div>
   );
 }

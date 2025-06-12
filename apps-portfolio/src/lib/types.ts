@@ -11,6 +11,8 @@ export interface Talk {
   status?: string;
   tags?: string;
   image?: string;
+  event_description?: string;
+  talk_description?: string;
   created_at: string;
   updated_at: string;
   type: 'talk';
@@ -24,6 +26,7 @@ export interface Article {
   tags?: string;
   image?: string;
   resource_type?: string;
+  description?: string;
   created_at: string;
   updated_at: string;
   type: 'article';

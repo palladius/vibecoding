@@ -14,6 +14,8 @@ interface Talk {
   status: string;
   tags: string[];
   image: string;
+  event_description: string;
+  talk_description: string;
 }
 
 interface Article {
@@ -23,6 +25,7 @@ interface Article {
   tags: string[];
   image: string;
   resource_type: string;
+  description: string;
 }
 
 interface Data {
@@ -44,8 +47,8 @@ async function importData() {
 
   // Insert talks
   const insertTalk = await db.prepare(
-    `INSERT INTO talks (title, event, date, location, country_code, session_url, video_url, slides_url, status, tags, image)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    `INSERT INTO talks (title, event, date, location, country_code, session_url, video_url, slides_url, status, tags, image, event_description, talk_description)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   );
   for (const talk of data.talks) {
     await insertTalk.run(
@@ -59,14 +62,16 @@ async function importData() {
       talk.slides_url,
       talk.status,
       talk.tags.join(','),
-      talk.image
+      talk.image,
+      talk.event_description,
+      talk.talk_description
     );
   }
 
   // Insert articles
   const insertArticle = await db.prepare(
-    `INSERT INTO articles (title, url, publish_date, tags, image, resource_type)
-     VALUES (?, ?, ?, ?, ?, ?)`
+    `INSERT INTO articles (title, url, publish_date, tags, image, resource_type, description)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`
   );
   for (const article of data.articles) {
     await insertArticle.run(
@@ -75,7 +80,8 @@ async function importData() {
       article.publish_date,
       article.tags.join(','),
       article.image,
-      article.resource_type
+      article.resource_type,
+      article.description
     );
   }
 

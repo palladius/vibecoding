@@ -37,11 +37,19 @@ export default async function ArticlePage({ params }: { params: { slug: string }
           />
         </div>
       </div>
-      <p className="mt-8">
-        <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
-          {article.url}
-        </a>
-      </p>
+      <div className="mt-8">
+        {article.description && (
+          <>
+            <h2 className="text-2xl font-bold mb-4">Description</h2>
+            <p>{article.description}</p>
+          </>
+        )}
+        <p className="mt-8">
+          <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+            {article.url}
+          </a>
+        </p>
+      </div>
     </div>
   );
 }

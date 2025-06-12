@@ -26,28 +26,35 @@ This is a portfolio application to showcase my talks and demos.
 
 ```mermaid
 erDiagram
-    TALK ||--o{ TAG : has
-    EVENT ||--o{ TAG : has
     TALK {
+        int id
         string title
-        string abstract
-        string presenter
-        string status
+        string event
+        string date
+        string location
+        string country_code
+        string session_url
         string video_url
         string slides_url
+        string status
+        string tags
+        string image
+        string event_description
+        string talk_description
         datetime created_at
         datetime updated_at
     }
-    EVENT {
+    ARTICLE {
+        int id
         string title
-        string description
         string url
-        date event_date
+        string publish_date
+        string tags
+        string image
+        string resource_type
+        string description
         datetime created_at
         datetime updated_at
-    }
-    TAG {
-        string name
     }
 ```
 

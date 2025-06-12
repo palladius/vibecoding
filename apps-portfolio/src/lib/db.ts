@@ -29,6 +29,8 @@ export async function setupDb() {
       status TEXT,
       tags TEXT,
       image TEXT,
+      event_description TEXT,
+      talk_description TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
@@ -41,6 +43,7 @@ export async function setupDb() {
       tags TEXT,
       image TEXT,
       resource_type TEXT,
+      description TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
