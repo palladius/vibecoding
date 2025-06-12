@@ -19,6 +19,7 @@ export default function Home() {
       const articles = articlesData.map((article: Article) => ({ ...article, type: 'article' }));
 
       setItems([...talks, ...articles]);
+      console.log('Total items set in state:', talks.length + articles.length);
     };
     fetchData();
   }, []);

@@ -16,9 +16,11 @@ RUN npm install
 COPY . .
 
 # Build the Next.js application
-ARG NEXT_PUBLIC_API_URL=http://localhost:3000
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 RUN npm run build
+
+# Import data into the SQLite database
+RUN npx tsx scripts/import-yaml.ts
 
 # Stage 2: Create the production image
 FROM node:20-slim AS production
@@ -34,9 +36,14 @@ COPY --from=build /app/db ./db
 COPY --from=build /app/scripts ./scripts
 COPY --from=build /app/src/lib ./src/lib
 COPY --from=build /app/entrypoint.sh ./entrypoint.sh
+COPY --from=build /app/VERSION ./VERSION
 COPY etc/data.yaml ./etc/data.yaml
 
 # Expose the port the app runs on
+ENV PORT 8080
+#ENV NODE_ENV production
+#ENV NEXT_PUBLIC_API_URL http://localhost:8080/
+
 EXPOSE 8080
 
 # The command to run the application
