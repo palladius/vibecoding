@@ -2,7 +2,9 @@
 
 This file is for the AI to keep track of its thoughts and decisions.
 
-## Screenshot Generation
+## Screenshot Generation (2025-06-12)
+
+Updated the `generate-screenshots.ts` script to handle cases where the `image` field is missing in `talk` or `article` objects in `etc/data.yaml`. The script will now generate a screenshot if the `image` field is either missing or set to `/images/placeholder-image.png`.
 
 I've added a script to generate screenshots for talks and articles using the ApiFlash service. To use it, you'll need to get a free API key from [https://apiflash.com/](https://apiflash.com/) and add it to your `.env` file as `APIFLASH_ACCESS_KEY`.
 

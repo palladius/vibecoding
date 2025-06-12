@@ -14,7 +14,7 @@ if (!APIFLASH_ACCESS_KEY) {
 
 interface Talk {
   title: string;
-  image: string;
+  image?: string;
   event_url?: string;
   session_url?: string;
   event: string;
@@ -23,7 +23,7 @@ interface Talk {
 
 interface Article {
   title: string;
-  image: string;
+  image?: string;
   url: string;
 }
 
@@ -50,7 +50,7 @@ async function processData() {
   let generatedCount = 0;
 
   for (const talk of data.talks) {
-    if (generatedCount < 10 && talk.image === '/images/placeholder-image.png') {
+    if (generatedCount < 10 && (!talk.image || talk.image === '/images/placeholder-image.png')) {
       const url = talk.event_url || talk.session_url;
       if (url) {
         const imageName = `${sanitizeFileName(talk.event)}-${talk.date}.jpeg`;
@@ -64,7 +64,7 @@ async function processData() {
   }
 
   for (const article of data.articles) {
-    if (generatedCount < 10 && article.image === '/images/placeholder-image.png' && article.url) {
+    if (generatedCount < 10 && (!article.image || article.image === '/images/placeholder-image.png') && article.url) {
       const imageName = `${sanitizeFileName(article.title)}.jpeg`;
       const imagePath = `public/images/generated/${imageName}`;
       await generateScreenshot(article.url, imagePath);

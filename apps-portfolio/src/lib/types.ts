@@ -1,5 +1,5 @@
 export interface Talk {
-  id: number;
+  id?: number;
   title: string;
   event?: string;
   date?: string;
