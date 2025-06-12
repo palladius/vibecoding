@@ -5,12 +5,12 @@ FROM node:20-slim
 WORKDIR /app
 
 # Install dependencies.
-COPY apps-portfolio/package.json ./
-COPY apps-portfolio/package-lock.json ./
+COPY package.json ./
+COPY package-lock.json ./
 RUN npm install
 
 # Copy the rest of the application's code.
-COPY apps-portfolio/ .
+COPY . .
 
 # Build the Next.js application.
 RUN npm run build

@@ -24,9 +24,7 @@ resource "google_cloudbuild_trigger" "default" {
         "build",
         "-t",
         "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest",
-        ".",
-        "--file",
-        "Dockerfile"
+        "."
       ]
     }
     step {
