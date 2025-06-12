@@ -22,7 +22,7 @@ talks:
       - Gemini
       - workshop
       - highlight
-    #image: /images/events/we-are-developers-2025.jpg
+    image: /images/generated/We-are-Developers-2025-2025-07-10.jpeg
   - title: 'SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
     event: CloudConf
     date: '2025-03-26'
