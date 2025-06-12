@@ -1,18 +1,14 @@
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
+import Database from 'better-sqlite3';
 let db = null;
-export async function getDb() {
+export function getDb() {
     if (!db) {
-        db = await open({
-            filename: "./db/portfolio.sqlite3",
-            driver: sqlite3.Database,
-        });
+        db = new Database('./db/portfolio.sqlite3');
     }
     return db;
 }
-export async function setupDb() {
-    const db = await getDb();
-    await db.exec(`
+export function setupDb() {
+    const db = getDb();
+    db.exec(`
     CREATE TABLE IF NOT EXISTS talks (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,

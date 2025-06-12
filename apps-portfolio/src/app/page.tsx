@@ -1,16 +1,16 @@
+
 import TalksList from "./components/TalksList";
 import ArticlesList from "./components/ArticlesList";
-import { getDb } from "../lib/db";
 
 async function getTalks() {
-  const db = await getDb();
-  const talks = await db.all("SELECT * FROM talks ORDER BY date DESC");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/talks`);
+  const talks = await res.json();
   return talks;
 }
 
 async function getArticles() {
-  const db = await getDb();
-  const articles = await db.all("SELECT * FROM articles ORDER BY publish_date DESC");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles`);
+  const articles = await res.json();
   return articles;
 }
 
