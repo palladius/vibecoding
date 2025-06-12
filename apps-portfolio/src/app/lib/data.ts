@@ -9,3 +9,15 @@ export async function getArticles() {
   const articles = await res.json();
   return articles;
 }
+
+export async function getHighlightedTalks() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/highlights/talks`);
+  const talks = await res.json();
+  return talks;
+}
+
+export async function getHighlightedArticles() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/highlights/articles`);
+  const articles = await res.json();
+  return articles;
+}

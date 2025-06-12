@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] - 2025-06-12
+
+### Added
+
+- "About Me" page with bio and highlighted talks and articles.
+- Unified `ItemsList` component for talks and articles.
+- API endpoints for highlighted items.
+
+### Changed
+
+- Main page now displays both talks and articles.
+- Dockerfile now uses a multi-stage build.
+
+### Fixed
+
+- Database schema and import script to support images for talks and articles.
+
 ## [0.5.1] - 2025-06-12
 
 ### Fix

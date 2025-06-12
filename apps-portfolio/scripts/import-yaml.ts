@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
-import { setupDb } from '../src/lib/db.js';
-import Database from 'better-sqlite3';
+import { getDb, setupDb } from '../src/lib/db.js';
 
 interface Talk {
   title: string;
@@ -31,25 +30,24 @@ interface Data {
 }
 
 async function importData() {
-  setupDb();
-  const db = new Database('./db/portfolio.sqlite3');
+  const db = await getDb();
 
   // Clear existing data
-  db.exec('DROP TABLE IF EXISTS talks');
-  db.exec('DROP TABLE IF EXISTS articles');
-  setupDb();
+  await db.exec('DROP TABLE IF EXISTS talks');
+  await db.exec('DROP TABLE IF EXISTS articles');
+  await setupDb();
 
 
   const fileContents = fs.readFileSync('etc/data.yaml', 'utf8');
   const data = yaml.load(fileContents) as Data;
 
   // Insert talks
-  const insertTalk = db.prepare(
+  const insertTalk = await db.prepare(
     `INSERT INTO talks (title, event, date, location, country_code, session_url, video_url, slides_url, status, tags, image)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   );
   for (const talk of data.talks) {
-    insertTalk.run(
+    await insertTalk.run(
       talk.title,
       talk.event,
       talk.date,
@@ -65,12 +63,12 @@ async function importData() {
   }
 
   // Insert articles
-  const insertArticle = db.prepare(
+  const insertArticle = await db.prepare(
     `INSERT INTO articles (title, url, publish_date, tags, image)
      VALUES (?, ?, ?, ?, ?)`
   );
   for (const article of data.articles) {
-    insertArticle.run(
+    await insertArticle.run(
       article.title,
       article.url,
       article.publish_date,

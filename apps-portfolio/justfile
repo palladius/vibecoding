@@ -10,7 +10,7 @@ list:
 
 # Run the development server
 run:
-    npm run dev
+    npm run dev -- -p 3003
 
 # Install dependencies
 install:
@@ -19,7 +19,7 @@ install:
 # Run the development server and log output
 run-dev:
     mkdir -p log
-    npm run dev -- -p 3001 &> log/dev.log
+    npm run dev -- -p 3002 &> log/dev.log
 
 # View the development log
 log:

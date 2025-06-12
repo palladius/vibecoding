@@ -2,6 +2,21 @@ schema_version: '1.2'
 bio: |
   Riccardo Carlesso is a Developer Advocate at Google Cloud, where he helps developers build amazing applications. He is a passionate software engineer with a love for Ruby, Bash, and all things cloud. When he's not coding, you can find him speaking at conferences, writing articles, or watching Sacha Baron Cohen movies.
 talks:
+  - title: 'From Monolith to Magic: An AI-Powered DevOps Workshop'
+    event: We are Developers 2025
+    date: '2025-07-10'
+    location: Berlin, Germany
+    country_code: de
+    session_url: https://www.wearedevelopers.com/world-congress/agenda-overview?_gl=1%2a18o7uk4%2a_up%2aMQ..%2a_gs%2aMQ..&gclid=CjwKCAjw9anCBhAWEiwAqBJ-cwOlrjXaoNq5uIjxOKitDJ6olzgF4dPBqzAOwMfxulLxQLPG_QHGVxoCWaYQAvD_BwE&gbraid=0AAAAADEgEv_NMlk7LrLlKXLsAtS8tqeml#
+    event_url: https://www.wearedevelopers.com/world-congress
+    status: confirmed
+    tags:
+      - CICD
+      - CloudRun
+      - AI
+      - Gemini
+      - workshop
+    #image: /images/events/wearedev25-riccardo.jpg
   - title: 'SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
     event: CloudConf
     date: '2025-03-26'
@@ -138,6 +153,8 @@ talks:
     tags:
       - CloudDeploy
       - MLOps
+      - highlight
+      - CICD
     image: /images/generated/Cloud-Next-2024-04-11.jpeg
 articles:
   - title: Autotranslate my Hugo blog with Gemini
