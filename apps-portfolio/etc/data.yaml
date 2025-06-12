@@ -180,7 +180,8 @@ articles:
       - GenAI
       - Medium
       - Ruby
-    image: /images/placeholder-image.png
+    image: >-
+      /images/generated/Automated-insights-on-Medium-articles-with-GenAI-and-Ruby-.jpeg
   - title: My Mac’s battery🔋 on Google Cloud Monitoring — send SMS if low 🪫
     url: >-
       https://medium.com/google-cloud/my-macs-battery-on-google-cloud-monitoring-with-sms-if-its-low-a1ccd70485fe?source=rss-b5293b96912f------2
@@ -188,7 +189,8 @@ articles:
     tags:
       - GCP
       - Monitoring
-    image: /images/placeholder-image.png
+    image: >-
+      /images/generated/My-Mac-s-battery---on-Google-Cloud-Monitoring---send-SMS-if-low---.jpeg
   - title: Migrate ☁️ GCP projects across organizations, the gcloud way
     url: >-
       https://medium.com/google-cloud/how-to-migrate-projects-across-organizations-c7e254ab90af?source=rss-b5293b96912f------2
@@ -196,7 +198,8 @@ articles:
     tags:
       - GCP
       - gcloud
-    image: /images/placeholder-image.png
+    image: >-
+      /images/generated/Migrate----GCP-projects-across-organizations--the-gcloud-way.jpeg
   - title: 🐤 Canary Deployment on GCP with Cloud Deploy
     url: >-
       https://medium.com/google-cloud/draft-canarying-on-gcp-with-cloud-deploy-91b3e4d0ee9a
@@ -206,7 +209,7 @@ articles:
       - cloud_deploy
       - cloud_build
       - canary
-    image: /images/placeholder-image.png
+    image: /images/generated/---Canary-Deployment-on-GCP-with-Cloud-Deploy.jpeg
   - title: Setting a ★ Cloud Build trigger with Pulumi in Python
     url: >-
       https://medium.com/google-cloud/setting-cloudbuild-with-pulumi-in-python-330e8b54b2cf
@@ -215,7 +218,8 @@ articles:
       - GCP
       - Pulumi
       - Python
-    image: /images/placeholder-image.png
+    image: >-
+      /images/generated/Setting-a---Cloud-Build-trigger-with-Pulumi-in-Python.jpeg
   - title: 'Vodafone: A DevOps approach to AI/ML through cloud-native CI/CD pipelines'
     url: >-
       https://cloud.google.com/blog/products/devops-sre/how-vodafone-uses-cicd-to-speed-up-ml-pipelines
@@ -223,18 +227,20 @@ articles:
     tags:
       - MLOps
       - Vodafone
-    image: /images/placeholder-image.png
+    image: >-
+      /images/generated/Vodafone--A-DevOps-approach-to-AI-ML-through-cloud-native-CI-CD-pipelines.jpeg
   - title: Reimagining customer services with GenAI and multi-modal interaction
     url: https://www.youtube.com/watch?v=WRNncVe5yJQ
     publish_date: '2023-01-01'
     tags:
       - GenAI
       - UX
-    image: /images/placeholder-image.png
+    image: >-
+      /images/generated/Reimagining-customer-services-with-GenAI-and-multi-modal-interaction.jpeg
   - title: The Art of SLOs
     url: https://www.youtube.com/watch?v=E3ReKuJ8ewA
     publish_date: '2021-01-01'
     tags:
       - SRE
       - SLOs
-    image: /images/placeholder-image.png
+    image: /images/generated/The-Art-of-SLOs.jpeg

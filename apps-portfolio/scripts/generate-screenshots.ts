@@ -13,6 +13,10 @@ if (!APIFLASH_ACCESS_KEY) {
   process.exit(1);
 }
 
+function sanitizeFileName(fileName: string) {
+  return fileName.replace(/[^a-zA-Z0-9-]/g, '-');
+}
+
 async function generateScreenshot(url: string, path: string) {
   const response = await fetch(`https://api.apiflash.com/v1/urltoimage?access_key=${APIFLASH_ACCESS_KEY}&url=${url}&format=jpeg&quality=90&width=1200&height=900&response_type=image`);
   if (response.body) {
@@ -28,7 +32,7 @@ async function processData() {
 
   for (const talk of data.talks) {
     if (generatedCount < 10 && talk.image === '/images/placeholder-image.png' && talk.session_url) {
-      const imageName = `${talk.event.replace(/\s/g, '-')}-${talk.date}.jpeg`;
+      const imageName = `${sanitizeFileName(talk.event)}-${talk.date}.jpeg`;
       const imagePath = `public/images/generated/${imageName}`;
       await generateScreenshot(talk.session_url, imagePath);
       talk.image = `/images/generated/${imageName}`;
@@ -39,7 +43,7 @@ async function processData() {
 
   for (const article of data.articles) {
     if (generatedCount < 10 && article.image === '/images/placeholder-image.png' && article.url) {
-      const imageName = `${article.title.replace(/\s/g, '-')}.jpeg`;
+      const imageName = `${sanitizeFileName(article.title)}.jpeg`;
       const imagePath = `public/images/generated/${imageName}`;
       await generateScreenshot(article.url, imagePath);
       article.image = `/images/generated/${imageName}`;
@@ -48,7 +52,8 @@ async function processData() {
     }
   }
 
-  fs.writeFileSync('etc/data.yaml', yaml.dump(data));
+  fs.writeFileSync('etc/data.yaml.new', yaml.dump(data));
+  fs.renameSync('etc/data.yaml.new', 'etc/data.yaml');
   console.log('Data updated successfully!');
 }
 
