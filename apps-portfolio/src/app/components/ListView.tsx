@@ -44,7 +44,9 @@ const ListView: React.FC<ListViewProps> = ({ items }) => {
                   </span>
                 )}
               </td>
-              <td className="py-2 px-4 border-b border-gray-700">{item.type}</td>
+              <td className="py-2 px-4 border-b border-gray-700">
+                {item.type === 'talk' ? '🗣️' : '✍️'}
+              </td>
               <td className="py-2 px-4 border-b border-gray-700">
                 {formatDate('publish_date' in item ? item.publish_date : item.date)}
               </td>
