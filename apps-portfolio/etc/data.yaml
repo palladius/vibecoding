@@ -1,20 +1,20 @@
-
 # This file contains the portfolio data for Riccardo Carlesso.
 # It is used to seed the database for local development and can be used to
 # populate the production Firestore database.
 #
 # The schema is versioned to allow for future changes.
 #
-# Schema Version: 1.0
+# Schema Version: 1.1
 #
 
-schema_version: "1.0"
+schema_version: "1.1"
 
 talks:
   - title: "SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)"
     event: "CloudConf"
     date: "2025-03-26"
     location: "Turin, Italy"
+    country_code: "it"
     session_url: "https://2025.cloudconf.it/en/schedule.html"
     status: "confirmed"
     tags: ["SRE", "CloudConf"]
@@ -22,13 +22,16 @@ talks:
     event: "SRE Day"
     date: "2024-11-21"
     location: "Amsterdam, Netherlands"
+    country_code: "nl"
     session_url: "https://sreday.com/2024-amsterdam/#modal-speaker-0"
     status: "delivered"
     tags: ["SRE", "Keynote", "Culture"]
+    image: SREDAY-2024.png
   - title: "News Crawler via Langchain.RB and Gemini APIs"
     event: "GDG Devfest"
     date: "2024-11-08"
     location: "Pescara, Italy"
+    country_code: "it"
     session_url: "https://sessionize.com/app/speaker/session/739236"
     status: "delivered"
     tags: ["GenAI", "Gemini", "Ruby"]
@@ -36,6 +39,7 @@ talks:
     event: "GDG Devfest"
     date: "2024-10-12"
     location: "Modena, Italy"
+    country_code: "it"
     session_url: "https://sessionize.com/app/speaker/session/745608"
     status: "delivered"
     tags: ["GenAI", "Gemini", "Ruby"]
@@ -43,6 +47,7 @@ talks:
     event: "DevSecOps day"
     date: "2024-10-11"
     location: "Bologna, Italy"
+    country_code: "it"
     session_url: "https://www.devsecopsday.it/talks_speakers/"
     status: "delivered"
     tags: ["SRE", "Keynote", "Culture"]
@@ -50,12 +55,14 @@ talks:
     event: "GDG Budapest"
     date: "2024-09-17"
     location: "Budapest, Hungary (remote)"
+    country_code: "hu"
     status: "delivered"
     tags: ["SRE", "Culture"]
   - title: "Workshop: Bring your Ruby app in the Cloud"
     event: "Euruko 2024"
     date: "2024-09-11"
     location: "Sarajevo, Bosnia and Herzegovina"
+    country_code: "ba"
     session_url: "https://2024.euruko.org/speakers/riccardo_carlesso"
     status: "delivered"
     tags: ["GenAI", "Gemini", "Ruby", "Keynote"]
@@ -63,12 +70,14 @@ talks:
     event: "Railshöck at Puzzle"
     date: "2024-08-21"
     location: "Zurich, Switzerland"
+    country_code: "ch"
     status: "delivered"
     tags: ["GenAI", "Gemini", "Ruby"]
   - title: "News Crawler via Langchain.RB and Gemini APIs"
     event: "RubyDay"
     date: "2024-05-31"
     location: "Verona, Italy"
+    country_code: "it"
     session_url: "https://2024.rubyday.it/talks_speakers/"
     status: "delivered"
     tags: ["GenAI", "Gemini", "Ruby"]
@@ -76,6 +85,7 @@ talks:
     event: "CloudConf"
     date: "2024-05-29"
     location: "Turin, Italy"
+    country_code: "it"
     session_url: "https://2024.cloudconf.it/index.html"
     status: "delivered"
     tags: ["Culture", "SWE"]
@@ -83,6 +93,7 @@ talks:
     event: "Cloud Next"
     date: "2024-04-11"
     location: "Las Vegas, NV, USA"
+    country_code: "us"
     session_url: "https://cloud.withgoogle.com/next?session=DEV302"
     video_url: "https://www.youtube.com/watch?v=_NlGk9Ao_oA"
     slides_url: "https://assets.swoogo.com/uploads/3794522-661c3c8fe0cf9.pdf"

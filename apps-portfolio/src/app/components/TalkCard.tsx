@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 
@@ -8,6 +7,7 @@ interface Talk {
   date: string;
   tags: string;
   image: string;
+  country_code: string;
 }
 
 const TalkCard: React.FC<{ talk: Talk }> = ({ talk }) => {
@@ -20,15 +20,22 @@ const TalkCard: React.FC<{ talk: Talk }> = ({ talk }) => {
           {talk.event} - {talk.date}
         </p>
       </div>
-      <div className="px-6 pt-4 pb-2">
-        {talk.tags.split(',').map((tag) => (
-          <span
-            key={tag}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-          >
-            #{tag}
-          </span>
-        ))}
+      <div className="px-6 pt-4 pb-2 flex justify-between items-center">
+        <div>
+          {talk.tags.split(',').map((tag) => (
+            <span
+              key={tag}
+              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+            >
+              #{tag}
+            </span>
+          ))}
+        </div>
+        <img
+          src={`https://flagcdn.com/w40/${talk.country_code.toLowerCase()}.png`}
+          width="40"
+          alt={talk.country_code}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 
+import { Database, open } from "sqlite";
 import sqlite3 from "sqlite3";
-import { open, Database } from "sqlite";
 
 let db: Database | null = null;
 
@@ -23,6 +23,7 @@ export async function setupDb() {
       event TEXT,
       date TEXT,
       location TEXT,
+      country_code TEXT,
       session_url TEXT,
       video_url TEXT,
       slides_url TEXT,
