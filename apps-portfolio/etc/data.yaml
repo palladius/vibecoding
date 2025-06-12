@@ -112,10 +112,11 @@ talks:
 
 articles:
   - title: "Autotranslate my Hugo blog with Gemini"
-    url: "https://ricc.rocks/en/blog/autotranslate-my-hugo-blog-with-gemini/"
+    url: "https://ricc.rocks/en/posts/medium/2024-11-11-geminocks-translating-my-hugo-site/"
     publish_date: "2024-02-05"
     tags: ["GenAI", "Hugo"]
-    image: "/images/placeholder-image.png"
+    #original_image: "https://ricc.rocks/en/posts/medium/2024-11-11-geminocks-translating-my-hugo-site/image-2.png"
+    image: "/images/articles/geminocks.png"
   - title: "A deep dive in Cloud Run for Rails"
     url: "https://ricc.rocks/en/blog/a-deep-dive-in-cloud-run-for-rails/"
     publish_date: "2024-01-23"
