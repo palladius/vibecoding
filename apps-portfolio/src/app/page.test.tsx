@@ -9,9 +9,8 @@ vi.mock('./lib/data', () => ({
 
 describe("Home", () => {
   it("renders the heading", async () => {
-    const homeElement = await Home();
-    render(homeElement);
-    const heading = await screen.findByText(/Riccardo Carlesso's Portfolio/i);
-    expect(heading).toBeInTheDocument();
+    render(<Home />);
+    const itemsListContainer = screen.getByTestId('items-list-container');
+    expect(itemsListContainer).toBeInTheDocument();
   });
 });

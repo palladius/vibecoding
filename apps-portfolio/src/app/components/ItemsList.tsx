@@ -29,7 +29,7 @@ type Item = Talk | Article;
 
 export default function ItemsList({ items }: { items: Item[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-testid="items-list-container">
       {items.map((item) => {
         if (item.type === 'talk') {
           const talkWithDefaults = {

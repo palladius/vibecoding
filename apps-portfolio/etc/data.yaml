@@ -8,14 +8,14 @@ bio: >
 talks:
   - title: '[workshop][tentative] Create a responsive Rails 8 app with Gemini'
     event: Euruko 2025
-    date: '2025-09-19'
+    date: '2025-09-18' # 18-19sep
     location: Viana do Castelo, Portugal
     country_code: pt
     session_url: https://2025.euruko.org/speakers/riccardo_carlesso # todo
     event_url: https://2025.euruko.org/
     status: tentative
     talk_description: |
-      In this workshop, we will create a Rails app from scratch, using the latest
+      In this workshop, we will create a Rails 8 app from scratch, using the latest
       features of Ruby on Rails. We will cover topics such as:
       - Setting up a Rails app with Docker
       - Using Google Cloud Run to deploy the app

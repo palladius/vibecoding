@@ -13,8 +13,8 @@ export default function Home() {
       const talksData = await getTalks();
       const articlesData = await getArticles();
       
-      const talks = talksData.map((talk: any) => ({ ...talk, type: 'talk' }));
-      const articles = articlesData.map((article: any) => ({ ...article, type: 'article' }));
+      const talks = talksData.map((talk: Talk) => ({ ...talk, type: 'talk' }));
+      const articles = articlesData.map((article: Article) => ({ ...article, type: 'article' }));
 
       setItems([...talks, ...articles]);
     };
