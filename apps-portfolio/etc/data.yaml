@@ -7,6 +7,15 @@ bio: >
   Baron Cohen movies.
 talks:
   - title: Building a Multi-Agent Real AI Travel Agent with Python and Ruby and MCP
+    event: DevFest Pescara 2025
+    date: '2025-11-08'
+    location: Pescara, Italy
+    country_code: it
+    event_url: https://www.unich.it/eventi/devfest-pescara-2024
+    status: tentative
+    #image: /images/generated/DevFest-Pescara-2025-2025-11-08.jpeg # public/images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
+    image: /images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
+  - title: Building a Multi-Agent Real AI Travel Agent with Python and Ruby and MCP
     event: DevFest Modena 2025
     date: '2025-10-04'
     location: Modena, Italy
@@ -17,6 +26,7 @@ talks:
       - python
       - demo
       - wow
+    status: cfp_applied
     talk_description: >
       In 2025, an LLM agent needs to do more than just talk. It needs to do.
       This presentation is a hands-on look at building a truly useful AI travel
@@ -29,7 +39,7 @@ talks:
       LLM. This is a technical L200-L300 session designed for developers who
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
-    image: /images/generated/GDG-Devfest-Modena-2024-10-12.jpeg
+    image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
   - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
     event: Codemotion Milan 2025
     date: '2025-10-14'
@@ -56,7 +66,6 @@ talks:
       LLM. This is a technical L200-L300 session designed for developers who
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
-    #image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
     image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
   - title: '[workshop][tentative] Create a responsive Rails 8 app with Gemini'
     event: Euruko 2025
@@ -148,7 +157,7 @@ talks:
     tags:
       - SRE
       - CloudConf
-    image: /images/events/cloudconf25-riccardo.jpg
+    image: /images/generated/CloudConf-2025-03-26.jpeg
   - title: 'Keynote: SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
     event: SRE Day
     date: '2024-11-21'
@@ -161,7 +170,7 @@ talks:
       - SRE
       - Keynote
       - Culture
-    image: /images/events/ricc-sreday-2024.jpg
+    image: /images/generated/SRE-Day-2024-11-21.jpeg
   - title: News Crawler via Langchain.RB and Gemini APIs
     event: GDG Devfest Pescara
     date: '2024-11-08'
@@ -175,7 +184,7 @@ talks:
       - Gemini
       - Ruby
       - DevFest
-    image: /images/events/gdg-pescara24.jpg
+    image: /images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
   - title: News Crawler via Langchain.RB and Gemini APIs
     event: GDG Devfest Modena
     date: '2024-10-12'

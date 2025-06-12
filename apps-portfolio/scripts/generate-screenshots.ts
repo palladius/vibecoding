@@ -79,7 +79,7 @@ async function processData() {
   let generatedCount = 0;
 
   for (const talk of data.talks) {
-    if (true) { // Temporarily force regeneration
+    if (generatedCount < 10 && (!talk.image || talk.image === '/images/placeholder-image.png')) {
       const url = talk.event_url || talk.session_url;
       if (url) {
         const imageName = `${sanitizeFileName(talk.event)}-${talk.date}.jpeg`;
