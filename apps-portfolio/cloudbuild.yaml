@@ -3,6 +3,7 @@
 # 2. Deploy to a "development" Cloud Run service (`portfolio-app`).
 # 3. Run the tests against the development service.
 # 4. If the tests pass, deploy to the "production" Cloud Run service (`portfolio-app-prod`).
+
 steps:
   # 1. Build the container image
   - name: 'gcr.io/cloud-builders/docker'
@@ -40,13 +41,11 @@ steps:
   # 4. Run tests against the development service
   - name: 'gcr.io/cloud-builders/npm'
     id: Test
-    entrypoint: 'bash'
+    entrypoint: 'npm'
     dir: 'apps-portfolio'
-    args:
-      - '-c'
-      - |
-        echo "DATABASE_URL=\\"file:./db/portfolio.sqlite3\\"" > .env
-        npm test
+    args: ['test']
+    env:
+      - 'DATABASE_URL=file:./db/portfolio.sqlite3'
     waitFor: ['Deploy-Dev']
 
   # 5. Deploy to production

@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.10.11 - 2025-06-13
+
+### Internal Changes
+
+- **Improved Cloud Build configuration:** The `cloudbuild.yaml` has been updated to use the `env` stanza to set environment variables, which is a cleaner and more standard approach.
+
 ## v0.10.10 - 2025-06-13
 
 ### 🐛 Bug Fixes
