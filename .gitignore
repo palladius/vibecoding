@@ -8,3 +8,4 @@ __pycache__/
 output-*.md
 .echodo_history
 **/.gemini/logs.json
+german-card-game/

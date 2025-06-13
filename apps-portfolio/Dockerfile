@@ -6,6 +6,9 @@
 # Stage 1: Build the application
 FROM node:20-slim AS build
 
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+
 WORKDIR /app
 
 # Copy package files and install dependencies
@@ -16,7 +19,7 @@ RUN npm install
 COPY . .
 
 # Build the Next.js application
-
+RUN npx prisma generate
 RUN npm run build
 
 # Import data into the SQLite database
@@ -41,6 +44,7 @@ COPY etc/data.yaml ./etc/data.yaml
 
 # Expose the port the app runs on
 ENV PORT 8080
+ENV DATABASE_URL="file:/app/db/portfolio.sqlite3"
 #ENV NODE_ENV production
 #ENV NEXT_PUBLIC_API_URL http://localhost:8080/
 

@@ -1,5 +1,10 @@
 # Changelog
 
+Major changes:
+
+* 2025-06-13 - v`0.10`. We introduced Prisma ORM. Dont know why, ask Gemini.
+* 2025-06-12 - v`0.9`. We fixed a BIG long regression bug due to API url and `NEXT_PUBLIC_API_URL`.
+
 ## v0.10.0 - 2025-06-13
 
 This release introduces a major refactoring of the data access layer, moving from a custom SQLite implementation to using Prisma ORM. This change was made to improve the long-term maintainability and stability of the application.
