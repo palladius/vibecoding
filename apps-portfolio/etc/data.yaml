@@ -17,7 +17,11 @@ talks:
     status: tentative
     #image: /images/generated/DevFest-Pescara-2025-2025-11-08.jpeg # public/images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
     image: /images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
-  - title: Building a Multi-Agent Real AI Travel Agent with Python and Ruby and MCP
+    tags:
+      - GenAI
+      - DevFest
+      - MCP
+  - title: "Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️"
     event: DevFest Modena 2025
     date: '2025-10-04'
     location: Modena, Italy
@@ -25,10 +29,12 @@ talks:
     event_url: https://devfest.modena.it/
     tags:
       - GenAI
-      - python
+      - DevFest
       - demo
       - wow
+      - MCP
     status: cfp_applied
+    session_url: https://sessionize.com/app/speaker/session/955848
     talk_description: >
       In 2025, an LLM agent needs to do more than just talk. It needs to do.
       This presentation is a hands-on look at building a truly useful AI travel
@@ -42,6 +48,7 @@ talks:
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
     image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
+
   - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
     event: Codemotion Milan 2025
     date: '2025-10-14'

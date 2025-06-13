@@ -1,9 +1,36 @@
 # Changelog
 
-Major changes:
+## v0.10.3 - 2025-06-13
 
-* 2025-06-13 - v`0.10`. We introduced Prisma ORM. Dont know why, ask Gemini.
-* 2025-06-12 - v`0.9`. We fixed a BIG long regression bug due to API url and `NEXT_PUBLIC_API_URL`.
+### 🐛 Bug Fixes
+
+- **Fixed `import` command:** The `import` command was failing because it could not find the database. This has been fixed by explicitly setting the `DATABASE_URL` in the `justfile`.
+- **Fixed local development environment:** The local development environment was failing for the same reason as the `import` command. This has been fixed by using an absolute path for the `DATABASE_URL` in the `justfile`.
+
+### Internal Changes
+
+- Updated the `justfile` to use an absolute path for the `DATABASE_URL` in the `run-dev-p3002` and `import` commands.
+
+## v0.10.2 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Docker build:** The Docker build was failing because the `DATABASE_URL` environment variable was not being set correctly. This has been fixed by using a `.env.docker` file.
+
+### Internal Changes
+
+- Updated the `Dockerfile` to use a `.env.docker` file for the database URL during the build.
+- Updated the `justfile` to remove the `--build-arg` from the `docker-build` command.
+
+## v0.10.1 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build:** The Cloud Build was failing because the `prisma generate` command was not being run before the `next build` command. This has been fixed by adding the `prisma generate` command to the `Dockerfile`.
+
+### Internal Changes
+
+- Updated the `Dockerfile` to include the `prisma generate` command.
 
 ## v0.10.0 - 2025-06-13
 

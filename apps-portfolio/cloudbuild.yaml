@@ -18,16 +18,16 @@ steps:
     waitFor: ['Build']
 
   # 2.5. Tag and Push Versioned Image
-  - name: 'gcr.io/cloud-builders/docker'
-    id: Tag-and-Push-Version
-    entrypoint: bash
-    args:
-      - '-c'
-      - |
-        VERSION=$(cat VERSION)
-        docker tag europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:v$VERSION
-        docker push europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:v$VERSION
-    waitFor: ['Push']
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   id: Tag-and-Push-Version
+  #   entrypoint: bash
+  #   args:
+  #     - '-c'
+  #     - |
+  #       VERSION=$(cat VERSION)
+  #       docker tag europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:v$VERSION
+  #       docker push europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:v$VERSION
+  #   waitFor: ['Push']
 
   # 3. Deploy container image to Cloud Run
 #  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'

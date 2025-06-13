@@ -125,6 +125,7 @@ I'm going to paste here some sample event/talks.
 Pay attention here:
 
 * Do NOT use backticks `` in a git commit, EVER! you tend to execute code and make it in the commit message which is public, and this is DANGEROUS!
+* DO NOT TOUCH `.env` EVER ! It's not under git so you can break it forever!
 
 ## Sample talks
 

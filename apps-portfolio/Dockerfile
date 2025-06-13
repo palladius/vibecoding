@@ -6,9 +6,6 @@
 # Stage 1: Build the application
 FROM node:20-slim AS build
 
-ARG DATABASE_URL
-ENV DATABASE_URL=$DATABASE_URL
-
 WORKDIR /app
 
 # Copy package files and install dependencies
@@ -23,6 +20,7 @@ RUN npx prisma generate
 RUN npm run build
 
 # Import data into the SQLite database
+COPY .env.docker .env
 RUN npx tsx scripts/import-yaml.ts
 
 # Stage 2: Create the production image

@@ -1,6 +1,9 @@
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import { db } from '../src/lib/db';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 interface Talk {
   title: string;

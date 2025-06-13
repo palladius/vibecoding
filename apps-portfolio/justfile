@@ -10,7 +10,7 @@ list: env-print
 
 # Run the development server
 run:
-    npm run dev -- -p 3001
+    DATABASE_URL="file:./db/portfolio.sqlite3" npm run dev -- -p 3001
 
 # Install dependencies
 install:
@@ -23,8 +23,10 @@ run-dev:
 run-dev-p3002:
     mkdir -p log
     @echo "Running development server on port 3002, maybe because 3001 is busy or unavailable..."
-    #npm run dev -- -p 3001 &> log/dev.log
-    API_URL=http://localhost:3002 NEXT_PUBLIC_API_URL=http://localhost:3002 npm run dev -- -p 3002 2>&1 | tee log/dev.log
+    #@echo "Logging output to log/dev.log"
+    @echo "NEXT_PUBLIC_API_URL: $NEXT_PUBLIC_API_URL"
+    @echo "DATABASE_URL:        $DATABASE_URL"
+    DATABASE_URL="file:/usr/local/google/home/ricc/git/vibecoding/apps-portfolio/db/portfolio.sqlite3" API_URL=http://localhost:3002 NEXT_PUBLIC_API_URL=http://localhost:3002 npm run dev -- -p 3002 2>&1 | tee log/dev.log
 
 # View the development log
 log:
@@ -41,7 +43,7 @@ test:
 
 # [JOB] Import data from YAML to SQLite. TODO rename to db-import
 import:
-    npx tsx scripts/import-yaml.ts
+    DATABASE_URL="file:/usr/local/google/home/ricc/git/vibecoding/apps-portfolio/db/portfolio.sqlite3" npx tsx scripts/import-yaml.ts
 
 # [JOB] Show database content
 db-show:
@@ -57,6 +59,9 @@ docker-run:
     mkdir -p log
     docker run -it -p 8081:8080  -e PORT=8080 portfolio-app:v`cat VERSION`
     # &> log/docker.log
+
+# [DOCKER] Builds the Docker image then runs the container. This is based on VERSION file.
+docker-build-and-run:  docker-build docker-run
 
 docker-run-riccardo-test-8081:
     mkdir -p log

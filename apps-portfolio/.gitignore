@@ -41,6 +41,7 @@ log/
 .DS_Store
 t.sh
 TODO-ricc.md
+.env.docker
 
 /src/generated/prisma
 
