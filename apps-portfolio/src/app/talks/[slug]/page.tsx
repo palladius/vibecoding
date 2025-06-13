@@ -19,6 +19,7 @@ export default async function TalkPage({ params }: { params: { slug:string } }) 
 
   if (!talk) {
     notFound();
+    return null;
   }
 
   const resourceType = talk.tags.includes('workshop') ? 'workshop' : 'presentation';
