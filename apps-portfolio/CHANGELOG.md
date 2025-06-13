@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.10.29 - 2025-06-13
+
+### Internal Changes
+
+- **Added `RICC_ENV` to Cloud Run services:** The `RICC_ENV` environment variable is now set in both the development and production Cloud Run services.
+
 ## v0.10.28 - 2025-06-13
 
 ### 🚀 Features
