@@ -20,9 +20,6 @@ COPY . .
 RUN npx prisma generate
 RUN npm run build
 
-# Import data into the SQLite database
-RUN npx tsx scripts/import-yaml.ts
-
 # Stage 2: Create the production image
 FROM node:20-slim AS production
 

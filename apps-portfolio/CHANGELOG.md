@@ -1,5 +1,32 @@
 # Changelog
 
+## v0.10.14 - 2025-06-13
+
+### Internal Changes
+
+- **Improved Cloud Build configuration:** The `cloudbuild.yaml` has been updated to remove the redundant `DATABASE_URL` from the `Build` step.
+
+## v0.10.13 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build:** The Cloud Build was failing because the `import-yaml.ts` script was being run at build time. This has been fixed by moving the import script to the `entrypoint.sh` script, so that it runs at runtime.
+
+### Internal Changes
+
+- Updated the `Dockerfile` to remove the `import-yaml.ts` script from the build process.
+- Updated the `entrypoint.sh` to run the `import-yaml.ts` script.
+
+## v0.10.12 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build:** The Cloud Build was failing because the `DATABASE_URL` environment variable was not being set in the `Build` step. This has been fixed by adding the `DATABASE_URL` to the `env` stanza of the `Build` step in the `cloudbuild.yaml`.
+
+### Internal Changes
+
+- Updated the `cloudbuild.yaml` to set the `DATABASE_URL` in the `Build` step.
+
 ## v0.10.11 - 2025-06-13
 
 ### Internal Changes
