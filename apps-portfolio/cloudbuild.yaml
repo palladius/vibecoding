@@ -41,10 +41,11 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     id: Test
     entrypoint: 'bash'
+    dir: 'apps-portfolio'
     args:
       - '-c'
       - |
-        echo "DATABASE_URL=\\"file:/app/db/portfolio.sqlite3\\"" > .env
+        echo "DATABASE_URL=\\"file:./db/portfolio.sqlite3\\"" > .env
         npm test
     waitFor: ['Deploy-Dev']
 

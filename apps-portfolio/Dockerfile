@@ -21,7 +21,6 @@ RUN npx prisma generate
 RUN npm run build
 
 # Import data into the SQLite database
-COPY .env.docker .env
 RUN npx tsx scripts/import-yaml.ts
 
 # Stage 2: Create the production image

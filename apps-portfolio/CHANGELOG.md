@@ -1,8 +1,34 @@
 # Changelog
 
+## v0.10.10 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build:** The Cloud Build was failing because the `.env.docker` file is not under git. This has been fixed by dynamically creating the environment configuration in the `cloudbuild.yaml`.
+
+### Internal Changes
+
+- Updated the `cloudbuild.yaml` to dynamically create the environment configuration.
+- Updated the `Dockerfile` to remove the `COPY .env.docker .env` command.
+
+## v0.10.9 - 2025-06-13
+
+### Internal Changes
+
+- **Simplified dependency graph in README:** The dependency graph in the `README.md` has been simplified to merge direct and transitive dependencies.
+
+## v0.10.8 - 2025-06-13
+
+### 🚀 Features
+
+- **Added dependency graph to README:** A Mermaid graph has been added to the `README.md` to visualize the project's dependencies.
+
+### Internal Changes
+
+- Updated the `README.md` to include a dependency graph.
+
 ## v0.10.7 - 2025-06-13
 
-* Riccardo added `.env.docker` with -f as it broke some cloudbuilds.
 ### 🐛 Bug Fixes
 
 - **Fixed Cloud Build:** The Cloud Build was failing because the `.env.docker` file is not under git. This has been fixed by dynamically creating the environment configuration in the `cloudbuild.yaml`.

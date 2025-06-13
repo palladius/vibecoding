@@ -74,3 +74,33 @@ npm run dev
 ## Deployment
 
 This application is set up for continuous deployment with Google Cloud Build and Cloud Run. See the `cloudbuild.yaml` file for details. The Terraform configuration in the `iac` directory will set up the necessary infrastructure.
+
+## Dependency Graph
+
+```mermaid
+graph TD
+    subgraph "Application"
+        A[portfolio-app]
+    end
+
+    subgraph "Dependencies"
+        B(next)
+        C(react)
+        D(react-dom)
+        E(sqlite3)
+        F(prisma)
+        G(typescript)
+        H(node-gyp)
+        I(python)
+    end
+
+    A --> B
+    A --> C
+    A --> D
+    A --> E
+    A --> F
+    A --> G
+
+    E --> H
+    H --> I
+```
