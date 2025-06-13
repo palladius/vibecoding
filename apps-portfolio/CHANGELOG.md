@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.30 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build:** The Cloud Build was failing because the `Test` step was using an outdated Node.js version. This has been fixed by using the `node:20-slim` image for the `Test` step and running `npm install` before running the tests.
+
+### Internal Changes
+
+- Updated the `cloudbuild.yaml` to use the `node:20-slim` image for the `Test` step.
+
 ## v0.10.29 - 2025-06-13
 
 ### Internal Changes

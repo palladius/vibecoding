@@ -38,9 +38,11 @@ steps:
       - '--quiet'
       - '--set-env-vars=NEXT_PUBLIC_API_URL=$_NEXT_PUBLIC_API_URL'
       - '--set-env-vars=RICC_ENV=$_RICC_ENV'
+      - '--set-env-vars=RICC_ENV=fatto-a-manhouse'
     env:
       - 'NEXT_PUBLIC_API_URL=https://portfolio-app-272932496670.europe-west1.run.app/'
-      #- '_RICC_ENV=$_RICC_ENV' # lets see if its needed
+      - '_NEXT_PUBLIC_API_URL=https://portfolio-app-272932496670.europe-west1.run.app/'
+      - '_RICC_ENV=$_RICC_ENV' # lets see if its needed
       #- 'APP_NAME=portfolio-app'
 
     waitFor: ['Push']
