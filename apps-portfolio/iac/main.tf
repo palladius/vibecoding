@@ -15,46 +15,7 @@ provider "google" {
 resource "google_cloudbuild_trigger" "default" {
   name        = "tf-portfolio-app-main"
   description = "[Created with 🌍 Terraform] Continuous integration for the main branch"
-  build {
-    step {
-      name = "gcr.io/cloud-builders/docker"
-      id   = "Build"
-      dir  = "apps-portfolio"
-      args = [
-        "build",
-        "-t",
-        "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest",
-        "."
-      ]
-    }
-    step {
-      name = "gcr.io/cloud-builders/docker"
-      id   = "Push"
-      args = [
-        "push",
-        "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest"
-      ]
-      wait_for = ["Build"]
-    }
-    step {
-      name = "gcr.io/google.com/cloudsdktool/cloud-sdk"
-      id   = "Deploy"
-      entrypoint = "gcloud"
-      args = [
-        "run",
-        "deploy",
-        "portfolio-app",
-        "--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest",
-        "--region=europe-west1",
-        "--platform=managed",
-        "--allow-unauthenticated",
-        "--quiet"
-      ]
-      wait_for = ["Push"]
-    }
-    images = ["europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest"]
-    timeout = "1200s"
-  }
+  filename    = "apps-portfolio/cloudbuild.yaml"
 
   github {
     owner = var.github_repository_owner

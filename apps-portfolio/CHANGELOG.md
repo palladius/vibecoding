@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.10.20 - 2025-06-13
+
+### Internal Changes
+
+- **Improved Cloud Build trigger:** The Cloud Build trigger in the Terraform configuration now points to the `cloudbuild.yaml` file in the repository instead of using an inline build definition.
+
 ## v0.10.19 - 2025-06-13
 
 ### 🐛 Bug Fixes
