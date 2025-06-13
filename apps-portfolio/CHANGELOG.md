@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.5 - 2025-06-13
+
+### 🚀 Features
+
+- **Added testing and production deployment stages to Cloud Build:** The Cloud Build pipeline now includes a testing stage that runs against a development environment. If the tests pass, the application is then deployed to production.
+
+### Internal Changes
+
+- Updated the `cloudbuild.yaml` to include a multi-stage deployment process.
+
 ## v0.10.4 - 2025-06-13
 
 ### 🚀 Features

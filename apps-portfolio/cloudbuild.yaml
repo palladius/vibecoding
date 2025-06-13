@@ -1,3 +1,8 @@
+# This Cloud Build file has a multi-stage deployment process.
+# 1. Build and push the Docker image.
+# 2. Deploy to a "development" Cloud Run service (`portfolio-app`).
+# 3. Run the tests against the development service.
+# 4. If the tests pass, deploy to the "production" Cloud Run service (`portfolio-app-prod`).
 steps:
   # 1. Build the container image
   - name: 'gcr.io/cloud-builders/docker'
@@ -17,32 +22,42 @@ steps:
       - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
     waitFor: ['Build']
 
-  # 2.5. Tag and Push Versioned Image - broken
-  # - name: 'gcr.io/cloud-builders/docker'
-  #   id: Tag-and-Push-Version
-  #   entrypoint: bash
-  #   args:
-  #     - '-c'
-  #     - |
-  #       VERSION=$(cat VERSION)
-  #       docker tag europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:v$VERSION
-  #       docker push europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:v$VERSION
-  #   waitFor: ['Push']
+  # 3. Deploy to development
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: Deploy-Dev
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'portfolio-app'
+      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
+      - '--region=europe-west1'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--quiet'
+    waitFor: ['Push']
 
-  3. Deploy container image to Cloud Run
- - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-   id: Deploy
-   entrypoint: gcloud3.
-   args:
-     - 'run'
-     - 'deploy'
-     - 'portfolio-app' # This will be the name of your Cloud Run service
-     - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
-     - '--region=europe-west1'
-     - '--platform=managed'
-     - '--allow-unauthenticated'
-     - '--quiet'
-   waitFor: ['Tag-and-Push-Version']
+  # 4. Run tests against the development service
+  - name: 'gcr.io/cloud-builders/npm'
+    id: Test
+    entrypoint: 'npm'
+    args: ['test']
+    waitFor: ['Deploy-Dev']
+
+  # 5. Deploy to production
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: Deploy-Prod
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'portfolio-app-prod'
+      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
+      - '--region=europe-west1'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--quiet'
+    waitFor: ['Test']
 
 # Store the image in Artifact Registry
 images:
