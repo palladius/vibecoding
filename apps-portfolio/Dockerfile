@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package*.json ./
-RUN apt-get update && apt-get install -y python3 build-essential
+RUN apt-get update && apt-get install -y python3 build-essential openssl
 RUN npm install
 
 # Copy the rest of the application source code

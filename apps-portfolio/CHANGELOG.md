@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.10.19 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Run deployment:** The Cloud Run deployment was failing because `openssl` was not installed in the Docker image. This has been fixed by adding `openssl` to the `apt-get install` command in the `Dockerfile`.
+
+### Internal Changes
+
+- Updated the `Dockerfile` to install `openssl`.
+
+## v0.10.18 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Run deployment:** The Cloud Run deployment was failing because the Prisma client was not generated for the correct OpenSSL version. This has been fixed by adding the `debian-openssl-1.1.x` binary target to the `prisma/schema.prisma` file.
+
+### Internal Changes
+
+- Updated the `prisma/schema.prisma` file to include the `debian-openssl-1.1.x` binary target.
+
 ## v0.10.17 - 2025-06-13
 
 ### Internal Changes
