@@ -119,3 +119,10 @@ check-port-8080:
 check-port-3001:
      sudo lsof -i :3001
      # kill them all: lsof -t -i:3001 | xargs kill -9
+
+
+# This doesnt work now, i need more ENVs.
+gemini-backgroundjob-check-latest-cloudbuild:
+    echo 'Grab the lastest cloud build build with gcloud (eg 9a96075e-f1cb-4fd4-8e53-5db0c303f671), check the logs. If good, then exit. If bad, try to fix it. You can use just build to trigger a new build until it works. If its the image building which fails, you can use just docker-build to check' | \
+        npx 'https://github.com/google-gemini/gemini-cli#early-access'
+    # Says: I am sorry, I cannot execute shell commands directly. Could you please provide me with the ID of the latest Cloud Build?

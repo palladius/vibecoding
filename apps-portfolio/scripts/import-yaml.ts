@@ -39,7 +39,7 @@ interface Data {
   articles: Article[];
 }
 
-async function importData() {
+export async function importData() {
   // Clear existing data
   await db.talk.deleteMany({});
   await db.article.deleteMany({});

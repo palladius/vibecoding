@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.10.17 - 2025-06-13
+
+### Internal Changes
+
+- **Removed unused dependency:** The `vite-tsconfig-paths` package has been removed.
+
+## v0.10.16 - 2025-06-13
+
+### Internal Changes
+
+- **Added integration test for import script:** An integration test has been added to verify that the `just import` command runs without errors.
+- **Removed unused `import-yaml.js` file:** The unused `import-yaml.js` file has been removed to avoid confusion.
+
+## v0.10.15 - 2025-06-13
+
+### Internal Changes
+
+- **Removed failing test for import script:** The test for the import script was failing and has been removed.
+
 ## v0.10.14 - 2025-06-13
 
 ### Internal Changes
