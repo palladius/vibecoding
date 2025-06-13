@@ -30,16 +30,16 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'portfolio-app'
+      - "$_APP_NAME_DEV" # 'portfolio-app'
       - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
       - '--region=europe-west1'
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--quiet'
-      - '--set-env-vars=NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL'
+      - '--set-env-vars=NEXT_PUBLIC_API_URL=$_NEXT_PUBLIC_API_URL'
     env:
       - 'NEXT_PUBLIC_API_URL=https://portfolio-app-272932496670.europe-west1.run.app/'
-      - 'APP_NAME=portfolio-app'
+      #- 'APP_NAME=portfolio-app'
 
     waitFor: ['Push']
 
@@ -60,22 +60,36 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'portfolio-app-prod'
+      #- 'portfolio-app-prod'
+      - "$_APP_NAME_PROD" # 'portfolio-app-prod'
       - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
       - '--region=europe-west1'
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--quiet'
-      - '--set-env-vars=NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL'
+      - '--set-env-vars=NEXT_PUBLIC_API_URL=$_NEXT_PUBLIC_API_URL'
     env:
       - 'NEXT_PUBLIC_API_URL=https://portfolio-app-prod-272932496670.europe-west1.run.app/'
-      - 'APP_NAME=portfolio-app-prod'
+      #- 'APP_NAME=portfolio-app-prod'
     waitFor: ['Test']
 
 # Store the image in Artifact Registry
 images:
   - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
 
+# https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values
+# COMMON ENV VARS
+substitutions:
+    #_NODE_VERSION_1: v6.9.1 # default value
+    #_NODE_VERSION_2: v6.9.2 # default value
+    _CLOUD_RUN_REGION: 'europe-west1'
+    _APP_NAME_DEV: 'portfolio-app'
+    _APP_NAME_PROD: 'portfolio-app-prod'
+    _NEXT_PUBLIC_API_URL_DEV: "https://${_APP_NAME_DEV}-$PROJECT_NUMBER.$CLOUD_RUN_REGION.run.app/"
+    _NEXT_PUBLIC_API_URL_PROD: "https://${_APP_NAME_PROD}-$PROJECT_NUMBER.$CLOUD_RUN_REGION.run.app/"
+    _SUB_VALUE: unused
+options:
+    substitutionOption: 'ALLOW_LOOSE'
 
 # Set a timeout for the build
 timeout: '1200s'
