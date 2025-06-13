@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
-import { getDb, setupDb } from '../src/lib/db.ts';
+import { db } from '../src/lib/db';
 
 interface Talk {
   title: string;
@@ -10,12 +10,14 @@ interface Talk {
   country_code: string;
   session_url: string;
   video_url: string;
+  video?: string; // Handle potential inconsistency
   slides_url: string;
   status: string;
   tags: string[];
   image: string;
   event_description: string;
   talk_description: string;
+  event_url?: string;
 }
 
 interface Article {
@@ -24,6 +26,7 @@ interface Article {
   publish_date: string;
   tags: string[];
   image: string;
+  image_old?: string;
   resource_type: string;
   description: string;
 }
@@ -34,40 +37,35 @@ interface Data {
 }
 
 async function importData() {
-  const db = await getDb();
-
   // Clear existing data
-  await db.exec('DROP TABLE IF EXISTS talks');
-  await db.exec('DROP TABLE IF EXISTS articles');
-  await setupDb();
-
+  await db.talk.deleteMany({});
+  await db.article.deleteMany({});
 
   const fileContents = fs.readFileSync('etc/data.yaml', 'utf8');
   const data = yaml.load(fileContents) as Data;
 
   // Insert talks
-  const insertTalk = await db.prepare(
-    `INSERT INTO talks (title, event, date, location, country_code, session_url, video_url, slides_url, status, tags, image, event_description, talk_description)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-  );
   for (const talk of data.talks) {
     try {
-      const tags = Array.isArray(talk.tags) ? talk.tags : [];
-      await insertTalk.run(
-        talk.title,
-        talk.event,
-        talk.date,
-        talk.location,
-        talk.country_code,
-        talk.session_url,
-        talk.video_url,
-        talk.slides_url,
-        talk.status,
-        tags.join(','),
-        talk.image,
-        talk.event_description,
-        talk.talk_description
-      );
+      const tags = Array.isArray(talk.tags) ? talk.tags.join(',') : '';
+      await db.talk.create({
+        data: {
+          title: talk.title,
+          event: talk.event,
+          date: talk.date,
+          location: talk.location,
+          country_code: talk.country_code,
+          session_url: talk.session_url,
+          video_url: talk.video_url || talk.video,
+          slides_url: talk.slides_url,
+          status: talk.status,
+          tags: tags,
+          image: talk.image,
+          event_description: talk.event_description,
+          talk_description: talk.talk_description,
+          event_url: talk.event_url,
+        },
+      });
     } catch (error) {
       console.error(`Error importing talk "${talk.title}":`, error);
       process.exit(1);
@@ -75,22 +73,20 @@ async function importData() {
   }
 
   // Insert articles
-  const insertArticle = await db.prepare(
-    `INSERT INTO articles (title, url, publish_date, tags, image, resource_type, description)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`
-  );
   for (const article of data.articles) {
     try {
-      const tags = Array.isArray(article.tags) ? article.tags : [];
-      await insertArticle.run(
-        article.title,
-        article.url,
-        article.publish_date,
-        tags.join(','),
-        article.image,
-        article.resource_type,
-        article.description
-      );
+      const tags = Array.isArray(article.tags) ? article.tags.join(',') : '';
+      await db.article.create({
+        data: {
+          title: article.title,
+          url: article.url,
+          publish_date: article.publish_date,
+          tags: tags,
+          image: article.image,
+          resource_type: article.resource_type,
+          description: article.description,
+        },
+      });
     } catch (error) {
       console.error(`Error importing article "${article.title}":`, error);
       process.exit(1);

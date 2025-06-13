@@ -25,6 +25,14 @@ const Footer: React.FC<FooterProps> = ({ appName, version, repoUrl, appProdUrl }
         🤖 -{' '}
         <a href={`${repoUrl}/blob/main/CHANGELOG.md`} target="_blank" rel="noopener noreferrer" className="hover:underline">
           Changelog
+        </a>{' '}
+        -{' '}
+        <a href="/config" className="hover:underline">
+          /config
+        </a>{' '}
+        -{' '}
+        <a href="/up" className="hover:underline">
+          /up
         </a>
       </p>
     </footer>

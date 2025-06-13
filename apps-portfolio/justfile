@@ -16,10 +16,15 @@ run:
 install:
     npm install
 
-# Run the development server and log output
 run-dev:
+    @echo "Running development server on port 3001..."
+    API_URL=http://localhost:3001 NEXT_PUBLIC_API_URL=http://localhost:3001 npm run dev -- -p 3001 2>&1 | tee log/dev.log
+# Run the development server and log output
+run-dev-p3002:
     mkdir -p log
-    npm run dev -- -p 3001 &> log/dev.log
+    @echo "Running development server on port 3002, maybe because 3001 is busy or unavailable..."
+    #npm run dev -- -p 3001 &> log/dev.log
+    API_URL=http://localhost:3002 NEXT_PUBLIC_API_URL=http://localhost:3002 npm run dev -- -p 3002 2>&1 | tee log/dev.log
 
 # View the development log
 log:
@@ -103,3 +108,4 @@ check-port-8080:
      sudo lsof -i :8080
 check-port-3001:
      sudo lsof -i :3001
+     # kill them all: lsof -t -i:3001 | xargs kill -9

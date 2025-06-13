@@ -1,9 +1,13 @@
+// src/app/api/talks/route.ts
 import { NextResponse } from 'next/server';
-import { getDb } from '../../../lib/db';
+import { db } from '../../../lib/db';
 
 export async function GET() {
-  const db = await getDb();
-  const talks = await db.all('SELECT * FROM talks ORDER BY date DESC');
+  const talks = await db.talk.findMany({
+    orderBy: {
+      date: 'desc',
+    },
+  });
   console.log('Fetched talks:', talks.length);
   return NextResponse.json(talks);
 }

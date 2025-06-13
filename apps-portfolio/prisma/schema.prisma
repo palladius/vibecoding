@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../db/portfolio.sqlite3"
+}
+
+model Talk {
+  id                Int      @id @default(autoincrement())
+  title             String
+  event             String?
+  event_url         String?
+  date              String?
+  location          String?
+  country_code      String?
+  session_url       String?
+  video_url         String?
+  slides_url        String?
+  status            String?
+  tags              String?
+  image             String?
+  event_description String?
+  talk_description  String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Article {
+  id            Int      @id @default(autoincrement())
+  title         String
+  url           String?
+  publish_date  String?
+  tags          String?
+  image         String?
+  resource_type String?
+  description   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

@@ -1,51 +1,17 @@
-import { open, Database } from "sqlite";
-import sqlite3 from "sqlite3";
+// src/lib/db.ts
+import { PrismaClient } from '@prisma/client';
 
-let db: Database | null = null;
+// PrismaClient is attached to the `global` object in development to prevent
+// exhausting your database connection limit.
+//
+// Learn more: https://pris.ly/d/help/next-js-best-practices
 
-export async function getDb() {
-  if (!db) {
-    db = await open({
-      filename: "./db/portfolio.sqlite3",
-      driver: sqlite3.Database,
-    });
-  }
-  return db;
-}
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
-export async function setupDb() {
-  const db = await getDb();
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS talks (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT NOT NULL,
-      event TEXT,
-      date TEXT,
-      location TEXT,
-      country_code TEXT,
-      session_url TEXT,
-      video_url TEXT,
-      slides_url TEXT,
-      status TEXT,
-      tags TEXT,
-      image TEXT,
-      event_description TEXT,
-      talk_description TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
+export const db =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    log: ['query'],
+  });
 
-    CREATE TABLE IF NOT EXISTS articles (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT NOT NULL,
-      url TEXT,
-      publish_date TEXT,
-      tags TEXT,
-      image TEXT,
-      resource_type TEXT,
-      description TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
-  `);
-}
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db;

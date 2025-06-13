@@ -1,9 +1,14 @@
-import { getDb } from "../../../../lib/db";
+// src/app/api/highlights/talks/route.ts
+import { NextResponse } from 'next/server';
+import { db } from '../../../../lib/db';
 
 export async function GET() {
-  const db = await getDb();
-  const talks = await db.all("SELECT * FROM talks WHERE tags LIKE '%highlight%'");
-  return new Response(JSON.stringify(talks), {
-    headers: { "Content-Type": "application/json" },
+  const talks = await db.talk.findMany({
+    where: {
+      tags: {
+        contains: 'highlight',
+      },
+    },
   });
+  return NextResponse.json(talks);
 }

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import Home from "./page";
 import { vi } from 'vitest';
 
@@ -9,8 +9,10 @@ vi.mock('./lib/data', () => ({
 
 describe("Home", () => {
   it("renders the heading", async () => {
-    render(<Home />);
-    const itemsListContainer = screen.getByTestId('items-list-container');
+    await act(async () => {
+      render(<Home />);
+    });
+    const itemsListContainer = screen.getByTestId('home-container');
     expect(itemsListContainer).toBeInTheDocument();
   });
 });

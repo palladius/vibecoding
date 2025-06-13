@@ -1,9 +1,14 @@
-import { getDb } from "../../../../lib/db";
+// src/app/api/highlights/articles/route.ts
+import { NextResponse } from 'next/server';
+import { db } from '../../../../lib/db';
 
 export async function GET() {
-  const db = await getDb();
-  const articles = await db.all("SELECT * FROM articles WHERE tags LIKE '%highlight%'");
-  return new Response(JSON.stringify(articles), {
-    headers: { "Content-Type": "application/json" },
+  const articles = await db.article.findMany({
+    where: {
+      tags: {
+        contains: 'highlight',
+      },
+    },
   });
+  return NextResponse.json(articles);
 }

@@ -41,3 +41,11 @@ log/
 .DS_Store
 t.sh
 TODO-ricc.md
+
+/src/generated/prisma
+
+# gemini
+../.gemini/
+../apps-portfolio-broken/
+.QUESTO_BUONO
+../german-card-game/

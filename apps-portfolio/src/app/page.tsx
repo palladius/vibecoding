@@ -25,7 +25,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen p-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen p-8 sm:p-20 font-[family-name:var(--font-geist-sans)]" data-testid="home-container">
       <main className="flex flex-col gap-16">
         <div className="flex justify-center mb-8">
           <button
