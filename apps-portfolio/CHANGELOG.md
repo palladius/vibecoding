@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.10.7 - 2025-06-13
+
+* Riccardo added `.env.docker` with -f as it broke some cloudbuilds.
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build:** The Cloud Build was failing because the `.env.docker` file is not under git. This has been fixed by dynamically creating the environment configuration in the `cloudbuild.yaml`.
+
+### Internal Changes
+
+- Updated the `cloudbuild.yaml` to dynamically create the environment configuration.
+- Updated the `README.md` to explain why Python is needed.
+
+## v0.10.6 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build:** The Cloud Build was failing because Python was not installed in the build environment. This has been fixed by installing Python in the `Dockerfile`.
+
+### Internal Changes
+
+- Updated the `Dockerfile` to install Python.
+
 ## v0.10.5 - 2025-06-13
 
 ### 🚀 Features

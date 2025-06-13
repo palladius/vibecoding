@@ -40,8 +40,12 @@ steps:
   # 4. Run tests against the development service
   - name: 'gcr.io/cloud-builders/npm'
     id: Test
-    entrypoint: 'npm'
-    args: ['test']
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "DATABASE_URL=\\"file:/app/db/portfolio.sqlite3\\"" > .env
+        npm test
     waitFor: ['Deploy-Dev']
 
   # 5. Deploy to production

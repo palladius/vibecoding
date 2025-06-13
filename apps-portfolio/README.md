@@ -10,6 +10,8 @@ App is live publicly here: https://portfolio-app-272932496670.europe-west1.run.a
     ```bash
     npm install
     ```
+    > **Note:** The `sqlite3` package requires Python to be installed on your system to compile native extensions. If you encounter errors during `npm install`, please make sure you have a recent version of Python installed.
+
 2.  **Set up Environment:**
     Copy the `.env.dist` file to `.env` and fill in your Google Cloud project ID and region.
 3.  **Initialize Google Cloud:**
