@@ -1,5 +1,37 @@
 # Changelog
 
+## v0.10.23 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Run deployment:** The Cloud Run deployment was failing because the `NEXT_PUBLIC_API_URL` environment variable was not being set. This has been fixed by adding the `NEXT_PUBLIC_API_URL` to the `env` stanza of the `Deploy-Dev` and `Deploy-Prod` steps in the `cloudbuild.yaml`.
+
+### Internal Changes
+
+- Updated the `cloudbuild.yaml` to set the `NEXT_PUBLIC_API_URL` in the `Deploy-Dev` and `Deploy-Prod` steps.
+- Reverted the `src/app/lib/data.ts` to use `fetch` instead of calling the database directly.
+
+## v0.10.22 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Run deployment:** The Cloud Run deployment was failing because the server-side data fetching was trying to call the API routes. This has been fixed by updating the data fetching logic to call the database directly.
+
+### Internal Changes
+
+- Updated `src/app/lib/data.ts` to use Prisma directly instead of `fetch`.
+- Reverted the `Dockerfile` to not use the `/tmp` directory for the database.
+
+## v0.10.21 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Run deployment:** The Cloud Run deployment was failing because the database was not in a writable directory. This has been fixed by moving the database to the `/tmp` directory in the `Dockerfile`.
+
+### Internal Changes
+
+- Updated the `Dockerfile` to use the `/tmp` directory for the database.
+
 ## v0.10.20 - 2025-06-13
 
 ### Internal Changes

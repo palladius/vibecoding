@@ -36,6 +36,7 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--quiet'
+      - '--set-env-vars=NEXT_PUBLIC_API_URL=$_SERVICE_URL'
     waitFor: ['Push']
 
   # 4. Run tests against the development service
@@ -61,6 +62,7 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--quiet'
+      - '--set-env-vars=NEXT_PUBLIC_API_URL=$_SERVICE_URL'
     waitFor: ['Test']
 
 # Store the image in Artifact Registry
