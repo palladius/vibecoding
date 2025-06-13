@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.4 - 2025-06-13
+
+### 🚀 Features
+
+- **Added image to "About Me" page:** An image has been added to the "About Me" page to make it more visually appealing.
+
+### Internal Changes
+
+- Updated the "About Me" page to include an image.
+
 ## v0.10.3 - 2025-06-13
 
 ### 🐛 Bug Fixes

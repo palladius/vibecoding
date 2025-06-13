@@ -28,7 +28,14 @@ const AboutPage = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">About Me</h1>
-      <p>{bio}</p>
+      <div className="flex">
+        <div className="w-3/5 pr-8">
+          <p>{bio}</p>
+        </div>
+        <div className="w-2/5">
+          <img src="/images/about/image.png" alt="About Me" className="rounded-lg" />
+        </div>
+      </div>
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4">Highlights</h2>
         <ItemsList items={items} />

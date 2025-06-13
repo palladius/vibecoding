@@ -2,6 +2,8 @@
 
 This is a portfolio application to showcase my talks and demos.
 
+App is live publicly here: https://portfolio-app-272932496670.europe-west1.run.app/
+
 ## Installation
 
 1.  **Install Dependencies:**
