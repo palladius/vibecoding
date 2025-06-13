@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.10.28 - 2025-06-13
+
+### 🚀 Features
+
+- **Added Cloud Run environment variables to `/config` page:** The `/config` page now displays Cloud Run environment variables.
+
+### Internal Changes
+
+- Updated the `/api/config/route.ts` to include Cloud Run environment variables.
+- Updated the `/config` page to display Cloud Run environment variables.
+
 ## v0.10.27 - 2025-06-13
 
 ### Internal Changes

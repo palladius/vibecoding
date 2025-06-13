@@ -37,8 +37,10 @@ steps:
       - '--allow-unauthenticated'
       - '--quiet'
       - '--set-env-vars=NEXT_PUBLIC_API_URL=$_NEXT_PUBLIC_API_URL'
+      - '--set-env-vars=RICC_ENV=$_RICC_ENV'
     env:
       - 'NEXT_PUBLIC_API_URL=https://portfolio-app-272932496670.europe-west1.run.app/'
+      #- '_RICC_ENV=$_RICC_ENV' # lets see if its needed
       #- 'APP_NAME=portfolio-app'
 
     waitFor: ['Push']
@@ -68,9 +70,10 @@ steps:
       - '--allow-unauthenticated'
       - '--quiet'
       - '--set-env-vars=NEXT_PUBLIC_API_URL=$_NEXT_PUBLIC_API_URL'
+      - '--set-env-vars=RICC_ENV=$_RICC_ENV'
     env:
       - 'NEXT_PUBLIC_API_URL=https://portfolio-app-prod-272932496670.europe-west1.run.app/'
-      #- 'APP_NAME=portfolio-app-prod'
+      - 'RICC_ENV=CloudBuild.yaml'
     waitFor: ['Test']
 
 # Store the image in Artifact Registry
@@ -87,7 +90,11 @@ substitutions:
     _APP_NAME_PROD: 'portfolio-app-prod'
     _NEXT_PUBLIC_API_URL_DEV: "https://${_APP_NAME_DEV}-$PROJECT_NUMBER.$CLOUD_RUN_REGION.run.app/"
     _NEXT_PUBLIC_API_URL_PROD: "https://${_APP_NAME_PROD}-$PROJECT_NUMBER.$CLOUD_RUN_REGION.run.app/"
-    _SUB_VALUE: unused
+    _RICCARDO_ELUCUBRATIONS: |
+      I'm trying to deploy to dev and prod using Cloud Build and somewhat to make it programmatic to calculate the URLs for dev and prod.
+      https://portfolio-app-272932496670.europe-west1.run.app/ could go south very quickly, exp if I use custom domains.
+    _RICC_ENV: 'CloudBuild.yaml'
+
 options:
     substitutionOption: 'ALLOW_LOOSE'
 

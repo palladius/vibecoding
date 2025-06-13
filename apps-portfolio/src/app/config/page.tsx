@@ -65,6 +65,18 @@ export default function ConfigPage() {
         </section>
 
         <section>
+          <h2 className="text-2xl font-semibold">Cloud Run Environment</h2>
+          <ul className="list-disc list-inside mt-4">
+            {Object.entries(config.cloudRun).map(([key, value]) => (
+              <li key={key}>
+                <span className="font-mono font-bold">{key}:</span>{' '}
+                <span className="font-mono">{String(value)}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
           <h2 className="text-2xl font-semibold">Database Stats</h2>
           <ul className="list-disc list-inside mt-4">
             <li>

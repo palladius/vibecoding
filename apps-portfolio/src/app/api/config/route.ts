@@ -15,6 +15,12 @@ export async function GET() {
         RICC_ENV: process.env.RICC_ENV,
         OCCASIONAL_MESSAGE: process.env.OCCASIONAL_MESSAGE,
       },
+      cloudRun: {
+        REVISION_ID: process.env.REVISION_ID,
+        TRIGGER_NAME: process.env.TRIGGER_NAME,
+        TAG_NAME: process.env.TAG_NAME,
+        SHORT_SHA: process.env.SHORT_SHA,
+      },
       db: {
         talks: talksCount,
         articles: articlesCount,
