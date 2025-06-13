@@ -56,11 +56,17 @@ export async function getFutureTalks() {
 export async function getHighlightedTalks() {
   const res = await fetch(`${getBaseUrl()}/api/highlights/talks`);
   const talks: Talk[] = await res.json();
-  return talks;
+  return talks.map((talk) => ({
+    ...talk,
+    slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
+  }));
 }
 
 export async function getHighlightedArticles() {
   const res = await fetch(`${getBaseUrl()}/api/highlights/articles`);
   const articles: Article[] = await res.json();
-  return articles;
+  return articles.map((article) => ({
+    ...article,
+    slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`
+  }));
 }

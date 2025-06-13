@@ -17,8 +17,12 @@ const AboutPage = () => {
     };
 
     const fetchData = async () => {
-      const highlightedTalks = await getHighlightedTalks();
-      const highlightedArticles = await getHighlightedArticles();
+      const highlightedTalksData = await getHighlightedTalks();
+      const highlightedArticlesData = await getHighlightedArticles();
+
+      const highlightedTalks = highlightedTalksData.map((talk: Talk) => ({ ...talk, type: 'talk' as const }));
+      const highlightedArticles = highlightedArticlesData.map((article: Article) => ({ ...article, type: 'article' as const }));
+
       setItems([...highlightedTalks, ...highlightedArticles]);
     };
     fetchBio();

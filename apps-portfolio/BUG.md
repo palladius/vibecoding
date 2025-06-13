@@ -1,3 +1,9 @@
+# Cloud Build broken bug
+
+* gemini set up an inline cloudbuild.yaml... so havojja to edit it :)
+
+
+
 # Current UI Empty Bug - Potential Causes (Post 18:25 Changes)
 
 This document outlines significant code changes introduced after approximately 18:25 on June 12, 2025, that might be contributing to the UI displaying zero talks/articles, despite the API endpoints returning data.

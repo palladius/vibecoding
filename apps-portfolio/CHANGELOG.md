@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.10.25 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed broken links on "About Me" page:** The links to highlighted talks and articles were broken because the `type` property was not being set correctly. This has been fixed by updating the `AboutPage` component to correctly set the `type` property.
+
+### Internal Changes
+
+- Updated `src/app/about/page.tsx` to correctly set the `type` property on highlighted talks and articles.
+
+## v0.10.24 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed broken links on "About Me" page:** The links to highlighted talks and articles were broken because the `slug` was not being generated. This has been fixed by updating the data fetching logic to include the `slug`.
+
+### Internal Changes
+
+- Updated `src/app/lib/data.ts` to generate slugs for highlighted talks and articles.
+
 ## v0.10.23 - 2025-06-13
 
 ### 🐛 Bug Fixes
