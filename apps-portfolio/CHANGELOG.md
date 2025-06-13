@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.10.27 - 2025-06-13
+
+### Internal Changes
+
+- **Improved Cloud Build configuration:** The `cloudbuild.yaml` has been updated to correctly set the `NEXT_PUBLIC_API_URL` environment variable.
+
+## v0.10.26 - 2025-06-13
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build:** The Cloud Build was failing because the `vitest` command was not found. This has been fixed by using `npx vitest run` in the `Test` step of the `cloudbuild.yaml`.
+- **Fixed Cloud Run deployment:** The Cloud Run deployment was failing because the `NEXT_PUBLIC_API_URL` environment variable was not being set. This has been fixed by adding the `NEXT_PUBLIC_API_URL` to the `env` stanza of the `Deploy-Dev` and `Deploy-Prod` steps in the `cloudbuild.yaml`.
+
+### Internal Changes
+
+- Updated the `cloudbuild.yaml` to use `npx vitest run` in the `Test` step.
+- Updated the `cloudbuild.yaml` to set the `NEXT_PUBLIC_API_URL` in the `Deploy-Dev` and `Deploy-Prod` steps.
+- Reverted the `src/app/lib/data.ts` to use `fetch` instead of calling the database directly.
+
 ## v0.10.25 - 2025-06-13
 
 ### 🐛 Bug Fixes

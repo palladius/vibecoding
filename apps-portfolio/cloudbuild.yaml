@@ -36,15 +36,19 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--quiet'
-      - '--set-env-vars=NEXT_PUBLIC_API_URL=$_SERVICE_URL'
+      - '--set-env-vars=NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL'
+    env:
+      - 'NEXT_PUBLIC_API_URL=https://portfolio-app-272932496670.europe-west1.run.app/'
+      - 'APP_NAME=portfolio-app'
+
     waitFor: ['Push']
 
   # 4. Run tests against the development service
   - name: 'gcr.io/cloud-builders/npm'
     id: Test
-    entrypoint: 'npm'
+    entrypoint: 'npx'
     dir: 'apps-portfolio'
-    args: ['test']
+    args: ['vitest', 'run']
     env:
       - 'DATABASE_URL=file:./db/portfolio.sqlite3'
     waitFor: ['Deploy-Dev']
@@ -62,7 +66,10 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--quiet'
-      - '--set-env-vars=NEXT_PUBLIC_API_URL=$_SERVICE_URL'
+      - '--set-env-vars=NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL'
+    env:
+      - 'NEXT_PUBLIC_API_URL=https://portfolio-app-prod-272932496670.europe-west1.run.app/'
+      - 'APP_NAME=portfolio-app-prod'
     waitFor: ['Test']
 
 # Store the image in Artifact Registry
