@@ -17,20 +17,32 @@ steps:
       - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
     waitFor: ['Build']
 
-  # 3. Deploy container image to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    id: Deploy
-    entrypoint: gcloud
+  # 2.5. Tag and Push Versioned Image
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Tag-and-Push-Version
+    entrypoint: bash
     args:
-      - 'run'
-      - 'deploy'
-      - 'portfolio-app' # This will be the name of your Cloud Run service
-      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
-      - '--region=europe-west1'
-      - '--platform=managed'
-      - '--allow-unauthenticated'
-      - '--quiet'
+      - '-c'
+      - |
+        VERSION=$(cat VERSION)
+        docker tag europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:v$VERSION
+        docker push europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:v$VERSION
     waitFor: ['Push']
+
+  # 3. Deploy container image to Cloud Run
+#  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#    id: Deploy
+#    entrypoint: gcloud
+#    args:
+#      - 'run'
+#      - 'deploy'
+#      - 'portfolio-app' # This will be the name of your Cloud Run service
+#      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
+#      - '--region=europe-west1'
+#      - '--platform=managed'
+#      - '--allow-unauthenticated'
+#      - '--quiet'
+#    waitFor: ['Tag-and-Push-Version']
 
 # Store the image in Artifact Registry
 images:
