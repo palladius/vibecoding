@@ -70,3 +70,5 @@ modules:
             enabled: true
             applications:
                 - name: "Joplin"
+                - path: "~/Desktop"
+                  description: "Desktop folder shoudl exist"
