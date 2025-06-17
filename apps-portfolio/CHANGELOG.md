@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.33 - 2025-06-17
+
+### 🐛 Bug Fixes
+
+- **Fixed talk page rendering:** The talk page was failing to render due to a slug mismatch caused by special characters in the talk title. This has been fixed by improving the `slugify` function to handle these characters correctly.
+
+### Internal Changes
+
+- Updated the `slugify` function in `src/app/lib/data.ts` to correctly handle special characters.
+
 ## v0.10.32 - 2025-06-16
 
 ### 🚀 Features
