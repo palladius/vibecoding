@@ -17,7 +17,7 @@ RUN npm install
 COPY . .
 
 # Build the Next.js application
-ARG NEXT_PUBLIC_API_URL="https://portfolio-app-272932496670.europe-west1.run.app/"
+ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 RUN npx prisma generate
 RUN npm run build
