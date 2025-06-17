@@ -5,7 +5,7 @@ import Link from 'next/link';
 interface Talk {
   title: string;
   event: string;
-  publish_date: string;
+  date: string;
   tags: string;
   image: string;
   country_code: string;
@@ -19,16 +19,22 @@ const statusEmojis: { [key: string]: string } = {
   delivered: '🎤',
 };
 
-const TalkCard: React.FC<{ talk: Talk }> = ({ talk }) => {
+const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximity }) => {
+  const cardClasses = `max-w-sm rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white ${proximity ? 'col-span-2' : ''}`;
   return (
     <Link href={`/talks/${talk.slug}`}>
-      <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white">
+      <div className={cardClasses}>
         <div className="relative" style={{ paddingBottom: '75%' }}>
           <Image src={talk.image} alt={talk.title} fill style={{ objectFit: 'cover' }} />
+          {proximity && (
+            <div className="absolute top-0 left-0 bg-yellow-400 text-black text-2xl font-bold p-2">
+              {proximity}
+            </div>
+          )}
         </div>
         <div className="p-4">
           <h3 className="text-lg font-bold mb-2">{talk.title}</h3>
-          <p className="text-sm text-cyan-300 mb-2">{talk.event} - {talk.publish_date}</p>
+          <p className="text-sm text-cyan-300 mb-2">{talk.event} - {talk.date}</p>
           {talk.status && (
             <p className="text-sm text-gray-400 mb-2">
               {statusEmojis[talk.status]} {talk.status.charAt(0).toUpperCase() + talk.status.slice(1)}

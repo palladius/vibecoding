@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.10.32 - 2025-06-16
+
+### 🚀 Features
+
+- **Improved "Next Talks" page:** The "Next Talks" page now highlights talks that are happening soon. Talks happening "Today!", "Tomorrow!", "This week!", "Next week!", or "This month!" are now larger and have a special label.
+
+### Internal Changes
+
+- Updated the `src/app/next-talks/page.tsx` to calculate the proximity of a talk and pass it to the `TalkCard` component.
+- Updated the `src/app/components/TalkCard.tsx` to accept a `proximity` prop and apply special styling based on it.
+- Updated the `src/app/lib/data.ts` to sort future talks by date.
+
 ## v0.10.31 - 2025-06-16
 
 ### 🚀 Features

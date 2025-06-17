@@ -6,6 +6,20 @@ import { Talk } from "../../lib/types";
 import TalkCard from "../components/TalkCard";
 import CalendarView from "../components/CalendarView";
 
+const getProximity = (date: string) => {
+  const today = new Date();
+  const talkDate = new Date(date);
+  const diffTime = talkDate.getTime() - today.getTime();
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) return "Today!";
+  if (diffDays === 1) return "Tomorrow!";
+  if (diffDays > 1 && diffDays <= 7) return "This week!";
+  if (diffDays > 7 && diffDays <= 14) return "Next week!";
+  if (diffDays > 14 && diffDays <= 30) return "This month!";
+  return undefined;
+};
+
 export default function NextTalksPage() {
   const [talks, setTalks] = useState<Talk[]>([]);
   const [view, setView] = useState('card');
@@ -38,7 +52,7 @@ export default function NextTalksPage() {
       {view === 'card' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {talks.map((talk) => (
-            <TalkCard key={talk.id} talk={talk} />
+            <TalkCard key={talk.id} talk={talk} proximity={getProximity(talk.date as string)} />
           ))}
         </div>
       ) : (

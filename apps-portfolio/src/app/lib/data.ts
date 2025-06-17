@@ -46,7 +46,9 @@ export async function getArticle(slug: string) {
 export async function getFutureTalks() {
   const res = await fetch(`${getBaseUrl()}/api/talks`);
   const talks: Talk[] = await res.json();
-  const futureTalks = talks.filter((talk) => new Date(talk.date as string) > new Date());
+  const futureTalks = talks
+    .filter((talk) => new Date(talk.date as string) > new Date())
+    .sort((a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime());
   return futureTalks.map((talk) => ({
     ...talk,
     slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
