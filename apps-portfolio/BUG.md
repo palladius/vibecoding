@@ -1,7 +1,6 @@
-# Cloud Build broken bug
+# Cloud Build broken bug (now fixed)
 
 * gemini set up an inline cloudbuild.yaml... so havojja to edit it :)
-
 
 
 # Current UI Empty Bug - Potential Causes (Post 18:25 Changes)
