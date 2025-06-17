@@ -1,29 +1,26 @@
 # This Cloud Build file has a multi-stage deployment process.
-# 1. Build and push the Docker image for Dev.
+# 1. Build and push the Docker image.
 # 2. Deploy to a "development" Cloud Run service (`portfolio-app`).
-# 3. Build and push the Docker image for Prod.
-# 4. Deploy to the "production" Cloud Run service (`portfolio-app-prod`).
+# 3. Deploy to the "production" Cloud Run service (`portfolio-app-prod`).
 
 steps:
-  # 1. Build the container image for Dev
+  # 1. Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    id: Build-Dev
+    id: Build
     dir: 'apps-portfolio'
     args:
       - 'build'
-      - '--build-arg'
-      - 'NEXT_PUBLIC_API_URL=$_NEXT_PUBLIC_API_URL_DEV'
       - '-t'
-      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app-dev:latest'
+      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
       - '.'
 
-  # 2. Push the container image to Artifact Registry for Dev
+  # 2. Push the container image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    id: Push-Dev
+    id: Push
     args:
       - 'push'
-      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app-dev:latest'
-    waitFor: ['Build-Dev']
+      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
+    waitFor: ['Build']
 
   # 3. Deploy to development
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -33,7 +30,7 @@ steps:
       - 'run'
       - 'deploy'
       - "$_APP_NAME_DEV" # 'portfolio-app'
-      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app-dev:latest'
+      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
       - '--region=europe-west1'
       - '--platform=managed'
       - '--allow-unauthenticated'
@@ -41,30 +38,9 @@ steps:
       - '--set-env-vars=RICC_ENV=$_RICC_ENV'
     env:
       - '_RICC_ENV=$_RICC_ENV'
-    waitFor: ['Push-Dev']
+    waitFor: ['Push']
 
-  # 4. Build the container image for Prod
-  - name: 'gcr.io/cloud-builders/docker'
-    id: Build-Prod
-    dir: 'apps-portfolio'
-    args:
-      - 'build'
-      - '--build-arg'
-      - 'NEXT_PUBLIC_API_URL=$_NEXT_PUBLIC_API_URL_PROD'
-      - '-t'
-      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app-prod:latest'
-      - '.'
-    waitFor: ['Deploy-Dev'] # Run after dev deploy
-
-  # 5. Push the container image to Artifact Registry for Prod
-  - name: 'gcr.io/cloud-builders/docker'
-    id: Push-Prod
-    args:
-      - 'push'
-      - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app-prod:latest'
-    waitFor: ['Build-Prod']
-
-  # 6. Deploy to production
+  # 4. Deploy to production
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     id: Deploy-Prod
     entrypoint: gcloud
@@ -72,32 +48,24 @@ steps:
       - 'run'
       - 'deploy'
       - "$_APP_NAME_PROD" # 'portfolio-app-prod'
-      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app-prod:latest'
+      - '--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
       - '--region=europe-west1'
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--quiet'
       - '--set-env-vars=RICC_ENV=CloudBuild.yaml'
-    waitFor: ['Push-Prod']
+    waitFor: ['Deploy-Dev']
 
-# Store the images in Artifact Registry
+# Store the image in Artifact Registry
 images:
-  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app-dev:latest'
-  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app-prod:latest'
+  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
 
 # https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values
 # COMMON ENV VARS
 substitutions:
-    #_NODE_VERSION_1: v6.9.1 # default value
-    #_NODE_VERSION_2: v6.9.2 # default value
     _CLOUD_RUN_REGION: 'europe-west1'
     _APP_NAME_DEV: 'portfolio-app'
     _APP_NAME_PROD: 'portfolio-app-prod'
-    _NEXT_PUBLIC_API_URL_DEV: "https://portfolio-app-272932496670.europe-west1.run.app/"
-    _NEXT_PUBLIC_API_URL_PROD: "https://portfolio-app-prod-272932496670.europe-west1.run.app/"
-    _RICCARDO_ELUCUBRATIONS: |
-      I'm trying to deploy to dev and prod using Cloud Build and somewhat to make it programmatic to calculate the URLs for dev and prod.
-      https://portfolio-app-272932496670.europe-west1.run.app/ could go south very quickly, exp if I use custom domains.
     _RICC_ENV: 'CloudBuild.yaml'
 
 options:

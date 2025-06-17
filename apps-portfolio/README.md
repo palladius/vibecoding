@@ -107,3 +107,23 @@ graph TD
     E --> H
     H --> I
 ```
+
+## A Note on Environment Variables in Next.js
+
+A critical concept for this application is how Next.js handles environment variables, particularly those prefixed with `NEXT_PUBLIC_`.
+
+### Build Time vs. Run Time
+
+1.  **Build Time (`next build`):** When the application is built, Next.js performs a "search and replace" for any `process.env.NEXT_PUBLIC_` variables. It finds their value *at that moment* and bakes the literal string value into the final JavaScript files that are sent to the browser.
+
+2.  **Run Time (`next start`):** When the application is running on a server, the JavaScript files sent to the browser already have the URL hardcoded in them. Changing the environment variable on the server at this point has no effect on the already-built frontend code.
+
+### The Solution: Relative URLs & Direct Database Access
+
+To ensure our application works in any environment (local, dev, prod) with a single Docker image, we use the following strategy:
+
+1.  **For Client-Side Code (in the browser):** We use relative URLs (e.g., `fetch('/api/talks')`). The browser automatically knows to make the request to the same domain that is currently hosting the page.
+
+2.  **For Server-Side Code (on the server):** A server component should not `fetch` its own API, as this is an inefficient network hop. Instead, server-side data fetching functions now bypass `fetch` and call the underlying database logic directly, just as the API routes do.
+
+This approach allows us to use a **single, universal Docker image** that works in any environment without changes, simplifying our entire build and deployment process.

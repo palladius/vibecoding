@@ -1,43 +1,25 @@
-# BUG02: Talk pages fail to load in production
-
-## REPRO
-
-To reproduce this bug, just do this:
-
-1. curl https://portfolio-app-272932496670.europe-west1.run.app/talks/2025-11-08-building-a-multi-agent-real-ai-travel-agent-with-python-and-ruby-and-mcp
-2. this works in localhost, but in DEV it gives a 500 with this error: `Application error: a server-side exception has occurred while loading portfolio-app-272932496670.europe-west1.run.app (see the server logs for more information).`
-3. this is also reproduceable in PROD: https://portfolio-app-prod-272932496670.europe-west1.run.app/ but for now lets fix dev.
-
+# BUG02: Talk pages fail to load in production (FIXED)
 
 ## Symptom
 
-When accessing a talk's detail page in the production environment (e.g., `https://portfolio-app-272932496670.europe-west1.run.app/talks/2025-07-10-from-monolith-to-magic-an-ai-powered-devops-workshop`), the page returns a 500 Internal Server Error and displays a "404: This page could not be found" message. This happens for all talk pages, not just those with special characters in the title. The application works correctly locally.
+When accessing a talk's detail page in the production environment, the page returned a 500 Internal Server Error. This happened because the frontend code, which runs in the user's browser, did not know which API URL to call.
 
-## Hypothesis 1: Incorrect `NEXT_PUBLIC_API_URL` at Build Time
+## Root Cause: Build-Time vs. Run-Time Environment Variables
 
-As outlined in `BUG.md`, the most likely cause is that the `NEXT_PUBLIC_API_URL` environment variable is not being correctly passed to the Next.js build process *inside the Docker container*.
+The core of the issue lies in how Next.js handles environment variables prefixed with `NEXT_PUBLIC_`.
 
-- The `Dockerfile` does not have an `ARG` for `NEXT_PUBLIC_API_URL`, so it's not available during the `npm run build` step.
-- The `cloudbuild.yaml` sets the variable for the *runtime* environment, not the *build-time* environment.
-- The client-side code in `src/app/lib/data.ts` relies on this variable to be present at build time to make API calls.
+1.  **Build Time (`next build`):** When the application is built, Next.js performs a "search and replace" for any `process.env.NEXT_PUBLIC_` variables. It finds their value *at that moment* and bakes the literal string value into the final JavaScript files.
 
-If this hypothesis is correct, the client-side JavaScript is trying to fetch data from an `undefined` or incorrect URL, leading to the error.
+2.  **Run Time (`next start`):** When the application is running on a server, the JavaScript files sent to the browser already have the URL hardcoded in them. Changing the environment variable on the server at this point has no effect on the already-built frontend code.
 
-## Hypothesis 2: Slug Generation Mismatch [Riccardo: this CANNOT BE, since only 1 talk has special characters]
+Our previous approach of building a single Docker image and trying to supply the API URL at run time was flawed. The image was built without a URL, so the frontend code was trying to fetch from `undefined/api/talks`.
 
-While the initial thought was that special characters were the issue, the fact that it's failing for all talk pages suggests a more fundamental problem. However, it's still possible that there's a subtle mismatch between how the slug is generated in the `getTalks` function (which creates the links) and the `getTalk` function (which fetches the data for the page). This seems less likely now that we know all pages are failing.
+## The Solution: Relative URLs & Direct Database Access
 
-## Hypothesis 3: Database Not Being Updated in Production [Riccardo: this CANNOT BE, as all talk are visualized correctly in index]
+The correct and most robust solution is to make the application code environment-agnostic.
 
-It's possible that the production database is not being correctly updated with the latest data from `etc/data.yaml`. If the `just import` command is failing silently in the production container, the database would be out of sync with the `data.yaml` file, and the slugs would not match.
+1.  **For Client-Side Code (in the browser):** We now use relative URLs (e.g., `fetch('/api/talks')`). The browser automatically knows to make the request to the same domain that is currently hosting the page. This works seamlessly for `localhost`, the dev URL, and the prod URL.
 
-## Hypothesis 4 (Riccardo): wrong value for NEXT_PUBLIC_API_URL in Cloud run (run time)
+2.  **For Server-Side Code (on the server):** A server component should not `fetch` its own API, as this is an inefficient network hop. Instead, server-side data fetching functions now bypass `fetch` and call the underlying database logic directly, just as the API routes do.
 
-* Currently, the NEXT_PUBLIC_API_URL in `portfolio-app-prod` (https://portfolio-app-prod-272932496670.europe-west1.run.app ) is empty.
-* I've changed manually to `NEXT_PUBLIC_API_URL=https://portfolio-app-prod-272932496670.europe-west1.run.app` in revision `portfolio-app-prod-00004-c2x`.
-* And it works!
-
-
-## Next Steps
-
-Based on the evidence, Hypothesis 1 is the most likely culprit. The next step is to fix the `Dockerfile` and `cloudbuild.yaml` to ensure that `NEXT_PUBLIC_API_URL` is available during the build process.
+This approach allows us to use a **single, universal Docker image** that works in any environment without changes, simplifying our entire build and deployment process.

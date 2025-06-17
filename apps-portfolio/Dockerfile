@@ -17,8 +17,6 @@ RUN npm install
 COPY . .
 
 # Build the Next.js application
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 RUN npx prisma generate
 RUN npm run build
 
@@ -44,7 +42,6 @@ ENV PORT 8080
 ENV DATABASE_URL="file:/app/db/portfolio.sqlite3"
 ENV RICC_ENV='Dockerfile'
 #ENV NODE_ENV production
-#ENV NEXT_PUBLIC_API_URL http://localhost:8080/
 
 EXPOSE 8080
 

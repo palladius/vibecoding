@@ -1,50 +1,64 @@
 // src/app/lib/data.ts
-
+import { db } from '../../lib/db';
 import { Talk, Article } from '../../lib/types';
 
 const slugify = (str: string) => {
   if (!str) return '';
-  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-};
+  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
+  const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
+  const p = new RegExp(a.split('').join('|'), 'g')
 
-const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_API_URL) {
-    return process.env.NEXT_PUBLIC_API_URL;
-  }
-  // Fallback for client-side rendering
-  return '';
-};
+  return str.toString().toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
+}
 
+// Server-side function
 export async function getTalks() {
-  const res = await fetch(`${getBaseUrl()}/api/talks`);
-  const talks: Talk[] = await res.json();
+  const talks = await db.talk.findMany({
+    orderBy: {
+      date: 'desc',
+    },
+  });
   return talks.map((talk) => ({
     ...talk,
     slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
   }));
 }
 
+// Server-side function
 export async function getArticles() {
-  const res = await fetch(`${getBaseUrl()}/api/articles`);
-  const articles: Article[] = await res.json();
+  const articles = await db.article.findMany({
+    orderBy: {
+      publish_date: 'desc',
+    },
+  });
   return articles.map((article) => ({
     ...article,
     slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`
   }));
 }
 
+// Server-side function
 export async function getTalk(slug: string) {
   const talks = await getTalks();
   return talks.find((talk) => talk.slug === slug);
 }
 
+// Server-side function
 export async function getArticle(slug: string) {
   const articles = await getArticles();
   return articles.find((article) => article.slug === slug);
 }
 
+// Client-side function (uses relative URL)
 export async function getFutureTalks() {
-  const res = await fetch(`${getBaseUrl()}/api/talks`);
+  const res = await fetch(`/api/talks`);
   const talks: Talk[] = await res.json();
   const futureTalks = talks
     .filter((talk) => new Date(talk.date as string) > new Date())
@@ -55,20 +69,38 @@ export async function getFutureTalks() {
   }));
 }
 
+// Server-side function
 export async function getHighlightedTalks() {
-  const res = await fetch(`${getBaseUrl()}/api/highlights/talks`);
-  const talks: Talk[] = await res.json();
-  return talks.map((talk) => ({
-    ...talk,
-    slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
-  }));
+    const talks = await db.talk.findMany({
+        where: {
+            tags: {
+                contains: 'highlight'
+            }
+        },
+        orderBy: {
+            date: 'desc'
+        }
+    });
+    return talks.map((talk) => ({
+        ...talk,
+        slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
+    }));
 }
 
+// Server-side function
 export async function getHighlightedArticles() {
-  const res = await fetch(`${getBaseUrl()}/api/highlights/articles`);
-  const articles: Article[] = await res.json();
-  return articles.map((article) => ({
-    ...article,
-    slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`
-  }));
+    const articles = await db.article.findMany({
+        where: {
+            tags: {
+                contains: 'highlight'
+            }
+        },
+        orderBy: {
+            publish_date: 'desc'
+        }
+    });
+    return articles.map((article) => ({
+        ...article,
+        slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`
+    }));
 }
