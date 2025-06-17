@@ -56,7 +56,7 @@ db-show:
 
 # [DOCKER] Build the Docker image
 docker-build:
-    time docker build -t portfolio-app:v`cat VERSION` .
+    time docker build --build-arg DATABASE_URL="file:/app/db/portfolio.sqlite3" -t portfolio-app:v`cat VERSION` .
 
 # [DOCKER] Run the Docker container
 docker-run:

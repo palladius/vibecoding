@@ -1,6 +1,6 @@
 // src/app/lib/data.ts
 import { db } from '../../lib/db';
-import { Talk, Article } from '../../lib/types';
+import { Talk } from '../../lib/types';
 
 const slugify = (str: string) => {
   if (!str) return '';
@@ -12,8 +12,8 @@ const slugify = (str: string) => {
     .replace(/\s+/g, '-') // Replace spaces with -
     .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
     .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/[^\w-]+/g, '') // Remove all non-word chars
+    .replace(/--+/g, '-') // Replace multiple - with single -
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, '') // Trim - from end of text
 }
@@ -46,14 +46,22 @@ export async function getArticles() {
 
 // Server-side function
 export async function getTalk(slug: string) {
-  const talks = await getTalks();
-  return talks.find((talk) => talk.slug === slug);
+  const talk = await db.talk.findFirst({
+    where: {
+      slug: slug,
+    },
+  });
+  return talk;
 }
 
 // Server-side function
 export async function getArticle(slug: string) {
-  const articles = await getArticles();
-  return articles.find((article) => article.slug === slug);
+  const article = await db.article.findFirst({
+    where: {
+      slug: slug,
+    },
+  });
+  return article;
 }
 
 // Client-side function (uses relative URL)

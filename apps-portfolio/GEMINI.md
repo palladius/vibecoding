@@ -130,3 +130,25 @@ Pay attention here:
 ## Sample talks
 
 * If you need them, sample talks are under `etc/SAMPLE_TALKS.md`
+
+## BUG FIXING
+
+
+When I ask you to assess a bug, I expect you to do many changes by yourself.
+
+Before committing any change, let's make sure:
+
+
+1. Ensure the code is working in localhost on port 3002:
+   * if server is not responding, check with user that the server is up, meanwhile check similar ports like 3001 and 3003.
+   * curl http://localhost:3002/ and see some articles (must NOT be empty!)
+   * curl .../talks/2025-10-14-agents-on-a-plane-a-deep-dive-into-building-a-real-time-travel-agent works too
+   * just test works
+2. If this works, mentally add a "localhost BUG02 check works" to future commit message
+3. run `just docker-build` and check the build succeed.
+4. Ask user to run `just docker-run` for you (you're not good at background jobs yet! and docker execution can be quite sticky to CTRL-C).
+  1. Run the same tests at (1) but on port 8080.
+5. If this works, mentally add a "local docker BUG02 check works" to future commit message
+6. at this point, prepare a commit message, commit and ask user whether you can push.
+7. After push, keep monitoring every 2 minutes the latest triggered Cloud Build. You can use my convenience scripts
+ `just cloud-build-list` and `just cloud-build-show-log {{build_id}}` for it.
