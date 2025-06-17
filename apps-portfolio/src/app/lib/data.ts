@@ -46,21 +46,15 @@ export async function getArticles() {
 
 // Server-side function
 export async function getTalk(slug: string) {
-  const talk = await db.talk.findFirst({
-    where: {
-      slug: slug,
-    },
-  });
+  const talks = await getTalks();
+  const talk = talks.find((talk) => talk.slug === slug);
   return talk;
 }
 
 // Server-side function
 export async function getArticle(slug: string) {
-  const article = await db.article.findFirst({
-    where: {
-      slug: slug,
-    },
-  });
+  const articles = await getArticles();
+  const article = articles.find((article) => article.slug === slug);
   return article;
 }
 

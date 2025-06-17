@@ -1,28 +1,18 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Home from "./page";
 import { vi } from 'vitest';
-import React from "react";
 
 vi.mock('./lib/data', () => ({
   getTalks: () => Promise.resolve([]),
   getArticles: () => Promise.resolve([]),
-}));
-
-vi.mock('./components/ViewSwitcher', () => ({
-  default: () => <div>ViewSwitcher</div>,
+  getHighlightedTalks: () => Promise.resolve([]),
+  getHighlightedArticles: () => Promise.resolve([]),
 }));
 
 describe("Home", () => {
-  it("renders the heading", async () => {
-    const HomeAsAny = Home as any;
-    render(
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <HomeAsAny />
-      </React.Suspense>
-    );
-    await waitFor(() => {
-      const itemsListContainer = screen.getByTestId('home-container');
-      expect(itemsListContainer).toBeInTheDocument();
-    });
+  it("renders the main container", async () => {
+    const HomeResolved = await Home();
+    render(HomeResolved);
+    expect(screen.getByTestId("home-container")).toBeInTheDocument();
   });
 });

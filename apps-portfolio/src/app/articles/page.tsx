@@ -1,5 +1,4 @@
 import { getArticles } from "../lib/data";
-import { Article } from "../../lib/types";
 import ViewSwitcher from "../components/ViewSwitcher";
 
 export default async function ArticlesPage() {
