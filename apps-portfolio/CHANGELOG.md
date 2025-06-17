@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.31 - 2025-06-16
+
+### 🚀 Features
+
+- **Added new talk:** Added the "RAILSHÖCK AT RENUO" talk to the `data.yaml` file.
+
+### Internal Changes
+
+- Updated the `etc/data.yaml` file with the new talk.
+
 ## v0.10.30 - 2025-06-13
 
 ### 🐛 Bug Fixes

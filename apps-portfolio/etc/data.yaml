@@ -8,6 +8,19 @@ bio: >
 
   Note: this is a public facing version of my pvt go/ricc-conferences where I hold state (like Manager/Wife approval).
 talks:
+  - title: 'Railshöck at Renuo'
+    event: Railshöck at Renuo
+    date: '2025-06-18'
+    location: 'Wallisellen, ZH'
+    country_code: ch
+    event_url: 'https://www.meetup.com/it-IT/rubyonrails-ch/events/307626721/'
+    status: confirmed
+    talk_description: Rails8 responsive chat done with RubyLLM # 'A Ruby meetup hosted by Renuo, featuring several presentations'
+    image: /images/events/railshock2025.webp
+    tags:
+      - Ruby
+      - Rails
+      - Zurich
   - title: Building a Multi-Agent Real AI Travel Agent with Python and Ruby and MCP
     event: DevFest Pescara 2025
     date: '2025-11-08'
