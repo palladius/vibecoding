@@ -4,9 +4,13 @@ import ItemsList from '../components/ItemsList';
 import { Talk, Article } from '../../lib/types';
 import fs from 'fs';
 import path from 'path';
+import yaml from 'js-yaml';
 
 const AboutPage = async () => {
-  const bio = fs.readFileSync(path.join(process.cwd(), 'etc', 'bio.md'), 'utf8');
+  const fileContents = fs.readFileSync(path.join(process.cwd(), 'etc', 'data.yaml'), 'utf8');
+  const data = yaml.load(fileContents) as { bio: string };
+  const bio = data.bio;
+
   const highlightedTalksData = await getHighlightedTalks();
   const highlightedArticlesData = await getHighlightedArticles();
 
