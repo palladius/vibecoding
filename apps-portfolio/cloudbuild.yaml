@@ -12,6 +12,8 @@ steps:
       - 'build'
       - '-t'
       - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
+      - '--build-arg'
+      - 'DATABASE_URL=file:/app/db/portfolio.sqlite3'
       - '.'
 
   # 2. Push the container image to Artifact Registry

@@ -36,12 +36,9 @@ const AboutPage = () => {
         <div className="w-3/5 pr-8">
           <p>{bio}</p>
         </div>
-        import Image from 'next/image';
-// ...
         <div className="w-2/5">
           <Image src="/images/about/image.png" alt="About Me" className="rounded-lg" width={500} height={500} />
         </div>
-// ...
       </div>
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4">Highlights</h2>
