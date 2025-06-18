@@ -1,33 +1,19 @@
-"use client";
-import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { getHighlightedTalks, getHighlightedArticles } from '../lib/data';
 import ItemsList from '../components/ItemsList';
 import { Talk, Article } from '../../lib/types';
+import fs from 'fs';
+import path from 'path';
 
-const AboutPage = () => {
-  const [bio, setBio] = useState('');
-  const [items, setItems] = useState<(Talk | Article)[]>([]);
+const AboutPage = async () => {
+  const bio = fs.readFileSync(path.join(process.cwd(), 'etc', 'bio.md'), 'utf8');
+  const highlightedTalksData = await getHighlightedTalks();
+  const highlightedArticlesData = await getHighlightedArticles();
 
-  useEffect(() => {
-    const fetchBio = async () => {
-      const res = await fetch('/api/bio');
-      const data = await res.json();
-      setBio(data.bio);
-    };
+  const highlightedTalks = highlightedTalksData.map((talk: Talk) => ({ ...talk, type: 'talk' as const }));
+  const highlightedArticles = highlightedArticlesData.map((article: Article) => ({ ...article, type: 'article' as const }));
 
-    const fetchData = async () => {
-      const highlightedTalksData = await getHighlightedTalks();
-      const highlightedArticlesData = await getHighlightedArticles();
-
-      const highlightedTalks = highlightedTalksData.map((talk: Talk) => ({ ...talk, type: 'talk' as const }));
-      const highlightedArticles = highlightedArticlesData.map((article: Article) => ({ ...article, type: 'article' as const }));
-
-      setItems([...highlightedTalks, ...highlightedArticles]);
-    };
-    fetchBio();
-    fetchData();
-  }, []);
+  const items = [...highlightedTalks, ...highlightedArticles];
 
   return (
     <div className="container mx-auto p-4">
