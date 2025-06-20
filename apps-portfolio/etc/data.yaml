@@ -14,14 +14,25 @@ about_me:
 
     Note: this is a public facing version of my pvt go/ricc-conferences where I hold state (like Manager/Wife approval).
   links:
-    - url: https://linktr.ee/palladius
-      title: My LinkTree
-      emoji: '🌳'
     - url: https://www.linkedin.com/in/riccardocarlesso/
       title: My Linkedin
       emoji: '💼'
     - url: https://ricc.rocks/
       title: My Blog
+    - url: https://linktr.ee/palladius
+      title: My LinkTree
+      emoji: '🌳'
+    - url: https://sessionize.com/riccardo-carlesso/
+      title: My Sessionize
+      emoji: '📅'
+    - url: https://medium.com/@palladiusbonton
+      title: My Medium
+      emoji: '📝'
+    - url: g.dev/ricc
+      title: My Google Developer Profile
+      emoji: '👨‍💻'
+
+
 talks:
   - title: 'Railshöck at Renuo'
     event: Railshöck at Renuo

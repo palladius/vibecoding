@@ -36,22 +36,22 @@ const AboutPage = async () => {
       <div className="flex">
         <div className="w-3/5 pr-8">
           <p>{bio}</p>
+          <div className="mt-8">
+            <h2 className="text-xl font-bold mb-4">Links</h2>
+            <ul className="list-disc list-inside">
+              {links.map((link) => (
+                <li key={link.url}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                    {link.emoji || '🔗'} {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="w-2/5">
-          <Image src="/images/about/image.png" alt="About Me" className="rounded-lg" width={500} height={500} />
+          <Image src="/images/about/image.png" alt="About Me" className="rounded-lg" width={350} height={350} />
         </div>
-      </div>
-      <div className="mt-8">
-        <h2 className="text-xl font-bold mb-4">Links</h2>
-        <ul className="list-disc list-inside">
-          {links.map((link) => (
-            <li key={link.url}>
-              <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
-                {link.emoji || '🔗'} {link.title}
-              </a>
-            </li>
-          ))}
-        </ul>
       </div>
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4">Highlights</h2>
