@@ -7,6 +7,11 @@ App is live publicly here: https://portfolio-app-272932496670.europe-west1.run.a
 I'm currently also building [PROD](https://portfolio-app-prod-272932496670.europe-west1.run.app/). But they're both
 affected by `BUG-02.md`. So working on dev first.
 
+Alternative views:
+
+* https://linktr.ee/palladius
+* https://github.com/palladius/my-sessions-and-bio
+
 ## Installation
 
 1.  **Install Dependencies:**
