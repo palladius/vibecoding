@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.11.1 - 2025-06-20
+
+### 🚀 Features
+
+- **Improved "About Me" page:** The "Links" section has been removed and the links are now displayed in a more compact and visually appealing way.
+
+### Internal Changes
+
+- Updated the `src/app/about/page.tsx` to remove the "Links" heading and restyle the links.
+
 ## v0.10.32 - 2025-06-16
 
 ### 🚀 Features

@@ -36,12 +36,11 @@ const AboutPage = async () => {
       <div className="flex">
         <div className="w-3/5 pr-8">
           <p>{bio}</p>
-          <div className="mt-8">
-            <h2 className="text-xl font-bold mb-4">Links</h2>
-            <ul className="list-disc list-inside">
+          <div className="mt-4">
+            <ul className="flex flex-wrap gap-x-4 gap-y-2">
               {links.map((link) => (
                 <li key={link.url}>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-400 hover:underline">
                     {link.emoji || '🔗'} {link.title}
                   </a>
                 </li>
