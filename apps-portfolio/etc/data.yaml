@@ -15,22 +15,31 @@ about_me:
     Note: this is a public facing version of my pvt go/ricc-conferences where I hold state (like Manager/Wife approval).
   links:
     - url: https://www.linkedin.com/in/riccardocarlesso/
-      title: My Linkedin
+      title: Linkedin
       emoji: '💼'
     - url: https://ricc.rocks/
-      title: My Blog
+      title: Blog
     - url: https://linktr.ee/palladius
-      title: My LinkTree
+      title: LinkTree
       emoji: '🌳'
     - url: https://sessionize.com/riccardo-carlesso/
-      title: My Sessionize
+      title: Sessionize
       emoji: '📅'
     - url: https://medium.com/@palladiusbonton
-      title: My Medium
+      title: Medium
       emoji: '📝'
     - url: g.dev/ricc
-      title: My Google Developer Profile
+      title: Google Developer
       emoji: '👨‍💻'
+    - url: https://github.com/palladius/
+      title: GitHub
+      emoji: '🐙'
+    - url: https://github.com/palladius/my-sessions-and-bio
+      title: Sessions and Bio on GH
+      emoji: '📂'
+    - url: https://www.youtube.com/@riccardocarlesso
+      title: YouTube
+      emoji: '📹'
 
 
 talks:
@@ -362,7 +371,7 @@ talks:
     location: Las Vegas, NV, USA
     country_code: us
     session_url: https://cloud.withgoogle.com/next?session=DEV302
-    video_url: https://www.youtube.com/watch?v=_NlGk9Ao_oA
+    video: https://www.youtube.com/watch?v=_NlGk9Ao_oA
     slides_url: https://assets.swoogo.com/uploads/3794522-661c3c8fe0cf9.pdf
     status: delivered
     talk_description: >-
@@ -392,9 +401,13 @@ articles:
   - title: A deep dive in Cloud Run for Rails
     url: https://ricc.rocks/en/posts/medium/2024-10-19-level-up-rails/
     publish_date: '2024-01-23'
+    video: 'https://www.youtube.com/watch?v=vpPftSHE9kM'
     tags:
       - CloudRun
       - Rails
+      - Codelab
+      - Video
+      - CloudSkillsBoost
     image: /images/generated/A-deep-dive-in-Cloud-Run-for-Rails.jpeg
     resource_type: article
   - title: Hey Gemini, explain me these pictures - in bash

@@ -12,8 +12,7 @@ interface Talk {
   location: string;
   country_code: string;
   session_url: string;
-  video_url: string;
-  video?: string; // Handle potential inconsistency
+  video: string;
   slides_url: string;
   status: string;
   tags: string[];
@@ -29,6 +28,7 @@ interface Article {
   publish_date: string;
   tags: string[];
   image: string;
+  video?: string;
   image_old?: string;
   resource_type: string;
   description: string;
@@ -59,7 +59,7 @@ export async function importData() {
           location: talk.location,
           country_code: talk.country_code,
           session_url: talk.session_url,
-          video_url: talk.video_url || talk.video,
+          video: talk.video,
           slides_url: talk.slides_url,
           status: talk.status,
           tags: tags,
@@ -86,6 +86,7 @@ export async function importData() {
           publish_date: article.publish_date,
           tags: tags,
           image: article.image,
+          video: article.video,
           resource_type: article.resource_type,
           description: article.description,
         },

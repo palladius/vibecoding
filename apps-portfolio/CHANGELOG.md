@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.12.1 - 2025-06-20
+
+### 🐛 Bug Fixes
+
+- **Fixed YouTube video embedding:** The YouTube video embedding was broken on the talk and article pages. This has been fixed by correctly referencing the `video` property and adding a null check to the `extractYouTubeVideoId` function.
+
+### Internal Changes
+
+- Updated the `src/app/talks/[slug]/page.tsx` and `src/app/articles/[slug]/page.tsx` to correctly embed YouTube videos.
+
+## v0.12.0 - 2025-06-20
+
+### 🚀 Features
+
+- **Embedded YouTube videos:** YouTube videos are now embedded directly on the talk and article pages.
+
+### Internal Changes
+
+- Updated the `src/app/talks/[slug]/page.tsx` and `src/app/articles/[slug]/page.tsx` to embed YouTube videos.
+- Standardized the `video` key in the `etc/data.yaml` file.
+
 ## v0.11.1 - 2025-06-20
 
 ### 🚀 Features
@@ -321,7 +342,7 @@ This release introduces a major refactoring of the data access layer, moving fro
 
 - **Fixed "Failed to fetch config" error:** This error was caused by issues with the database connection in a serverless environment. The move to Prisma and its recommended connection strategy for Next.js has resolved this issue.
 - **Fixed broken pages:** The migration to Prisma broke several pages that were using the old data access logic. All pages and API routes have been updated to use the new Prisma client.
-- **Fixed test warnings:** A warning in the test suite related to state updates has been resolved.
+-- **Fixed test warnings:** A warning in the test suite related to state updates has been resolved.
 
 ### Internal Changes
 
