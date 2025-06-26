@@ -89,8 +89,7 @@ env-print:
 # Trigger a Cloud Build using the local source
 build:
     @echo "Building and deploying to project ${GOOGLE_CLOUD_PROJECT}..."
-    (cd .. && gcloud builds submit . --project="${GOOGLE_CLOUD_PROJECT}" --config apps-portfolio/cloudbuild.yaml)
-    # @gcloud builds submit --project="${GOOGLE_PROJECT_ID}" --config cloudbuild.yaml .
+    gcloud builds submit . --project="${GOOGLE_CLOUD_PROJECT}" --config apps-portfolio/cloudbuild.yaml
 
 # Trigger the Cloud Build pipeline from the git repository
 trigger-build:
