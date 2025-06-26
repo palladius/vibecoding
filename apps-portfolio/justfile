@@ -34,13 +34,13 @@ log:
 
 # [test] Run lint tests
 lint:
-    # npm run lint # or maybe npx eslint . ?
+    npm run lint
 
 # Run tests
 test:
     @echo "Running tests... Riccardo 2 gemini: note this code tends to execute for >5min so refrain from running it yourself"
-    # just db-migrate-test
     time npm test
+    just lint
 
 test-estensive: test lint db-show import
     @echo "Running extensive tests... Riccardo 2 gemini: note this code tends to execute for >5min so refrain from running it yourself"
@@ -89,7 +89,7 @@ env-print:
 # Trigger a Cloud Build using the local source
 build:
     @echo "Building and deploying to project ${GOOGLE_PROJECT_ID}..."
-    @gcloud builds submit --project="${GOOGLE_PROJECT_ID}" --config cloudbuild.yaml .
+    (cd .. && gcloud builds submit apps-portfolio --project="${GOOGLE_PROJECT_ID}" --config apps-portfolio/cloudbuild.yaml)
 
 # Trigger the Cloud Build pipeline from the git repository
 trigger-build:
