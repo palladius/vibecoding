@@ -155,3 +155,6 @@ Before committing any change, let's make sure:
 6. at this point, prepare a commit message, commit and ask user whether you can push.
 7. After push, keep monitoring every 2 minutes the latest triggered Cloud Build. You can use my convenience scripts
  `just cloud-build-list` and `just cloud-build-show-log {{build_id}}` for it.
+
+
+Prefer triggering cloud Build by just git commit/pushing than triggering a build yourself from CLI. Leave that with me.
