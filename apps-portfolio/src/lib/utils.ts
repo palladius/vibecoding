@@ -14,3 +14,15 @@ export const slugify = (str: string) => {
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, '') // Trim - from end of text
 }
+
+export function extractYouTubeVideoId(url: string) {
+  if (!url) {
+    return null;
+  }
+  const regex = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})$/;
+  const match = url.match(regex);
+  if (!match) {
+    throw new Error(`Invalid YouTube URL format. Expected format: https://www.youtube.com/watch?v=VIDEO_ID. Received: ${url}`);
+  }
+  return match[1];
+}
