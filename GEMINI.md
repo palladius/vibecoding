@@ -163,5 +163,10 @@ Try to add `LLM evaluation` to understand if we are writing good code or good pr
 
 If you use Ruby, use `rbenv` and a `Gemfile`.
 
-* Gems: I love `langchainrb` for invoking Gemini unless it's a Rails application, then use `ruby_llm`.
-* For agents, use [regent](https://github.com/alchaplinsky/regent) (I've just googled it, but it seems cool).
+* Gems: I love `langchainrb` for invoking Gemini unless its a rails application then use `ruby_llm`.
+* For agents, use [regent](https://github.com/alchaplinsky/regent) (I've just googled it but it seems cool).
+
+
+## Bugs
+
+* `BUG001` You have a tendency of doing git commit -m "feat: blah `filename`: updated ..".  Stop doing it! Either use single quotes or stop using backticks inside a double-quoted bash string!
