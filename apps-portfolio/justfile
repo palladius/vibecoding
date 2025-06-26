@@ -39,7 +39,7 @@ lint:
 # Run tests
 test:
     @echo "Running tests... Riccardo 2 gemini: note this code tends to execute for >5min so refrain from running it yourself"
-    just db-migrate-test
+    # just db-migrate-test
     time npm test
 
 test-estensive: test lint db-show import
