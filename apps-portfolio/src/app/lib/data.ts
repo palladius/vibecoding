@@ -25,7 +25,8 @@ export async function getArticles() {
   });
   return articles.map((article) => ({
     ...article,
-    slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`
+    slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`,
+    type: 'article'
   }));
 }
 

@@ -1,9 +1,12 @@
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
-import { db } from '../src/lib/db';
+import { PrismaClient } from '@prisma/client';
 import * as dotenv from 'dotenv';
+import path from 'path';
 
 dotenv.config();
+
+const db = new PrismaClient({ datasources: { db: { url: `file:${path.resolve(process.cwd(), 'prisma', '../db/portfolio.sqlite3')}` } } });
 
 interface Talk {
   title: string;
@@ -59,7 +62,7 @@ export async function importData() {
           location: talk.location,
           country_code: talk.country_code,
           session_url: talk.session_url,
-          video: talk.video,
+          video_url: talk.video,
           slides_url: talk.slides_url,
           status: talk.status,
           tags: tags,
@@ -86,7 +89,7 @@ export async function importData() {
           publish_date: article.publish_date,
           tags: tags,
           image: article.image,
-          video: article.video,
+          
           resource_type: article.resource_type,
           description: article.description,
         },

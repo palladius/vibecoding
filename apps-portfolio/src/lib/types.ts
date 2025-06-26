@@ -1,6 +1,7 @@
 export interface Talk {
   id?: number;
   title: string;
+  slug: string;
   event?: string;
   date?: string;
   location?: string;
@@ -21,6 +22,7 @@ export interface Talk {
 export interface Article {
   id: number;
   title: string;
+  slug: string;
   url?: string;
   publish_date?: string;
   tags?: string;

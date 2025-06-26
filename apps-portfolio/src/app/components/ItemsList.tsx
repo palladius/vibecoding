@@ -2,28 +2,8 @@
 
 import TalkCard from "./TalkCard";
 import ArticleCard from "./ArticleCard";
+import { Talk, Article } from "../../lib/types";
 
-interface Talk {
-  id: number;
-  title: string;
-  event?: string;
-  date?: string;
-  location?: string;
-  tags?: string;
-  image?: string;
-  country_code?: string;
-  type: 'talk';
-}
-
-interface Article {
-  id: number;
-  title: string;
-  url?: string;
-  publish_date?: string;
-  tags?: string;
-  image?: string;
-  type: 'article';
-}
 
 type Item = Talk | Article;
 
@@ -33,9 +13,10 @@ export default function ItemsList({ items }: { items: Item[] }) {
       {items.map((item) => {
         if (item.type === 'talk') {
           const talkWithDefaults = {
+            id: item.id,
             ...item,
             event: item.event || '',
-            publish_date: item.date || '',
+            date: item.date || '',
             location: item.location || '',
             tags: item.tags || '',
             image: item.image || '/images/placeholder-image.png',
@@ -43,16 +24,20 @@ export default function ItemsList({ items }: { items: Item[] }) {
             slug: item.slug || '',
           };
           return <TalkCard key={`talk-${item.id}`} talk={talkWithDefaults} />;
-        } else {
+        } else if (item.type === 'article') {
           const articleWithDefaults = {
+            id: item.id,
             ...item,
             url: item.url || '',
             publish_date: item.publish_date || '',
             tags: item.tags || '',
             image: item.image || '/images/placeholder-image.png',
+            slug: item.slug || '',
+            resource_type: item.resource_type || ''
           };
           return <ArticleCard key={`article-${item.id}`} article={articleWithDefaults} />;
         }
+        return null
       })}
     </div>
   );

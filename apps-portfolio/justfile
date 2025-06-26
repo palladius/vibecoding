@@ -26,7 +26,7 @@ run-dev-p3002:
     #@echo "Logging output to log/dev.log"
     @echo "NEXT_PUBLIC_API_URL: $NEXT_PUBLIC_API_URL"
     @echo "DATABASE_URL:        $DATABASE_URL"
-    DATABASE_URL="file:/usr/local/google/home/ricc/git/vibecoding/apps-portfolio/db/portfolio.sqlite3" API_URL=http://localhost:3002 NEXT_PUBLIC_API_URL=http://localhost:3002 npm run dev -- -p 3002 2>&1 | tee log/dev.log
+    DATABASE_URL="file:./db/portfolio.sqlite3" API_URL=http://localhost:3002 NEXT_PUBLIC_API_URL=http://localhost:3002 npm run dev -- -p 3002 2>&1 | tee log/dev.log
 
 # View the development log
 log:
@@ -39,6 +39,7 @@ lint:
 # Run tests
 test:
     @echo "Running tests... Riccardo 2 gemini: note this code tends to execute for >5min so refrain from running it yourself"
+    just db-migrate-test
     time npm test
 
 test-estensive: test lint db-show import
@@ -48,7 +49,15 @@ test-estensive: test lint db-show import
 
 # [JOB] Import data from YAML to SQLite. TODO rename to db-import
 import:
-    DATABASE_URL="file:/usr/local/google/home/ricc/git/vibecoding/apps-portfolio/db/portfolio.sqlite3" npx tsx scripts/import-yaml.ts
+    DATABASE_URL="file:./db/portfolio.sqlite3" npx tsx scripts/import-yaml.ts
+
+# [JOB] Test import data from YAML to SQLite.
+test-import:
+    DATABASE_URL="file:$(pwd)/db/portfolio.sqlite3" npx tsx scripts/import-yaml.ts
+
+# [JOB] Migrate test database
+db-migrate-test:
+    DATABASE_URL="file:$(pwd)/db/portfolio.sqlite3" npx prisma migrate dev
 
 # [JOB] Show database content
 db-show:

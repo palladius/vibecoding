@@ -99,7 +99,7 @@ This is to minimize user interaction. If you're ever blocked (eg, "drag and drop
 
 Do NOT enter in infinite loops like:
 * `just run`
-* `just run-dev`. I run this for you, on port 3000. Check logs under log/
+* `just run-dev`. I run this for you, on port 3001. Check logs under `log/`
 * `just docker-run`. I can run this for you, on port 8080, upon request. figure out a way to log under `log/docker.log`
 
 as you're unable to exit these loops, and this forces me to kill our chat. I'll run them for you upon request.

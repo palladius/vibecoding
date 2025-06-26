@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.12.2 - 2025-06-26
+
+### 🐛 Bug Fixes
+
+- **Fixed empty article cards:** Article cards were not rendering due to missing `type` property and incorrect handling of `video_url`. This has been fixed by adding `type: 'article'` to articles in `getArticles()` and correctly handling `video_url` in `ArticleCard.tsx`.
+- **Fixed database path:** The database was being created in the wrong location (`prisma/db`). This has been fixed by updating `prisma/schema.prisma` to use a relative path (`../db/portfolio.sqlite3`).
+
+### Internal Changes
+
+- Updated `src/app/lib/data.ts` to add `type: 'article'` to article objects.
+- Updated `src/app/components/ArticleCard.tsx` to display `video_url` and include a null check for the article object.
+- Updated `prisma/schema.prisma` to include `video_url` in the `Article` model.
+- Modified `prisma/schema.prisma` to use a relative path for the database URL.
+- Corrected `scripts/import-yaml.ts` to handle the `video_url` field for articles.
+
 ## v0.12.1 - 2025-06-20
 
 ### 🐛 Bug Fixes

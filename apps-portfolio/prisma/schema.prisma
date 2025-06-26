@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:../db/portfolio.sqlite3"
 }
 
 model Talk {
@@ -40,6 +40,7 @@ model Article {
   image         String?
   resource_type String?
   description   String?
+  video_url     String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }

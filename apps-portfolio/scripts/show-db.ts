@@ -1,24 +1,30 @@
-import { getDb } from '../src/lib/db.js';
+import { db } from '../src/lib/db';
 
 async function showDbContent() {
-  const db = await getDb();
-
   console.log('✨ Talks:');
-  const talks = await db.all('SELECT date, title FROM talks ORDER BY date DESC');
+  const talks = await db.talk.findMany({
+    orderBy: {
+      date: 'desc',
+    },
+  });
   if (talks.length === 0) {
     console.log('  (No talks found)');
   } else {
-    talks.forEach((talk: any) => {
+    talks.forEach((talk) => {
       console.log(`  ${talk.date} - ${talk.title}`);
     });
   }
 
   console.log('\n✨ Articles:');
-  const articles = await db.all('SELECT publish_date, title FROM articles ORDER BY publish_date DESC');
+  const articles = await db.article.findMany({
+    orderBy: {
+      publish_date: 'desc',
+    },
+  });
   if (articles.length === 0) {
     console.log('  (No articles found)');
   } else {
-    articles.forEach((article: any) => {
+    articles.forEach((article) => {
       console.log(`  ${article.publish_date} - ${article.title}`);
     });
   }
