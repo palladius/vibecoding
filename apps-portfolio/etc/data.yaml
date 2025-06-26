@@ -43,6 +43,21 @@ about_me:
 
 
 talks:
+  - title: 'Gemini CLI: Your New Best Friend for local development'
+    event: We are Developers 2025
+    date: '2025-07-11'
+    location: Berlin, Germany
+    country_code: de
+    status: confirmed
+    talk_description: >
+      A deep dive into the Gemini CLI, showcasing how it can revolutionize your
+      software engineering workflow with powerful AI assistance.
+    tags:
+      - Gemini
+      - CLI
+      - highlight
+      - video
+    image: /images/generated/We-are-Developers-2025-2025-07-10.jpeg # Reusing existing image for WAD
   - title: 'Railshöck at Renuo'
     event: Railshöck at Renuo
     date: '2025-06-18'

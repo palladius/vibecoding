@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.12.3 - 2025-06-26
+
+### 🚀 Features
+
+- **Added Gemini CLI talk:** Added a new talk entry for "Gemini CLI: Your New Best Friend for Software Engineering" at WeAreDevelopers 2025.
+
+### 🐛 Bug Fixes
+
+- **Corrected WeAreDevelopers session URL:** Reverted the `session_url` for the "From Monolith to Magic: An AI-Powered DevOps Workshop" at WeAreDevelopers 2025 to its original value.
+
 ## v0.12.2 - 2025-06-26
 
 ### 🐛 Bug Fixes
