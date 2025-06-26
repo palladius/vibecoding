@@ -42,6 +42,7 @@ log/
 t.sh
 TODO-ricc.md
 .env.docker
+db/portfolio.sqlite3
 
 /src/generated/prisma
 
