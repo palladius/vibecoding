@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.4 - 2025-06-26
+
+### 🐛 Bug Fixes
+
+- **Fixed Next Talks proximity logic:** The "Next week!" and "This month!" proximity logic in `/next-talks` was incorrect. It now uses `moment.js` for accurate date comparisons.
+
 ## v0.12.3 - 2025-06-26
 
 ### 🚀 Features

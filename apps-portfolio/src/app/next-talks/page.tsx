@@ -6,17 +6,17 @@ import { Talk } from "../../lib/types";
 import TalkCard from "../components/TalkCard";
 import CalendarView from "../components/CalendarView";
 
-const getProximity = (date: string) => {
-  const today = new Date();
-  const talkDate = new Date(date);
-  const diffTime = talkDate.getTime() - today.getTime();
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+import moment from 'moment';
 
-  if (diffDays === 0) return "Today!";
-  if (diffDays === 1) return "Tomorrow!";
-  if (diffDays > 1 && diffDays <= 7) return "This week!";
-  if (diffDays > 7 && diffDays <= 14) return "Next week!";
-  if (diffDays > 14 && diffDays <= 30) return "This month!";
+const getProximity = (date: string) => {
+  const today = moment().startOf('day');
+  const talkDate = moment(date).startOf('day');
+
+  if (talkDate.isSame(today, 'day')) return "Today!";
+  if (talkDate.isSame(today.clone().add(1, 'day'), 'day')) return "Tomorrow!";
+  if (talkDate.isSame(today, 'week')) return "This week!";
+  if (talkDate.isSame(today.clone().add(1, 'week'), 'week')) return "Next week!";
+  if (talkDate.isSame(today, 'month')) return "This month!";
   return undefined;
 };
 
