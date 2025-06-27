@@ -43,6 +43,25 @@ about_me:
 
 
 talks:
+  - title: 'Create a Rails8 responsive app with Gemini and RubyLLM'
+    event: Railshock at Renuo
+    date: '2025-06-19'
+    location: 'Wallisellen, ZH'
+    country_code: ch
+    status: delivered
+    talk_description: >
+      The creation of a responsive chat application using Ruby on Rails 8, the
+      `ruby_llm` gem, and the Model Context Protocol (MCP).
+    tags:
+      - Ruby
+      - Rails
+      - Gemini
+      - RubyLLM
+      - MCP
+      - highlight
+    slides_url: https://speakerdeck.com/palladius/print2-create-a-rails8-responsive-app-with-gemini-and-rubyllm
+    video: https://www.youtube.com/watch?v=BOI5CB1ksCQ
+    image: /images/events/railshock2025.webp
   - title: 'Gemini CLI: Your New Best Friend for local development'
     event: We are Developers 2025
     date: '2025-07-11'

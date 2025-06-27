@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.5 - 2025-06-27
+
+### 🚀 Features
+
+- **Added Railshock at Renuo talk:** Added a new talk entry for "Create a Rails8 responsive app with Gemini and RubyLLM" at Railshock at Renuo 2025.
+
 ## v0.12.4 - 2025-06-26
 
 ### 🐛 Bug Fixes
