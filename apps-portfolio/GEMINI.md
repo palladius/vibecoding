@@ -158,3 +158,5 @@ Before committing any change, let's make sure:
 
 
 Prefer triggering cloud Build by just git commit/pushing than triggering a build yourself from CLI. Leave that with me.
+
+STOP CHANGING `cloud_build.yaml` and the `build` target in `justfile`
