@@ -13,7 +13,10 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 **URLs with UTMs:**
 * None
 
-**URLs without UTMs (excluding internal Medium links and non-HTTP/HTTPS links):**
+**Missing UTMs (matching `cloud.google.com` or `codelabs.developers.google.com` but no UTMs):**
+* None
+
+**All other URLs (irrelevant to this analysis):**
 * `https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/`
 * `https://github.com/palladius/my-sessions-and-bio`
 * `https://github.com/google-gemini/gemini-cli`

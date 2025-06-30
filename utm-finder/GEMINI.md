@@ -9,7 +9,7 @@ The output should be under `output` and structure like follows:
 3. ...
 
 Each of these should be an LLM-produced report of the UTM status, like an overall status above (OK or missing actions)
-and an array of linked URLs vs missing URLs.
+and an array of 1. linked URLs vs 2. missing URLs (meaning URLs with no UTM but which match the 'regex' in `etc/urls.yaml`) vs 3. all other URLs (irrelevant to me)
 
 ## UTM structure
 
@@ -50,3 +50,7 @@ Try to find a way to take this subset of text/html. If not, we can work around i
 Once you have understood the space, we can start coding it and scaling to:
 1. All articles by Riccardo
 2. All articles by anyone in `etc/users.yaml`
+
+## Caching
+
+Keep cache for 1 day - do NOT re-download websites if you have a cache hit.
