@@ -89,8 +89,8 @@ Finally create an uber-report `output/REPORT.md` which contains:
 
 1. a tabular list of all articles
 2. in each row, there is
-   1. the article TITLE, linked to the local MD file
-   2. An emoji of link linked to the remote article, like `[emoji](link)`
+   1. the article TITLE, linked to the local MD file (stripping out `output/` or it wont work!).
+   2. An emoji of link linked to the remote article, like `[🔗](https://..)`
    3. Number of UTMs applied
    4. Number of missing UTMs.
    5. Total # links.
