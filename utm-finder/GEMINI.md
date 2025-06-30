@@ -37,6 +37,8 @@ We will start cherrypicking these 2-3 single Medium articles by myself (Riccardo
 
 And we'll create a report for it.
 
+Find more URLs to test in phase 1 in `etc/users.yaml` under `sample_articles:` stanza.
+
 # Warning on Medium links
 
 Note that checking for links in an articles is NOT equivalent to getting all links in that URL.
@@ -56,3 +58,27 @@ Once you have understood the space, we can start coding it and scaling to:
 ## Caching
 
 Keep cache for 1 day - do NOT re-download websites if you have a cache hit.
+
+## report notes
+
+* ignore local links: `/...`.
+* `sort | uniq -c` links: so that this looks like this:
+
+```markdown
+# original
+* `https://miro.medium.com/v2/resize:fill:304:304/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
+* `https://miro.medium.com/v2/resize:fill:240:240/10fd5c419atitle: "The UTM Finder"
+   url: https://medium.com/@palladiusbonton/the-utm-finder-2f0c1d3e4f5ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
+* `https://miro.medium.com/v2/resize:fill:152:152/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
+* `https://miro.medium.com/v2/resize:fill:120:120/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
+* `https://miro.medium.com/v2/resize:fill:1000:1000/7*GAOKVe--MXbEJmV9230oOQ.png`
+* `https://glyph.medium.com`
+* `/manifest.json`
+* `https://glyph.medium.com/css/unbound.css`
+* `https://glyph.medium.com/css/unbound.css`
+# after your pass
+* `https://miro.medium.com/v2/resize:fill:304:304/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156` 4x
+* `https://miro.medium.com/v2/resize:fill:1000:1000/7*GAOKVe--MXbEJmV9230oOQ.png`
+* `https://glyph.medium.com`
+* `https://glyph.medium.com/css/unbound.css` 2x
+```

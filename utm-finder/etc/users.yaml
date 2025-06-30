@@ -4,3 +4,10 @@ people:
   Romin:
     #medium: https://medium.com/@romin ??
     medium: https://iromin.medium.com/
+
+
+sample_articles:
+- https://medium.com/google-cloud/gemini-cli-tutorial-series-part-2-gemini-cli-command-line-parameters-e64e21b157be # from Romin
+- https://medium.com/google-cloud/vibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434 # (UTMs already added)
+- https://medium.com/@palladiusbonton/gemini-cli-vibecode-a-next-js-app-and-push-to-the-cloud-c1f30c50136d # (no UTMs yet)
+- https://medium.com/google-cloud/step-by-step-serving-pytorch-models-with-a-custom-handler-on-vertex-ai-5ada1d01c534 # from my buddy Remi - unsure
