@@ -5,6 +5,8 @@ import os
 from collections import Counter
 import re
 from datetime import datetime
+import argparse
+import shutil
 
 # Configuration files
 RSS_FEEDS_FILE = "etc/rss_feeds.yaml"
@@ -62,12 +64,25 @@ def extract_title_from_html(html_content):
     return "Unknown Title"
 
 def extract_author_from_html(html_content):
+    # More robust author extraction
+    author_match = re.search(r'<meta name="author" content="([^"]+)">', html_content)
+    if author_match:
+        return author_match.group(1).strip()
+    # Fallback to og:title if author meta tag is not found
     author_match = re.search(r'<meta data-rh="true" property="og:title" content=".*? \| by ([^\|]+)', html_content)
     if author_match:
         return author_match.group(1).strip()
     return "Unknown Author"
 
 def main():
+    parser = argparse.ArgumentParser(description="UTM Crawler for Medium articles.")
+    parser.add_argument("--no-cache", action="store_true", help="Clear cache before crawling.")
+    args = parser.parse_args()
+
+    if args.no_cache and os.path.exists(CACHE_DIR):
+        print(f"Clearing cache directory: {CACHE_DIR}")
+        shutil.rmtree(CACHE_DIR)
+
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     os.makedirs(CACHE_DIR, exist_ok=True)
 
@@ -100,7 +115,7 @@ def main():
                 # Filter out non-article links more robustly
                 # Check if the URL path has at least two segments after the domain (e.g., /author/slug)
                 parsed_url_path = urlparse(article_url).path.strip('/').split('/')
-                if len(parsed_url_path) < 2 or (len(parsed_url_path) == 2 and parsed_url_path[0].startswith('@')):
+                if len(parsed_url_path) < 2:
                     print(f"  Skipping non-article link: {article_url}")
                     continue
 

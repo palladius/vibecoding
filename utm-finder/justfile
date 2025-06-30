@@ -3,3 +3,12 @@ list:
 
 crawl-utms:
 	python3 utm_crawler.py
+
+crawl-utms-no-cache:
+	python3 utm_crawler.py --no-cache
+
+test: crawl-utms
+
+clean:
+	rm -rf output
+	rm -rf .cache

@@ -24,7 +24,11 @@ Where the
 
 ## Feedback loop
 
-Current phase: phase 1.
+* DONE: phase 1.
+* currently in phase 2.
+
+If you take some important decision which is NOT in GEMINI.md, please add it to `DECISIONS.md`. Be as concise as possible, but add rationale (the WHY).
+
 
 ### phase 1 - Study / Vibing
 
@@ -94,7 +98,7 @@ Finally create an uber-report `output/REPORT.md` which contains:
 1. a tabular list of all articles, sorted by Date DESC.
 2. in each row, there is
    1. Publication date (Date in `YYYY-MM-DD` format). Article publication. needs to be the first column since we order by it.
-   2. the article TITLE, linked to the local MD file (stripping out `output/` or it wont work!). Then in parenthesis, add author name "(Name Surname)"
+   2. the article TITLE, linked to the local MD file (stripping out `output/` or it wont work!). Then in parenthesis, add author name " (Name Surname)" AFTER the link (should NOT be linked).
    3. An emoji of link linked to the remote article, like `[🔗](https://..)`
    4. Number of UTMs applied
    5. Number of missing UTMs.
@@ -104,3 +108,25 @@ Finally create an uber-report `output/REPORT.md` which contains:
 Code this and let me know if this is 100% deterministic or if we need to have an LLM massage the rough edges.
 
 - Do NOT commit or push without me - ABSOLUTELY. REMEMBER this and add to your memory.
+
+## BUGs
+
+You're discarding too much:
+
+Current:
+
+Processing RSS feed: https://medium.com/feed/@palladiusbonton
+  Skipping non-article link: https://medium.com/@palladiusbonton/gemini-cli-vibecode-a-next-js-app-and-push-to-the-cloud-c1f30c50136d?source=rss-b5293b96912f------2
+  Skipping non-article link: https://medium.com/@palladiusbonton/wip-code-3d-kid-games-with-gemini-2-5-d580d6b9802b?source=rss-b5293b96912f------2
+  Skipping non-article link: https://medium.com/@palladiusbonton/ruby-on-rails-with-postgresql-on-cloud-run-bdaaf0b26e0b?source=rss-b5293b96912f------2
+  Skipping non-article link: https://medium.com/@palladiusbonton/hey-bard-write-a-responsive-javascript-search-engine-app-for-me-b2585e55385e?source=rss-b5293b96912f------2
+  Skipping non-article link: https://medium.com/@palladiusbonton/what-is-toilet-papers-right-side-8da0504d6d0b?source=rss-b5293b96912f------2
+
+
+Desired:
+
+Processing RSS feed: https://medium.com/feed/@palladiusbonton :
+
+  Skipping non-article link: https://medium.com/@palladiusbonton/what-is-toilet-papers-right-side-8da0504d6d0b?source=rss-b5293b96912f------2
+
+Is there a chance that if u find an article to skip, you skip ALL for that user (bad loop)?
