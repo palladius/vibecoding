@@ -5,29 +5,39 @@ import { slugify } from '../../lib/utils';
 
 // Server-side function
 export async function getTalks() {
-  const talks = await db.talk.findMany({
-    orderBy: {
-      date: 'desc',
-    },
-  });
-  return talks.map((talk) => ({
-    ...talk,
-    slug: `${(talk.date as Date).toISOString().split('T')[0]}-${slugify(talk.title)}`
-  }));
+  try {
+    const talks = await db.talk.findMany({
+      orderBy: {
+        date: 'desc',
+      },
+    });
+    return talks.map((talk) => ({
+      ...talk,
+      slug: `${(talk.date as Date).toISOString().split('T')[0]}-${slugify(talk.title)}`
+    }));
+  } catch (error) {
+    console.error('Error fetching talks:', error);
+    return [];
+  }
 }
 
 // Server-side function
 export async function getArticles() {
-  const articles = await db.article.findMany({
-    orderBy: {
-      publish_date: 'desc',
-    },
-  });
-  return articles.map((article) => ({
-    ...article,
-    slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`,
-    type: 'article'
-  }));
+  try {
+    const articles = await db.article.findMany({
+      orderBy: {
+        publish_date: 'desc',
+      },
+    });
+    return articles.map((article) => ({
+      ...article,
+      slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`,
+      type: 'article'
+    }));
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    return [];
+  }
 }
 
 // Server-side function
@@ -47,7 +57,7 @@ export async function getArticle(slug: string) {
 // Client-side function (uses relative URL)
 export async function getFutureTalks() {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
-  const res = await fetch(`${baseUrl}/api/talks`);
+  const res = await fetch(`${baseUrl}/api/talks?future=true`);
   const talks: Talk[] = (await res.json()).map((talk: Talk) => ({
     ...talk,
     date: new Date(talk.date),

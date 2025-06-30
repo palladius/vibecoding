@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.12.9 - 2025-06-30
+
+### 🐛 Bug Fixes
+
+- **Fixed main page rendering:** The main page was failing to render due to a `TypeError` when attempting to call `toISOString()` on `article.publish_date`, which was a string instead of a Date object. This has been fixed by explicitly converting `publish_date` to a Date object before calling `toISOString()`.
+
+### Internal Changes
+
+- Updated `src/app/page.tsx` to convert `article.publish_date` to a Date object before calling `toISOString()`.
+
+## v0.12.8 - 2025-06-30
+
+### 🐛 Bug Fixes
+
+- **Workaround for broken `/next-talks` endpoint:** Implemented client-side filtering for future talks as a workaround for persistent database connection issues in the Next.js environment. The API now fetches all talks, and filtering is performed in the client.
+
+### Internal Changes
+
+- Reverted `src/app/api/talks/route.ts` to fetch all talks without filtering.
+- Modified `src/app/lib/data.ts` to fetch all talks and perform client-side filtering for future talks.
+
 ## v0.12.6 - 2025-06-30
 
 ### 🐛 Bug Fixes
@@ -144,8 +165,6 @@
 ### Internal Changes
 
 - Updated the `cloudbuild.yaml` to use `npx vitest run` in the `Test` step.
-- Updated the `cloudbuild.yaml` to set the `NEXT_PUBLIC_API_URL` in the `Deploy-Dev` and `Deploy-Prod` steps.
-- Reverted the `src/app/lib/data.ts` to use `fetch` instead of calling the database directly.
 
 ## v0.10.25 - 2025-06-13
 
@@ -176,7 +195,6 @@
 ### Internal Changes
 
 - Updated the `cloudbuild.yaml` to set the `NEXT_PUBLIC_API_URL` in the `Deploy-Dev` and `Deploy-Prod` steps.
-- Reverted the `src/app/lib/data.ts` to use `fetch` instead of calling the database directly.
 
 ## v0.10.22 - 2025-06-13
 
