@@ -20,40 +20,19 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 
 **All other URLs (irrelevant to this analysis):**
 * `https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19`
-* `/osd.xml`
-* `https://miro.medium.com/v2/resize:fill:304:304/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
-* `https://miro.medium.com/v2/resize:fill:240:240/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
-* `https://miro.medium.com/v2/resize:fill:152:152/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
-* `https://miro.medium.com/v2/resize:fill:120:120/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
+* `https://miro.medium.com/v2/resize:fill:304:304/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156` 4x
 * `https://miro.medium.com/v2/resize:fill:1000:1000/7*GAOKVe--MXbEJmV9230oOQ.png`
 * `https://glyph.medium.com`
-* `/manifest.json`
-* `https://glyph.medium.com/css/unbound.css`
-* `https://glyph.medium.com/css/unbound.css`
-* `https://medium.com/@palladiusbonton`
+* `https://glyph.medium.com/css/unbound.css` 2x
+* `https://medium.com/@palladiusbonton` 3x
 * `https://medium.com/google-cloud/vibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434`
 * `android-app://com.medium.reader/https/medium.com/p/da5630d00434`
-* `/sitemap/sitemap.xml`
 * `https://rsci.app.link/?%24canonical_url=https%3A%2F%2Fmedium.com%2Fp%2Fda5630d00434&amp;%7Efeature=LoOpenInAppButton&amp;%7Echannel=ShowPostUnderCollection&amp;%7Estage=mobileNavBar&amp;source=post_page---top_nav_layout_nav-----------------------------------------`
-* `/m/signin?operation=login&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;source=post_page---top_nav_layout_nav-----------------------global_nav------------------`
-* `/?source=post_page---top_nav_layout_nav-----------------------------------------`
-* `/m/signin?operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fnew-story&amp;source=---top_nav_layout_nav-----------------------new_post_topnav------------------`
-* `/search?source=post_page---top_nav_layout_nav-----------------------------------------`
-* `/m/signin?operation=login&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;source=post_page---top_nav_layout_nav-----------------------global_nav------------------`
-* `https://medium.com/google-cloud?source=post_page---publication_nav-e52cf94d98af-da5630d00434---------------------------------------`
-* `https://medium.com/google-cloud?source=post_page---post_publication_sidebar-e52cf94d98af-da5630d00434---------------------------------------`
-* `/@palladiusbonton?source=post_page---byline--da5630d00434---------------------------------------`
-* `/@palladiusbonton?source=post_page---byline--da5630d00434---------------------------------------`
-* `/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fgoogle-cloud%2Fda5630d00434&amp;operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;user=Riccardo+Carlesso&amp;userId=b5293b96912f&amp;source=---header_actions--da5630d00434---------------------clap_footer------------------`
-* `/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fda5630d00434&amp;operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;source=---header_actions--da5630d00434---------------------bookmark_footer------------------`
-* `https://github.com/google-gemini/gemini-cli`
-* `https://github.com/google-gemini/gemini-cli/`
-* `https://github.com/google-gemini/gemini-cli/`
+* `https://medium.com/google-cloud?source=post_page---publication_nav-e52cf94d98af-da5630d00434---------------------------------------` 3x
+* `https://github.com/google-gemini/gemini-cli` 5x
 * `https://en.wikipedia.org/wiki/List_of_fake_news_websites`
 * `https://mediabiasfactcheck.com/byoblu-bias/`
 * `https://aistudio.google.com/`
-* `https://github.com/google-gemini/gemini-cli`
-* `https://github.com/google-gemini/gemini-cli`
 * `https://dhh.dk/`
 * `https://rubyonrails.org/`
 * `https://en.wikipedia.org/wiki/Convention_over_configuration`
@@ -66,39 +45,17 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 * `https://github.com/palladius/rails8-turbo-chat`
 * `https://modelcontextprotocol.io/examples`
 * `https://github.com/modelcontextprotocol/servers`
-* `http://gemini.md`
+* `http://gemini.md` 3x
 * `https://github.com/palladius/my-sessions-and-bio/`
 * `https://github.com/palladius/my-sessions-and-bio/commit/5f6b5c2e2a530c1563834fc65f167cef40bd807e`
 * `https://github.com/palladius/my-sessions-and-bio/blob/main/CHANGELOG.md`
-* `http://gemini.md`
-* `http://gemini.md`
 * `https://github.com/palladius/vibecoding/blob/main/vibecheck/AI_REASONING.md`
-* `https://github.com/google-gemini/gemini-cli/`
-* `/tag/cli?source=post_page-----da5630d00434---------------------------------------`
-* `/tag/gemini?source=post_page-----da5630d00434---------------------------------------`
-* `/tag/claude-code?source=post_page-----da5630d00434---------------------------------------`
-* `/tag/onyx?source=post_page-----da5630d00434---------------------------------------`
-* `/tag/gemini-cli?source=post_page-----da5630d00434---------------------------------------`
-* `/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fgoogle-cloud%2Fda5630d00434&amp;operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;user=Riccardo+Carlesso&amp;userId=b5293b96912f&amp;source=---footer_actions--da5630d00434---------------------clap_footer------------------`
-* `/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fgoogle-cloud%2Fda5630d00434&amp;operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;user=Riccardo+Carlesso&amp;userId=b5293b96912f&amp;source=---footer_actions--da5630d00434---------------------clap_footer------------------`
-* `/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fda5630d00434&amp;operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;source=---footer_actions--da5630d00434---------------------bookmark_footer------------------`
-* `https://medium.com/google-cloud?source=post_page---post_publication_info--da5630d00434---------------------------------------`
-* `https://medium.com/google-cloud?source=post_page---post_publication_info--da5630d00434---------------------------------------`
-* `https://medium.com/google-cloud?source=post_page---post_publication_info--da5630d00434---------------------------------------`
-* `/google-cloud/followers?source=post_page---post_publication_info--da5630d00434---------------------------------------`
-* `/google-cloud/gemini-cli-tutorial-series-part-2-gemini-cli-command-line-parameters-e64e21b157be?source=post_page---post_publication_info--da5630d00434---------------------------------------`
-* `/@palladiusbonton?source=post_page---post_author_info--da5630d00434---------------------------------------`
-* `/@palladiusbonton?source=post_page---post_author_info--da5630d00434---------------------------------------`
-* `/@palladiusbonton?source=post_page---post_author_info--da5630d00434---------------------------------------`
-* `/@palladiusbonton/followers?source=post_page---post_author_info--da5630d00434---------------------------------------`
-* `/@palladiusbonton/following?source=post_page---post_author_info--da5630d00434---------------------------------------`
-* `https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page---post_responses--da5630d00434---------------------------------------`
+* `https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page---post_responses--da5630d00434---------------------------------------` 2x
 * `https://help.medium.com/hc/en-us?source=post_page-----da5630d00434---------------------------------------`
 * `https://medium.statuspage.io/?source=post_page-----da5630d00434---------------------------------------`
-* `/about?autoplay=1&amp;source=post_page-----da5630d00434---------------------------------------`
-* `/jobs-at-medium/work-at-medium-959d1a85284e?source=post_page-----da5630d00434---------------------------------------`
 * `mailto:pressinquiries@medium.com`
 * `https://blog.medium.com/?source=post_page-----da5630d00434---------------------------------------`
 * `https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=post_page-----da5630d00434---------------------------------------`
 * `https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=post_page-----da5630d00434---------------------------------------`
 * `https://speechify.com/medium?source=post_page-----da5630d00434---------------------------------------`
+* `https://medium.com/google-cloud/gemini-cli-tutorial-series-part-2-gemini-cli-command-line-parameters-e64e21b157be?source=post_page---post_publication_info--da5630d00434---------------------------------------`

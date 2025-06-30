@@ -18,9 +18,9 @@ an UTM would look like this:
 `utm_campaign=CDR_0x89ad3e41_platform_b422075371&utm_medium=external&utm_source=blog`
 
 Where the
-* "0x89ad3e41" part can change but always expect 0x with soem hex
+* "0x89ad3e41" part can change but always expect 0x with some hex
 * "platform" part can change
-* "b422075371" should always be "b" followed by digits. That's the bug_id.
+* "b422075371" should always be "b" followed by digits.
 
 ## Feedback loop
 
@@ -82,3 +82,5 @@ Keep cache for 1 day - do NOT re-download websites if you have a cache hit.
 * `https://glyph.medium.com`
 * `https://glyph.medium.com/css/unbound.css` 2x
 ```
+
+Extract from UTM the b422075371 by adding a slash after b, like b/422075371 and add this after the UTM-ified link.
