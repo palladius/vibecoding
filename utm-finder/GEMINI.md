@@ -90,9 +90,10 @@ Finally create an uber-report `output/REPORT.md` which contains:
 1. a tabular list of all articles
 2. in each row, there is
    1. the article TITLE, linked to the local MD file
-   2. An emoji of link linked to the remote article
+   2. An emoji of link linked to the remote article, like `[emoji](link)`
    3. Number of UTMs applied
    4. Number of missing UTMs.
-   5. Total UTMs.
+   5. Total # links.
+   6. B-number(s) (like b/1234567) as is, linked to itself: http:/b/{{NUMBER}}, if available from UTMs
 
 Code this and let me know if this is 100% deterministic or if we need to have an LLM massage the rough edges.

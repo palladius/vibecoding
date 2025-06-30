@@ -1,0 +1,8 @@
+# UTM Analysis Report
+
+| Article Title | Remote Link | UTMs Applied | Missing UTMs | Total UTMs | B-Numbers |
+|---|---|---|---|---|---|
+| [Step-by-Step: Serving PyTorch Models with a Custom Handler on Vertex AI](output/medium.com/rsamborski/step-by-step-serving-pytorch-models-with-a-custom-handler-on-vertex-ai-5ada1d01c534.md) | [](https://medium.com/google-cloud/step-by-step-serving-pytorch-models-with-a-custom-handler-on-vertex-ai-5ada1d01c534) | 8 | 0 | 8 | [b/420395736](http://b/420395736) |
+| [Vibe coding my first Chrome Extension with Gemini CLI !](output/medium.com/palladiusbonton/vibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434.md) | [](https://medium.com/google-cloud/vibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434) | 2 | 2 | 4 | [b/422075371](http://b/422075371) |
+| [Gemini CLI: vibecode a Next.js app and push to the Cloud!](output/medium.com/palladiusbonton/gemini-cli-vibecode-a-next-js-app-and-push-to-the-cloud-c1f30c50136d.md) | [](https://medium.com/@palladiusbonton/gemini-cli-vibecode-a-next-js-app-and-push-to-the-cloud-c1f30c50136d) | 0 | 2 | 2 | N/A |
+| [Gemini CLI Tutorial Series — Part 2 : Gemini CLI Command line parameters](output/medium.com/iromin/gemini-cli-tutorial-series-part-2-gemini-cli-command-line-parameters-e64e21b157be.md) | [](https://medium.com/google-cloud/gemini-cli-tutorial-series-part-2-gemini-cli-command-line-parameters-e64e21b157be) | 0 | 1 | 1 | N/A |

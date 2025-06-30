@@ -15,10 +15,6 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * `https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/`
-* `https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/configuration.md#context-files-hierarchical-instructional-context` 3x
-* `https://github.com/google-gemini/gemini-cli/blob/770f862832dfef477705bee69bd2a84397d105a8/docs/checkpointing.md`
-* `https://github.com/google-gemini/gemini-cli/blob/770f862832dfef477705bee69bd2a84397d105a8/docs/telemetry.md#gemini-cli-observability-guide`
-* `https://github.com/google-gemini/gemini-cli/blob/770f862832dfef477705bee69bd2a84397d105a8/docs/telemetry.md#google-cloud`
 
 **All other URLs (irrelevant to this analysis):**
 * `https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19`
@@ -31,6 +27,10 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 * `android-app://com.medium.reader/https/medium.com/p/e64e21b157be`
 * `https://rsci.app.link/?%24canonical_url=https%3A%2F%2Fmedium.com%2Fp%2Fe64e21b157be&amp;%7Efeature=LoOpenInAppButton&amp;%7Echannel=ShowPostUnderCollection&amp;%7Estage=mobileNavBar&amp;source=post_page---top_nav_layout_nav-----------------------------------------`
 * `https://medium.com/google-cloud?source=post_page---publication_nav-e52cf94d98af-e64e21b157be---------------------------------------` 3x
+* `https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/configuration.md#context-files-hierarchical-instructional-context` 3x
+* `https://github.com/google-gemini/gemini-cli/blob/770f862832dfef477705bee69bd2a84397d105a8/docs/checkpointing.md`
+* `https://github.com/google-gemini/gemini-cli/blob/770f862832dfef477705bee69bd2a84397d105a8/docs/telemetry.md#gemini-cli-observability-guide`
+* `https://github.com/google-gemini/gemini-cli/blob/770f862832dfef477705bee69bd2a84397d105a8/docs/telemetry.md#google-cloud`
 * `https://github.com/google-gemini/gemini-cli/blob/770f862832dfef477705bee69bd2a84397d105a8/docs/checkpointing.md?source=post_page-----e64e21b157be---------------------------------------#how-it-works`
 * `https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.128.0`
 * `https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.128.0` 2x
