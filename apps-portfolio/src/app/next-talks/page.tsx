@@ -52,7 +52,7 @@ export default function NextTalksPage() {
       {view === 'card' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {talks.map((talk) => (
-            <TalkCard key={talk.id} talk={talk} proximity={getProximity(talk.date as string)} />
+            <TalkCard key={talk.id} talk={talk} proximity={getProximity(talk.date.toISOString())} />
           ))}
         </div>
       ) : (
