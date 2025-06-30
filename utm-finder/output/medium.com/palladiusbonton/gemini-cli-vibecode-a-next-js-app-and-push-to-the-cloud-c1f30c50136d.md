@@ -13,7 +13,7 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 **URLs with UTMs:**
 * None
 
-**Missing UTMs (matching `UTM_DOMAINS` but no UTMs):**
+**Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * `https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/`
 * `https://ai.google.dev/gemini-api/docs/models`
 

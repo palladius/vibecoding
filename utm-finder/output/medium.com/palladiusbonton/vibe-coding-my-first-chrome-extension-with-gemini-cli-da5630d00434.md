@@ -14,7 +14,7 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 * `https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/?utm_campaign=CDR_0x89ad3e41_platform_b422075371&amp;utm_medium=external&amp;utm_source=blog`
 * `https://codelabs.developers.google.com/codelabs/codelabs/gemini-cli-getting-started?utm_campaign=CDR_0x89ad3e41_platform_b422075371&amp;utm_medium=external&amp;utm_source=blog`
 
-**Missing UTMs (matching `UTM_DOMAINS` but no UTMs):**
+**Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * `https://ai.google.dev/gemini-api/docs/models`
 * `https://cloud.google.com/run?hl=de`
 

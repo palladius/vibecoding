@@ -20,7 +20,7 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 * `https://cloud.google.com/python/docs/reference/aiplatform/latest?utm_campaign=CDR_0x87fa8d40_user-journey_b420395736&amp;utm_medium=external&amp;utm_source=blog`
 * `https://cloud.google.com/vertex-ai/docs?utm_campaign=CDR_0x87fa8d40_platform_b420395736&amp;utm_medium=external&amp;utm_source=blog`
 
-**Missing UTMs (matching `UTM_DOMAINS` but no UTMs):**
+**Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * None
 
 **All other URLs (irrelevant to this analysis):**

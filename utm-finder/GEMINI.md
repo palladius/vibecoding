@@ -84,3 +84,15 @@ Keep cache for 1 day - do NOT re-download websites if you have a cache hit.
 ```
 
 Extract from UTM the b422075371 by adding a slash after b, like b/422075371 and add this after the UTM-ified link.
+
+Finally create an uber-report `output/REPORT.md` which contains:
+
+1. a tabular list of all articles
+2. in each row, there is
+   1. the article TITLE, linked to the local MD file
+   2. An emoji of link linked to the remote article
+   3. Number of UTMs applied
+   4. Number of missing UTMs.
+   5. Total UTMs.
+
+Code this and let me know if this is 100% deterministic or if we need to have an LLM massage the rough edges.
