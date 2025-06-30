@@ -7,17 +7,19 @@ export async function GET(request: NextRequest) {
   const future = searchParams.get('future');
 
   if (future === 'true') {
+    const now = new Date();
+    console.log('Filtering for future talks where date >= ', now.toISOString());
     const talks = await db.talk.findMany({
       where: {
         date: {
-          gte: new Date(),
+          gte: now.toISOString(),
         },
       },
       orderBy: {
         date: 'asc',
       },
     });
-    console.log('Fetched future talks:', talks.length);
+    console.log('Fetched future talks:', talks.length, talks);
     return NextResponse.json(talks);
   }
 

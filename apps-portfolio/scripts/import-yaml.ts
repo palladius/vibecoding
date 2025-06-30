@@ -44,21 +44,25 @@ interface Data {
 
 export async function importData() {
   // Clear existing data
+  console.log('Clearing existing data...');
   await db.talk.deleteMany({});
   await db.article.deleteMany({});
+  console.log('Data cleared.');
 
   const fileContents = fs.readFileSync('etc/data.yaml', 'utf8');
   const data = yaml.load(fileContents) as Data;
+  console.log(`Loaded ${data.talks.length} talks and ${data.articles.length} articles from YAML.`);
 
   // Insert talks
   for (const talk of data.talks) {
     try {
       const tags = Array.isArray(talk.tags) ? talk.tags.join(',') : '';
+      console.log(`Attempting to import talk: ${talk.title} with date: ${talk.date}`);
       await db.talk.create({
         data: {
           title: talk.title,
           event: talk.event,
-          date: talk.date,
+          date: new Date(talk.date).toISOString(),
           location: talk.location,
           country_code: talk.country_code,
           session_url: talk.session_url,
@@ -72,6 +76,7 @@ export async function importData() {
           event_url: talk.event_url,
         },
       });
+      console.log(`Successfully imported talk: ${talk.title}`);
     } catch (error) {
       console.error(`Error importing talk "${talk.title}":`, error);
       process.exit(1);
@@ -82,6 +87,7 @@ export async function importData() {
   for (const article of data.articles) {
     try {
       const tags = Array.isArray(article.tags) ? article.tags.join(',') : '';
+      console.log(`Attempting to import article: ${article.title}`);
       await db.article.create({
         data: {
           title: article.title,
@@ -94,6 +100,7 @@ export async function importData() {
           description: article.description,
         },
       });
+      console.log(`Successfully imported article: ${article.title}`);
     } catch (error) {
       console.error(`Error importing article "${article.title}":`, error);
       process.exit(1);

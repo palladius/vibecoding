@@ -12,23 +12,23 @@ datasource db {
 }
 
 model Talk {
-  id                Int      @id @default(autoincrement())
-  title             String
-  event             String?
-  event_url         String?
-  date              String?
-  location          String?
-  country_code      String?
-  session_url       String?
-  video_url         String?
-  slides_url        String?
-  status            String?
-  tags              String?
-  image             String?
-  event_description String?
-  talk_description  String?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  id                  Int      @id @default(autoincrement())
+  title               String
+  event               String
+  date                DateTime
+  location            String
+  country_code        String
+  session_url         String?
+  video_url           String?
+  slides_url          String?
+  status              String
+  tags                String?
+  image               String?
+  event_description   String?
+  talk_description    String?
+  event_url           String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
 
 model Article {

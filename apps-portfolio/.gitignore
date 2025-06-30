@@ -43,6 +43,11 @@ t.sh
 TODO-ricc.md
 .env.docker
 db/portfolio.sqlite3
+prisma/migrations/
+prisma/db/
+prisma/portfolio.sqlite3
+prisma/portfolio.sqlite3-journal
+prisma/portfolio.sqlite3.derek
 
 /src/generated/prisma
 

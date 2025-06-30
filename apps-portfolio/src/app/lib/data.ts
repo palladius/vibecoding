@@ -12,7 +12,7 @@ export async function getTalks() {
   });
   return talks.map((talk) => ({
     ...talk,
-    slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
+    slug: `${(talk.date as Date).toISOString().split('T')[0]}-${slugify(talk.title)}`
   }));
 }
 
@@ -46,11 +46,23 @@ export async function getArticle(slug: string) {
 
 // Client-side function (uses relative URL)
 export async function getFutureTalks() {
-  const res = await fetch(`/api/talks?future=true`);
-  const talks: Talk[] = await res.json();
-  return talks.map((talk) => ({
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${baseUrl}/api/talks`);
+  const talks: Talk[] = (await res.json()).map((talk: Talk) => ({
     ...talk,
-    slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
+    date: new Date(talk.date),
+  }));
+  const futureTalks = talks
+    .filter((talk) => {
+      const talkDate = new Date(talk.date);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Set to the beginning of the current day
+      return talkDate.getTime() >= today.getTime();
+    })
+    .sort((a, b) => a.date.getTime() - b.date.getTime());
+  return futureTalks.map((talk) => ({
+    ...talk,
+    slug: `${(talk.date as Date).toISOString().split('T')[0]}-${slugify(talk.title)}`
   }));
 }
 
@@ -68,7 +80,7 @@ export async function getHighlightedTalks() {
     });
     return talks.map((talk) => ({
         ...talk,
-        slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
+        slug: `${(talk.date as Date).toISOString().split('T')[0]}-${slugify(talk.title)}`
     }));
 }
 
