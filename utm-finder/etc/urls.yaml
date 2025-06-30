@@ -1,0 +1,4 @@
+urls_which_require_substitution:
+  - cloud.google.com
+  # eg https://codelabs.developers.google.com/codelabs/codelabs/gemini-cli-getting-started
+  - codelabs.developers.google.com
