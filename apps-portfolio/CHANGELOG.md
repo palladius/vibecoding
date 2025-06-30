@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.12.6 - 2025-06-30
+
+### 🐛 Bug Fixes
+
+- **Fixed broken `/next-talks` endpoint:** The `/next-talks` endpoint was fetching all talks and filtering them on the client-side, which was inefficient and caused the page to fail. This has been fixed by moving the filtering logic to the server-side.
+
+### Internal Changes
+
+- Updated `src/app/api/talks/route.ts` to accept a `future=true` query parameter to filter for future talks.
+- Updated `src/app/lib/data.ts` to use the `future=true` query parameter when fetching future talks.
+
 ## v0.12.5 - 2025-06-27
 
 ### 🚀 Features

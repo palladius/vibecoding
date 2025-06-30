@@ -46,12 +46,9 @@ export async function getArticle(slug: string) {
 
 // Client-side function (uses relative URL)
 export async function getFutureTalks() {
-  const res = await fetch(`/api/talks`);
+  const res = await fetch(`/api/talks?future=true`);
   const talks: Talk[] = await res.json();
-  const futureTalks = talks
-    .filter((talk) => new Date(talk.date as string) > new Date())
-    .sort((a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime());
-  return futureTalks.map((talk) => ({
+  return talks.map((talk) => ({
     ...talk,
     slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
   }));
