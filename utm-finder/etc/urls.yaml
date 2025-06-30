@@ -10,3 +10,7 @@ urls_which_require_substitution:
   - codeassist.google
   - ai.google.dev
   - support.google.com
+
+article_denylist_keywords:
+  - "toilet paper"
+  - "facetious"

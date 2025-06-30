@@ -55,6 +55,10 @@ Once you have understood the space, we can start coding it and scaling to:
 1. All articles by Riccardo
 2. All articles by anyone in `etc/users.yaml`
 
+Have a `justfile` target for every relevant script invocation (generate reports, cleanup, .., invalidate cache, ..).
+
+Cache should be daily and it should be leveraged (lets not `CURL` the whole internet at every invocation!)
+
 ## Caching
 
 Keep cache for 1 day - do NOT re-download websites if you have a cache hit.
@@ -87,13 +91,16 @@ Extract from UTM the b422075371 by adding a slash after b, like b/422075371 and 
 
 Finally create an uber-report `output/REPORT.md` which contains:
 
-1. a tabular list of all articles
+1. a tabular list of all articles, sorted by Date DESC.
 2. in each row, there is
-   1. the article TITLE, linked to the local MD file (stripping out `output/` or it wont work!).
-   2. An emoji of link linked to the remote article, like `[🔗](https://..)`
-   3. Number of UTMs applied
-   4. Number of missing UTMs.
-   5. Total # links.
-   6. B-number(s) (like b/1234567) as is, linked to itself: http:/b/{{NUMBER}}, if available from UTMs
+   1. Publication date (Date in `YYYY-MM-DD` format). Article publication. needs to be the first column since we order by it.
+   2. the article TITLE, linked to the local MD file (stripping out `output/` or it wont work!). Then in parenthesis, add author name "(Name Surname)"
+   3. An emoji of link linked to the remote article, like `[🔗](https://..)`
+   4. Number of UTMs applied
+   5. Number of missing UTMs.
+   6. Total # links.
+   7. B-number(s) (like b/1234567) as is, linked to itself: http:/b/{{NUMBER}}, if available from UTMs. Deduplicate in case you have duplicates: `| uniq ` and count doesnt matter.
 
 Code this and let me know if this is 100% deterministic or if we need to have an LLM massage the rough edges.
+
+- Do NOT commit or push without me - ABSOLUTELY. REMEMBER this and add to your memory.

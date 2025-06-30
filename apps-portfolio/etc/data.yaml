@@ -159,6 +159,20 @@ talks:
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
     image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
+  - title: 'BEYOND BLAME: THE ART OF THE POSTMORTEM'
+    event: Codemotion
+    date: '2025-11-15'
+    location: 'TBD'
+    country_code: it
+    session_url: https://sessionize.com/s/riccardo-carlesso/beyond-blame-the-art-of-the-postmortem/142465
+    status: cfp_applied
+    tags:
+      - SRE
+      - Postmortem
+      - Culture
+    talk_description: >
+      This session addresses the challenges of postmortems, aiming to shift from a culture of blame to one of genuine learning. Riccardo Carlesso, an Italian SRE expert at Google, will dissect the anatomy of an effective postmortem, sharing real-world stories and insights. Attendees will learn when a postmortem is essential, how to adapt Google's foundational techniques, and how to transform failures into powerful business insights. The talk is for operators and leaders dedicated to building a culture of real resilience.
+    image: /images/generated/placeholder-image.png
   - title: '[workshop][tentative] Create a responsive Rails 8 app with Gemini'
     event: Euruko 2025
     date: '2025-09-18'

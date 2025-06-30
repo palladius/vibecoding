@@ -57,7 +57,7 @@ export async function getArticle(slug: string) {
 // Client-side function (uses relative URL)
 export async function getFutureTalks() {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
-  const res = await fetch(`${baseUrl}/api/talks?future=true`);
+  const res = await fetch(`${baseUrl}/api/talks`);
   const talks: Talk[] = (await res.json()).map((talk: Talk) => ({
     ...talk,
     date: new Date(talk.date),
@@ -67,6 +67,7 @@ export async function getFutureTalks() {
       const talkDate = new Date(talk.date);
       const today = new Date();
       today.setHours(0, 0, 0, 0); // Set to the beginning of the current day
+      console.log(`Comparing talk date: ${talkDate.toISOString()} (timestamp: ${talkDate.getTime()}) with current date (start of day): ${today.toISOString()} (timestamp: ${today.getTime()})`);
       return talkDate.getTime() >= today.getTime();
     })
     .sort((a, b) => a.date.getTime() - b.date.getTime());

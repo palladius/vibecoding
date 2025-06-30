@@ -1,0 +1,5 @@
+list:
+    just -l
+
+crawl-utms:
+	python3 utm_crawler.py

@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.12.10 - 2025-06-30
+
+### 🚀 Features
+
+- **Added new CfP talk:** Added "BEYOND BLAME: THE ART OF THE POSTMORTEM" to the list of talks.
+
+### Internal Changes
+
+- Updated `etc/data.yaml` with the new talk.
+- Fixed linting error in `src/app/next-talks/page.tsx` by explicitly typing `talk` in the map function.
+
 ## v0.12.9 - 2025-06-30
 
 ### 🐛 Bug Fixes

@@ -1,9 +1,9 @@
-people:
-  Riccardo:
-    medium: https://medium.com/@palladiusbonton
-  Romin:
-    #medium: https://medium.com/@romin ??
-    medium: https://iromin.medium.com/
+# i eblieve this stanza is NOT used anymore.
+# people:
+#   Riccardo:
+#     medium: https://medium.com/@palladiusbonton
+#   Romin:
+#     medium: https://iromin.medium.com/
 
 
 sample_articles:
