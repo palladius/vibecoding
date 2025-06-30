@@ -11,10 +11,11 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 **Overall Status:** OK (UTMs already added to relevant links)
 
 **URLs with UTMs:**
-* `https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/?utm_campaign=CDR_0x89ad3e41_platform_b422075371&utm_medium=external&utm_source=blog`
-* `https://codelabs.developers.google.com/codelabs/codelabs/gemini-cli-getting-started?utm_campaign=CDR_0x89ad3e41_platform_b422075371&utm_medium=external&utm_source=blog`
+* `https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/?utm_campaign=CDR_0x89ad3e41_platform_b422075371&amp;utm_medium=external&amp;utm_source=blog`
+* `https://codelabs.developers.google.com/codelabs/codelabs/gemini-cli-getting-started?utm_campaign=CDR_0x89ad3e41_platform_b422075371&amp;utm_medium=external&amp;utm_source=blog`
 
-**Missing UTMs (matching `cloud.google.com` or `codelabs.developers.google.com` but no UTMs):**
+**Missing UTMs (matching `UTM_DOMAINS` but no UTMs):**
+* `https://ai.google.dev/gemini-api/docs/models`
 * `https://cloud.google.com/run?hl=de`
 
 **All other URLs (irrelevant to this analysis):**
@@ -46,7 +47,6 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 * `/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fgoogle-cloud%2Fda5630d00434&amp;operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;user=Riccardo+Carlesso&amp;userId=b5293b96912f&amp;source=---header_actions--da5630d00434---------------------clap_footer------------------`
 * `/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fda5630d00434&amp;operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fgoogle-cloud%2Fvibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434&amp;source=---header_actions--da5630d00434---------------------bookmark_footer------------------`
 * `https://github.com/google-gemini/gemini-cli`
-* `https://ai.google.dev/gemini-api/docs/models`
 * `https://github.com/google-gemini/gemini-cli/`
 * `https://github.com/google-gemini/gemini-cli/`
 * `https://en.wikipedia.org/wiki/List_of_fake_news_websites`
@@ -100,6 +100,5 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 * `mailto:pressinquiries@medium.com`
 * `https://blog.medium.com/?source=post_page-----da5630d00434---------------------------------------`
 * `https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=post_page-----da5630d00434---------------------------------------`
-* `https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page-----da5630d00434---------------------------------------`
 * `https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=post_page-----da5630d00434---------------------------------------`
 * `https://speechify.com/medium?source=post_page-----da5630d00434---------------------------------------`

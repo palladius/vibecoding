@@ -28,10 +28,12 @@ Current phase: phase 1.
 
 ### phase 1 - Study / Vibing
 
-We will start cherrypicking two single Medium article by myself (Riccardo):
+We will start cherrypicking these 2-3 single Medium articles by myself (Riccardo) or Remi:
 
 1. https://medium.com/google-cloud/vibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434 (UTMs already added)
 2. https://medium.com/@palladiusbonton/gemini-cli-vibecode-a-next-js-app-and-push-to-the-cloud-c1f30c50136d (no UTMs yet)
+3. https://medium.com/google-cloud/step-by-step-serving-pytorch-models-with-a-custom-handler-on-vertex-ai-5ada1d01c534 from my buddy Remi - unsure
+   1. Note this should appear under its user name https://medium.com/@rsamborski not Google Cloud !!
 
 And we'll create a report for it.
 
