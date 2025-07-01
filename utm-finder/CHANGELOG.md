@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.11
+
+- Further refined author extraction logic in `utm_crawler.py` to improve author parsing from various HTML structures.
+
 ## 0.0.10
 
 - Further refined author extraction logic in `utm_crawler.py` to improve author parsing from various HTML structures.
