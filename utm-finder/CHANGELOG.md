@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.9
+
+- Further refined author extraction logic in `utm_crawler.py` to improve author parsing from various HTML structures.
+
 ## 0.0.8
 
 - Improved author extraction logic in `utm_crawler.py` to reduce "Unknown Author" instances in `REPORT.md`.
