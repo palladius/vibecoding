@@ -64,13 +64,8 @@ def extract_title_from_html(html_content):
     return "Unknown Title"
 
 def extract_author_from_html(html_content):
-    # Try to extract author from <meta name="author"> tag
+    # Prioritize: Try to extract author from <meta name="author"> tag (most reliable)
     author_match = re.search(r'<meta name="author" content="([^"]+)">', html_content)
-    if author_match:
-        return author_match.group(1).strip()
-
-    # Fallback: Try to extract author from <meta property="og:title"> tag (common for Medium)
-    author_match = re.search(r'<meta property="og:title" content=".*? \| by ([^\|]+)"', html_content)
     if author_match:
         return author_match.group(1).strip()
 
@@ -79,12 +74,17 @@ def extract_author_from_html(html_content):
     if title_match:
         return title_match.group(1).strip()
 
+    # Fallback: Try to extract author from <meta property="og:title"> tag
+    author_match = re.search(r'<meta property="og:title" content=".*? \| by ([^\|]+)"', html_content)
+    if author_match:
+        return author_match.group(1).strip()
+
     # Fallback: Try to extract author from <link rel="author"> tag
     author_match = re.search(r'<link rel="author" href="https://medium.com/@([^"/]+)"', html_content)
     if author_match:
         return author_match.group(1).strip()
 
-    # Fallback: Try to extract author from a specific div with author information (common for Medium)
+    # Fallback: Try to extract author from a specific div with author information
     author_match = re.search(r'<div class="byline-names">.*?<a href=".*?">([^<]+)</a>', html_content, re.DOTALL)
     if author_match:
         return author_match.group(1).strip()
