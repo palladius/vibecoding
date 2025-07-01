@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.11 - 2025-06-30
+
+### 🐛 Bug Fixes
+
+- **Fixed Cloud Build failure due to Date object:** The Cloud Build was failing because a `Date` object was being rendered directly as a React child in the `/about` page. This has been fixed by ensuring `talk.date` is consistently formatted as a `YYYY-MM-DD` string in `src/app/lib/data.ts` and simplifying `TalkCard.tsx` to use this string directly.
+
 ## v0.12.10 - 2025-06-30
 
 ### 🚀 Features
@@ -181,7 +187,7 @@
 
 ### 🐛 Bug Fixes
 
-- **Fixed broken links on "About Me" page:** The links to highlighted talks and articles were broken because the `type` property was not being set correctly. This has been fixed by updating the `AboutPage` component to correctly set the `type` property.
+- **Fixed broken links on "About Me" page:** The links to highlighted talks and articles were not rendering due to missing `type` property and incorrect handling of `video_url`. This has been fixed by adding `type: 'article'` to articles in `getArticles()` and correctly handling `video_url` in `ArticleCard.tsx`.
 
 ### Internal Changes
 
@@ -234,7 +240,7 @@
 
 - **Improved Cloud Build trigger:** The Cloud Build trigger in the Terraform configuration now points to the `cloudbuild.yaml` file in the repository instead of using an inline build definition.
 
-## v0.10.19 - 2025-06-13
+## v00.10.19 - 2025-06-13
 
 ### 🐛 Bug Fixes
 

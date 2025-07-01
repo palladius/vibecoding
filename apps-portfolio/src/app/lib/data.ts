@@ -13,7 +13,8 @@ export async function getTalks() {
     });
     return talks.map((talk) => ({
       ...talk,
-      slug: `${(talk.date as Date).toISOString().split('T')[0]}-${slugify(talk.title)}`
+      date: talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date,
+      slug: `${talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date}-${slugify(talk.title)}`
     }));
   } catch (error) {
     console.error('Error fetching talks:', error);
@@ -60,7 +61,7 @@ export async function getFutureTalks() {
   const res = await fetch(`${baseUrl}/api/talks`);
   const talks: Talk[] = (await res.json()).map((talk: Talk) => ({
     ...talk,
-    date: new Date(talk.date),
+    date: talk.date,
   }));
   const futureTalks = talks
     .filter((talk) => {
@@ -73,7 +74,7 @@ export async function getFutureTalks() {
     .sort((a, b) => a.date.getTime() - b.date.getTime());
   return futureTalks.map((talk) => ({
     ...talk,
-    slug: `${(talk.date as Date).toISOString().split('T')[0]}-${slugify(talk.title)}`
+    slug: `${talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date}-${slugify(talk.title)}`
   }));
 }
 
@@ -91,7 +92,8 @@ export async function getHighlightedTalks() {
     });
     return talks.map((talk) => ({
         ...talk,
-        slug: `${(talk.date as Date).toISOString().split('T')[0]}-${slugify(talk.title)}`
+        date: talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date,
+        slug: `${talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date}-${slugify(talk.title)}`
     }));
 }
 
