@@ -208,11 +208,7 @@ def main():
                     if not missing_utms:
                         report_content += "* None\n"
 
-                    report_content += f"\n**All other URLs (irrelevant to this analysis):**\n"
-                    for line in formatted_other_urls:
-                        report_content += f"{line}\n"
-                    if not formatted_other_urls:
-                        report_content += "* None\n"
+                    
 
                     os.makedirs(local_report_dir, exist_ok=True)
                     with open(local_report_path, 'w') as f:

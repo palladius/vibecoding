@@ -6,8 +6,8 @@ export default async function Home() {
   const talksData = await getTalks();
   const articlesData = await getArticles();
 
-  const talks = talksData.map((talk: Talk) => ({ ...talk, type: 'talk', date: talk.date.toISOString() }));
-  const articles = articlesData.map((article: Article) => ({ ...article, type: 'article', publish_date: new Date(article.publish_date).toISOString() }));
+  const talks = talksData.map((talk: Talk) => ({ ...talk, type: 'talk' }));
+  const articles = articlesData.map((article: Article) => ({ ...article, type: 'article' }));
 
   const items = [...talks, ...articles];
 

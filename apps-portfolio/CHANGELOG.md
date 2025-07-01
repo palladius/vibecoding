@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.12 - 2025-07-01
+
+### 🐛 Bug Fixes
+
+- **Fixed main page rendering:** The main page was failing to render due to `TypeError: e.date.toISOString is not a function`. This has been fixed by removing redundant `toISOString()` calls for `talk.date` and simplifying `article.publish_date` handling in `src/app/page.tsx`.
+
 ## v0.12.11 - 2025-06-30
 
 ### 🐛 Bug Fixes
