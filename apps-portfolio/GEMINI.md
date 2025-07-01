@@ -138,9 +138,9 @@ When I ask you to assess a bug, I expect you to do many changes by yourself.
 
 Before committing any change, let's make sure:
 
-1. Ensure the code is working in localhost on port 3002:
+1. Ensure the code is working in localhost on port 3001:
    * if server is not responding, check with user that the server is up, meanwhile check similar ports like 3001 and 3003.
-   * curl http://localhost:3002/ and see some articles (must NOT be empty!)
+   * curl http://localhost:3001/ and see some articles (must NOT be empty!)
    * All links on top work (talks, article, about me, next talks), make sure they return 200 and they do NOT show empty content.
    * Also single pages should work:
      * 1. curl `/talks/2025-10-14-agents-on-a-plane-a-deep-dive-into-building-a-real-time-travel-agent works` too
