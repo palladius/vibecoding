@@ -1,17 +1,11 @@
-# Warning on Medium links
+**Report for Article: [Level Up Your Rails Game with Cloud Run: A Qwiklabs Deep Dive](https://medium.com/@palladiusbonton/ruby-on-rails-with-postgresql-on-cloud-run-bdaaf0b26e0b?source=rss-b5293b96912f------2)**
 
-Note that checking for links in an articles is NOT equivalent to getting all links in that URL.
-
-- 90% of links are from Medium, other articles, other things.
-- Links for the article itself should start after the title (h1) and somewhat finishing at the clapping hands. In the Chrome Ext link, for instance, the article ends with this sentence:
-  - Try this “Getting started with Gemini CLI” codelab from Aaron and me!
-
-**Report for Article: `Level Up Your Rails Game with Cloud Run: A Qwiklabs Deep Dive`**
+**Author:** Riccardo Carlesso
+**Publication Date:** 2024-08-15
 
 **Overall Status:** Missing Actions
 
 **URLs with UTMs:**
-* None
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * `https://cloud.google.com/innovators/champions`

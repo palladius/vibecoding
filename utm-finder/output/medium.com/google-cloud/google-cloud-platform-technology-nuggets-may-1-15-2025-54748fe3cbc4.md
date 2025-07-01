@@ -1,17 +1,11 @@
-# Warning on Medium links
+**Report for Article: [Google Cloud Platform Technology Nuggets — May 1–15, 2025](https://medium.com/google-cloud/google-cloud-platform-technology-nuggets-may-1-15-2025-54748fe3cbc4?source=rss-802a4d428d95------2)**
 
-Note that checking for links in an articles is NOT equivalent to getting all links in that URL.
-
-- 90% of links are from Medium, other articles, other things.
-- Links for the article itself should start after the title (h1) and somewhat finishing at the clapping hands. In the Chrome Ext link, for instance, the article ends with this sentence:
-  - Try this “Getting started with Gemini CLI” codelab from Aaron and me!
-
-**Report for Article: `Google Cloud Platform Technology Nuggets — May 1–15, 2025`**
+**Author:** Unknown Author
+**Publication Date:** 2025-05-16
 
 **Overall Status:** Missing Actions
 
 **URLs with UTMs:**
-* None
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * `https://cloud.google.com/blog/products/ai-machine-learning/build-multilingual-chatbots-with-gemini-gemma-and-mcp`

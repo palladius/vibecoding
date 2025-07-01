@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.4
+
+- Improved author and publication date parsing in reports.
+
 ## 0.0.3
 
 - Removed "All other URLs (irrelevant to this analysis)" section from the report.

@@ -1,17 +1,11 @@
-# Warning on Medium links
+**Report for Article: [Google x Accenture: Empowering Data Engineers with the Google Cloud Starter Academy in Data&amp;AI](https://medium.com/@rsamborski/google-x-accenture-empowering-data-engineers-with-the-google-cloud-starter-academy-in-data-ai-05b526736bad?source=rss-adf81c1f37ee------2)**
 
-Note that checking for links in an articles is NOT equivalent to getting all links in that URL.
-
-- 90% of links are from Medium, other articles, other things.
-- Links for the article itself should start after the title (h1) and somewhat finishing at the clapping hands. In the Chrome Ext link, for instance, the article ends with this sentence:
-  - Try this “Getting started with Gemini CLI” codelab from Aaron and me!
-
-**Report for Article: `Google x Accenture: Empowering Data Engineers with the Google Cloud Starter Academy in Data&amp;AI`**
+**Author:** Remigiusz Samborski
+**Publication Date:** 2024-05-16
 
 **Overall Status:** OK
 
 **URLs with UTMs:**
-* None
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * None

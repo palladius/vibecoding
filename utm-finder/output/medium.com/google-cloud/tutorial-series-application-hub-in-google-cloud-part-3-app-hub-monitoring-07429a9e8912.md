@@ -1,17 +1,11 @@
-# Warning on Medium links
+**Report for Article: [Tutorial Series : Application Hub in Google Cloud : Part 3 — Application monitoring](https://medium.com/google-cloud/tutorial-series-application-hub-in-google-cloud-part-3-app-hub-monitoring-07429a9e8912?source=rss-802a4d428d95------2)**
 
-Note that checking for links in an articles is NOT equivalent to getting all links in that URL.
-
-- 90% of links are from Medium, other articles, other things.
-- Links for the article itself should start after the title (h1) and somewhat finishing at the clapping hands. In the Chrome Ext link, for instance, the article ends with this sentence:
-  - Try this “Getting started with Gemini CLI” codelab from Aaron and me!
-
-**Report for Article: `Tutorial Series : Application Hub in Google Cloud : Part 3 — Application monitoring`**
+**Author:** Unknown Author
+**Publication Date:** 2025-05-06
 
 **Overall Status:** Missing Actions
 
 **URLs with UTMs:**
-* None
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * `https://console.cloud.google.com/logs/query;`

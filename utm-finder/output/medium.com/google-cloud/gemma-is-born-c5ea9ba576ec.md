@@ -1,17 +1,11 @@
-# Warning on Medium links
+**Report for Article: [Gemma is born! \| by Riccardo Carlesso \| Google Cloud - Community \| Medium](https://medium.com/google-cloud/gemma-is-born-c5ea9ba576ec?source=rss-b5293b96912f------2)**
 
-Note that checking for links in an articles is NOT equivalent to getting all links in that URL.
-
-- 90% of links are from Medium, other articles, other things.
-- Links for the article itself should start after the title (h1) and somewhat finishing at the clapping hands. In the Chrome Ext link, for instance, the article ends with this sentence:
-  - Try this “Getting started with Gemini CLI” codelab from Aaron and me!
-
-**Report for Article: `Gemma is born! \| by Riccardo Carlesso \| Google Cloud - Community \| Medium`**
+**Author:** Unknown Author
+**Publication Date:** 2024-02-26
 
 **Overall Status:** Missing Actions
 
 **URLs with UTMs:**
-* None
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * `https://blog.google/technology/developers/gemma-open-models/`

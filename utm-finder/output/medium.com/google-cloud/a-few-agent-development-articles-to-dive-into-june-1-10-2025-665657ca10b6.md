@@ -1,17 +1,11 @@
-# Warning on Medium links
+**Report for Article: [A few Agent Development Kit (ADK) Articles to dive into : June 1–10, 2025](https://medium.com/google-cloud/a-few-agent-development-articles-to-dive-into-june-1-10-2025-665657ca10b6?source=rss-802a4d428d95------2)**
 
-Note that checking for links in an articles is NOT equivalent to getting all links in that URL.
-
-- 90% of links are from Medium, other articles, other things.
-- Links for the article itself should start after the title (h1) and somewhat finishing at the clapping hands. In the Chrome Ext link, for instance, the article ends with this sentence:
-  - Try this “Getting started with Gemini CLI” codelab from Aaron and me!
-
-**Report for Article: `A few Agent Development Kit (ADK) Articles to dive into : June 1–10, 2025`**
+**Author:** Unknown Author
+**Publication Date:** 2025-06-11
 
 **Overall Status:** OK
 
 **URLs with UTMs:**
-* None
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * None

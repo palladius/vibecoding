@@ -64,15 +64,32 @@ def extract_title_from_html(html_content):
     return "Unknown Title"
 
 def extract_author_from_html(html_content):
-    # More robust author extraction
+    # Try to extract author from <meta name="author"> tag
     author_match = re.search(r'<meta name="author" content="([^"]+)">', html_content)
     if author_match:
         return author_match.group(1).strip()
-    # Fallback to og:title if author meta tag is not found
-    author_match = re.search(r'<meta data-rh="true" property="og:title" content=".*? \| by ([^\|]+)', html_content)
+
+    # Try to extract author from <meta property="og:title"> tag (common for Medium)
+    author_match = re.search(r'<meta property="og:title" content=".*? \| by ([^\|]+)"', html_content)
     if author_match:
         return author_match.group(1).strip()
-    return "Unknown Author"
+
+    # Try to extract author from <link rel="author"> tag
+    author_match = re.search(r'<link rel="author" href="https://medium.com/@([^"/]+)"', html_content)
+    if author_match:
+        return author_match.group(1).strip()
+
+    # Try to extract author from a specific div with author information (common for Medium)
+    author_match = re.search(r'<div class="byline-names">.*?<a href=".*?">([^<]+)</a>', html_content, re.DOTALL)
+    if author_match:
+        return author_match.group(1).strip()
+
+    # Fallback: Try to extract from the title tag if it contains "by Author Name"
+    title_match = re.search(r'<title[^>]*>.*? \| by ([^\|]+) \| Medium</title>', html_content)
+    if title_match:
+        return title_match.group(1).strip()
+
+    return "Unknown Author" 
 
 def main():
     parser = argparse.ArgumentParser(description="UTM Crawler for Medium articles.")
@@ -135,9 +152,10 @@ def main():
 
                 # Determine author slug for local report directory
                 author_slug = "unknown_author"
-                if parsed_url_path[0].startswith('@'):
+                # Prioritize @username in the URL path
+                if len(parsed_url_path) > 0 and parsed_url_path[0].startswith('@'):
                     author_slug = parsed_url_path[0].lstrip('@')
-                elif len(parsed_url_path) > 1 and parsed_url_path[0] == 'google-cloud':
+                elif len(parsed_url_path) > 0 and parsed_url_path[0] == 'google-cloud':
                     # Special handling for google-cloud publication
                     author_slug = 'google-cloud'
                 
@@ -196,11 +214,12 @@ def main():
                     b_numbers_str = ", ".join(sorted(list(set(b_numbers)))) if b_numbers else "N/A"
 
                     # Prepare report content
-                    report_content = f"# Warning on Medium links\n\nNote that checking for links in an articles is NOT equivalent to getting all links in that URL.\n\n- 90% of links are from Medium, other articles, other things.\n- Links for the article itself should start after the title (h1) and somewhat finishing at the clapping hands. In the Chrome Ext link, for instance, the article ends with this sentence:\n  - Try this “Getting started with Gemini CLI” codelab from Aaron and me!\n\n**Report for Article: `{article_title}`**\n\n**Overall Status:** {'OK' if not missing_utms else 'Missing Actions'}\n\n**URLs with UTMs:**\n"
-                    for link in utms_applied:
-                        report_content += f"* `{link}`\n"
-                    if not utms_applied:
-                        report_content += "* None\n"
+                    formatted_pub_date = datetime.strptime(pub_date_str, '%a, %d %b %Y %H:%M:%S GMT').strftime('%Y-%m-%d')
+                    report_content = f"**Report for Article: [{article_title}]({article_url})**\n\n" \
+                                     f"**Author:** {article_author}\n" \
+                                     f"**Publication Date:** {formatted_pub_date}\n\n" \
+                                     f"**Overall Status:** {'OK' if not missing_utms else 'Missing Actions'}\n\n" \
+                                     f"**URLs with UTMs:**\n"
 
                     report_content += f"\n**Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**\n"
                     for link in missing_utms:
