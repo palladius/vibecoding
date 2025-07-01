@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.15
+
+- Resolved all "Unknown Author" instances in `REPORT.md` by improving author extraction logic in `utm_crawler.py`.
+
 ## 0.0.14
 
 - Resolved all "Unknown Author" instances in `REPORT.md` by improving author extraction logic in `utm_crawler.py`.

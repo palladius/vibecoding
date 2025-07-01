@@ -89,7 +89,7 @@ def extract_author_from_html(html_content):
     if author_match:
         return author_match.group(1).strip()
 
-    return "Unknown Author" 
+    return "Unknown Author"
 
 def main():
     parser = argparse.ArgumentParser(description="UTM Crawler for Medium articles.")
@@ -105,7 +105,7 @@ def main():
 
     rss_feeds_config = load_config(RSS_FEEDS_FILE)
     urls_config = load_config(URLS_CONFIG_FILE)
-    
+
     urls_which_require_substitution = urls_config.get('urls_which_require_substitution', [])
     article_denylist_keywords = urls_config.get('article_denylist_keywords', [])
 
@@ -118,12 +118,12 @@ def main():
 
         # Improved RSS parsing to get article links and titles
         article_entries = re.findall(r'<item>(.*?)</item>', rss_content, re.DOTALL)
-        
+
         for entry in article_entries:
             link_match = re.search(r'<link>(.*?)</link>', entry)
             title_match = re.search(r'<title>(.*?)</title>', entry)
             pub_date_match = re.search(r'<pubDate>(.*?)</pubDate>', entry)
-            
+
             if link_match and title_match:
                 article_url = link_match.group(1)
                 article_title = title_match.group(1).strip() # Use title from RSS directly
@@ -147,7 +147,7 @@ def main():
                     continue
 
                 print(f"  Processing article: {article_url}")
-                
+
                 article_slug = parsed_url_path[-1]
 
                 # Determine author slug for local report directory
@@ -158,11 +158,11 @@ def main():
                 elif len(parsed_url_path) > 0 and parsed_url_path[0] == 'google-cloud':
                     # Special handling for google-cloud publication
                     author_slug = 'google-cloud'
-                
+
                 local_report_dir = os.path.join(OUTPUT_DIR, 'medium.com', author_slug)
                 local_report_filename = article_slug + ".md"
                 local_report_path = os.path.join(local_report_dir, local_report_filename)
-                
+
                 article_cache_filename = article_slug + ".html"
                 article_cache_path = os.path.join(CACHE_DIR, article_cache_filename)
 
@@ -201,7 +201,7 @@ def main():
                                 missing_utms.append(link)
                         else:
                             other_urls.append(link)
-                    
+
                     # Deduplicate and count other_urls
                     other_urls_counts = Counter(other_urls)
                     formatted_other_urls = []
@@ -217,8 +217,8 @@ def main():
                         b_num = get_b_number(link)
                         if b_num:
                             b_numbers.append(f"[b/{b_num}](http://b/{b_num})")
-                    
-                    b_numbers_str = ", ".join(sorted(list(set(b_numbers)))) if b_numbers else "N/A"
+
+                    b_numbers_str = ", ".join(sorted(list(set(b_numbers)))) if b_numbers else ""
 
                     # Prepare report content
                     formatted_pub_date = datetime.strptime(pub_date_str, '%a, %d %b %Y %H:%M:%S GMT').strftime('%Y-%m-%d')
@@ -238,12 +238,12 @@ def main():
                     if not missing_utms:
                         report_content += "* None\n"
 
-                    
+
 
                     os.makedirs(local_report_dir, exist_ok=True)
                     with open(local_report_path, 'w') as f:
                         f.write(report_content)
-                    
+
                     all_articles_data.append({
                         'title': article_title,
                         'local_path': os.path.relpath(local_report_path, OUTPUT_DIR),
@@ -266,7 +266,12 @@ def main():
     # Generate the meta-report
     meta_report_content = "# UTM Analysis Report\n\n| Date | Article Title | Remote Link | UTMs Applied | Missing UTMs | B-Numbers |\n|---|---|---|---|---|---|\n"
     for article_data in all_articles_data:
-        meta_report_content += f"| {article_data['pub_date']} | [{article_data['title']}]({article_data['local_path']}) | {article_data['author']} | [🔗]({article_data['remote_url']}) | {article_data['utms_applied_count']} | {article_data['missing_utms_count']} | {article_data['b_numbers']} |\n"
+        meta_report_content += f"| {article_data['pub_date']}"
+        meta_report_content += f"| [{article_data['title']}]({article_data['local_path']}) ({article_data['author']})"
+        meta_report_content += f"| [🔗]({article_data['remote_url']})"
+        meta_report_content += f"| {article_data['utms_applied_count']}"
+        meta_report_content += f"| {article_data['missing_utms_count']}"
+        meta_report_content += f"| {article_data['b_numbers']} |\n"
 
     with open(os.path.join(OUTPUT_DIR, "REPORT.md"), 'w') as f:
         f.write(meta_report_content)
