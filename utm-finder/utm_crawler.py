@@ -172,6 +172,13 @@ def main():
                     article_title = extract_title_from_html(article_html) or article_title
                     article_author = extract_author_from_html(article_html)
 
+                    # Debugging: Save HTML if author is unknown
+                    if article_author == "Unknown Author":
+                        debug_file_path = os.path.join(CACHE_DIR, f"debug_{article_slug}.html")
+                        with open(debug_file_path, 'w') as f:
+                            f.write(article_html)
+                        print(f"  Saved HTML for debugging unknown author: {debug_file_path}")
+
                     all_links = extract_links_from_html(article_html)
 
                     utms_applied = []
@@ -259,7 +266,7 @@ def main():
     # Generate the meta-report
     meta_report_content = "# UTM Analysis Report\n\n| Date | Article Title | Remote Link | UTMs Applied | Missing UTMs | B-Numbers |\n|---|---|---|---|---|---|\n"
     for article_data in all_articles_data:
-        meta_report_content += f"| {article_data['pub_date']} | [{article_data['title']}]({article_data['local_path']}) ({article_data['author']}) | [🔗]({article_data['remote_url']}) | {article_data['utms_applied_count']} | {article_data['missing_utms_count']} | {article_data['b_numbers']} |\n"
+        meta_report_content += f"| {article_data['pub_date']} | [{article_data['title']}]({article_data['local_path']}) | {article_data['author']} | [🔗]({article_data['remote_url']}) | {article_data['utms_applied_count']} | {article_data['missing_utms_count']} | {article_data['b_numbers']} |\n"
 
     with open(os.path.join(OUTPUT_DIR, "REPORT.md"), 'w') as f:
         f.write(meta_report_content)
