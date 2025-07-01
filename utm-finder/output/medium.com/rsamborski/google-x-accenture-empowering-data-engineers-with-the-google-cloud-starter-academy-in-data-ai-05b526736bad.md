@@ -15,30 +15,3 @@ Note that checking for links in an articles is NOT equivalent to getting all lin
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * None
-
-**All other URLs (irrelevant to this analysis):**
-* `https://glyph.medium.com/css/unbound.css` 2x
-* `https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19`
-* `https://miro.medium.com/v2/resize:fill:304:304/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
-* `https://miro.medium.com/v2/resize:fill:240:240/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
-* `https://miro.medium.com/v2/resize:fill:152:152/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
-* `https://miro.medium.com/v2/resize:fill:120:120/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156`
-* `https://miro.medium.com/v2/resize:fill:1000:1000/7*GAOKVe--MXbEJmV9230oOQ.png`
-* `https://glyph.medium.com`
-* `https://medium.com/@rsamborski`
-* `https://medium.com/@rsamborski/google-x-accenture-empowering-data-engineers-with-the-google-cloud-starter-academy-in-data-ai-05b526736bad`
-* `android-app://com.medium.reader/https/medium.com/p/05b526736bad`
-* `https://rsci.app.link/?%24canonical_url=https%3A%2F%2Fmedium.com%2Fp%2F05b526736bad&amp;%7Efeature=LoOpenInAppButton&amp;%7Echannel=ShowPostUnderUser&amp;%7Estage=mobileNavBar&amp;source=post_page---top_nav_layout_nav-----------------------------------------`
-* `https://www.statista.com/topics/1464/big-data/#dossierKeyfigures`
-* `https://www.accenture.com/pl-pl`
-* `https://www.linkedin.com/company/accenturepoland`
-* `https://www.linkedin.com/feed/hashtag/?keywords=googlecloud`
-* `https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page---post_responses--05b526736bad---------------------------------------`
-* `https://help.medium.com/hc/en-us?source=post_page-----05b526736bad---------------------------------------`
-* `https://medium.statuspage.io/?source=post_page-----05b526736bad---------------------------------------`
-* `mailto:pressinquiries@medium.com`
-* `https://blog.medium.com/?source=post_page-----05b526736bad---------------------------------------`
-* `https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=post_page-----05b526736bad---------------------------------------`
-* `https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page-----05b526736bad---------------------------------------`
-* `https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=post_page-----05b526736bad---------------------------------------`
-* `https://speechify.com/medium?source=post_page-----05b526736bad---------------------------------------`

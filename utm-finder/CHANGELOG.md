@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.3
+
+- Removed "All other URLs (irrelevant to this analysis)" section from the report.
+
 ## 0.0.2
 
 - Added `--no-cache` flag to `utm_crawler.py` for cache management.
