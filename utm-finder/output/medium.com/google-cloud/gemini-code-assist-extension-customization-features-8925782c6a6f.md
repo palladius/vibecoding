@@ -1,6 +1,6 @@
 **Report for Article: [Gemini Code Assist Extension: Customization features](https://medium.com/google-cloud/gemini-code-assist-extension-customization-features-8925782c6a6f?source=rss-802a4d428d95------2)**
 
-**Author:** Unknown Author
+**Author:** Romin Irani
 **Publication Date:** 2025-06-09
 
 **Overall Status:** Missing Actions

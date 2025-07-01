@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.6
+
+- Further refined author extraction logic in `utm_crawler.py`.
+
+## 0.0.5
+
+- Further improved author and publication date parsing in reports.
+
 ## 0.0.4
 
 - Improved author and publication date parsing in reports.

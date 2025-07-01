@@ -1,6 +1,6 @@
 **Report for Article: [Google Cloud Platform Technology Nuggets — May 1–15, 2025](https://medium.com/google-cloud/google-cloud-platform-technology-nuggets-may-1-15-2025-54748fe3cbc4?source=rss-802a4d428d95------2)**
 
-**Author:** Unknown Author
+**Author:** Romin Irani
 **Publication Date:** 2025-05-16
 
 **Overall Status:** Missing Actions

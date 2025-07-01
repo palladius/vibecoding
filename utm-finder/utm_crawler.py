@@ -69,25 +69,25 @@ def extract_author_from_html(html_content):
     if author_match:
         return author_match.group(1).strip()
 
-    # Try to extract author from <meta property="og:title"> tag (common for Medium)
+    # Fallback: Try to extract author from <meta property="og:title"> tag (common for Medium)
     author_match = re.search(r'<meta property="og:title" content=".*? \| by ([^\|]+)"', html_content)
     if author_match:
         return author_match.group(1).strip()
 
-    # Try to extract author from <link rel="author"> tag
+    # Fallback: Try to extract from the title tag if it contains "by Author Name"
+    title_match = re.search(r'<title[^>]*>.*? \| by ([^\|]+?)(?: \|.*?)?</title>', html_content)
+    if title_match:
+        return title_match.group(1).strip()
+
+    # Fallback: Try to extract author from <link rel="author"> tag
     author_match = re.search(r'<link rel="author" href="https://medium.com/@([^"/]+)"', html_content)
     if author_match:
         return author_match.group(1).strip()
 
-    # Try to extract author from a specific div with author information (common for Medium)
+    # Fallback: Try to extract author from a specific div with author information (common for Medium)
     author_match = re.search(r'<div class="byline-names">.*?<a href=".*?">([^<]+)</a>', html_content, re.DOTALL)
     if author_match:
         return author_match.group(1).strip()
-
-    # Fallback: Try to extract from the title tag if it contains "by Author Name"
-    title_match = re.search(r'<title[^>]*>.*? \| by ([^\|]+) \| Medium</title>', html_content)
-    if title_match:
-        return title_match.group(1).strip()
 
     return "Unknown Author" 
 
@@ -215,11 +215,15 @@ def main():
 
                     # Prepare report content
                     formatted_pub_date = datetime.strptime(pub_date_str, '%a, %d %b %Y %H:%M:%S GMT').strftime('%Y-%m-%d')
-                    report_content = f"**Report for Article: [{article_title}]({article_url})**\n\n" \
-                                     f"**Author:** {article_author}\n" \
-                                     f"**Publication Date:** {formatted_pub_date}\n\n" \
-                                     f"**Overall Status:** {'OK' if not missing_utms else 'Missing Actions'}\n\n" \
-                                     f"**URLs with UTMs:**\n"
+                    report_content = f"""**Report for Article: [{article_title}]({article_url})**
+
+**Author:** {article_author}
+**Publication Date:** {formatted_pub_date}
+
+**Overall Status:** {'OK' if not missing_utms else 'Missing Actions'}
+
+**URLs with UTMs:**
+"""
 
                     report_content += f"\n**Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**\n"
                     for link in missing_utms:
@@ -255,7 +259,7 @@ def main():
     # Generate the meta-report
     meta_report_content = "# UTM Analysis Report\n\n| Date | Article Title | Remote Link | UTMs Applied | Missing UTMs | B-Numbers |\n|---|---|---|---|---|---|\n"
     for article_data in all_articles_data:
-        meta_report_content += f"| {article_data['pub_date']} | [{article_data['title']} ({article_data['author']})]({article_data['local_path']}) | [🔗]({article_data['remote_url']}) | {article_data['utms_applied_count']} | {article_data['missing_utms_count']} | {article_data['b_numbers']} |\n"
+        meta_report_content += f"| {article_data['pub_date']} | [{article_data['title']}]({article_data['local_path']}) ({article_data['author']}) | [🔗]({article_data['remote_url']}) | {article_data['utms_applied_count']} | {article_data['missing_utms_count']} | {article_data['b_numbers']} |\n"
 
     with open(os.path.join(OUTPUT_DIR, "REPORT.md"), 'w') as f:
         f.write(meta_report_content)

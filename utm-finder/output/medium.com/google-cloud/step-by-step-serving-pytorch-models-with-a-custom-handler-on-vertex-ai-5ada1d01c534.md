@@ -1,6 +1,6 @@
 **Report for Article: [Step-by-Step: Serving PyTorch Models with a Custom Handler on Vertex AI](https://medium.com/google-cloud/step-by-step-serving-pytorch-models-with-a-custom-handler-on-vertex-ai-5ada1d01c534?source=rss-adf81c1f37ee------2)**
 
-**Author:** Unknown Author
+**Author:** Remigiusz Samborski
 **Publication Date:** 2025-06-06
 
 **Overall Status:** Missing Actions

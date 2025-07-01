@@ -1,6 +1,6 @@
 **Report for Article: [Gemma is born! \| by Riccardo Carlesso \| Google Cloud - Community \| Medium](https://medium.com/google-cloud/gemma-is-born-c5ea9ba576ec?source=rss-b5293b96912f------2)**
 
-**Author:** Unknown Author
+**Author:** Riccardo Carlesso
 **Publication Date:** 2024-02-26
 
 **Overall Status:** Missing Actions

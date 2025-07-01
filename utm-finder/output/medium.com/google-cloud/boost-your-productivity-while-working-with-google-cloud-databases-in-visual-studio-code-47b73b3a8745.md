@@ -1,6 +1,6 @@
 **Report for Article: [Boost your productivity while working with Google Cloud databases in Visual Studio Code](https://medium.com/google-cloud/boost-your-productivity-while-working-with-google-cloud-databases-in-visual-studio-code-47b73b3a8745?source=rss-802a4d428d95------2)**
 
-**Author:** Unknown Author
+**Author:** Romin Irani
 **Publication Date:** 2025-06-06
 
 **Overall Status:** Missing Actions

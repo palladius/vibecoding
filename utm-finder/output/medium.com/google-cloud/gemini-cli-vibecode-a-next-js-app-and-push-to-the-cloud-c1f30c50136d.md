@@ -1,6 +1,6 @@
 **Report for Article: [Gemini CLI: vibecode a Next.js app and push to the Cloud!](https://medium.com/google-cloud/gemini-cli-vibecode-a-next-js-app-and-push-to-the-cloud-c1f30c50136d?source=rss-b5293b96912f------2)**
 
-**Author:** Unknown Author
+**Author:** Riccardo Carlesso
 **Publication Date:** 2025-06-27
 
 **Overall Status:** OK

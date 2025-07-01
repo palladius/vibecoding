@@ -1,6 +1,6 @@
 **Report for Article: [Gemini CLI Tutorial Series. Welcome to the Gemini CLI Tutorial…](https://medium.com/google-cloud/gemini-cli-tutorial-series-77da7d494718?source=rss-802a4d428d95------2)**
 
-**Author:** Unknown Author
+**Author:** Romin Irani
 **Publication Date:** 2025-06-27
 
 **Overall Status:** Missing Actions

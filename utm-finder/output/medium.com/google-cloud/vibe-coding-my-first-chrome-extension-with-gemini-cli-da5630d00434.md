@@ -1,6 +1,6 @@
 **Report for Article: [Vibe coding my first Chrome Extension with Gemini CLI !](https://medium.com/google-cloud/vibe-coding-my-first-chrome-extension-with-gemini-cli-da5630d00434?source=rss-b5293b96912f------2)**
 
-**Author:** Unknown Author
+**Author:** Riccardo Carlesso
 **Publication Date:** 2025-06-25
 
 **Overall Status:** Missing Actions
