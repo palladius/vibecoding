@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.16
+
+- Correctly identify UTMs in URLs with fragments and `&amp;` entities.
+- Improved b-number extraction to handle hexadecimal values.
+
+
 ## 0.0.15
 
 - Resolved all "Unknown Author" instances in `REPORT.md` by improving author extraction logic in `utm_crawler.py`.

@@ -1,12 +1,13 @@
 import yaml
 import requests
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, urlsplit
 import os
 from collections import Counter
 import re
 from datetime import datetime
 import argparse
 import shutil
+import html
 
 # Configuration files
 RSS_FEEDS_FILE = "etc/rss_feeds.yaml"
@@ -36,15 +37,42 @@ def extract_links_from_html(html_content):
     return links
 
 def has_utm_params(url):
-    parsed_url = urlparse(url)
-    query_params = parse_qs(parsed_url.query)
+    unescaped_url = html.unescape(url)
+    
+    query_string = ''
+    
+    # Split URL by # to separate fragment
+    parts = unescaped_url.split('#', 1)
+    main_part = parts[0]
+    fragment_part = parts[1] if len(parts) > 1 else ''
+
+    # Check for query in fragment first
+    if '?' in fragment_part:
+        query_string = fragment_part.split('?', 1)[1]
+    elif '?' in main_part:
+        query_string = main_part.split('?', 1)[1]
+
+    query_params = parse_qs(query_string)
     return any(key.startswith('utm_') for key in query_params)
 
 def get_b_number(url):
-    parsed_url = urlparse(url)
-    query_params = parse_qs(parsed_url.query)
+    unescaped_url = html.unescape(url)
+    
+    query_string = ''
+    # Split URL by # to separate fragment
+    parts = unescaped_url.split('#', 1)
+    main_part = parts[0]
+    fragment_part = parts[1] if len(parts) > 1 else ''
+
+    # Check for query in fragment first
+    if '?' in fragment_part:
+        query_string = fragment_part.split('?', 1)[1]
+    elif '?' in main_part:
+        query_string = main_part.split('?', 1)[1]
+
+    query_params = parse_qs(query_string)
     utm_campaign = query_params.get('utm_campaign', [''])[0]
-    match = re.search(r'b([0-9]+)', utm_campaign)
+    match = re.search(r'(?:b|0x)([0-9a-fA-F]+)', utm_campaign)
     if match:
         return match.group(1)
     return None
@@ -231,14 +259,17 @@ def main():
 
 **URLs with UTMs:**
 """
+                    if utms_applied:
+                        for link in utms_applied:
+                            report_content += f"* `{link}`\n"
+                    else:
+                        report_content += "* None\n"
 
-                    report_content += f"\n**Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**\n"
+                    report_content += "\n**Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**\n"
                     for link in missing_utms:
                         report_content += f"* `{link}`\n"
                     if not missing_utms:
                         report_content += "* None\n"
-
-
 
                     os.makedirs(local_report_dir, exist_ok=True)
                     with open(local_report_path, 'w') as f:

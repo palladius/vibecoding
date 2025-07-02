@@ -6,6 +6,7 @@
 **Overall Status:** OK
 
 **URLs with UTMs:**
+* None
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * None

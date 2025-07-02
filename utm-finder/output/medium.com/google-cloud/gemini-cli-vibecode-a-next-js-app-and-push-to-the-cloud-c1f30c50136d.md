@@ -6,6 +6,8 @@
 **Overall Status:** OK
 
 **URLs with UTMs:**
+* `https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/?utm_campaign=CDR_0x89ad3e41_awareness_b424096451&amp;utm_medium=external&amp;utm_source=blog`
+* `https://codelabs.developers.google.com/codelabs/codelabs/gemini-cli-getting-started?utm_campaign=CDR_0x89ad3e41_awareness_b424096451&amp;utm_medium=external&amp;utm_source=blog`
 
 **Missing UTMs (matching `urls_which_require_substitution` but no UTMs):**
 * None
