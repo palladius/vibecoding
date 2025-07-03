@@ -179,3 +179,27 @@ If you use Ruby, use `rbenv` and a `Gemfile`.
 
 Ensure every README.md (except thhe root one) has a "📁 Project Structure" H2 chapter, containing a tree-view of hte subfolder, in the style of `tree`. You can actually run `tree` but make sure to prune all irrelevant files, git ignored, irrelevant assets (like images, ...). It needs to be short enough to provide humans with a good understanding of the CODE structure.
 
+
+Amazing Example:
+
+```markdown
+my-project/
+├── backend/
+│   ├── src/                  # Main backend source code
+│   ├── venv/                 # Python virtual environment (ignored by git)
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   ├── requirements.txt
+│   ├── run.sh
+│   └── ...
+├── frontend/
+│   ├── src/                  # React components, routes, utils
+│   ├── public/               # Static assets (images, logo, etc.)
+│   ├── package.json
+│   ├── vite.config.js
+│   └── ...
+├── server/                   # Additional backend services & agents
+│   └── ...
+├── README.md
+└── ...
+```
