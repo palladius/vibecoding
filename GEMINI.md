@@ -170,3 +170,12 @@ If you use Ruby, use `rbenv` and a `Gemfile`.
 ## Bugs
 
 * `BUG001` You have a tendency of doing git commit -m "feat: blah `filename`: updated ..".  Stop doing it! Either use single quotes or stop using backticks inside a double-quoted bash string!
+
+## Quality
+
+* use `gitleaks detect -v` and `markdownlint` for ensuring MD quality and no secrets are around.
+
+## Documentation
+
+Ensure every README.md (except thhe root one) has a "📁 Project Structure" H2 chapter, containing a tree-view of hte subfolder, in the style of `tree`. You can actually run `tree` but make sure to prune all irrelevant files, git ignored, irrelevant assets (like images, ...). It needs to be short enough to provide humans with a good understanding of the CODE structure.
+
