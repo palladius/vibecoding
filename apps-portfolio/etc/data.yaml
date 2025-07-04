@@ -76,7 +76,7 @@ talks:
       - CLI
       - highlight
       - video
-    image: /images/generated/We-are-Developers-2025-2025-07-10.jpeg # Reusing existing image for WAD
+    image: /images/me/we-are-developers-2025.png
   - title: 'Railshöck at Renuo'
     event: Railshöck at Renuo
     date: '2025-06-18'
@@ -111,6 +111,7 @@ talks:
     location: Modena, Italy
     country_code: it
     event_url: https://devfest.modena.it/
+    #cfp_url: https://sessionize.com/devfestmodena2025/
     tags:
       - GenAI
       - DevFest
@@ -172,8 +173,8 @@ talks:
       - Culture
     talk_description: >
       This session addresses the challenges of postmortems, aiming to shift from a culture of blame to one of genuine learning. Riccardo Carlesso, an Italian SRE expert at Google, will dissect the anatomy of an effective postmortem, sharing real-world stories and insights. Attendees will learn when a postmortem is essential, how to adapt Google's foundational techniques, and how to transform failures into powerful business insights. The talk is for operators and leaders dedicated to building a culture of real resilience.
-    image: /images/generated/placeholder-image.png
-  - title: '[workshop][tentative] Create a responsive Rails 8 app with Gemini'
+    image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
+  - title: '[workshop]Create a responsive Rails 8 app with Gemini [tentative]'
     event: Euruko 2025
     date: '2025-09-18'
     location: Viana do Castelo, Portugal

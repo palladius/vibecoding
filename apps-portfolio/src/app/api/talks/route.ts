@@ -8,18 +8,17 @@ export async function GET(request: NextRequest) {
 
   if (future === 'true') {
     const now = new Date();
-    console.log('Filtering for future talks where date >= ', now.toISOString());
+    const todayFormatted = now.toISOString().split('T')[0];
     const talks = await db.talk.findMany({
       where: {
         date: {
-          gte: now.toISOString(),
+          gte: todayFormatted,
         },
       },
       orderBy: {
         date: 'asc',
       },
     });
-    console.log('Fetched future talks:', talks.length, talks);
     return NextResponse.json(talks);
   }
 

@@ -1,6 +1,6 @@
 // src/app/lib/data.ts
 import { db } from '../../lib/db';
-import { Talk } from '../../lib/types';
+
 import { slugify } from '../../lib/utils';
 
 // Server-side function
@@ -11,11 +11,7 @@ export async function getTalks() {
         date: 'desc',
       },
     });
-    return talks.map((talk) => ({
-      ...talk,
-      date: talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date,
-      slug: `${talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date}-${slugify(talk.title)}`
-    }));
+    return talks;
   } catch (error) {
     console.error('Error fetching talks:', error);
     return [];
@@ -58,24 +54,8 @@ export async function getArticle(slug: string) {
 // Client-side function (uses relative URL)
 export async function getFutureTalks() {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
-  const res = await fetch(`${baseUrl}/api/talks`);
-  const talks: Talk[] = (await res.json()).map((talk: Talk) => ({
-    ...talk,
-    date: talk.date,
-  }));
-  const futureTalks = talks
-    .filter((talk) => {
-      const talkDate = new Date(talk.date);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0); // Set to the beginning of the current day
-      console.log(`Comparing talk date: ${talkDate.toISOString()} (timestamp: ${talkDate.getTime()}) with current date (start of day): ${today.toISOString()} (timestamp: ${today.getTime()})`);
-      return talkDate.getTime() >= today.getTime();
-    })
-    .sort((a, b) => a.date.getTime() - b.date.getTime());
-  return futureTalks.map((talk) => ({
-    ...talk,
-    slug: `${talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date}-${slugify(talk.title)}`
-  }));
+  const res = await fetch(`${baseUrl}/api/talks?future=true`);
+  return await res.json();
 }
 
 // Server-side function

@@ -62,7 +62,7 @@ export async function importData() {
         data: {
           title: talk.title,
           event: talk.event,
-          date: new Date(talk.date).toISOString(),
+          date: new Date(talk.date).toISOString().split('T')[0],
           location: talk.location,
           country_code: talk.country_code,
           session_url: talk.session_url,

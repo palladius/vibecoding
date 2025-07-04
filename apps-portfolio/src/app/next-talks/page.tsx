@@ -5,20 +5,7 @@ import { getFutureTalks } from "../lib/data";
 import { Talk } from "../../lib/types";
 import TalkCard from "../components/TalkCard";
 import CalendarView from "../components/CalendarView";
-
-import moment from 'moment';
-
-const getProximity = (date: string) => {
-  const today = moment().startOf('day');
-  const talkDate = moment(date).startOf('day');
-
-  if (talkDate.isSame(today, 'day')) return "Today!";
-  if (talkDate.isSame(today.clone().add(1, 'day'), 'day')) return "Tomorrow!";
-  if (talkDate.isSame(today, 'week')) return "This week!";
-  if (talkDate.isSame(today.clone().add(1, 'week'), 'week')) return "Next week!";
-  if (talkDate.isSame(today, 'month')) return "This month!";
-  return undefined;
-};
+import { slugify } from "../../lib/utils";
 
 export default function NextTalksPage() {
   const [talks, setTalks] = useState<Talk[]>([]);
@@ -26,7 +13,20 @@ export default function NextTalksPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const futureTalks = await getFutureTalks();
+      const allTalks = await getFutureTalks();
+      console.log("NextTalksPage: allTalks from getFutureTalks=", allTalks);
+      const futureTalks = allTalks
+        .filter((talk) => {
+          const today = new Date().toISOString().split('T')[0]; // Get today's date as YYYY-MM-DD string
+          console.log(`NextTalksPage: Filtering: talk.date=${talk.date}, today=${today}, result=${talk.date >= today}`);
+          return talk.date >= today;
+        })
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .map((talk) => ({
+          ...talk,
+          slug: `${talk.date}-${slugify(talk.title)}`
+        }));
+      
       setTalks(futureTalks);
     };
     fetchData();
@@ -50,11 +50,15 @@ export default function NextTalksPage() {
         </button>
       </div>
       {view === 'card' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {talks.map((talk) => (
-            <TalkCard key={talk.id} talk={talk} proximity={getProximity(talk.date.toISOString())} />
-          ))}
-        </div>
+        talks.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {talks.map((talk) => (
+              <TalkCard key={talk.id} talk={talk} />
+            ))}
+          </div>
+        ) : (
+          <p>No upcoming talks found. Check back later!</p>
+        )
       ) : (
         <CalendarView talks={talks} />
       )}

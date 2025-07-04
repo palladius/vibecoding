@@ -15,7 +15,7 @@ model Talk {
   id                  Int      @id @default(autoincrement())
   title               String
   event               String
-  date                DateTime
+  date                String
   location            String
   country_code        String
   session_url         String?

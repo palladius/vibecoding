@@ -98,7 +98,7 @@ to its errors and course-correct by yourself!
 This is to minimize user interaction. If you're ever blocked (eg, "drag and drop the first card onto the second card"), I'm here for you.
 
 Do NOT enter in infinite loops like:
-* `just run`
+* `just run`. I run this for you, on port 3001 - no logs.
 * `just run-dev`. I run this for you, on port 3001. Check logs under `log/`
 * `just docker-run`. I can run this for you, on port 8080, upon request. figure out a way to log under `log/docker.log`
 
