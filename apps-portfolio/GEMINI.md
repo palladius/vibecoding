@@ -133,7 +133,6 @@ Pay attention here:
 
 ## BUG FIXING
 
-
 When I ask you to assess a bug, I expect you to do many changes by yourself.
 
 Before committing any change, let's make sure:

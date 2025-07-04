@@ -14,11 +14,9 @@ export default function NextTalksPage() {
   useEffect(() => {
     const fetchData = async () => {
       const allTalks = await getFutureTalks();
-      console.log("NextTalksPage: allTalks from getFutureTalks=", allTalks);
       const futureTalks = allTalks
         .filter((talk) => {
           const today = new Date().toISOString().split('T')[0]; // Get today's date as YYYY-MM-DD string
-          console.log(`NextTalksPage: Filtering: talk.date=${talk.date}, today=${today}, result=${talk.date >= today}`);
           return talk.date >= today;
         })
         .sort((a, b) => a.date.localeCompare(b.date))
@@ -26,7 +24,6 @@ export default function NextTalksPage() {
           ...talk,
           slug: `${talk.date}-${slugify(talk.title)}`
         }));
-      
       setTalks(futureTalks);
     };
     fetchData();
