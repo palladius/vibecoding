@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.12.14 - 2025-07-07
+
+### 🚀 Features
+
+- **Standardized Date Handling:**
+    - Reverted `date` and `publish_date` fields in `prisma/schema.prisma` back to `String` type to align with the `YYYY-MM-DD` format used in `etc/data.yaml`.
+    - Created and applied a new Prisma migration (`date-to-string`) to reflect these schema changes.
+    - Implemented a `parseDateString` utility function in `src/lib/utils.ts` to safely convert `YYYY-MM-DD` strings into `Date` objects for comparison and manipulation.
+    - Updated `scripts/import-yaml.ts` to use `parseDateString` and ensure dates are consistently stored as `YYYY-MM-DD` strings in the database.
+    - Modified `src/app/lib/data.ts` functions (`getTalks`, `getArticles`, `getHighlightedTalks`, `getHighlightedArticles`, `getFutureTalks`) to correctly handle string dates and leverage `parseDateString` for accurate comparisons and slug generation.
+
+### 🐛 Bug Fixes
+
+- **Fixed Article and About Pages:**
+    - Populated `src/app/articles/[slug]/page.tsx` with a basic React component to display article content, resolving the "not a React Component" error.
+    - Corrected the slug generation logic for articles in `src/app/lib/data.ts` to prevent "Article not found" errors.
+    - Resolved the "Inconsistent column data" error on the `/about` page by ensuring `publish_date` and `date` fields are consistently handled as strings throughout the application.
+    - Fixed the `Module not found` error in `src/app/api/talks/route.ts` by correcting the import path for `parseDateString`, which resolved the issue with the `/next-talks` page.
+    - Refactored `src/app/next-talks/page.tsx` into a Server Component and introduced `src/app/next-talks/NextTalksClientPage.tsx` to handle client-side logic, resolving the "No upcoming talks found" issue and the `TypeError` related to `ItemsList`.
+
+# Changelog
+
 ## v0.12.13 - 2025-07-07
 
 ### 🚀 Features

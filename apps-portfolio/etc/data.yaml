@@ -49,6 +49,7 @@ talks:
     location: 'Antwerp, Belgium'
     country_code: be
     status: cfp_applied
+    event_url: 'https://devoxx.be/'
     talk_description: >
       A deep dive into the Gemini CLI, showcasing how it can revolutionize your
       software engineering workflow with powerful AI assistance.
