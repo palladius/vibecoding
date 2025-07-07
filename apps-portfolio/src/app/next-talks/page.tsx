@@ -1,64 +1,8 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { getFutureTalks } from "../lib/data";
-import { Talk } from "../../lib/types";
-import TalkCard from "../components/TalkCard";
-import CalendarView from "../components/CalendarView";
-import { slugify } from "../../lib/utils";
+import NextTalksClientPage from "./NextTalksClientPage";
 
-export default function NextTalksPage() {
-  const [talks, setTalks] = useState<Talk[]>([]);
-  const [view, setView] = useState('card');
+export default async function NextTalksPage() {
+  const talks = await getFutureTalks();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const allTalks = await getFutureTalks();
-      const futureTalks = allTalks
-        .filter((talk) => {
-          const today = new Date().toISOString().split('T')[0]; // Get today's date as YYYY-MM-DD string
-          return talk.date >= today;
-        })
-        .sort((a, b) => a.date.localeCompare(b.date))
-        .map((talk) => ({
-          ...talk,
-          slug: `${talk.date}-${slugify(talk.title)}`
-        }));
-      setTalks(futureTalks);
-    };
-    fetchData();
-  }, []);
-
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-4">Next Talks</h1>
-      <div className="flex justify-end mb-4">
-        <button
-          className={`px-4 py-2 rounded-l-lg ${view === 'card' ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'}`}
-          onClick={() => setView('card')}
-        >
-          Card View
-        </button>
-        <button
-          className={`px-4 py-2 rounded-r-lg ${view === 'calendar' ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'}`}
-          onClick={() => setView('calendar')}
-        >
-          Calendar View
-        </button>
-      </div>
-      {view === 'card' ? (
-        talks.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {talks.map((talk) => (
-              <TalkCard key={talk.id} talk={talk} />
-            ))}
-          </div>
-        ) : (
-          <p>No upcoming talks found. Check back later!</p>
-        )
-      ) : (
-        <CalendarView talks={talks} />
-      )}
-    </div>
-  );
+  return <NextTalksClientPage initialTalks={talks} />;
 }

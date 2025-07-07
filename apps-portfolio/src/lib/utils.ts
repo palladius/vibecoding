@@ -1,7 +1,7 @@
 // src/lib/utils.ts
 export const slugify = (str: string) => {
   if (!str) return '';
-  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
+  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúúūǘůűųẃẍÿýžźż·/_,:;'
   const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
   const p = new RegExp(a.split('').join('|'), 'g')
 
@@ -25,4 +25,9 @@ export function extractYouTubeVideoId(url: string) {
     throw new Error(`Invalid YouTube URL format. Expected format: https://www.youtube.com/watch?v=VIDEO_ID. Received: ${url}`);
   }
   return match[1];
+}
+
+export function parseDateString(dateString: string): Date {
+  const [year, month, day] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day);
 }

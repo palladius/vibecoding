@@ -159,3 +159,12 @@ Before committing any change, let's make sure:
 Prefer triggering cloud Build by just git commit/pushing than triggering a build yourself from CLI. Leave that with me.
 
 STOP CHANGING `cloud_build.yaml` and the `build` target in `justfile`
+
+## Bug on Date/Datetime for events.
+
+I've noticed you make a lot of mistakes on the dates. Let's clarify this.
+
+1. The data.yaml contains ALL dates in this format: '2024-01-31', which is a string.
+2. The Database should transform these to Date objects (NOT Datetime).
+3. please ensure there is  ONE single convenience function to import a date in format YYYYMMDD to a Date (not a DAteTime because we do NOt have a time) and use this function during import. Let's call this function `strYYYYMMDDToDate`.
+4. Make sure the DB has Event dates in "Date" Format (whereas the updated_at and created_at are correct to stay DateTime since they're timestamps).

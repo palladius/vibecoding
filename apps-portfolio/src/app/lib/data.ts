@@ -1,7 +1,7 @@
 // src/app/lib/data.ts
 import { db } from '../../lib/db';
 
-import { slugify } from '../../lib/utils';
+import { slugify, parseDateString } from '../../lib/utils';
 
 // Server-side function
 export async function getTalks() {
@@ -11,7 +11,10 @@ export async function getTalks() {
         date: 'desc',
       },
     });
-    return talks;
+    return talks.map((talk) => ({
+        ...talk,
+        slug: `${talk.date}-${slugify(talk.title)}`
+    }));
   } catch (error) {
     console.error('Error fetching talks:', error);
     return [];
@@ -23,12 +26,12 @@ export async function getArticles() {
   try {
     const articles = await db.article.findMany({
       orderBy: {
-        publish_date: 'desc',
+        createdAt: 'desc',
       },
     });
     return articles.map((article) => ({
       ...article,
-      slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`,
+      slug: `${article.publish_date}-${slugify(article.title)}`,
       type: 'article'
     }));
   } catch (error) {
@@ -53,9 +56,10 @@ export async function getArticle(slug: string) {
 
 // Client-side function (uses relative URL)
 export async function getFutureTalks() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
-  const res = await fetch(`${baseUrl}/api/talks?future=true`);
-  return await res.json();
+  const talks = await getTalks();
+  const now = new Date();
+  const today = parseDateString(now.toISOString().split('T')[0]);
+  return talks.filter(talk => parseDateString(talk.date) >= today);
 }
 
 // Server-side function
@@ -72,8 +76,7 @@ export async function getHighlightedTalks() {
     });
     return talks.map((talk) => ({
         ...talk,
-        date: talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date,
-        slug: `${talk.date instanceof Date ? talk.date.toISOString().split('T')[0] : talk.date}-${slugify(talk.title)}`
+        slug: `${talk.date}-${slugify(talk.title)}`
     }));
 }
 
@@ -86,11 +89,11 @@ export async function getHighlightedArticles() {
             }
         },
         orderBy: {
-            publish_date: 'desc'
+            createdAt: 'desc'
         }
     });
     return articles.map((article) => ({
         ...article,
-        slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`
+        slug: `${article.publish_date}-${slugify(article.title)}`
     }));
 }
