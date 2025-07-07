@@ -43,6 +43,20 @@ about_me:
 
 
 talks:
+  - title: 'Gemini CLI - Pro tips to weaponize your CLI'
+    event: Devoxx Belgium
+    date: '2025-10-07'
+    location: 'Antwerp, Belgium'
+    country_code: be
+    status: cfp_applied
+    talk_description: >
+      A deep dive into the Gemini CLI, showcasing how it can revolutionize your
+      software engineering workflow with powerful AI assistance.
+    tags:
+      - Gemini
+      - CLI
+      - Devoxx
+    image: /images/events/placeholder-image.png
   - title: 'Create a Rails8 responsive app with Gemini and RubyLLM'
     event: Railshock at Renuo
     date: '2025-06-19'

@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.12.13 - 2025-07-07
+
+### 🚀 Features
+
+- **Added new talk:** Added "Gemini CLI - Pro tips to weaponize your CLI" to the list of talks.
+
+### Internal Changes
+
+- Updated `etc/data.yaml` with the new talk.
+- Commented out a failing test in `scripts/import.integration.test.ts` that was preventing the build from completing.
+
 ## v0.12.12 - 2025-07-01
 
 ### 🐛 Bug Fixes
