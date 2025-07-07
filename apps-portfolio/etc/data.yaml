@@ -1,10 +1,12 @@
 schema_version: '1.2'
 about_me:
   bio: >
-    Former network administrator, sysadmin, and Ruby on Rails developer, Riccardo has been in operations for 20+ years and
-    still likes to spend time coding (better if Ruby). He loves engaging with customers and help them run their operations
-    reliably and successfully in the cloud. Riccardo loves caipirinhas and 🍷 Amarone, playing 🎹 piano and 🏊🏻🚴🏿🏃‍♀️
-    triathlons; he's been passionate about Mathematics since he was 4.
+    Former network administrator, sysadmin, and Ruby on Rails developer,
+    Riccardo has been in operations for 20+ years and still likes to spend time
+    coding (better if Ruby). He loves engaging with customers and help them run
+    their operations reliably and successfully in the cloud. Riccardo loves
+    caipirinhas and 🍷 Amarone, playing 🎹 piano and 🏊🏻🚴🏿🏃‍♀️ triathlons;
+    he's been passionate about Mathematics since he was 4.
 
     Riccardo Carlesso is a Developer Advocate at Google Cloud, where he helps
     developers build amazing applications. He is a passionate software engineer
@@ -12,44 +14,43 @@ about_me:
     can find him speaking at conferences, writing articles, or watching Sacha
     Baron Cohen movies.
 
-    Note: this is a public facing version of my pvt go/ricc-conferences where I hold state (like Manager/Wife approval).
+    Note: this is a public facing version of my pvt go/ricc-conferences where I
+    hold state (like Manager/Wife approval).
   links:
     - url: https://www.linkedin.com/in/riccardocarlesso/
       title: Linkedin
-      emoji: '💼'
+      emoji: 💼
     - url: https://ricc.rocks/
       title: Blog
     - url: https://linktr.ee/palladius
       title: LinkTree
-      emoji: '🌳'
+      emoji: 🌳
     - url: https://sessionize.com/riccardo-carlesso/
       title: Sessionize
-      emoji: '📅'
+      emoji: 📅
     - url: https://medium.com/@palladiusbonton
       title: Medium
-      emoji: '📝'
+      emoji: 📝
     - url: g.dev/ricc
       title: Google Developer
-      emoji: '👨‍💻'
+      emoji: 👨‍💻
     - url: https://github.com/palladius/
       title: GitHub
-      emoji: '🐙'
+      emoji: 🐙
     - url: https://github.com/palladius/my-sessions-and-bio
       title: Sessions and Bio on GH
-      emoji: '📂'
+      emoji: 📂
     - url: https://www.youtube.com/@riccardocarlesso
       title: YouTube
-      emoji: '📹'
-
-
+      emoji: 📹
 talks:
-  - title: 'Gemini CLI - Pro tips to weaponize your CLI'
+  - title: Gemini CLI - Pro tips to weaponize your CLI
     event: Devoxx Belgium
     date: '2025-10-07'
-    location: 'Antwerp, Belgium'
+    location: Antwerp, Belgium
     country_code: be
     status: cfp_applied
-    event_url: 'https://devoxx.be/'
+    event_url: https://devoxx.be/
     talk_description: >
       A deep dive into the Gemini CLI, showcasing how it can revolutionize your
       software engineering workflow with powerful AI assistance.
@@ -57,11 +58,11 @@ talks:
       - Gemini
       - CLI
       - Devoxx
-    image: /images/events/placeholder-image.png
-  - title: 'Create a Rails8 responsive app with Gemini and RubyLLM'
+    image: /images/generated/Devoxx-Belgium-2025-10-07.jpeg
+  - title: Create a Rails8 responsive app with Gemini and RubyLLM
     event: Railshock at Renuo
     date: '2025-06-19'
-    location: 'Wallisellen, ZH'
+    location: Wallisellen, ZH
     country_code: ch
     status: delivered
     talk_description: >
@@ -74,7 +75,8 @@ talks:
       - RubyLLM
       - MCP
       - highlight
-    slides_url: https://speakerdeck.com/palladius/print2-create-a-rails8-responsive-app-with-gemini-and-rubyllm
+    slides_url: >-
+      https://speakerdeck.com/palladius/print2-create-a-rails8-responsive-app-with-gemini-and-rubyllm
     video: https://www.youtube.com/watch?v=BOI5CB1ksCQ
     image: /images/events/railshock2025.webp
   - title: 'Gemini CLI: Your New Best Friend for local development'
@@ -92,16 +94,15 @@ talks:
       - highlight
       - video
     image: /images/me/we-are-developers-2025.png
-  - title: 'Railshöck at Renuo'
+  - title: Railshöck at Renuo
     event: Railshöck at Renuo
     date: '2025-06-18'
-    location: 'Wallisellen, ZH'
-    # Thanks Zeno!
+    location: Wallisellen, ZH
     video: https://www.youtube.com/watch?v=BOI5CB1ksCQ
     country_code: ch
-    event_url: 'https://www.meetup.com/it-IT/rubyonrails-ch/events/307626721/'
+    event_url: https://www.meetup.com/it-IT/rubyonrails-ch/events/307626721/
     status: confirmed
-    talk_description: Rails8 responsive chat done with RubyLLM # 'A Ruby meetup hosted by Renuo, featuring several presentations'
+    talk_description: Rails8 responsive chat done with RubyLLM
     image: /images/events/railshock2025.webp
     tags:
       - Ruby
@@ -114,19 +115,17 @@ talks:
     country_code: it
     event_url: https://www.unich.it/eventi/devfest-pescara-2024
     status: tentative
-    #image: /images/generated/DevFest-Pescara-2025-2025-11-08.jpeg # public/images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
     image: /images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
     tags:
       - GenAI
       - DevFest
       - MCP
-  - title: "Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️"
+  - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
     event: DevFest Modena 2025
     date: '2025-10-04'
     location: Modena, Italy
     country_code: it
     event_url: https://devfest.modena.it/
-    #cfp_url: https://sessionize.com/devfestmodena2025/
     tags:
       - GenAI
       - DevFest
@@ -148,7 +147,6 @@ talks:
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
     image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
-
   - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
     event: Codemotion Milan 2025
     date: '2025-10-14'
@@ -175,20 +173,27 @@ talks:
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
     image: /images/events/codemotion-2025.png
-    #image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
   - title: 'BEYOND BLAME: THE ART OF THE POSTMORTEM'
     event: Codemotion
     date: '2025-11-15'
-    location: 'TBD'
+    location: TBD
     country_code: it
-    session_url: https://sessionize.com/s/riccardo-carlesso/beyond-blame-the-art-of-the-postmortem/142465
+    session_url: >-
+      https://sessionize.com/s/riccardo-carlesso/beyond-blame-the-art-of-the-postmortem/142465
     status: cfp_applied
     tags:
       - SRE
       - Postmortem
       - Culture
     talk_description: >
-      This session addresses the challenges of postmortems, aiming to shift from a culture of blame to one of genuine learning. Riccardo Carlesso, an Italian SRE expert at Google, will dissect the anatomy of an effective postmortem, sharing real-world stories and insights. Attendees will learn when a postmortem is essential, how to adapt Google's foundational techniques, and how to transform failures into powerful business insights. The talk is for operators and leaders dedicated to building a culture of real resilience.
+      This session addresses the challenges of postmortems, aiming to shift from
+      a culture of blame to one of genuine learning. Riccardo Carlesso, an
+      Italian SRE expert at Google, will dissect the anatomy of an effective
+      postmortem, sharing real-world stories and insights. Attendees will learn
+      when a postmortem is essential, how to adapt Google's foundational
+      techniques, and how to transform failures into powerful business insights.
+      The talk is for operators and leaders dedicated to building a culture of
+      real resilience.
     image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
   - title: '[workshop]Create a responsive Rails 8 app with Gemini [tentative]'
     event: Euruko 2025
@@ -466,7 +471,7 @@ articles:
   - title: A deep dive in Cloud Run for Rails
     url: https://ricc.rocks/en/posts/medium/2024-10-19-level-up-rails/
     publish_date: '2024-01-23'
-    video: 'https://www.youtube.com/watch?v=vpPftSHE9kM'
+    video: https://www.youtube.com/watch?v=vpPftSHE9kM
     tags:
       - CloudRun
       - Rails
