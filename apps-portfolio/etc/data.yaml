@@ -58,6 +58,7 @@ talks:
       - Gemini
       - CLI
       - Devoxx
+      - highlight
     image: /images/generated/Devoxx-Belgium-2025-10-07.jpeg
   - title: Create a Rails8 responsive app with Gemini and RubyLLM
     event: Railshock at Renuo
@@ -74,7 +75,7 @@ talks:
       - Gemini
       - RubyLLM
       - MCP
-      - highlight
+    #  - highlight
     slides_url: >-
       https://speakerdeck.com/palladius/print2-create-a-rails8-responsive-app-with-gemini-and-rubyllm
     video: https://www.youtube.com/watch?v=BOI5CB1ksCQ
