@@ -17,4 +17,9 @@ Locally, we want to test:
 *  Locally: http://localhost:3001/ENDPOINT
 *  Remotely (PROD): https://portfolio-app-272932496670.europe-west1.run.app/ENDPOINT
 
-For both, you can just execute with Bash Tool `curl http://localhost:3001/...` or `curl https://portfolio-app-272932496670.europe-west1.run.app/...`. Sometimes, if we're running the docker container in localhost on port 8080, you can also `curl http://localhost:8080/...`
+For both, you can just execute with Bash Tool `curl http://localhost:3001/...` or `curl https://portfolio-app-272932496670.europe-west1.run.app/...`. Sometimes, if we're running the docker container in localhost on port 8080, you can also `curl http://localhost:8080/...`.
+
+I've created two convenience scripts, so you can test these with "just":
+
+1. `just curl-local ENDPOINT`
+2. `just curl-remote ENDPOINT`
