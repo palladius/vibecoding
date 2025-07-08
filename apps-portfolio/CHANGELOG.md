@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.12.19 - 2025-07-08
+
+### 🚀 Features
+
+- **Enhanced Talk and Article Pages:** The talk and article pages now display all available data, including status, location, links, and tags, with improved styling and icons.
+
+### Internal Changes
+
+- Updated `src/app/talks/[slug]/page.tsx` and `src/app/articles/[slug]/page.tsx` to render all fields from the database.
+
 ## v0.12.18 - 2025-07-08
 
 ### 🚀 Features

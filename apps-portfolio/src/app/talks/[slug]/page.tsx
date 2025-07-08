@@ -2,6 +2,7 @@
 import { getTalk } from '../../lib/data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function TalkPage({ params }: { params: { slug: string } }) {
   const talk = await getTalk(params.slug);
@@ -10,22 +11,55 @@ export default async function TalkPage({ params }: { params: { slug: string } })
     notFound();
   }
 
+  const tags = talk.tags?.split(',').map(tag => tag.trim());
+
   return (
     <div className="container mx-auto p-4">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="w-full md:w-2/3">
-          <h1 className="text-2xl font-bold mb-4">{talk.title}</h1>
-          <p className="text-gray-500 mb-4">{talk.date}</p>
-          <p>{talk.talk_description}</p>
+          <h1 className="text-3xl font-bold mb-2">{talk.title}</h1>
+          <h2 className="text-xl font-semibold text-gray-400 mb-4">{talk.event}</h2>
+          
+          <div className="flex items-center text-gray-500 mb-4">
+            <span className="mr-4">🗓️ {talk.date}</span>
+            <span>📍 {talk.location} ({talk.country_code})</span>
+          </div>
+
+          {talk.status && (
+            <p className="mb-4">
+              <strong>Status:</strong> <span className="bg-blue-800 text-white px-2 py-1 rounded-full text-sm">{talk.status}</span>
+            </p>
+          )}
+
+          {talk.talk_description && <p className="mb-4">{talk.talk_description}</p>}
+          {talk.event_description && <p className="text-sm text-gray-400 mb-4">{talk.event_description}</p>}
+
+          <div className="flex flex-wrap gap-4 mt-4">
+            {talk.event_url && <Link href={talk.event_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🔗 Event Website</Link>}
+            {talk.session_url && <Link href={talk.session_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📖 Session Details</Link>}
+            {talk.slides_url && <Link href={talk.slides_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📊 View Slides</Link>}
+            {talk.video_url && <Link href={talk.video_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📹 Watch Video</Link>}
+          </div>
+
+          {tags && tags.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-lg font-semibold mb-2">Tags</h3>
+              <div className="flex flex-wrap gap-2">
+                {tags.map(tag => (
+                  <span key={tag} className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">#{tag}</span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
         <div className="w-full md:w-1/3">
           {talk.image && (
-            <div className="relative h-64 w-full">
+            <div className="relative h-80 w-full">
               <Image
                 src={talk.image}
                 alt={talk.title}
                 fill
-                className="object-cover rounded-lg border-2 border-gray-700 opacity-90"
+                className="object-cover rounded-lg border-2 border-gray-700 opacity-90 shadow-lg"
               />
             </div>
           )}
