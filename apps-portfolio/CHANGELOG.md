@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.12.18 - 2025-07-08
+
+### 🚀 Features
+
+- **Added images to talk and article pages:** Added a styled image to the top right of the talk and article pages.
+
+### Internal Changes
+
+- Updated `src/app/talks/[slug]/page.tsx` and `src/app/articles/[slug]/page.tsx` to include an `Image` component.
+
 ## v0.12.17 - 2025-07-08
 
 ### 🐛 Bug Fixes
