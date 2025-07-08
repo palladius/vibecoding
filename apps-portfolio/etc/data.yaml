@@ -17,6 +17,15 @@ about_me:
     Note: this is a public facing version of my pvt go/ricc-conferences where I
     hold state (like Manager/Wife approval).
   links:
+    - url: https://twitter.com/palladius
+      title: Twitter
+      emoji: 🐦
+    - url: https://palladius.bsky.social
+      title: Bsky
+      emoji: ☁️
+    - url: https://bologna.one/@riccardo
+      title: Mastodon
+      emoji: 🐘
     - url: https://www.linkedin.com/in/riccardocarlesso/
       title: Linkedin
       emoji: 💼
