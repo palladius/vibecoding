@@ -135,3 +135,22 @@ gemini-backgroundjob-check-latest-cloudbuild:
     echo 'Grab the lastest cloud build build with gcloud (eg 9a96075e-f1cb-4fd4-8e53-5db0c303f671), check the logs. If good, then exit. If bad, try to fix it. You can use just build to trigger a new build until it works. If its the image building which fails, you can use just docker-build to check' | \
         npx 'https://github.com/google-gemini/gemini-cli#early-access'
     # Says: I am sorry, I cannot execute shell commands directly. Could you please provide me with the ID of the latest Cloud Build?
+
+curl-local ENDPOINT:
+    @echo "Curling the local endpoint: {{ENDPOINT}}. Needs to start with /"
+    curl -s -I http://localhost:3001{{ENDPOINT}} | egrep ^HTTP
+    # | grep 200
+
+curl-remote ENDPOINT:
+    @echo "Curling the remote endpoint: {{ENDPOINT}}. Needs to start with /"
+    curl -s https://portfolio-app-272932496670.europe-west1.run.app{{ENDPOINT}}
+
+curl-em-all-locally:
+    just curl-local /about | grep 200
+    just curl-local /talks | grep 200
+    just curl-local /articles | grep 200
+    just curl-local /talks/2025-10-06-gemini-cli-pro-tips-to-weaponize-your-cli | grep 200
+    just curl-local /articles/2020-12-31-the-art-of-slos | grep 200
+    @echo GOOD They all work.
+
+#curl-em-all-remotely:
