@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.12.17 - 2025-07-08
+
+### 🐛 Bug Fixes
+
+- **Fixed talk and article pages:** The talk and article pages were returning a 500 error due to missing page components. This has been fixed by creating the page components and adding the necessary data fetching logic.
+
+### Internal Changes
+
+- Created `src/app/talks/[slug]/page.tsx` and `src/app/articles/[slug]/page.tsx`.
+- Created `TESTABLE_URLS.md` to track important URLs for testing.
+
 ## v0.12.16 - 2025-07-08
 
 ### 🚀 Features
