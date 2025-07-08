@@ -22,7 +22,16 @@ export default async function TalkPage({ params }: { params: { slug: string } })
           
           <div className="flex items-center text-gray-500 mb-4">
             <span className="mr-4">🗓️ {talk.date}</span>
-            <span>📍 {talk.location} ({talk.country_code})</span>
+            <span className="flex items-center">
+              <Image
+                src={`https://flagcdn.com/w40/${talk.country_code.toLowerCase()}.png`}
+                width="20"
+                height="15"
+                alt={talk.country_code}
+                className="mr-2"
+              />
+              {talk.location}
+            </span>
           </div>
 
           {talk.status && (
@@ -35,7 +44,7 @@ export default async function TalkPage({ params }: { params: { slug: string } })
           {talk.event_description && <p className="text-sm text-gray-400 mb-4">{talk.event_description}</p>}
 
           <div className="flex flex-wrap gap-4 mt-4">
-            {talk.event_url && <Link href={talk.event_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🔗 Event Website</Link>}
+            {talk.event_url && <Link href={talk.event_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🔗 {talk.event_url}</Link>}
             {talk.session_url && <Link href={talk.session_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📖 Session Details</Link>}
             {talk.slides_url && <Link href={talk.slides_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📊 View Slides</Link>}
             {talk.video_url && <Link href={talk.video_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📹 Watch Video</Link>}

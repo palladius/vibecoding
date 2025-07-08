@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.12.20 - 2025-07-08
+
+### 🚀 Features
+
+- **Added country flags to talk pages:** The talk pages now display a flag of the country where the talk is taking place.
+- **Display full event URL:** The event URL is now displayed as the link text instead of "Event Website".
+
+### Internal Changes
+
+- Updated `src/app/talks/[slug]/page.tsx` to use the `flagcdn.com` service for displaying country flags.
+- Removed the unused `countryCodeToEmoji` function from `src/lib/utils.ts`.
+
 ## v0.12.19 - 2025-07-08
 
 ### 🚀 Features
