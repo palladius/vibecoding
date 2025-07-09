@@ -14,7 +14,6 @@ export default function TalksPage() {
     const fetchData = async () => {
       const talks = await getTalks();
       setTalks(talksWithSlugs);
-      console.log("TalksPage: talks after setTalks=", talksWithSlugs);
     };
     fetchData();
   }, []);

@@ -138,8 +138,8 @@ gemini-backgroundjob-check-latest-cloudbuild:
 
 curl-local ENDPOINT:
     @echo "Curling the local endpoint: {{ENDPOINT}}. Needs to start with /"
-    curl -s -I http://localhost:3001{{ENDPOINT}} | egrep ^HTTP
-    # | grep 200
+    curl -s http://localhost:3001{{ENDPOINT}}
+    # | egrep ^HTTP
 
 curl-remote ENDPOINT:
     @echo "Curling the remote endpoint: {{ENDPOINT}}. Needs to start with /"
