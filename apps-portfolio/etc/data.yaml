@@ -590,3 +590,9 @@ articles:
       - highlight
     image: /images/generated/The-Art-of-SLOs.jpeg
     resource_type: video
+    talk_description: >
+      Want to learn the Art of SLOs and get access to a free workshop? In this
+      episode, Google Cloud Developer Advocate Riccardo Carlesso shares the Art
+      of SLOs (Service Level Objectives) so you can ensure Reliability is a key
+      feature of your service. Watch to learn about SLOs, SLIs, and choosing
+      the right reliability target metrics for your application!
