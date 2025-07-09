@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.12.23 - 2025-07-09
+
+### 🚀 Features
+
+- **Added synopsis to "The Art of SLOs"**
+
+### 🐛 Bug Fixes
+
+- **Fixed empty /articles page:** The `/articles` page was empty due to an incorrect `select` statement in the `getArticles` function.
+- **Fixed incorrect image path for CloudConf 2025:** The image path for the CloudConf 2025 event was pointing to a generated image instead of the new screenshot.
+
+### Internal Changes
+
+- Updated `etc/data.yaml` to include the synopsis for "The Art of SLOs".
+- Updated `src/app/lib/data.ts` to correctly fetch articles.
+- Updated `src/app/articles/[slug]/page.tsx` to display the `talk_description`.
+- Updated the screenshot for the CloudConf 2025 event.
+
 ## v0.12.22 - 2025-07-09
 
 ### 🚀 Features
