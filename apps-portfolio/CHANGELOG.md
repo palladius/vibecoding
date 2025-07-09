@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.12.22 - 2025-07-09
+
+### 🚀 Features
+
+- **Added screenshots for local and prod envs:** Added screenshots for the portfolio application for both the local and production environments.
+
+### Internal Changes
+
+- Created a script to take screenshots of the application.
+- Added screenshots to `docs/screenshots` and `docs/screenshots/prod`.
+- Updated `docs/screenshots/README.md` and created `docs/screenshots/prod/README.md`.
+
 ## v0.12.21 - 2025-07-09
 
 ### 🐛 Bug Fixes
@@ -417,7 +429,7 @@
 
 ### 🐛 Bug Fixes
 
-- **Fixed Cloud Build:** The Cloud Build was failing because the `.env.docker` file is not under git. This has been fixed by dynamically creating the environment configuration in the `cloudbuild.yaml`.
+- **Fixed Cloud Build:** The Cloud was failing because the `.env.docker` file is not under git. This has been fixed by dynamically creating the environment configuration in the `cloudbuild.yaml`.
 
 ### Internal Changes
 
