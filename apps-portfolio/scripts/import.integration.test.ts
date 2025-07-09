@@ -23,4 +23,10 @@ describe('just import', () => {
       // expect(talk.image).not.toContain('placeholder');
     });
   });
+
+  it('should render the talks page', async () => {
+    const { stdout } = await execAsync('curl http://localhost:3001/talks');
+    expect(stdout).toContain('Next Talks');
+    expect(stdout).toContain('BEYOND BLAME: THE ART OF THE POSTMORTEM');
+  });
 });

@@ -13,7 +13,8 @@ export default function TalksPage() {
   useEffect(() => {
     const fetchData = async () => {
       const talks = await getTalks();
-      setItems(talks);
+      setTalks(talksWithSlugs);
+      console.log("TalksPage: talks after setTalks=", talksWithSlugs);
     };
     fetchData();
   }, []);

@@ -4,6 +4,19 @@ import { useState } from "react";
 import { Talk } from "../../lib/types";
 import TalkCard from "../components/TalkCard";
 import CalendarView from "../components/CalendarView";
+import moment from 'moment';
+
+const getProximity = (date: string) => {
+  const today = moment().startOf('day');
+  const talkDate = moment(date).startOf('day');
+
+  if (talkDate.isSame(today, 'day')) return "Today!";
+  if (talkDate.isSame(today.clone().add(1, 'day'), 'day')) return "Tomorrow!";
+  if (talkDate.isSame(today, 'week')) return "This week!";
+  if (talkDate.isSame(today.clone().add(1, 'week'), 'week')) return "Next week!";
+  if (talkDate.isSame(today, 'month')) return "This month!";
+  return undefined;
+};
 
 export default function NextTalksClientPage({ initialTalks }: { initialTalks: Talk[] }) {
   const [view, setView] = useState('card');
@@ -29,7 +42,7 @@ export default function NextTalksClientPage({ initialTalks }: { initialTalks: Ta
         initialTalks.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {initialTalks.map((talk) => (
-              <TalkCard key={talk.id} talk={talk} />
+              <TalkCard key={talk.id} talk={talk} proximity={getProximity(talk.date)} />
             ))}
           </div>
         ) : (

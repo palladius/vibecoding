@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
         },
       },
       orderBy: {
-        date: 'asc',
+        date: 'desc',
       },
     });
     return NextResponse.json(talks);
