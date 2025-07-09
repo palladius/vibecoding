@@ -26,6 +26,8 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
           {article.description && <p className="mb-4">{article.description}</p>}
 
+          {article.talk_description && <p className="mb-4">{article.talk_description}</p>}
+
           <div className="flex flex-wrap gap-4 mt-4">
             {article.url && <Link href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🔗 Read Full Article</Link>}
             {article.video_url && <Link href={article.video_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📹 Watch Video</Link>}
