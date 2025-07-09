@@ -1,7 +1,7 @@
 // src/app/lib/data.ts
 import { db } from '../../lib/db';
 
-import { slugify, parseDateString } from '../../lib/utils';
+import { slugify } from '../../lib/utils';
 
 // Server-side function
 export async function getTalks() {

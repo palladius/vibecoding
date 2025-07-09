@@ -56,6 +56,7 @@ const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximit
               width="30"
               height="20"
               alt={talk.country_code}
+              unoptimized
             />
           </div>
         </div>

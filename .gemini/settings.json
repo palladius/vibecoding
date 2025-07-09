@@ -1,0 +1,10 @@
+{"mcpServers":{
+  "steren-cloud-run": {
+    "command": "npx",
+    "args": ["-y", "https://github.com/GoogleCloudPlatform/cloud-run-mcp"]
+  },
+  "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+}}
