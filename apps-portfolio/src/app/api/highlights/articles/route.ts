@@ -1,22 +1,9 @@
-// src/app/api/highlights/articles/route.ts
-import { NextResponse } from 'next/server';
-import { db } from '../../../../lib/db';
-import { slugify } from '../../../../lib/utils';
+import { getDb } from "../../../../lib/db";
 
 export async function GET() {
-  const articles = await db.article.findMany({
-    where: {
-      tags: {
-        contains: 'highlight',
-      },
-    },
-    orderBy: {
-      publish_date: 'desc'
-    }
+  const db = await getDb();
+  const articles = await db.all("SELECT * FROM articles WHERE tags LIKE '%highlight%'");
+  return new Response(JSON.stringify(articles), {
+    headers: { "Content-Type": "application/json" },
   });
-  const articlesWithSlug = articles.map((article) => ({
-    ...article,
-    slug: `${article.publish_date.split('T')[0]}-${slugify(article.title)}`
-  }));
-  return NextResponse.json(articlesWithSlug);
 }

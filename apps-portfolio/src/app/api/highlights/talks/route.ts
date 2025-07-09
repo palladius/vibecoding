@@ -1,22 +1,9 @@
-// src/app/api/highlights/talks/route.ts
-import { NextResponse } from 'next/server';
-import { db } from '../../../../lib/db';
-import { slugify } from '../../../../lib/utils';
+import { getDb } from "../../../../lib/db";
 
 export async function GET() {
-  const talks = await db.talk.findMany({
-    where: {
-      tags: {
-        contains: 'highlight',
-      },
-    },
-    orderBy: {
-      date: 'desc'
-    }
+  const db = await getDb();
+  const talks = await db.all("SELECT * FROM talks WHERE tags LIKE '%highlight%'");
+  return new Response(JSON.stringify(talks), {
+    headers: { "Content-Type": "application/json" },
   });
-  const talksWithSlug = talks.map((talk) => ({
-    ...talk,
-    slug: `${talk.date.split('T')[0]}-${slugify(talk.title)}`
-  }));
-  return NextResponse.json(talksWithSlug);
 }

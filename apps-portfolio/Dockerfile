@@ -10,17 +10,17 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package*.json ./
-RUN apt-get update && apt-get install -y python3 build-essential openssl
 RUN npm install
 
 # Copy the rest of the application source code
 COPY . .
 
 # Build the Next.js application
-RUN npx prisma generate
-ARG DATABASE_URL
-ENV DATABASE_URL=${DATABASE_URL}
+
 RUN npm run build
+
+# Import data into the SQLite database
+RUN npx tsx scripts/import-yaml.ts
 
 # Stage 2: Create the production image
 FROM node:20-slim AS production
@@ -41,9 +41,8 @@ COPY etc/data.yaml ./etc/data.yaml
 
 # Expose the port the app runs on
 ENV PORT 8080
-ENV DATABASE_URL="file:/app/db/portfolio.sqlite3"
-ENV RICC_ENV='Dockerfile'
 #ENV NODE_ENV production
+#ENV NEXT_PUBLIC_API_URL http://localhost:8080/
 
 EXPOSE 8080
 
