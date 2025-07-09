@@ -36,8 +36,8 @@ const AboutPage = async () => {
       <div className="flex">
         <div className="w-3/5 pr-8">
           <div className="relative">
-            <div className="absolute top-0 left-0">
-              <Image src="/images/qrcode_portfolio-app-272932496670.europe-west1.run.app.png" alt="QR Code" width={100} height={100} />
+            <div className="float-left mr-4 mb-4">
+              <Image src="/images/qrcode_portfolio-app-272932496670.europe-west1.run.app.png" alt="QR Code" width={200} height={200} />
             </div>
             <p>{bio}</p>
           </div>

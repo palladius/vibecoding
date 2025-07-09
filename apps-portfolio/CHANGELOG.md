@@ -1,6 +1,16 @@
 # Changelog
 
-## v0.12.26 - 2025-07-09
+## v0.12.28 - 2025-07-09
+
+### 🚀 Features
+
+- **Enlarged QR code on About page:** The QR code on the "About Me" page has been made larger to improve scannability.
+
+### Internal Changes
+
+- Updated `src/app/about/page.tsx` to increase the size of the QR code.
+
+## v0.12.27 - 2025-07-09
 
 ### 🚀 Features
 
@@ -532,7 +542,7 @@
 
 ## v0.10.3 - 2025-06-13
 
-### 🐛 Bug Fixes
+### �� Bug Fixes
 
 - **Fixed `import` command:** The `import` command was failing because it could not find the database. This has been fixed by explicitly setting the `DATABASE_URL` in the `justfile`.
 - **Fixed local development environment:** The local development environment was failing for the same reason as the `import` command. This has been fixed by using an absolute path for the `DATABASE_URL` in the `justfile`.
