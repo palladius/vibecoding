@@ -3,6 +3,8 @@ import * as yaml from 'js-yaml';
 import { PrismaClient } from '@prisma/client';
 import * as dotenv from 'dotenv';
 import path from 'path';
+import { parseDateString } from '../src/lib/utils';
+
 
 dotenv.config();
 

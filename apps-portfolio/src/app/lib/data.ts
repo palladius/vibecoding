@@ -56,11 +56,39 @@ export async function getArticle(slug: string) {
 
 // Client-side function (uses relative URL)
 export async function getFutureTalks() {
-  const talks = await getTalks();
-  const now = new Date();
-  const today = parseDateString(now.toISOString().split('T')[0]);
-  return talks.filter(talk => parseDateString(talk.date) >= today);
+  const talks = await db.talk.findMany({
+    orderBy: {
+      date: 'asc',
+    },
+    where: {
+      date: {
+        gte: new Date().toISOString().split('T')[0],
+      }
+    }
+  });
+  return talks.map((talk) => ({
+    ...talk,
+    slug: `${talk.date}-${slugify(talk.title)}`
+  }));
 }
+
+export async function getPastTalks() {
+  const talks = await db.talk.findMany({
+    orderBy: {
+      date: 'desc',
+    },
+    where: {
+      date: {
+        lt: new Date().toISOString().split('T')[0],
+      }
+    }
+  });
+  return talks.map((talk) => ({
+    ...talk,
+    slug: `${talk.date}-${slugify(talk.title)}`
+  }));
+}
+
 
 // Server-side function
 export async function getHighlightedTalks() {
@@ -97,3 +125,4 @@ export async function getHighlightedArticles() {
         slug: `${article.publish_date}-${slugify(article.title)}`
     }));
 }
+
