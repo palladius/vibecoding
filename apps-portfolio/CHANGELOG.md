@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.12.25 - 2025-07-09
+
+### 🚀 Features
+
+- **Improved import script output:** The import script now provides a more concise and visually appealing output, with success and error messages clearly indicated with emojis.
+
+### Internal Changes
+
+- Updated `scripts/import-yaml.ts` to improve the output of the import process.
+
 ## v0.12.24 - 2025-07-09
 
 ### 🐛 Bug Fixes

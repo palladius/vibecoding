@@ -57,9 +57,9 @@ export async function importData() {
 
   // Insert talks
   for (const talk of data.talks) {
+    process.stdout.write(`Importing talk: ${talk.title}... `);
     try {
       const tags = Array.isArray(talk.tags) ? talk.tags.join(',') : '';
-      console.log(`Attempting to import talk: ${talk.title} with date: ${talk.date}`);
       await db.talk.create({
         data: {
           title: talk.title,
@@ -78,18 +78,19 @@ export async function importData() {
           event_url: talk.event_url,
         },
       });
-      console.log(`Successfully imported talk: ${talk.title}`);
+      console.log('✅');
     } catch (error) {
-      console.error(`Error importing talk "${talk.title}":`, error);
+      console.log('❌');
+      console.error(`\x1b[31mError importing talk "${talk.title}":\x1b[0m`, error);
       process.exit(1);
     }
   }
 
   // Insert articles
   for (const article of data.articles) {
+    process.stdout.write(`Importing article: ${article.title}... `);
     try {
       const tags = Array.isArray(article.tags) ? article.tags.join(',') : '';
-      console.log(`Attempting to import article: ${article.title}`);
       await db.article.create({
         data: {
           title: article.title,
@@ -102,9 +103,10 @@ export async function importData() {
           description: article.description,
         },
       });
-      console.log(`Successfully imported article: ${article.title}`);
+      console.log('✅');
     } catch (error) {
-      console.error(`Error importing article "${article.title}":`, error);
+      console.log('❌');
+      console.error(`\x1b[31mError importing article "${article.title}":\x1b[0m`, error);
       process.exit(1);
     }
   }
