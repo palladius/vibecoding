@@ -3,7 +3,6 @@ import * as yaml from 'js-yaml';
 import { PrismaClient } from '@prisma/client';
 import * as dotenv from 'dotenv';
 import path from 'path';
-import { parseDateString } from '../src/lib/utils';
 
 dotenv.config();
 
@@ -63,7 +62,7 @@ export async function importData() {
         data: {
           title: talk.title,
           event: talk.event,
-          date: parseDateString(talk.date).toISOString().split('T')[0],
+          date: new Date(talk.date).toISOString().split('T')[0],
           location: talk.location,
           country_code: talk.country_code,
           session_url: talk.session_url,

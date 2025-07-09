@@ -8,7 +8,7 @@ import moment from 'moment';
 
 const getProximity = (date: string) => {
   const today = moment().startOf('day');
-  const talkDate = moment(date).startOf('day');
+  const talkDate = moment(date, 'YYYY-MM-DD').startOf('day');
 
   if (talkDate.isSame(today, 'day')) return "Today!";
   if (talkDate.isSame(today.clone().add(1, 'day'), 'day')) return "Tomorrow!";
