@@ -44,6 +44,7 @@
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
     "jsdom": "^24.1.1",
+    "playwright": "^1.53.2",
     "postcss": "^8.5.5",
     "prisma": "^6.9.0",
     "typescript": "^5",

@@ -55,4 +55,5 @@ prisma/portfolio.sqlite3.derek
 ../.gemini/
 ../apps-portfolio-broken/
 .QUESTO_BUONO
-../german-card-game/
+../german-card-game/.gemini/
+.gemini/

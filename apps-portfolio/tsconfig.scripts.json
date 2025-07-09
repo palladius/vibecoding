@@ -1,14 +1,10 @@
-
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "esnext",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "noEmit": false
+    "outDir": "dist/scripts",
+    "moduleResolution": "node"
   },
   "include": [
-    "scripts",
-    "src/lib"
+    "scripts/**/*.ts"
   ]
 }

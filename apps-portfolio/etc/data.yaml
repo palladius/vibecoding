@@ -84,7 +84,6 @@ talks:
       - Gemini
       - RubyLLM
       - MCP
-    #  - highlight
     slides_url: >-
       https://speakerdeck.com/palladius/print2-create-a-rails8-responsive-app-with-gemini-and-rubyllm
     video: https://www.youtube.com/watch?v=BOI5CB1ksCQ
@@ -295,7 +294,7 @@ talks:
     tags:
       - SRE
       - CloudConf
-    image: /images/generated/CloudConf-2025-03-26.jpeg
+    image: /images/events/cloudconf2025-new-2.png
   - title: 'Keynote: SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
     event: SRE Day
     date: '2024-11-21'
