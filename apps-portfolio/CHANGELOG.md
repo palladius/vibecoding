@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.12.24 - 2025-07-09
+
+### 🐛 Bug Fixes
+
+- **Corrected Codemotion talk date:** The date for the "BEYOND BLAME: THE ART OF THE POSTMORTEM" talk at Codemotion was incorrect and has been updated to October 14th.
+
+### Internal Changes
+
+- Updated `etc/data.yaml` with the correct date for the Codemotion talk.
+
 ## v0.12.23 - 2025-07-09
 
 ### 🚀 Features
