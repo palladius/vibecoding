@@ -35,7 +35,12 @@ const AboutPage = async () => {
       <h1 className="text-2xl font-bold mb-4">About Me</h1>
       <div className="flex">
         <div className="w-3/5 pr-8">
-          <p>{bio}</p>
+          <div className="relative">
+            <div className="absolute top-0 left-0">
+              <Image src="/images/qrcode_portfolio-app-272932496670.europe-west1.run.app.png" alt="QR Code" width={100} height={100} />
+            </div>
+            <p>{bio}</p>
+          </div>
           <div className="mt-4">
             <ul className="flex flex-wrap gap-x-4 gap-y-2">
               {links.map((link) => (

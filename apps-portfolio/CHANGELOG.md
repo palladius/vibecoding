@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.12.26 - 2025-07-09
+
+### 🚀 Features
+
+- **Added QR code to About page:** A QR code that links to the portfolio application is now displayed on the "About Me" page.
+
+### Internal Changes
+
+- Updated `src/app/about/page.tsx` to include the QR code.
+
 ## v0.12.25 - 2025-07-09
 
 ### 🚀 Features
