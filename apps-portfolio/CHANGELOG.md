@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.12.21 - 2025-07-09
+
+### 🐛 Bug Fixes
+
+- **Fixed broken data import script:** The data import script was failing due to a missing import. This has been fixed by adding the required import and ensuring the script runs correctly.
+
+### Internal Changes
+
+- Updated `scripts/import-yaml.ts` to import `parseDateString` from `src/lib/utils.ts`.
+- Removed debugging `console.log` statements from `src/app/lib/data.ts`.
+
 ## v0.12.20 - 2025-07-08
 
 ### 🚀 Features
@@ -430,17 +441,6 @@
 - Updated the `README.md` to include a dependency graph.
 
 ## v0.10.7 - 2025-06-13
-
-### 🐛 Bug Fixes
-
-- **Fixed Cloud Build:** The Cloud Build was failing because the `.env.docker` file is not under git. This has been fixed by dynamically creating the environment configuration in the `cloudbuild.yaml`.
-
-### Internal Changes
-
-- Updated the `cloudbuild.yaml` to dynamically create the environment configuration.
-- Updated the `README.md` to explain why Python is needed.
-
-## v0.10.6 - 2025-06-13
 
 ### 🐛 Bug Fixes
 
