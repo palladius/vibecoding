@@ -94,9 +94,15 @@ talks:
     location: Berlin, Germany
     country_code: de
     status: confirmed
+    session_url: https://www.wearedevelopers.com/world-congress/workshops#sz-tab-45848
+    event_url: https://www.wearedevelopers.com/world-congress
     talk_description: >
       A deep dive into the Gemini CLI, showcasing how it can revolutionize your
       software engineering workflow with powerful AI assistance.
+    event_description: >
+      WAD is the biggest dev event in Europe, with over 10,000
+      attendees and 200+ speakers. Riccardo will lead a workshop on how to use
+      AI to improve DevOps practices.
     tags:
       - Gemini
       - CLI
@@ -242,6 +248,7 @@ talks:
     session_url: >-
       https://www.wearedevelopers.com/world-congress/agenda-overview?_gl=1%2a18o7uk4%2a_up%2aMQ..%2a_gs%2aMQ..&gclid=CjwKCAjw9anCBhAWEiwAqBJ-cwOlrjXaoNq5uIjxOKitDJ6olzgF4dPBqzAOwMfxulLxQLPG_QHGVxoCWaYQAvD_BwE&gbraid=0AAAAADEgEv_NMlk7LrLlKXLsAtS8tqeml#
     event_url: https://www.wearedevelopers.com/world-congress
+    #session_url: 'https://www.wearedevelopers.com/world-congress/workshops#sz-tab-45848'
     status: confirmed
     event_description: >
       WAD is the biggest dev event in Europe, with over 10,000
@@ -282,6 +289,7 @@ talks:
       - Gemini
       - workshop
       - highlight
+      - PHP
     image: /images/generated/We-are-Developers-2025-2025-07-10.jpeg
   - title: 'SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
     event: CloudConf

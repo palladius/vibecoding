@@ -1,3 +1,14 @@
+# 9jul25 Broken flags in production, but they work in dev
+
+* http://localhost:3001/next-talks has all nice flags visible
+  * image address: http://localhost:3001/_next/image?url=https%3A%2F%2Fflagcdn.com%2Fw40%2Fit.png&w=32&q=75
+* https://portfolio-app-272932496670.europe-west1.run.app/next-talks has broken flags
+
+
+Probably its the fact that in prod you cant import images from another website (XSS stuff)?
+Maybe we can download those countries locally?
+
+
 # Cloud Build broken bug (now fixed)
 
 * gemini set up an inline cloudbuild.yaml... so havojja to edit it :)
