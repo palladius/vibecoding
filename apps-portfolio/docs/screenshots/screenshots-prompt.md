@@ -12,7 +12,7 @@ Put those screenshots under `docs/screenshots/`.
 
 If possible use 800x600 screen size and picture size. Give them a consistent name, maybe first look if those files exist already to keep the same name and use git to save their evolution.
 
-Report under `docs/screenshots/README.md` a list of those images, and report any errors you spot on those images (eg empty talks/articles/next talks..)
+Report under `docs/screenshots/README.md` a list of those images, and report any errors you spot on those images (eg empty talks/articles/next talks..). Also calculate the time to do ALL of this, by calling `date` and adding date start and date end to the README.md file.
 
 ## PROD app
 
