@@ -129,6 +129,12 @@ check-port-3001:
      sudo lsof -i :3001
      # kill them all: lsof -t -i:3001 | xargs kill -9
 
+# lets try this instead
+gemini-take-screenshots:
+    @echo "Taking screenshots using Gemini CLI..."
+    which gemini
+    gemini -y -d -p 'Use playwright tool to take screenshots of the portfolio application. The application is running on http://localhost:3001. Take screenshots of the homepage /, /about page, /talks page, and /articles and /next-talks page, and /config. Put those screenshots under docs/screenshots/ . If possible use 800x600 screen size and picture size. Give them a consistent name, maybe first look if those files exist already to keep the same name and use git to save their evolution.'
+    # --allowed-mcp-server-names # =playwright
 
 # This doesnt work now, i need more ENVs.
 gemini-backgroundjob-check-latest-cloudbuild:
