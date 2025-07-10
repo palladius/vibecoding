@@ -24,7 +24,7 @@ If not (e.g., Ruby), maintain a simple `VERSION` file that contains the current 
 
 ## This repo
 
-This repo is structured in folders:
+This is a mono repo and is structured in folders:
 
 ```bash
 $ tree -L 1

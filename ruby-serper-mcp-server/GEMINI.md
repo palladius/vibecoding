@@ -26,6 +26,8 @@ There are multiple SERP API providers, my fav is SerpAPI since it has also fligh
 * https://serpapi.com/google-hotels-api
 * https://serpapi.com/google-flights-api
 
+They are also copied under `docs/serpapi.com/` folder for your convenience.
+
 ## Ruby MCP
 
 you can use any ruby gem you wish.

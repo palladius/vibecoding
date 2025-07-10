@@ -1,8 +1,8 @@
 {"mcpServers":{
-  "steren-cloud-run": {
-    "command": "npx",
-    "args": ["-y", "https://github.com/GoogleCloudPlatform/cloud-run-mcp"]
-  },
+  // "steren-cloud-run": {
+  //   "command": "npx",
+  //   "args": ["-y", "https://github.com/GoogleCloudPlatform/cloud-run-mcp"]
+  // },
   "playwright": {
       "command": "npx",
       "args": ["@playwright/mcp@latest"]
@@ -14,9 +14,9 @@
         "@openbnb/mcp-server-airbnb",
         "--ignore-robots-txt"
       ]
-    },
-    "context7": {
-      "type": "http",
-      "url": "https://mcp.context7.com/mcp"
     }
+    // "context7": {
+    //   "type": "http",
+    //   "url": "https://mcp.context7.com/mcp"
+    // }
 }}

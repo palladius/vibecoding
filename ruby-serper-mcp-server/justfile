@@ -1,0 +1,14 @@
+install:
+	bundle install
+
+run:
+	echo "No main application to run yet. Use 'just flights' or 'just hotels'."
+
+flights:
+	./bin/serper-search-flights.rb {{ARGS}}
+
+hotels:
+	./bin/serper-search-hotels.rb {{ARGS}}
+
+test:
+	echo "No tests implemented yet."
