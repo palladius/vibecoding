@@ -26,13 +26,13 @@ export default function NextTalksClientPage({ initialTalks }: { initialTalks: Ta
       <h1 className="text-4xl font-bold mb-4">Next Talks</h1>
       <div className="flex justify-end mb-4">
         <button
-          className={`px-4 py-2 rounded-l-lg ${view === 'card' ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'}`}
+          className={`px-4 py-2 rounded-l-lg transition-all ${view === 'card' ? 'bg-yellow-400 text-black shadow-lg shadow-yellow-400/50' : 'bg-gray-700 text-white'}`}
           onClick={() => setView('card')}
         >
           Card View
         </button>
         <button
-          className={`px-4 py-2 rounded-r-lg ${view === 'calendar' ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'}`}
+          className={`px-4 py-2 rounded-r-lg transition-all ${view === 'calendar' ? 'bg-yellow-400 text-black shadow-lg shadow-yellow-400/50' : 'bg-gray-700 text-white'}`}
           onClick={() => setView('calendar')}
         >
           Calendar View

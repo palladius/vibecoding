@@ -130,7 +130,7 @@ check-port-3001:
      # kill them all: lsof -t -i:3001 | xargs kill -9
 
 # lets try this instead
-gemini-take-screenshots:
+gemini-take-screenshots-with-mcp-playwright:
     @echo "Taking screenshots using Gemini CLI..."
     which gemini
     #gemini -y -d -p 'Use playwright tool to take screenshots of the portfolio application. The application is running on http://localhost:3001. Take screenshots of the homepage /, /about page, /talks page, and /articles and /next-talks page, and /config. For those pages with buttons which allow you to select a different view,  Put those screenshots under docs/screenshots/ . If possible use 800x600 screen size and picture size. Give them a consistent name, maybe first look if those files exist already to keep the same name and use git to save their evolution. Report under docs/screenshots/README.md a list of those images, and report any errors you spot on those images (eg empty talks/articles/next talks..)'

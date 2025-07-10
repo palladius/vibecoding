@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.12.29 - 2025-07-10
+
+### 🚀 Features
+
+- **Added glow effect to buttons:** A glow effect has been added to the active buttons in the view switcher components to improve visual feedback.
+
+### Internal Changes
+
+- Updated `src/app/components/ViewSwitcher.tsx`, `src/app/next-talks/NextTalksClientPage.tsx`, and `src/app/talks/TalksClientPage.tsx` to add a shadow and transition to the active buttons.
+
 ## v0.12.28 - 2025-07-09
 
 ### 🚀 Features
@@ -542,7 +552,7 @@
 
 ## v0.10.3 - 2025-06-13
 
-### �� Bug Fixes
+###  Bug Fixes
 
 - **Fixed `import` command:** The `import` command was failing because it could not find the database. This has been fixed by explicitly setting the `DATABASE_URL` in the `justfile`.
 - **Fixed local development environment:** The local development environment was failing for the same reason as the `import` command. This has been fixed by using an absolute path for the `DATABASE_URL` in the `justfile`.

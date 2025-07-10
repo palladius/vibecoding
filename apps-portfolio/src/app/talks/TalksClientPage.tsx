@@ -13,13 +13,13 @@ export default function TalksClientPage({ talks }: { talks: Talk[] }) {
       <main className="flex flex-col gap-16">
         <div className="flex justify-center mb-8">
           <button
-            className={`px-4 py-2 rounded-l-lg ${view === 'card' ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'}`}
+            className={`px-4 py-2 rounded-l-lg transition-all ${view === 'card' ? 'bg-yellow-400 text-black shadow-lg shadow-yellow-400/50' : 'bg-gray-700 text-white'}`}
             onClick={() => setView('card')}
           >
             Card View
           </button>
           <button
-            className={`px-4 py-2 rounded-r-lg ${view === 'list' ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'}`}
+            className={`px-4 py-2 rounded-r-lg transition-all ${view === 'list' ? 'bg-yellow-400 text-black shadow-lg shadow-yellow-400/50' : 'bg-gray-700 text-white'}`}
             onClick={() => setView('list')}
           >
             List View
