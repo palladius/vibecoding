@@ -566,8 +566,7 @@ articles:
       - GCP
       - Pulumi
       - Python
-    image: >-
-      /images/generated/Setting-a---Cloud-Build-trigger-with-Pulumi-in-Python.jpeg
+    image: /images/articles/setting-cloudbuild-with-pulumi-in-python.png
     resource_type: article
   - title: 'Vodafone: A DevOps approach to AI/ML through cloud-native CI/CD pipelines'
     url: >-
