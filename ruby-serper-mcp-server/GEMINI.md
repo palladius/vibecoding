@@ -3,6 +3,14 @@ I wanna build a Ruby MCP Server which exposes:
 - Google Hotels
 You need to provide in input a SERPER_API_KEY and it will wrap around SERPER APIs.
 
+## Plan before code
+
+Before coding anything, do this instead:
+1. add your plan to `docs/PLAN.md`.
+2. Ask user to review it, maybe change a few things.
+3. Read the plan, and agree with user to confirm the next steps.
+
+The plan should have som sort of Task list - so you can update it whenever you complete a subtasks.
 
 ## Caching
 
@@ -17,4 +25,7 @@ There are multiple SERP API providers, my fav is SerpAPI since it has also fligh
 
 * https://serpapi.com/google-hotels-api
 * https://serpapi.com/google-flights-api
-*
+
+## Ruby MCP
+
+you can use any ruby gem you wish.
