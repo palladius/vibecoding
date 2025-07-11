@@ -30,9 +30,9 @@ This is a mono repo and is structured in folders:
 $ tree -L 1
 ├── LICENSE
 ├── README.md
-├── bingems
+├── bingems/ # this is a project
 ├── justfile
-└── vibecheck
+└── vibecheck/ # this is another  project
 ```
 
 Each folder contains a different project, each with its own `README.md`, `GEMINI.md`, language, and logic. For our purposes, consider this a monorepo containing N repos, all spanning the first directory level. At the moment, we only have two (and they're likely growing):

@@ -18,3 +18,8 @@ Report under `docs/screenshots/README.md` a list of those images, and report any
 
 Now do the same as above for https://portfolio-app-272932496670.europe-west1.run.app/... endpoints
 and put the screenshots under `docs/screenshots/prod/`.
+
+## WAD Jurre test
+
+Now compare /talks in PROD and in LOCALHOST and show the difference between the two images.
+Do you spot any difference?
