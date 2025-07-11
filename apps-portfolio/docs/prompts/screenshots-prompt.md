@@ -1,3 +1,5 @@
+# MCP + Playwright demo (screenshots and navigation)
+
 Use playwright tool to take screenshots of the portfolio application.
 
 The application is running on http://localhost:3001.

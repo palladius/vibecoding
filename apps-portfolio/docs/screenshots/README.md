@@ -1,22 +1,21 @@
 # Application Screenshots
 
-Here is a list of screenshots taken from the application running at `http://localhost:3001`.
+Screenshots taken between 2025-07-11 10:55:00 and 2025-07-11 10:56:00.
 
-## Pages
+## Localhost (http://localhost:3001)
 
-- [Homepage](./homepage.png)
-- [About](./about.png)
-- [Talks](./talks.png)
+### Pages
+
+- [Homepage (Card View)](./homepage.png)
+- [About Me](./about.png)
 - [Talks (Card View)](./talks-card.png)
 - [Talks (List View)](./talks-list.png)
-- [Articles](./articles.png)
 - [Articles (Card View)](./articles-card.png)
 - [Articles (List View)](./articles-list.png)
-- [Next Talks](./next-talks.png)
+- [Next Talks (Card View)](./next-talks-card.png)
+- [Next Talks (Calendar View)](./next-talks-calendar.png)
 - [Config](./config.png)
-- [Sample Talk](./sample-talk.png)
-- [Sample Article](./sample-article.png)
 
 ## Errors Spotted
 
-During the screenshot process, no visual errors were immediately apparent. The pages for talks, articles, and next-talks all appear to be populated with data.
+No new errors were spotted during this screenshot process. All pages loaded successfully.
