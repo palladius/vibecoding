@@ -10,3 +10,4 @@ output-*.md
 **/.gemini/logs.json
 german-card-game/
 .cache
+.DS_Store

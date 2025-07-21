@@ -159,3 +159,5 @@ curl-em-all-locally:
     @echo GOOD They all work.
 
 #curl-em-all-remotely:
+test-integration:
+    gemini -y -p "Execute tests as per docs/prompts/INTEGRATION_TESTING.md"
