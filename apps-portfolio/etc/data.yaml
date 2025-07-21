@@ -52,6 +52,9 @@ about_me:
     - url: https://www.youtube.com/@riccardocarlesso
       title: YouTube
       emoji: 📹
+    - url: https://speakerdeck.com/palladius
+      title: SpeakerDeck
+      emoji: 🎤
 talks:
   - title: Gemini CLI - Pro tips to weaponize your CLI
     event: Devoxx Belgium
