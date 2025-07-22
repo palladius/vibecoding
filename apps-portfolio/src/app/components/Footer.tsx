@@ -27,6 +27,10 @@ const Footer: React.FC<FooterProps> = ({ appName, version, repoUrl, appProdUrl }
           Changelog
         </a>{' '}
         -{' '}
+        <a href={`${repoUrl}/tree/main/apps-portfolio`} target="_blank" rel="noopener noreferrer" className="hover:underline">
+          GitHub Repo
+        </a>{' '}
+        -{' '}
         <a href="/config" className="hover:underline">
           /config
         </a>{' '}
