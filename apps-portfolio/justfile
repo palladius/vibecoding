@@ -161,3 +161,8 @@ curl-em-all-locally:
 #curl-em-all-remotely:
 test-integration:
     gemini -y -p "Execute tests as per docs/prompts/INTEGRATION_TESTING.md"
+
+# Sample update to Gemini in YOLO mode.
+yolo-update-sample:
+    # @echo "Updating sample data in the database... note that #f94d16b is the commit hash of how it happened in yolo mode so now i tell it NOT to commit!"
+    echo gemini -y -p 'I got confirmation from Milan, so Im going with the postmortem CFP. Also you can sunset the devoxx participation as im not going. Do NOT commit, just git add, stage and propose and OUTPUT a git commit -m command for me to just copy if Im happy.'
