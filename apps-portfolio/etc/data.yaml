@@ -150,39 +150,13 @@ talks:
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
     image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
-  - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
+  - title: 'BEYOND BLAME: THE ART OF THE POSTMORTEM'
     event: Codemotion Milan 2025
     date: '2025-10-14'
     location: Milan, Italy
     country_code: it
-    session_url: https://sessionize.com/app/speaker/session/953469
+    session_url: https://sessionize.com/s/riccardo-carlesso/beyond-blame-the-art-of-the-postmortem/142465
     event_url: https://conferences.codemotion.com/milan2025/
-    status: cfp_applied
-    tags:
-      - GenAI
-      - python
-      - demo
-      - wow
-    talk_description: >
-      In 2025, an LLM agent needs to do more than just talk. It needs to do.
-      This presentation is a hands-on look at building a truly useful AI travel
-      agent with a multi-agent framework. Forget abstract concepts; we're diving
-      straight into the code of a live demo that queries real APIs for flights,
-      hotels 🏨, and AirB&Bs. We will cover how to structure a multi-agent
-      system to handle complex, real-world tasks: validating budgets, managing
-      user preferences, and visualizing results. You will learn how to implement
-      an advanced, modular system that can be deployed on any cloud with any
-      LLM. This is a technical L200-L300 session designed for developers who
-      want to see how to coordinate agents and tools to create a seamless,
-      end-to-end user experience.
-    image: /images/events/codemotion-2025.png
-  - title: 'BEYOND BLAME: THE ART OF THE POSTMORTEM'
-    event: Codemotion
-    date: '2025-10-14'
-    location: Milan, Italy
-    country_code: it
-    session_url: >-
-      https://sessionize.com/s/riccardo-carlesso/beyond-blame-the-art-of-the-postmortem/142465
     status: confirmed
     tags:
       - SRE
@@ -198,6 +172,7 @@ talks:
       The talk is for operators and leaders dedicated to building a culture of
       real resilience.
     image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
+  
   - title: '[workshop]Create a responsive Rails 8 app with Gemini [tentative]'
     event: Euruko 2025
     date: '2025-09-18'
