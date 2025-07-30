@@ -56,22 +56,7 @@ about_me:
       title: SpeakerDeck
       emoji: 🎤
 talks:
-  - title: Gemini CLI - Pro tips to weaponize your CLI
-    event: Devoxx Belgium
-    date: '2025-10-07'
-    location: Antwerp, Belgium
-    country_code: be
-    status: cfp_applied
-    event_url: https://devoxx.be/
-    talk_description: >
-      A deep dive into the Gemini CLI, showcasing how it can revolutionize your
-      software engineering workflow with powerful AI assistance.
-    tags:
-      - Gemini
-      - CLI
-      - Devoxx
-      - highlight
-    image: /images/generated/Devoxx-Belgium-2025-10-07.jpeg
+  
   - title: Create a Rails8 responsive app with Gemini and RubyLLM
     event: Railshock at Renuo
     date: '2025-06-19'
@@ -194,11 +179,11 @@ talks:
   - title: 'BEYOND BLAME: THE ART OF THE POSTMORTEM'
     event: Codemotion
     date: '2025-10-14'
-    location: TBD
+    location: Milan, Italy
     country_code: it
     session_url: >-
       https://sessionize.com/s/riccardo-carlesso/beyond-blame-the-art-of-the-postmortem/142465
-    status: cfp_applied
+    status: confirmed
     tags:
       - SRE
       - Postmortem
