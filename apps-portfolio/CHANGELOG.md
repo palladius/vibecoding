@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.12.29 - 2025-07-30
+
+### 🚀 Features
+
+- **Updated talks and events:** The `data.yaml` file has been updated to reflect the latest information about talks and events.
+
+### Internal Changes
+
+- Updated `etc/data.yaml` to remove the Devoxx talk and update the Codemotion Milan talk.
+
 ## v0.12.28 - 2025-07-09
 
 ### 🚀 Features
