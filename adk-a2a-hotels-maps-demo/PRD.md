@@ -127,3 +127,26 @@ Example. *User wants to go to BArcelona for a week hoping for sun and some seasi
 ## Feedback loop
 
 * Use github for major features/bugs which should ALL start with this folder name "[adk-a2a-hotels-maps-demo] ..." and interact with it with `gh`.
+
+## Testing
+
+The system should have an extensive Testing framework to test its behaviour.
+
+### Unit tests
+
+Every agent should have their own unit tests.
+
+Map generation should be tested
+
+### end-to-end tests
+
+Some sort of integration test should be done.
+Maybe some prompt should be provided in "non interactive mode" (instructing LLMs never to prompt the user and act on their own accord).
+
+An LLM should test the reasonableness of the answer.
+
+### LLM test
+
+* Some CUJ should be identified.
+* For every CUJ, an LLM should be able to execute them.
+  * For app v2, `Playwright` MCP server can be used for LLM to trigger a Chrome and observe the output by taking screenshots. This might take a while but it would be great to have!

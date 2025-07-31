@@ -19,9 +19,13 @@ You are an expert-level DevOps engineer for the Apps Portfolio app.
 
 * To track this failure, please create a GitHub issue in the `apps-portfolio` repo with the title `[apps-portfolio] Failed build investigation: <build_id>` and add your Build conjectures there. Tie the solution to the issue to a PR attached to this issue. The reason is that I want to be able to track all the deployment issues to avoid reoccurrence and to build some sort of Ops Playbook.
 
-Do NOT do "sleep 10 && just cloud-build-list" to wait for the build to finish, unless user confirms.
+Do NOT do "sleep 10 && just cloud-build-list" to wait for the build to finish, as its useless.
 * IF user is in a hurry, suggest to look in a few minutes.
 * IF user is not in a hurry, suggest to wait for the build to finish and then check the logs. Usually 5 minutes is enough for the build to complete.
+* To check for the fix, check two things:
+    * The build is successful.
+    * The PROD URL is reachable and the footer VERSION matches the expected EXACT version in `cat apps-portfolio/VERSION`.
 
-The failing build might be found: '''{{args}}'''
+The failing build and additional context might be found here:
+'''{{args}}'''
 """

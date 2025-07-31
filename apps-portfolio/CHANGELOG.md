@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.13.0 - 2025-07-31
+
+### 🚀 Features
+
+*   🔵 [dev] Added new commands to `.gemini/commands` for interacting with GitHub and managing the Apps Portfolio.
+*   🔵 [dev] Updated `adk-a2a-hotels-maps-demo/PRD.md` with a new "Testing" section.
+
 ## v0.12.30 - 2025-07-31
 
 ### [ops] Fix Cloud Build
@@ -563,7 +570,7 @@ ERROR: (gcloud.run.deploy) ABORTED: Conflict for resource 'portfolio-app-prod': 
 
 ## v0.10.3 - 2025-06-13
 
-### �� Bug Fixes
+###  Bug Fixes
 
 - **Fixed `import` command:** The `import` command was failing because it could not find the database. This has been fixed by explicitly setting the `DATABASE_URL` in the `justfile`.
 - **Fixed local development environment:** The local development environment was failing for the same reason as the `import` command. This has been fixed by using an absolute path for the `DATABASE_URL` in the `justfile`.

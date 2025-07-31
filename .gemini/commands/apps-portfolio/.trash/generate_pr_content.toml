@@ -1,0 +1,80 @@
+# This command generates the content for a Pull Request to the my-sessions-and-bio repository.
+
+[[commands]]
+name = "generate_pr_content"
+description = "Generates markdown content for talks and articles based on data.yaml for a PR to my-sessions-and-bio."
+tool_code = """
+print(default_api.read_file(absolute_path = "~/git/vibecoding/apps-portfolio/etc/data.yaml"))
+"""
+llm_prompt = """
+You are an expert in converting structured data into a format suitable for a GitHub repository.
+You will be provided with the full content of a YAML file named `data.yaml` from the Apps Portfolio project.
+Your task is to convert the 'talks' and 'articles' sections of this data into individual markdown files, one for each talk and article.
+The output should be a series of markdown file contents, clearly separated and named as if they were files.
+
+For each talk, create a markdown file named `talks/<date>-<title-slug>.md`.
+The markdown file should contain the following front matter:
+```yaml
+---
+title: <title>
+event: <event>
+date: <date>
+location: <location>
+country_code: <country_code>
+session_url: <session_url>
+video_url: <video_url>
+slides_url: <slides_url>
+status: <status>
+tags: <tags>
+image: <image>
+event_description: <event_description>
+talk_description: <talk_description>
+event_url: <event_url>
+---
+```
+If a field is empty or null, omit it from the front matter.
+The `tags` field should be a YAML array of strings.
+The `date` field should be in YYYY-MM-DD format.
+The content of the markdown file should be the `talk_description` if available, otherwise empty.
+
+For each article, create a markdown file named `articles/<publish_date>-<title-slug>.md`.
+The markdown file should contain the following front matter:
+```yaml
+---
+title: <title>
+url: <url>
+publish_date: <publish_date>
+tags: <tags>
+image: <image>
+resource_type: <resource_type>
+description: <description>
+video_url: <video_url>
+---
+```
+If a field is empty or null, omit it from the front matter.
+The `tags` field should be a YAML array of strings.
+The `publish_date` field should be in YYYY-MM-DD format.
+The content of the markdown file should be the `description` if available, otherwise empty.
+
+Ensure that all filenames are slugified (lowercase, hyphens instead of spaces, no special characters).
+The output should be formatted as follows, with clear separators for each file:
+
+--- FILE: talks/YYYY-MM-DD-talk-title.md ---
+```markdown
+---
+# Front matter here
+---
+# Talk description here
+```
+
+--- FILE: articles/YYYY-MM-DD-article-title.md ---
+```markdown
+---
+# Front matter here
+---
+# Article description here
+```
+
+Here is the content of `data.yaml`:
+{{tool_code_result_0}}
+"""
