@@ -150,7 +150,7 @@ talks:
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
     image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
-  - title: 'BEYOND BLAME: THE ART OF THE POSTMORTEM'
+  - title: 'Beyond Blame: The Art of the Postmortem'
     event: Codemotion Milan 2025
     date: '2025-10-14'
     location: Milan, Italy
@@ -171,7 +171,7 @@ talks:
       techniques, and how to transform failures into powerful business insights.
       The talk is for operators and leaders dedicated to building a culture of
       real resilience.
-    image: /images/generated/Codemotion-Milan-2025-2025-10-14.jpeg
+    image: /images/events/codemotion-2025.png
   
   - title: '[workshop]Create a responsive Rails 8 app with Gemini [tentative]'
     event: Euruko 2025

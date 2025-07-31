@@ -5,6 +5,7 @@
 ### 🐛 Bug Fixes
 
 *   🔵 [ops] Reverted `cloudbuild.yaml` to a working version to fix production builds.
+*   🔵 [data] Renamed talk title "BEYOND BLAME: THE ART OF THE POSTMORTEM" to "Beyond Blame: The Art of the Postmortem".
 
 ## v0.13.0 - 2025-07-31
 
