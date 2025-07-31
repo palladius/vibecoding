@@ -1,15 +1,8 @@
 # Real-world Family Travel Agent
 
-This project implements a multi-agent system for planning family trips. A main "Concierge" agent orchestrates several specialized sub-agents to create a comprehensive travel plan based on user preferences.
+This project implements a multi-agent system for planning family trips. A main "concierge-agent" orchestrates several specialized sub-agents to create a comprehensive travel plan based on user preferences.
 
-## Tech Stack
-
-- **Agents:** Google ADK v1.0+
-- **Agent Communication:** A2A (Agent-to-Agent) protocol
-- **Real-world Data:**
-    - Airbnb MCP server
-    - SERPER APIs for flights and hotels (via a custom Ruby MCP server)
-    - `context7` MCP for coding assistance
+For a detailed breakdown of the project's requirements, please see the [Product Requirements Document](PRD.md).
 
 ## Agent Architecture
 
@@ -60,15 +53,14 @@ graph TD
 
 ## User Workflow
 
-1.  The user initiates a travel request with details like destination, dates, and preferences.
-2.  The **concierge-agent** receives the request and starts the planning process.
-3.  The **flight-agent** is tasked to find suitable flights. The user is presented with options and confirms a choice.
-4.  With the dates locked in, the **hotel-agent** searches for accommodation. It presents the user with a ranked list of options, including a map view, for confirmation. The agent can perform additional checks based on user feedback (e.g., verifying amenities from reviews).
-5.  Once flights and hotels are confirmed, the **activity-agent** creates a detailed itinerary, considering user preferences, travel times, and local conditions.
-6.  The **budget-agent** and **family-planner-agent** continuously validate the plan against the user's budget and preferences.
-7.  The **city-agent** provides information about local events that might impact the trip.
-8.  The user interacts with the concierge-agent to refine and approve the plan at various stages.
-9.  The final, approved plan is delivered to the user in a structured format, including a synopsis, a checklist of TODOs, a detailed itinerary, a map, and a cost breakdown.
+The user interacts with the system by providing a travel request. The concierge-agent then coordinates with the other agents to:
+
+1.  **Find the best flights and hotels:** The `flight-agent` and `hotel-agent` find the best options based on the user's request.
+2.  **Create a personalized itinerary:** The `activity-agent` creates a detailed itinerary, while the `family-planner-agent` ensures it aligns with the family's preferences.
+3.  **Manage the budget:** The `budget-agent` keeps track of the costs and ensures the trip stays within budget.
+4.  **Provide local insights:** The `city-agent` provides information about local events and attractions.
+
+The user is involved in the planning process at every step, providing feedback and making decisions to ensure the final plan is perfect.
 
 ## 📁 Project Structure
 
