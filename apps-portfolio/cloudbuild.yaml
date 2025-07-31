@@ -4,26 +4,9 @@
 # 3. Deploy to the "production" Cloud Run service (`portfolio-app-prod`).
 
 steps:
-  # 1. Install dependencies
-  - name: 'node:18'
-    id: 'Install-Dependencies'
-    entrypoint: npm
-    dir: 'apps-portfolio'
-    args: ['install']
-
-  # 2. Import data
-  - name: 'gcr.io/cloud-builders/npm'
-    id: 'Import-Data-To-SQLite'
-    entrypoint: npx
-    dir: 'apps-portfolio'
-    args: ['tsx', 'scripts/import-yaml.ts']
-    env:
-      - 'DATABASE_URL=file:./db/portfolio.sqlite3'
-    waitFor: ['Install-Dependencies']
-
-  # 3. Build the container image
+  # 1. Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    id: 'Build'
+    id: Build
     dir: 'apps-portfolio'
     args:
       - 'build'
@@ -32,19 +15,18 @@ steps:
       - '--build-arg'
       - 'DATABASE_URL=file:/app/db/portfolio.sqlite3'
       - '.'
-    waitFor: ['Import-Data-To-SQLite']
 
-  # 4. Push the container image to Artifact Registry
+  # 2. Push the container image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    id: 'Push-Image'
+    id: Push
     args:
       - 'push'
       - 'europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/portfolio-app:latest'
     waitFor: ['Build']
 
-  # 5. Deploy to Development (Cloud Run)
+  # 3. Deploy to development
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    id: 'Deploy-Dev'
+    id: Deploy-Dev
     entrypoint: gcloud
     args:
       - 'run'
@@ -58,11 +40,11 @@ steps:
       - '--set-env-vars=RICC_ENV=$_RICC_ENV'
     env:
       - '_RICC_ENV=$_RICC_ENV'
-    waitFor: ['Push-Image']
+    waitFor: ['Push']
 
-  # 6. Deploy to Production (Cloud Run)
+  # 4. Deploy to production
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    id: 'Deploy-Prod'
+    id: Deploy-Prod
     entrypoint: gcloud
     args:
       - 'run'
@@ -88,16 +70,7 @@ substitutions:
     _APP_NAME_PROD: 'portfolio-app-prod'
     _RICC_ENV: 'CloudBuild.yaml'
 
-steps:
-  # 0. Get the version
-  - name: 'ubuntu'
-    id: Version
-    entrypoint: 'bash'
-    dir: 'apps-portfolio'
-    args:
-      - '-c'
-      - 'cat VERSION > /workspace/VERSION'
-
+options:
     substitutionOption: 'ALLOW_LOOSE'
 
 # Set a timeout for the build
