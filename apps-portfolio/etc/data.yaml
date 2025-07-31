@@ -43,6 +43,7 @@ about_me:
     - url: g.dev/ricc
       title: Google Developer
       emoji: 👨‍💻
+      importance: medium
     - url: https://github.com/palladius/
       title: GitHub
       emoji: 🐙
@@ -55,6 +56,10 @@ about_me:
     - url: https://speakerdeck.com/palladius
       title: SpeakerDeck
       emoji: 🎤
+    - url: https://palladius.substack.com/
+      title: Substack
+      emoji: 📰
+      importance: low
 talks:
   
   - title: Create a Rails8 responsive app with Gemini and RubyLLM

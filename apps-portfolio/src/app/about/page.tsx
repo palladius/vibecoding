@@ -43,13 +43,26 @@ const AboutPage = async () => {
           </div>
           <div className="mt-4">
             <ul className="flex flex-wrap gap-x-4 gap-y-2">
-              {links.map((link) => (
-                <li key={link.url}>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-400 hover:underline">
-                    {link.emoji || '🔗'} {link.title}
-                  </a>
-                </li>
-              ))}
+              {links
+                .sort((a, b) => {
+                  const importanceOrder = { high: 3, medium: 2, low: 1 };
+                  return (importanceOrder[b.importance || 'medium'] || 0) - (importanceOrder[a.importance || 'medium'] || 0);
+                })
+                .map((link) => {
+                  let textSizeClass = 'text-base'; // Default for medium
+                  if (link.importance === 'high') {
+                    textSizeClass = 'text-lg font-bold';
+                  } else if (link.importance === 'low') {
+                    textSizeClass = 'text-sm italic';
+                  }
+                  return (
+                    <li key={link.url}>
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" className={`text-blue-400 hover:underline ${textSizeClass}`}>
+                        {link.emoji || '🔗'} {link.title}
+                      </a>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
         </div>
