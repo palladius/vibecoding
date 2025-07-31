@@ -11,3 +11,5 @@ output-*.md
 german-card-game/
 .cache
 .DS_Store
+.gemini/settings copy.json
+.gemini/settings-clean.json
