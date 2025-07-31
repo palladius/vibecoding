@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.13.2 - 2025-07-31
+
+### 🚀 Features
+
+*   🔵 [dev] Implemented importance-based styling for "About Me" links (bold for high, italic for low).
+*   🔵 [data] Updated image for "Beyond Blame: The Art of the Postmortem" talk and moved image file.
+*   🔵 [data] Added Substack link to "About Me" section and adjusted importance levels for various links.
+
 ## v0.13.1 - 2025-07-31
 
 ### 🐛 Bug Fixes
