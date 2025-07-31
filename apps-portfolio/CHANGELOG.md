@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.12.30 - 2025-07-31
+
+### [ops] Fix Cloud Build
+
+- **Fixed failing Cloud Build:** The Cloud Build was failing due to a conflict error during the production deployment. This was resolved by creating a unique version for the build to avoid conflicts.
+
+The error was:
+```
+ERROR: (gcloud.run.deploy) ABORTED: Conflict for resource 'portfolio-app-prod': version '1753870265046541' was specified but current version is '1753879428079344'.
+```
+
 ## v0.12.29 - 2025-07-30
 
 ### 🚀 Features
