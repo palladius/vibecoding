@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.1 - 2025-07-31
+
+### 🐛 Bug Fixes
+
+*   🔵 [ops] Reverted `cloudbuild.yaml` to a working version to fix production builds.
+
 ## v0.13.0 - 2025-07-31
 
 ### 🚀 Features
