@@ -88,8 +88,8 @@ env-print:
 
 # Trigger a Cloud Build using the local source
 build:
-    @echo "Building and deploying to project ${GOOGLE_CLOUD_PROJECT}..."
-    (cd .. && gcloud builds submit . --project="${GOOGLE_CLOUD_PROJECT}" --config apps-portfolio/cloudbuild.yaml)
+    @echo "Building and deploying to project..."
+    (cd .. && gcloud builds submit . --project="$(cat apps-portfolio/iac/terraform.tfvars | grep project_id | awk -F '"' '{print $2}')" --config apps-portfolio/cloudbuild.yaml)
 
 # Trigger the Cloud Build pipeline from the git repository
 trigger-build:
@@ -166,3 +166,7 @@ test-integration:
 yolo-update-sample:
     # @echo "Updating sample data in the database... note that #f94d16b is the commit hash of how it happened in yolo mode so now i tell it NOT to commit!"
     echo gemini -y -p 'I got confirmation from Milan, so Im going with the postmortem CFP. Also you can sunset the devoxx participation as im not going. Do NOT commit, just git add, stage and propose and OUTPUT a git commit -m command for me to just copy if Im happy.'
+
+
+gemini-invoke-sre-agent:
+    gemini -e sre-apps-portfolio-agent -y -p "Check current Build status and logs and version matching."
