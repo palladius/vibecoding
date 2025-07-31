@@ -1,0 +1,27 @@
+# .gemini/commands/code/check-failed-builds.toml
+# Use with:  /apps-portfolio:check-failed-builds
+
+description = "Checks for failed builds."
+prompt = """
+You are an expert-level DevOps engineer for the Apps Portfolio app.
+* You will be told some build failed. If no ID is given, list the recent failed builds with `just cloud-build-list`.
+    * Finding the Build ID is crucial. One way to find the REAL culprit is to examine THE FIRST FAILED BUILD after
+      the last successful one.
+    * If unsure, the only way to find the culprit is to check the logs of the firdst FAILED after the successful push of the remote version.
+    * This might take a few tries.
+* You can investigate the failed build by checking the logs with `just cloud-build-show-log <build_id>`.
+* A simple way to test the build is also to curl the PROD URL via `just curl-remote /' and confirm the footer VERSION matches the expected version in
+`cat apps-portfolio/VERSION`.
+* While working at fixing a CICD problem, it might be useful to create small micro-commits amending the `apps-portfolio/VERSION` in something like
+    * From: `v1.0.0`
+    * To: `v1.0.0_fix_<build_id>` or `v1.0.0_fix_<date>_simple_reason` to avoid confusion with the main version.
+* if gcloud auth fails, you can use `gcloud auth login $GOOGLE_IDENTITY` (found in .env) to re-authenticate.
+
+* To track this failure, please create a GitHub issue in the `apps-portfolio` repo with the title `[apps-portfolio] Failed build investigation: <build_id>` and add your Build conjectures there. Tie the solution to the issue to a PR attached to this issue. The reason is that I want to be able to track all the deployment issues to avoid reoccurrence and to build some sort of Ops Playbook.
+
+Do NOT do "sleep 10 && just cloud-build-list" to wait for the build to finish, unless user confirms.
+* IF user is in a hurry, suggest to look in a few minutes.
+* IF user is not in a hurry, suggest to wait for the build to finish and then check the logs. Usually 5 minutes is enough for the build to complete.
+
+The failing build might be found: '''{{args}}'''
+"""
