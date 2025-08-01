@@ -11,6 +11,7 @@ interface Talk {
   country_code: string;
   slug: string;
   status?: string;
+  sheetless_id?: number;
 }
 
 const statusEmojis: { [key: string]: string } = {
@@ -34,7 +35,7 @@ const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximit
         </div>
         <div className="p-4">
           <h3 className="text-lg font-bold mb-2">{talk.title}</h3>
-          <p className="text-sm text-cyan-300 mb-2">{talk.event} - {talk.date}</p>
+          <p className="text-sm text-cyan-300 mb-2">{talk.event} {talk.sheetless_id ? '🛌' : '-'} {talk.date}</p>
           {talk.status && (
             <p className="text-sm text-gray-400 mb-2">
               {statusEmojis[talk.status]} {talk.status.charAt(0).toUpperCase() + talk.status.slice(1)}

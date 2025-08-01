@@ -4,6 +4,15 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const talk = await getTalk(params.slug);
+  if (!talk) {
+    return { title: 'Talk not found' };
+  }
+  const emoji = talk.sheetless_id ? '🛌 ' : '';
+  return { title: `${emoji}${talk.title}` };
+}
+
 export default async function TalkPage({ params }: { params: { slug: string } }) {
   const talk = await getTalk(params.slug);
 
@@ -48,6 +57,7 @@ export default async function TalkPage({ params }: { params: { slug: string } })
             {talk.session_url && <Link href={talk.session_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📖 Session Details</Link>}
             {talk.slides_url && <Link href={talk.slides_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📊 View Slides</Link>}
             {talk.video_url && <Link href={talk.video_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📹 Watch Video</Link>}
+            {talk.sheetless_id && <Link href={`https://sheetless-das.googleplex.com/event/view?id=${talk.sheetless_id}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🛌 Sheetless Link</Link>}
           </div>
 
           {tags && tags.length > 0 && (

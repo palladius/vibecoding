@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.3 - 2025-08-01
+
+### 🚀 Features
+
+*   ✨ Added `sheetless_id` to talks, with a link and emoji in the UI.
+
 ## v0.13.2 - 2025-07-31
 
 ### 🚀 Features

@@ -25,6 +25,7 @@ interface Talk {
   event_description: string;
   talk_description: string;
   event_url?: string;
+  sheetless_id?: number;
 }
 
 interface Article {
@@ -76,6 +77,7 @@ export async function importData() {
           event_description: talk.event_description,
           talk_description: talk.talk_description,
           event_url: talk.event_url,
+          sheetless_id: talk.sheetless_id,
         },
       });
       console.log('✅');

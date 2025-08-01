@@ -160,6 +160,7 @@ talks:
     date: '2025-10-14'
     location: Milan, Italy
     country_code: it
+    sheetless_id: 9677
     session_url: https://sessionize.com/s/riccardo-carlesso/beyond-blame-the-art-of-the-postmortem/142465
     event_url: https://conferences.codemotion.com/milan2025/
     status: confirmed
