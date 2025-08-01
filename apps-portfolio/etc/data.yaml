@@ -61,6 +61,24 @@ about_me:
       emoji: 📰
       importance: low
 talks:
+  - title: "Agenti in Volo: Un'Analisi Approfondita sulla Creazione di un Agente di Viaggio in Tempo Reale ✈️"
+    event: Devfest Pescara 2025
+    date: '2025-11-08'
+    location: Pescara, Italy
+    country_code: it
+    status: cfp_applied
+    talk_description: >
+      Nel 2025, un agente basato su LLM deve fare più che parlare. Deve agire. Questa presentazione è uno sguardo pratico alla costruzione di un agente di viaggio IA realmente utile, utilizzando un framework multi-agente.
+
+      Dimentica i concetti astratti: ci tufferemo direttamente nel codice di una demo live che interroga API reali per voli, hotel  e AirB&B. Vedremo come strutturare un sistema multi-agente per gestire compiti complessi e reali: validare budget, gestire le preferenze dell'utente e visualizzare i risultati. Imparerai come implementare un sistema avanzato e modulare che può essere distribuito su qualsiasi cloud e con qualsiasi LLM.
+    tags:
+      - GenAI
+      - DevFest
+      - Italian
+    session_url: https://sessionize.com/app/speaker/session/991415
+    sheetless_id: 9691
+    image: /images/events/gdg-pescara24.jpg
+
   
   - title: Create a Rails8 responsive app with Gemini and RubyLLM
     event: Railshock at Renuo
@@ -116,18 +134,7 @@ talks:
       - Ruby
       - Rails
       - Zurich
-  - title: Building a Multi-Agent Real AI Travel Agent with Python and Ruby and MCP
-    event: DevFest Pescara 2025
-    date: '2025-11-08'
-    location: Pescara, Italy
-    country_code: it
-    event_url: https://www.unich.it/eventi/devfest-pescara-2024
-    status: tentative
-    image: /images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
-    tags:
-      - GenAI
-      - DevFest
-      - MCP
+  
   - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
     event: DevFest Modena 2025
     date: '2025-10-04'
@@ -140,8 +147,9 @@ talks:
       - demo
       - wow
       - MCP
-    status: cfp_applied
-    session_url: https://sessionize.com/app/speaker/session/955848
+    status: confirmed
+    session_url: https://sessionize.com/s/riccardo-carlesso/agenti-in-volo-unanalisi-approfondita-sulla-creazi/140909
+    sheetless_id: 9746
     talk_description: >
       In 2025, an LLM agent needs to do more than just talk. It needs to do.
       This presentation is a hands-on look at building a truly useful AI travel

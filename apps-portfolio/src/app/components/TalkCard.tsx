@@ -15,7 +15,7 @@ interface Talk {
 }
 
 const statusEmojis: { [key: string]: string } = {
-  cfp_applied: '📝',
+  cfp_applied: '🤞',
   confirmed: '✅',
   delivered: '🎤',
 };

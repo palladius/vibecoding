@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.13.4 - 2025-08-01
+
+### 🚀 Features
+
+*   🔵 [data] Updated DevFest Modena 2025 talk to confirmed, with new sheetless ID and session URL.
+*   🔵 [dev] Changed the emoji for CFP Applied status to 🤞.
+
 ## v0.13.3 - 2025-08-01
 
 ### 🚀 Features
