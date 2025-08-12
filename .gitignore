@@ -13,3 +13,4 @@ german-card-game/
 .DS_Store
 .gemini/settings copy.json
 .gemini/settings-clean.json
+tmp
