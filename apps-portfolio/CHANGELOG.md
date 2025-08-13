@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.6 - 2025-08-13
+
+### 🐛 Bug Fixes
+
+*   🔵 [apps-portfolio] fix: Fixed broken image for Rubycon event.
+
 ## v0.13.5 - 2025-08-13
 
 ### 🚀 Features

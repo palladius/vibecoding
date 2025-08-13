@@ -74,7 +74,7 @@ talks:
       - Cloud
     video: https://www.youtube.com/watch?v=pk74HwwpOhA
     event_url: https://rubycon.me
-    image: https://rubycon.netlify.app/assets/images/caesar-on-rubycon-with-ruby-on-top.jpeg
+    image: /images/events/rubycon.jpeg
 
 
   - title: "Agenti in Volo: Un'Analisi Approfondita sulla Creazione di un Agente di Viaggio in Tempo Reale ✈️"
