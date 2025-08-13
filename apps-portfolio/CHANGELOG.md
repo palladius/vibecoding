@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.5 - 2025-08-13
+
+### 🚀 Features
+
+*   🔵 [apps-portfolio] feat: Add Rubycon event and talk.
+
 ## v0.13.4 - 2025-08-01
 
 ### 🚀 Features

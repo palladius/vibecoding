@@ -47,6 +47,7 @@
     "playwright": "^1.53.2",
     "postcss": "^8.5.5",
     "prisma": "^6.9.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5",
     "typescript-eslint": "^8.34.0",
     "vitest": "^2.0.4"
