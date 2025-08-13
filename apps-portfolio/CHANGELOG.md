@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.7 - 2025-08-13
+
+### 🐛 Bug Fixes
+
+*   🔵 [apps-portfolio] fix: Fixed broken flag for remote events.
+
 ## v0.13.6 - 2025-08-13
 
 ### 🐛 Bug Fixes

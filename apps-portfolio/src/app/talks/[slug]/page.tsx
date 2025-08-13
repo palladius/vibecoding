@@ -32,13 +32,23 @@ export default async function TalkPage({ params }: { params: { slug: string } })
           <div className="flex items-center text-gray-500 mb-4">
             <span className="mr-4">🗓️ {talk.date}</span>
             <span className="flex items-center">
-              <Image
-                src={`https://flagcdn.com/w40/${talk.country_code.toLowerCase()}.png`}
-                width="20"
-                height="15"
-                alt={talk.country_code}
-                className="mr-2"
-              />
+              {talk.country_code === 'remote' ? (
+                <Image
+                  src="/globe.svg"
+                  width="20"
+                  height="20"
+                  alt="Online"
+                  className="mr-2"
+                />
+              ) : (
+                <Image
+                  src={`https://flagcdn.com/w40/${talk.country_code.toLowerCase()}.png`}
+                  width="20"
+                  height="15"
+                  alt={talk.country_code}
+                  className="mr-2"
+                />
+              )}
               {talk.location}
             </span>
           </div>
