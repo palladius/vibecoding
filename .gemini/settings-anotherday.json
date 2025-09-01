@@ -1,0 +1,50 @@
+{"mcpServers":{
+
+  // Steren's MCP server for Cloud Run.
+  "steren-cloud-run": {
+    "command": "npx",
+    "args": ["-y", "https://github.com/GoogleCloudPlatform/cloud-run-mcp"]
+  },
+
+  // Riccardo's MCP server for Turbo Rails 8 Chat with many random things.
+  "riccardo-turbo-rails8-chat": {
+            "type": "streamablehttp",
+            "url": "https://rails8-turbo-chat-dev-272932496670.europe-west10.run.app/mcp/sse"
+  },
+
+  "serper-search-con-chiave-riccardo": {
+        // found on the internet, supports only Search & Scrape - NOT
+      "command": "npx",
+      "args": ["-y", "serper-search-scrape-mcp-server"],
+      "env": {
+        //"SERPER_API_KEY": ENV["SERPER_API_KEY"]
+      }
+    }
+
+
+  // Playwright MCP server for testing purposes.
+  // This is a local server that can be used for testing Playwright features.
+  // It is not intended for production use.
+  // To use it, run `npx @playwright/mcp` in your terminal. Starts server on port 3000.
+  // For more information, see the Playwright MCP repository:
+  // https://github.com/microsoft/playwright-mcp
+  "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+
+    // sqlite server for testing purposes.
+    // Found here: https://github.com/esxr/langgraph-mcp/blob/main/mcp-servers-config.sample.json
+    "sqlite": {
+            "command": "uvx",
+            "description": "Database operations with SQLite, e.g., describe, create, and query tables.",
+            "args": [
+                "mcp-server-sqlite",
+                "--db-path",
+                "~git/gic/db/ric-reti-v1.1.sqlite3"
+            ]
+        },
+
+}}
