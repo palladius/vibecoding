@@ -179,6 +179,20 @@ talks:
       want to see how to coordinate agents and tools to create a seamless,
       end-to-end user experience.
     image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
+  - title: "Incident Management at Google"
+    event: "Sharp 4 Dev"
+    date: '2025-10-03'
+    location: "Microsoft Via Avignone 10, Roma"
+    country_code: it
+    status: confirmed
+    talk_description: "Incident Management at Google"
+    tags:
+      - SRE
+      - Incident Management
+      - Italian
+    event_url: https://sharp4dev.sharpcoding.it/
+    session_url: https://sessionize.com/sharp4Dev2025/
+    image: /images/events/sharp4dev-2025.png
   - title: 'Beyond Blame: The Art of the Postmortem'
     event: Codemotion Milan 2025
     date: '2025-10-14'
@@ -210,7 +224,7 @@ talks:
     country_code: pt
     session_url: https://2025.euruko.org/speakers/riccardo_carlesso
     event_url: https://2025.euruko.org/
-    status: cfp_applied
+    status: cfp_declined
     tags:
       - Ruby
       - Rails
