@@ -1,5 +1,7 @@
 # VibeCheck Justfile
 
+import '~/git/gic/justfile.gemini_common'
+
 # Default task to run the checks
 default: list
 
