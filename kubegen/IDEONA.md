@@ -31,7 +31,8 @@ I'd like to create an application, in whichever language you prefer (possibly ru
 1. Defines the structure of these YAMLs. It should be similar to kubernetes and support multiple Kinds.
 2. Simple Kinds should be at least *Video*, **Image**, **Music**, **Audio**, **Markdown** (the simplest generation from prompt to markdown, you can find a better name, like 'Generation' or 'Text').
 3. There should be more complex "arrays" of these original stuff. For instance I can think of:
-   1. A StoryBoard which represents a real movie made of an array of **Scenes** plus some metadata.
+   1. A **StoryBoard** which represents a real movie made of an array of **Scenes** plus some metadata.
+   2. A **Scene** (or StoryScene) which represents an array of N Video takes, possibly a subtitle (string with positioning/coloring), possibly a Music, possibly a Audio, and possibly a "voiceover text" argument which can become an Audio once actuated.
 4. We can start by creating a sample `etc/sample_story.yaml` and build the software form this example.
 5. Ideally we should be able to create **dependencies**, like "this image has a prompt which points to the solution to this story input prompt", meaning that first we need to have LLM take storyprompt -> story.md and then use the output of that as an input, maybe with some `$ kube_object.output_file` ot similar.
 

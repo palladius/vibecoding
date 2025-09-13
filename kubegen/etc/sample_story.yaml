@@ -1,0 +1,27 @@
+apiVersion: kubegen.io/v1alpha1
+kind: Text
+metadata:
+  name: bedtime-story-text
+spec:
+  # The prompt to generate the text from
+  prompt: "Write a short, happy bedtime story for a 5-year-old about a friendly dragon named Sparky who discovers a magical glowing flower in the forest."
+  # How many versions to generate
+  replicas: 1
+  # Where to save the output files
+  targetFolder: "output/stories"
+  # Model and parameters for the generation API
+  model: "gemini-1.5-flash"
+---
+apiVersion: kubegen.io/v1alpha1
+kind: Image
+metadata:
+  name: bedtime-story-illustration
+spec:
+  # The prompt can reference outputs from other resources.
+  # The engine will resolve this dependency before executing.
+  prompt: "A cute, friendly baby dragon named Sparky, in a cartoon style, looking with wonder at a single, magical, glowing flower in a dark forest at night. The scene is described as: ${bedtime-story-text.outputs[0].content}"
+  replicas: 2
+  targetFolder: "output/images"
+  dependencies:
+    - bedtime-story-text
+  model: "imagen-3"
