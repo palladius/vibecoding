@@ -46,6 +46,9 @@ install:
 gemini-cli:
     gemini.js --config ~/.gemini/settings.json
 
-# --- KubeGen Project ---
-kubegen-run:
-    @just -f kubegen/justfile run
+# --- Genie-CTL Project ---
+geniectl-run:
+    @just -f geniectl/justfile run
+geniectl-publish:
+    @echo "--> Publishing Genie-CTL package..."
+    @just -f geniectl/justfile publish

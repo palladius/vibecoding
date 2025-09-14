@@ -1,11 +1,12 @@
 import click
 from graphlib import TopologicalSorter, CycleError
 from .kinds.text import TextGenerationHandler
+from .kinds.audio import AudioGenerationHandler
 
 # Handler registry maps Kind names to their handler classes
 HANDLER_REGISTRY = {
     "TextGeneration": TextGenerationHandler,
-    # "AudioGeneration": AudioGenerationHandler,
+    "AudioGeneration": AudioGenerationHandler,
 }
 
 class Engine:

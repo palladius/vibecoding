@@ -1,6 +1,6 @@
-# KubeGen
+# Genie-CTL (`geniectl`)
 
-KubeGen is a command-line tool that uses Kubernetes-like YAML manifests to declaratively define, generate, and manage complex multimedia assets. It orchestrates calls to various generative APIs, handles dependencies between assets, and ensures that generation is idempotent.
+Genie-CTL is a command-line tool that uses Kubernetes-like YAML manifests to declaratively define, generate, and manage complex multimedia assets. It orchestrates calls to various generative APIs, handles dependencies between assets, and ensures that generation is idempotent.
 
 ## Vision
 
@@ -8,18 +8,23 @@ The primary goal is to provide a reproducible and version-controllable way to cr
 
 ## Getting Started
 
-This project is in the planning phase. See `PLAN.md` for the development roadmap.
+See `PLAN.md` for the development roadmap.
 
-## Usage (Planned)
+To install dependencies:
+```bash
+just install
+```
+
+## Usage
 
 ```bash
-kubegen apply -f etc/sample_story.yaml
+genectl apply -f etc/sample_story.yaml
 ```
 
 ## Project Structure
 
 ```
-kubegen/
+geniectl/
 ├─── .gitignore
 ├─── AI_REASONING.md
 ├─── GEMINI.md
@@ -31,7 +36,7 @@ kubegen/
 ├─── etc/
 │    └─── sample_story.yaml
 ├─── src/
-│    └─── kubegen/
+│    └─── geniectl/
 │         ├─── __init__.py
 │         ├─── cli.py
 │         ├─── engine.py
@@ -45,3 +50,5 @@ kubegen/
      ├─── test_parser.py
      └─── test_engine.py
 ```
+
+Library: https://pypi.org/project/geniectl/
