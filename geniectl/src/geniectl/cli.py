@@ -1,7 +1,9 @@
 import click
 import os
+import sys
 from . import parser
 from . import engine
+from .exceptions import NotImplementedEngineError
 
 @click.group()
 def cli():
@@ -42,8 +44,12 @@ def apply(filepath, output_dir, dry_run):
         e = engine.Engine(output_dir=output_dir)
         e.run(documents, dry_run=dry_run)
 
+    except NotImplementedEngineError:
+        # Error message is printed in the handler. We just exit with the specific code.
+        sys.exit(42)
     except Exception as e:
         click.echo(f"An error occurred: {e}", err=True)
+        sys.exit(1)
 
 
 if __name__ == '__main__':

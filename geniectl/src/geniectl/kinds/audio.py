@@ -2,12 +2,15 @@ import os
 import click
 import subprocess
 from .base import BaseHandler
+from ..exceptions import NotImplementedEngineError
 
 class AudioGenerationHandler(BaseHandler):
     """Handler for the AudioGeneration kind."""
 
     def _generate_native(self):
-        click.echo("   - Error: The 'Native' engine for AudioGeneration is not implemented yet.", err=True)
+        message = "The 'Native' engine for AudioGeneration is not implemented yet."
+        click.echo(f"   - 🚧 Error: {message}", err=True)
+        raise NotImplementedEngineError(message)
 
     def _generate_geminicli(self):
         """Generates audio by shelling out to the 'gemini' CLI tool."""
@@ -49,24 +52,31 @@ class AudioGenerationHandler(BaseHandler):
             with open(dep_full_path, 'r') as f:
                 input_text = f.read()
         except FileNotFoundError:
-            # This should be caught by the engine's main dependency check, but as a safeguard:
             click.echo(f"   - Error: Dependency output file not found at {dep_full_path}", err=True)
             return
 
         # 3. Construct the prompt
         prompt = f'Generate audio from text using chirp_tts tool with {model} model and choosing a voice from language "{language}". Use as text the following: {input_text}'
-        full_prompt = f'{prompt}. \n\n **IMPORTANT** The output file should be {full_output_path}. If the file created has a different name, remember to rename it appropriately!'
+        full_prompt = f'''{prompt}.
+
+        **IMPORTANT** The output file should be {full_output_path}. If the file created has a different name, remember to rename it appropriately!
+        '''
+
+        click.echo(click.style(f"   - Prompt: {full_prompt}", fg='blue'))
 
         # 4. Execute the command
-        gemini_command = ["gemini", "--approval-mode", "auto_edit", "-p", full_prompt]
+        gemini_cli_path = os.path.expanduser('~/go/bin/gemini-cli')
+        gemini_command = [gemini_cli_path, "-p", full_prompt]
         try:
             click.echo(f"   - Requesting audio generation via Gemini CLI...")
             subprocess.run(gemini_command, check=True)
             click.echo(f"   - Successfully requested audio generation for: {full_output_path}")
         except FileNotFoundError:
-            click.echo("   - Error: 'gemini' command not found. Make sure the Gemini CLI is installed and in your PATH.", err=True)
+            click.echo("   - Error: 'gemini-cli' command not found. Make sure the Gemini CLI is installed and in your PATH.", err=True)
         except subprocess.CalledProcessError as e:
             click.echo(f"   - Error executing Gemini CLI: {e}", err=True)
 
     def _generate_mcp(self):
-        click.echo("   - Error: The 'MCP' engine for AudioGeneration is not implemented yet.", err=True)
+        message = "The 'MCP' engine for AudioGeneration is not implemented yet."
+        click.echo(f"   - 🚧 Error: {message}", err=True)
+        raise NotImplementedEngineError(message)

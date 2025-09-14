@@ -3,6 +3,7 @@ import click
 import subprocess
 import google.generativeai as genai
 from .base import BaseHandler
+from ..exceptions import NotImplementedEngineError
 
 class TextGenerationHandler(BaseHandler):
     """Handler for the TextGeneration kind."""
@@ -16,7 +17,9 @@ class TextGenerationHandler(BaseHandler):
             click.echo(f"Warning: Could not configure Generative AI for Native engine: {e}", err=True)
 
     def _generate_mcp(self):
-        click.echo("   - Error: The 'MCP' engine for TextGeneration is not implemented yet.", err=True)
+        message = "The 'MCP' engine for TextGeneration is not implemented yet."
+        click.echo(f"   - 🚧 Error: {message}", err=True)
+        raise NotImplementedEngineError(message)
 
     def _generate_native(self):
         """Generates text using the google-generativeai library directly."""
@@ -69,7 +72,9 @@ Error: {e}'''
             return
 
         prompt = self.spec.get('prompt', 'No prompt provided.')
-        gemini_command = ["gemini-cli", "-p", prompt]
+        click.echo(click.style(f"   - Prompt: {prompt}", fg='blue'))
+        gemini_cli_path = os.path.expanduser('~/go/bin/gemini-cli')
+        gemini_command = [gemini_cli_path, "-p", prompt]
 
         try:
             os.makedirs(os.path.dirname(full_output_path), exist_ok=True)

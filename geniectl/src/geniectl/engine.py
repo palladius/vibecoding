@@ -278,6 +278,24 @@ class Engine:
                 # Pass the full resource map and config to the handler
                 handler = handler_class(doc, self.output_dir, self.resources, self.config)
                 handler.generate()
+
+                # Verification Step
+                output_path = doc.get('spec', {}).get('output', {}).get('path')
+                if output_path:
+                    replicas = doc.get('spec', {}).get('replicas')
+                    if replicas and replicas > 1:
+                        p = Path(output_path)
+                        base_name = p.stem
+                        extension = p.suffix
+                        expected_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(replicas)]
+                        
+                        for f_path in expected_files:
+                            if not os.path.exists(f_path):
+                                click.echo(f"   - ❌ Error: Expected output file was not created: {f_path}", err=True)
+                    else:
+                        full_output_path = os.path.join(self.output_dir, output_path)
+                        if not os.path.exists(full_output_path):
+                            click.echo(f"   - ❌ Error: Expected output file was not created: {full_output_path}", err=True)
         click.echo("--------------------------")
 
         click.echo("\n--- Engine Finished ---")

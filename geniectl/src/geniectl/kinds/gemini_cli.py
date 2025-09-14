@@ -34,7 +34,9 @@ class GeminiCLI(BaseHandler):
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
         # The prompt for this kind is the full command for the gemini cli
-        gemini_command = ["gemini-cli", "-p", prompt]
+        click.echo(click.style(f"   - Prompt: {prompt}", fg='blue'))
+        gemini_cli_path = os.path.expanduser('~/go/bin/gemini-cli')
+        gemini_command = [gemini_cli_path, "-p", prompt]
 
         try:
             click.echo(f"   - Executing: {' '.join(gemini_command)}")
