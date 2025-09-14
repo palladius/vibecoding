@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2025-09-14
+
+### ✨ Features
+
+- **`GeminiCLI` Engine**: Implemented the `GeminiCLI` engine for `TextGeneration` and `AudioGeneration` kinds.
+
+###  архитектура Refactoring
+
+- **Enforced Engine Pattern**: Refactored the `BaseHandler` to enforce a consistent engine implementation pattern (`_generate_native`, `_generate_geminicli`, `_generate_mcp`) across all subclasses. This makes the framework more robust and extensible.
+- Replaced mock implementations for `ImageGeneration` and `AudioGeneration` with clear "Not Implemented Yet" errors.
+
+### 🐛 Fixed
+
+- **`gemini-cli` Command**: Corrected the command format to `gemini-cli -p "..."` in all handlers.
+- **`PATH` for CLI**: Automatically adds `~/go/bin` to the `PATH` to help locate the `gemini-cli` executable.
+- **Gemini Emoji**: Corrected the emoji for the `GeminiCLI` engine to the proper zodiac sign (♊).
+
 ## [0.3.0] - 2025-09-14
 
 ### ✨ Features

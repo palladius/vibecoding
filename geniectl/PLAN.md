@@ -66,7 +66,25 @@ The primary goal is to provide a reproducible and version-controllable way to cr
 - [ ] Design and create a `CustomResourceDefinition` (CRD) for Kine-matic resources.
 - [ ] Develop a Kubernetes Operator/Controller to watch for these CRs and trigger the generation engine.
 
-## 4. Proposed Project Structure
+## 4. Implementation Status Matrix
+
+This matrix tracks the implementation status for each `(Kind, Engine)` combination.
+
+| Kind              | `Native` (🐍) | `GeminiCLI` (♊) | `MCP` (🌐) |
+| ----------------- | :----------: | :-------------: | :-------: |
+| `TextGeneration`  |      ✅      |       🚧        |    ❌     |
+| `ImageGeneration` |      ✅      |       ❌        |    ❌     |
+| `AudioGeneration` |      ✅      |       ❌        |    ❌     |
+| `VideoGeneration` |      ❌      |       ❌        |    ❌     |
+| `GeminiCLI`       |      N/A     |       ✅        |    N/A    |
+
+**Legend:**
+- ✅: Implemented & Tested
+- 🚧: In Progress / Partially Implemented
+- ❌: Not Implemented
+- N/A: Not Applicable
+
+## 5. Proposed Project Structure
 
 ```
 geniectl/

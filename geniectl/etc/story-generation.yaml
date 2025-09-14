@@ -32,7 +32,8 @@ spec:
   depends_on:
     - "TextGeneration/bedtime-story-text-it" # translate from EN to IT
   model: "chirp3"
-  language: "it"
+  language: "italian" # it-IT-Chirp3-HD-Achernar
+  engine: GeminiCLI
   output:
     path: "bedtime-story-it.wav"
 
@@ -47,6 +48,7 @@ spec:
   depends_on:
     - "TextGeneration/bedtime-story-text" # Use plot to constuct image
   prompt: "A beautiful, colorful illustration of a friendly robot exploring the moon, for a children's bedtime story. The style should be whimsical and dreamlike. Based on the story: ${TextGeneration/bedtime-story-text.output.content}"
+  engine: GeminiCLI
   output:
     # note that this should create 4 files: story-illustration_1.png, story-illustration_2.png, ...
     path: "story-illustration.png"

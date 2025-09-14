@@ -6,7 +6,10 @@ from . import engine
 @click.group()
 def cli():
     """A tool to declaratively generate multimedia assets."""
-    pass
+    # Add ~/go/bin to the PATH for the gemini executable
+    go_bin_path = os.path.expanduser('~/go/bin')
+    if go_bin_path not in os.environ['PATH']:
+        os.environ['PATH'] = f"{go_bin_path}:{os.environ['PATH']}"
 
 @cli.command()
 @click.option('-f', '--file', 'filepath', type=click.Path(exists=True, file_okay=True, dir_okay=True, readable=True), required=True, help='The YAML file or directory to apply.')

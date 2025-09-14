@@ -1,0 +1,10 @@
+digraph dependencies {
+  rankdir=LR;
+  "TextGeneration/bedtime-story-text";
+  "TextGeneration/bedtime-story-text-it";
+  "TextGeneration/bedtime-story-text" -> "TextGeneration/bedtime-story-text-it";
+  "AudioGeneration/bedtime-story-audio-it";
+  "TextGeneration/bedtime-story-text-it" -> "AudioGeneration/bedtime-story-audio-it";
+  "ImageGeneration/story-illustration";
+  "TextGeneration/bedtime-story-text" -> "ImageGeneration/story-illustration";
+}

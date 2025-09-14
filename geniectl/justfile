@@ -14,7 +14,10 @@ install:
 
 # Run the geniectl script for max 30 seconds
 run:
-    timeout 30 uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml
+    #!/bin/bash
+    export PATH=~/go/bin/:$PATH
+    gemini mcp list
+    timeout 300 uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml
 
 plan:
     uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml --plan

@@ -4,40 +4,49 @@ This module defines the GeminiCLI kind, which is used to interact with the Gemin
 
 import subprocess
 import os
+import click
 from .base import BaseHandler
 
 class GeminiCLI(BaseHandler):
     """
     A kind that represents a call to the Gemini CLI.
     """    
-    def generate(self):
-        """
-        Executes the Gemini CLI command.
-        """
+    def _generate_native(self):
+        click.echo("   - Error: The 'Native' engine is not applicable to the GeminiCLI kind.", err=True)
+
+    def _generate_geminicli(self):
+        """Executes the Gemini CLI command."""
         prompt = self.spec.get('prompt')
         if not prompt:
-            raise ValueError("Prompt is not defined in the spec")
+            raise ValueError("Prompt is not defined in the spec for GeminiCLI kind")
 
         output_config = self.spec.get('output')
         if not output_config or 'path' not in output_config:
-            raise ValueError("Output path is not defined in the spec")
+            # For this kind, output might be optional if it just prints to stdout
+            # or if the instruction doesn't generate a file.
+            # Depending on strictness, we could raise an error or just proceed.
+            pass
 
-        output_path = os.path.join(self.output_dir, output_config['path'])
+        output_path = os.path.join(self.output_dir, output_config.get('path', '')) if output_config else None
 
-        # Ensure the output directory exists
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        # Ensure the output directory exists if a path is specified
+        if output_path:
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-        full_prompt = f'{prompt}. The output file should be {output_path}'
-
-        gemini_command = ["gemini", full_prompt]
+        # The prompt for this kind is the full command for the gemini cli
+        gemini_command = ["gemini-cli", "-p", prompt]
 
         try:
-            print(f"Executing command: {' '.join(gemini_command)}")
+            click.echo(f"   - Executing: {' '.join(gemini_command)}")
+            # We don't redirect stdout here because the GeminiCLI kind is expected
+            # to handle its own output, potentially modifying files directly.
             subprocess.run(gemini_command, check=True)
-            print(f"Successfully generated file: {output_path}")
         except FileNotFoundError:
-            print("Error: 'gemini' command not found. Make sure the Gemini CLI is installed and in your PATH.")
+            click.echo("   - Error: 'gemini' command not found. Make sure the Gemini CLI is installed and in your PATH.", err=True)
             raise
         except subprocess.CalledProcessError as e:
-            print(f"Error executing Gemini CLI: {e}")
+            click.echo(f"   - Error executing Gemini CLI: {e}", err=True)
             raise
+
+    def _generate_mcp(self):
+        click.echo("   - Error: The 'MCP' engine is not applicable to the GeminiCLI kind.", err=True)
