@@ -6,11 +6,25 @@ list:
 
 # Install dependencies and the project in editable mode
 install:
-    uv pip install -e .
+    uv pip install -e .[dev]
 
 # Run the geniectl script
 run:
-    uv run geniectl apply -f etc/story-generation.yaml
+    uv run geniectl apply -f kubegen/etc/story-generation.yaml
+
+# --- Publishing ---
+
+# Build the package for distribution
+build:
+    python -m build
+
+# Publish the package to TestPyPI (requires a TestPyPI account)
+publish-test:
+    twine upload --repository testpypi dist/*
+
+# Publish the package to PyPI (requires a PyPI account)
+publish:
+    twine upload dist/*
 
 
 # run-test:

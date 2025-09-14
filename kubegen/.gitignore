@@ -20,3 +20,4 @@ build/
 
 # Local files
 out/src/geniectl.egg-info/
+out/
