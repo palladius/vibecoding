@@ -36,15 +36,10 @@ clean:
 
 
 login:
-    gckloud auth login
+    gcloud auth login
 
 install:
     npx https://github.com/google-gemini/gemini-cli#early-access
-
-# on macOS, use the following command to run gemini-cli
-#    /Users/ricc/.npm/_npx/c28e76e3615b8274/node_modules/gemini-cli/bundle/gemini.js --config /Users/ricc/.gemini/config.json
-gemini-cli:
-    gemini.js --config ~/.gemini/settings.json
 
 # --- Genie-CTL Project ---
 geniectl-run:

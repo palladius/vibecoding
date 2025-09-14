@@ -23,3 +23,4 @@ When new functionality is added, make sure:
 ## Notes
 
 * Do not clobber `justfile` unless user asks you to add a new `just SOMETHING` to it. Let's keep it minimal.
+* Before removing a file (rm, or git rm), **ALWAYS** confirm with user first.

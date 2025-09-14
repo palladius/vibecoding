@@ -4,3 +4,6 @@ defaults:
   models:
     TextGeneration: "gemini-2.5-flash"
     AudioGeneration: "chirp3"
+    ImageGeneration: "imagen-3.0-fast-generate-001"
+    MusicGeneration: "lyria-002"
+    VideoGeneration: "veo-3.0-generate-preview"

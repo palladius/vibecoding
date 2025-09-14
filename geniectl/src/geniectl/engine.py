@@ -134,7 +134,7 @@ class Engine:
         
         ENGINE_EMOJIS = {
             "Native": "🐍",
-            "GeminiCLI": "✨",
+            "GeminiCLI": "♊",
             "MCP": "🌐",
         }
 

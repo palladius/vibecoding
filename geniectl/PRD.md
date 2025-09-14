@@ -38,7 +38,7 @@ I'd like to create an application, in whichever language you prefer (possibly ru
 6. there should also be a **GeminiCLI** type for random file-system instructions which can be very laser focused. Like:
    1. Concatenate file1.txt with file2.txt (output_file: file3.txt)
    2. Translate file1.txt into Italian (output_file: file1_it.txt)
-   3. Generate an image of this type: (output_file: image.png)
+   3. Generate an image for prompt "x y z" (output_file: image.png).
 
 Now I'm not sure how to do it, but once the config file has been actuated additional values need to be added somewhere (eg solution_image_1234 have been created and i have an array of 4 output files).
 * We can either put them in the YAML itself under some `output` stanza, or create a secondary deterministic file, like "input_file.yaml" -> "input_file.hydrated.yaml" so the script can check if we already have the output and we can skip.
@@ -48,8 +48,16 @@ Now I'm not sure how to do it, but once the config file has been actuated additi
 
 All kinds should have a common YAML representation, the `k8s` way, with a `name` which defines them uniquely in the namespace/folder, and `tags` to apply things to sub-thingies.
 They should all support a number of similar names, as we don't want to repeat ourselves too much.
+
 * Every API will have some options, for example a `chirp` model for audio will support a voice. this is fine, and we're going to enrich this as we go deeper in a specific API, but we start simple, assuming reasonable defaults (eg, language = 'en' , voice = whatever).
+
 * Lets keep similar semantics across APIs with a consistent names. For example, the cardinality of output images/videos is important. We can default to 4 for images and 2 for videos, 2 for music and 1 for audio but we need to identify a common word, like "replicas: 4" or "cardinality: 4". Choose something a kubernetes person would choose.
+
+* Every kind will support an `engine` which can be:
+  * "Native" (snake emoji). A python function will be executed
+  * "GeminiCLI" (Gemini emoji). If specified, a prompt will be built for Gemini CLI to execute instructions with further instructions for output file.
+  * "MCP" (some networking emoji). A MCP server will be executed. Prompt needs to specify which service to invoke or.. just get lucky.
+  * Note that invoking engine X for Text or Image kind might create two different final prompts for Native or MCP, which is its strength.
 
 ## Non functional requirements
 
