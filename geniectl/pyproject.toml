@@ -21,6 +21,8 @@ classifiers = [
 dependencies = [
     "click",
     "pyyaml",
+    "google-generativeai",
+    "requests",
 ]
 
 [project.scripts]
