@@ -4,13 +4,18 @@ list:
     just -l
 
 
+# Initialize the project (create venv and install deps)
+init:
+    uv venv
+    uv pip install -e .[dev]
+
 # Install dependencies and the project in editable mode
 install:
     uv pip install -e .[dev]
 
-# Run the geniectl script
+# Run the geniectl script for max 30 seconds
 run:
-    uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml
+    timeout 30 uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml
 
 # --- Publishing ---
 
@@ -24,12 +29,12 @@ publish-test:
 
 # Publish the package to PyPI (requires a PyPI account)
 publish:
-    twine upload dist/*
+    uv run twine upload dist/*
 
 # --- Testing ---
 
 test:
-    pytest
+    uv run pytest
 
 
 # run-test:

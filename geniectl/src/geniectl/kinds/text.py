@@ -29,6 +29,7 @@ class TextGenerationHandler(BaseHandler):
         if os.path.exists(full_output_path):
             click.echo(f"   - Skipping: File already exists at {full_output_path}")
             return
+        click.echo(f"   - Executing: File DOES NOT exist at {full_output_path}")
 
         # 2. Model Configuration Logic
         default_model = self.config.get('defaults', {}).get('models', {}).get('TextGeneration', 'gemini-1.5-flash')
@@ -36,19 +37,18 @@ class TextGenerationHandler(BaseHandler):
         prompt = self.spec.get('prompt', 'No prompt provided.')
 
         click.echo(f"-> Generating Text for '{self.metadata.get('name')}' using {model_name}...")
-        
+
         try:
             model = genai.GenerativeModel(model_name)
             response = model.generate_content(prompt)
             content = response.text
         except Exception as e:
             click.echo(f"   - Error calling Gemini API: {e}", err=True)
-            content = f"--- ERROR DURING GENERATION ---
-Prompt: \"{prompt}\"\nError: {e}"
+            content = f'--- ERROR DURING GENERATION ---\nPrompt: "{prompt}" \nError: {e}'
 
         os.makedirs(os.path.dirname(full_output_path), exist_ok=True)
 
         with open(full_output_path, 'w') as f:
             f.write(content)
-            
+
         click.echo(f"   - Saved to: {full_output_path}")

@@ -1,5 +1,7 @@
 import click
 import yaml
+import os
+import subprocess
 from graphlib import TopologicalSorter, CycleError
 from .kinds.text import TextGenerationHandler
 from .kinds.audio import AudioGenerationHandler
@@ -18,7 +20,7 @@ class Engine:
 
     def _load_config(self):
         try:
-            with open('geniectl/config.yaml', 'r') as f:
+            with open('config.yaml', 'r') as f:
                 return yaml.safe_load(f)
         except FileNotFoundError:
             click.echo("Warning: config.yaml not found. Using default settings.", err=True)
@@ -40,14 +42,39 @@ class Engine:
     def _build_graph(self, documents):
         self.resources = {self._get_resource_key(doc): doc for doc in documents if self._get_resource_key(doc)}
         
-        graph = TopologicalSorter()
+        graph_dict = {}
         for key, doc in self.resources.items():
-            graph.add(key)
             dependencies = self._get_dependencies(doc)
-            for dep_key in dependencies:
-                if dep_key in self.resources:
-                    graph.add(dep_key, key)
-        return graph
+            graph_dict[key] = set(dependencies)
+            
+        ts = TopologicalSorter(graph_dict)
+        return ts
+
+    def _export_graph_to_dot(self):
+        """Exports the dependency graph to a .dot file and generates a PNG."""
+        dot_path = os.path.join(self.output_dir, "dependencies.dot")
+        png_path = os.path.join(self.output_dir, "dependencies.png")
+
+        with open(dot_path, 'w') as f:
+            f.write("digraph dependencies {\n")
+            f.write("  rankdir=LR;\n") # Left to right layout
+            for key, doc in self.resources.items():
+                f.write(f'  "{key}";\n')
+                dependencies = self._get_dependencies(doc)
+                for dep_key in dependencies:
+                    f.write(f'  "{dep_key}" -> "{key}";\n')
+            f.write("}\n")
+        click.echo(f"--- Saved dependency graph to {dot_path} ---")
+
+        # Attempt to generate PNG visualization
+        try:
+            subprocess.run(['dot', '-Tpng', dot_path, '-o', png_path], check=True)
+            click.echo(f"--- Generated dependency graph PNG: {png_path} ---")
+        except FileNotFoundError:
+            click.echo("--- Warning: 'dot' command not found. Skipping PNG generation. ---", err=True)
+            click.echo("--- To generate the PNG, install graphviz (e.g., 'brew install graphviz') ---", err=True)
+        except subprocess.CalledProcessError as e:
+            click.echo(f"--- Error generating PNG: {e} ---", err=True)
 
     def run(self, documents):
         click.echo("--- Starting Engine: Building Dependency Graph ---")
@@ -57,6 +84,9 @@ class Engine:
         except CycleError as e:
             click.echo(f"Error: A dependency cycle was detected in your manifests: {e}", err=True)
             return
+
+        # Export graph for visualization
+        self._export_graph_to_dot()
 
         # --- Planning Phase ---
         click.echo("\n--- Execution Plan ---")
@@ -93,4 +123,3 @@ class Engine:
         click.echo("--------------------------")
 
         click.echo("\n--- Engine Finished ---")
-
