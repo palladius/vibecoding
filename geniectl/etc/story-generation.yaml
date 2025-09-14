@@ -4,6 +4,7 @@ metadata:
   name: bedtime-story-text
 spec:
   prompt: "Write a short, imaginative bedtime story for a 5-year-old about a friendly robot who explores the moon."
+  engine: GeminiCLI
   output:
     path: "bedtime-story-en.md"
 
@@ -15,6 +16,7 @@ metadata:
   name: bedtime-story-text-it
 spec:
   prompt: "Translate the following text to Italian: ${TextGeneration/bedtime-story-text.output.content}"
+  engine: GeminiCLI
   output:
     path: "bedtime-story-it.md"
   depends_on:
@@ -28,8 +30,23 @@ metadata:
   name: bedtime-story-audio-it
 spec:
   depends_on:
-    - "TextGeneration/bedtime-story-text-it"
+    - "TextGeneration/bedtime-story-text-it" # translate from EN to IT
   model: "chirp3"
   language: "it"
   output:
     path: "bedtime-story-it.wav"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: ImageGeneration
+metadata:
+  name: story-illustration
+spec:
+  replicas: 4
+  depends_on:
+    - "TextGeneration/bedtime-story-text" # Use plot to constuct image
+  prompt: "A beautiful, colorful illustration of a friendly robot exploring the moon, for a children's bedtime story. The style should be whimsical and dreamlike. Based on the story: ${TextGeneration/bedtime-story-text.output.content}"
+  output:
+    # note that this should create 4 files: story-illustration_1.png, story-illustration_2.png, ...
+    path: "story-illustration.png"

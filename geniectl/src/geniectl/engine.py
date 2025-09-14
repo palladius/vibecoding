@@ -3,14 +3,19 @@ import yaml
 import os
 import re
 import subprocess
+from pathlib import Path
 from graphlib import TopologicalSorter, CycleError
 from .kinds.text import TextGenerationHandler
 from .kinds.audio import AudioGenerationHandler
+from .kinds.gemini_cli import GeminiCLI
+from .kinds.image import ImageGenerationHandler
 
 # Handler registry maps Kind names to their handler classes
 HANDLER_REGISTRY = {
     "TextGeneration": TextGenerationHandler,
     "AudioGeneration": AudioGenerationHandler,
+    "ImageGeneration": ImageGenerationHandler,
+    "GeminiCLI": GeminiCLI,
 }
 
 class Engine:
@@ -126,45 +131,126 @@ class Engine:
 
         # --- Planning Phase ---
         click.echo("\n--- Execution Plan ---")
+        
+        ENGINE_EMOJIS = {
+            "Native": "🐍",
+            "GeminiCLI": "✨",
+            "MCP": "🌐",
+        }
+
         for key in execution_order:
             doc = self.resources[key]
+            spec = doc.get('spec', {})
             kind = doc.get('kind', 'Unknown')
+            engine = spec.get('engine', 'Native') # Default to Native
+            engine_emoji = ENGINE_EMOJIS.get(engine, "❓")
+            
             api_version = doc.get('apiVersion', 'Unknown')
             dependencies = self._get_dependencies(doc)
             dep_string = f" -> depends on [{ ', '.join(dependencies) }]" if dependencies else ""
 
-            output_path = doc.get('spec', {}).get('output', {}).get('path')
+            output_path = spec.get('output', {}).get('path')
             full_output_path = os.path.join(self.output_dir, output_path) if output_path else None
 
+            replicas = spec.get('replicas')
+            replica_display = f" (x{replicas})" if replicas and replicas > 1 else ""
+
+            output_filename_display = ""
+            if output_path:
+                if replicas and replicas > 1:
+                    p = Path(output_path)
+                    base_name = p.stem
+                    extension = p.suffix
+                    output_filename_display = f"💾 {base_name}_{{0..{replicas-1}}}{extension}"
+                else:
+                    output_filename_display = f"💾 {output_path}"
+
+            # Determine output file status emoji and color
+            output_file_status_emoji = ''
+            output_color = 'white' # Default
+            existing_count = 0
+            if output_path:
+                if replicas and replicas > 1:
+                    p = Path(output_path)
+                    base_name = p.stem
+                    extension = p.suffix
+                    replica_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(replicas)]
+                    existing_count = sum(1 for f in replica_files if os.path.exists(f))
+
+                    if existing_count == replicas:
+                        output_file_status_emoji = '✅'
+                        output_color = 'green'
+                    elif existing_count > 0:
+                        output_file_status_emoji = '⚠️'
+                        output_color = 'yellow'
+                    else:
+                        output_file_status_emoji = '❌'
+                        output_color = 'blue'
+                elif full_output_path and os.path.exists(full_output_path):
+                    output_file_status_emoji = '✅'
+                    output_color = 'green'
+                else:
+                    output_file_status_emoji = '❌'
+                    output_color = 'blue'
+
+            # Determine step status
             status = "🟢"
             status_text = "Ready to go"
 
             if api_version.split('/')[0] != 'kine-matic.io':
                 status = "🔴"
-                status_text = f"Unknown apiVersion '{api_version}'"
+                status_text = f"Unknown apiVersion '{api_version}''"
             elif kind not in HANDLER_REGISTRY:
                 status = "🔴"
                 status_text = "Handler not implemented"
-            elif full_output_path and os.path.exists(full_output_path):
-                status = "⚪️"
-                status_text = "Done (file already exists)"
-            
+            elif output_path:
+                if replicas and replicas > 1:
+                    if existing_count == replicas:
+                        status = "⚪️"
+                        status_text = "Done (all files exist)"
+                    elif existing_count > 0:
+                        status = "🟠"
+                        status_text = f"Partially done ({existing_count}/{replicas} exist)"
+                elif full_output_path and os.path.exists(full_output_path):
+                    status = "⚪️"
+                    status_text = "Done (file already exists)"
+
             # Check dependencies
-            if status == "🟢":
+            if status in ["🟢", "🟠"]:
                 for dep_key in dependencies:
                     dep_doc = self.resources.get(dep_key)
                     if not dep_doc:
                         status = "🟡"
                         status_text = f"Unsatisfied dependency: {dep_key} (not found)"
                         break
+                    
                     dep_output_path = dep_doc.get('spec', {}).get('output', {}).get('path')
-                    dep_full_output_path = os.path.join(self.output_dir, dep_output_path) if dep_output_path else None
-                    if not dep_full_output_path or not os.path.exists(dep_full_output_path):
-                        status = "🟡"
-                        status_text = f"Unsatisfied dependency: {dep_key} (output not found)"
-                        break
+                    if not dep_output_path:
+                        # This case should ideally be caught by a validator
+                        continue
 
-            click.echo(f"{status} {key}{dep_string} ({status_text})")
+                    # Check if dependency is fully satisfied
+                    dep_replicas = dep_doc.get('spec', {}).get('replicas')
+                    if dep_replicas and dep_replicas > 1:
+                        p = Path(dep_output_path)
+                        base_name = p.stem
+                        extension = p.suffix
+                        dep_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(dep_replicas)]
+                        if not all(os.path.exists(f) for f in dep_files):
+                            status = "🟡"
+                            status_text = f"Unsatisfied dependency: {dep_key} (outputs not found)"
+                            break
+                    else:
+                        dep_full_output_path = os.path.join(self.output_dir, dep_output_path)
+                        if not os.path.exists(dep_full_output_path):
+                            status = "🟡"
+                            status_text = f"Unsatisfied dependency: {dep_key} (output not found)"
+                            break
+            
+            key_styled = click.style(f"{key}{replica_display}", fg='bright_cyan', bold=True)
+            output_display_styled = click.style(output_filename_display, fg=output_color)
+
+            click.echo(f"{status} {engine_emoji} {key_styled} {dep_string} {output_file_status_emoji} {output_display_styled} ({status_text})")
 
         click.echo("----------------------")
 

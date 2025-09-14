@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2025-09-14
+
+### ✨ Features
+
+- **Enhanced Plan View**: The `geniectl apply --plan` output is now more informative and visually appealing.
+  - Added emojis (✅, ❌, ⚠️) to indicate the existence of output files.
+  - Color-codes filenames based on their status (blue for missing, green for existing, yellow for partial).
+  - Color-codes the resource kind in cyan for better readability.
+  - The plan now correctly displays multi-file outputs for resources with `replicas` (e.g., `image_{0..3}.png`).
+- **Image Generation**: Added a draft handler for the `ImageGeneration` kind, including support for the `replicas` parameter.
+
+### 🐛 Fixed
+
+- Corrected a bug where the plan would not accurately reflect the existence of multiple output files (replicas).
+- Improved dependency checking to be aware of multi-file outputs.
+
 ## [0.2.1] - 2025-09-14
 
 ### Added
