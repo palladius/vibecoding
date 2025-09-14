@@ -42,3 +42,4 @@ This document outlines the high-level tests that should be implemented for `geni
 - [ ] Test that the handler correctly reads the content from its dependency's output file.
 - [ ] Test that the handler gracefully handles cases where the dependency's output file is missing.
 - [ ] Test that the handler generates the output file with the expected content (mocked).
+- [ ] Test the generated file has expected content with `file` functionality. Eg, `file out/bedtime-story-en.wav => out/bedtime-story-en.wav: ASCII text` should be a failure.

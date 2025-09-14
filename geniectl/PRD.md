@@ -56,6 +56,15 @@ They should all support a number of similar names, as we don't want to repeat ou
    2. generation of any single basic type (image, video, audio, ..)
    3. generation of complex things (array/).
 4. Bonus point if this works WITH kubectl in the end, but that's not important for v1.
+5. We need a basic templating mechanism, so the generationn of object B could be built with a reference to object A.
+   1. Eg, "Translate to Spanish this: {object.output.text}"
+
+## CLI Functionality
+
+* cli should have some --plan/--dry-run option. If activated, it just shows the dependencies graph and the actions it would
+  execute without executing. Something like: I dont need to do A,B because the file already exists. I need to do C,D as no deps,
+  while I can't do E as it depends on C. So I would do C,D next. Maybe use emojis or colors for the status, like gray (done), green (ready to go) yellow (unsatisfied dep, for instance on a green, which is likekly to be executed in the same place). Reserve RED for errors
+  or things we can't do - if any.
 
 ## Update: Project Name
 
