@@ -56,3 +56,7 @@ They should all support a number of similar names, as we don't want to repeat ou
    2. generation of any single basic type (image, video, audio, ..)
    3. generation of complex things (array/).
 4. Bonus point if this works WITH kubectl in the end, but that's not important for v1.
+
+## Update: Project Name
+
+The project has been christened **Genie-CTL** (`geniectl`), with **Kine-matic** and **Kube-Gem** as close contenders. The implementation has begun using Python and the `click` library for the command-line interface.

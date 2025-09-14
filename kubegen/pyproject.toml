@@ -1,0 +1,15 @@
+[project]
+name = "geniectl"
+version = "0.1.0"
+description = "A tool to declaratively generate multimedia assets using Kubernetes-like YAML files."
+dependencies = [
+    "click",
+    "pyyaml",
+]
+requires-python = ">=3.9"
+
+[project.scripts]
+geniectl = "geniectl.cli:cli"
+
+[project.optional-dependencies]
+dev = ["pytest"]

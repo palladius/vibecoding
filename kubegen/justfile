@@ -1,0 +1,17 @@
+
+# List
+list:
+    just -l
+
+
+# Install dependencies and the project in editable mode
+install:
+    uv pip install -e .
+
+# Run the geniectl script
+run:
+    uv run geniectl apply -f etc/story-generation.yaml
+
+
+# run-test:
+#     uv run python src/geniectl/cli.py apply -f etc/story-generation.yaml --verbose

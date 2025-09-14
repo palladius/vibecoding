@@ -18,12 +18,12 @@ The primary goal is to provide a reproducible and version-controllable way to cr
 
 ### Phase 1: Core Engine & Scaffolding (No API calls)
 
-- [ ] **Project Setup:**
+- [x] **Project Setup:**
     - [x] Create project folder `kubegen`.
     - [x] Create initial `PLAN.md`, `README.md`, `GEMINI.md`.
     - [x] Create `etc/sample_story.yaml`.
-    - [ ] Set up `justfile` for common commands.
-    - [ ] Initialize a Python project with `uv`.
+    - [x] Set up `justfile` for common commands.
+    - [x] Initialize a Python project with `uv`.
 - [ ] **YAML Specification (v1alpha1):**
     - [ ] Finalize the structure for `apiVersion`, `kind`, `metadata`, `spec`, and `status`.
     - [ ] Define the `spec` for initial kinds: `Text`, `Image`, `Audio`, `Video`.
@@ -34,9 +34,9 @@ The primary goal is to provide a reproducible and version-controllable way to cr
     - [ ] Implement a hashing mechanism for the `spec` of each resource to detect changes.
     - [ ] Implement mock "generator" functions for each `Kind` that create placeholder output files.
     - [ ] Implement logic to update the manifest (or a `.hydrated.yaml` file) with output status and file paths.
-- [ ] **CLI:**
-    - [ ] Create a basic CLI using `click` or `argparse`.
-    - [ ] Implement `kubegen apply -f <file.yaml>` to run the generation process.
+- [x] **CLI:**
+    - [x] Create a basic CLI using `click`.
+    - [x] Implement `geniectl apply -f <file_or_directory>` to run the generation process.
 
 ### Phase 2: API Integration
 
@@ -71,12 +71,13 @@ kubegen/
 ├─── etc/
 │    └─── sample_story.yaml
 ├─── src/
-│    └─── kubegen/
+│    └─── geniectl/
 │         ├─── __init__.py
 │         ├─── cli.py          # Command Line Interface
 │         ├─── engine.py       # Core processing engine, dependency resolution
 │         ├─── parser.py       # YAML manifest parsing
 │         └─── kinds/          # Handlers for each resource Kind
+│              ├─── __init__.py
 │              ├─── base.py
 │              ├─── image.py
 │              ├─── text.py

@@ -1,0 +1,22 @@
+apiVersion: kine-matic.io/v1alpha1
+kind: TextGeneration
+metadata:
+  name: bedtime-story-text
+spec:
+  prompt: "Write a short, imaginative bedtime story for a 5-year-old about a friendly robot who explores the moon."
+  output:
+    path: "story-en.md"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: AudioGeneration
+metadata:
+  name: bedtime-story-audio
+spec:
+  depends_on:
+    - "TextGeneration/bedtime-story-text"
+  model: "chirp"
+  language: "en"
+  output:
+    path: "bedtime-story-en.mp3"

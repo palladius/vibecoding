@@ -6,11 +6,11 @@ spec:
   # The prompt to generate the text from
   prompt: "Write a short, happy bedtime story for a 5-year-old about a friendly dragon named Sparky who discovers a magical glowing flower in the forest."
   # How many versions to generate
-  replicas: 1
+  replicas: 2
   # Where to save the output files
-  targetFolder: "output/stories"
+  #targetFolder: "output/stories"
   # Model and parameters for the generation API
-  model: "gemini-1.5-flash"
+  model: "gemini-2.5-flash"
 ---
 apiVersion: kubegen.io/v1alpha1
 kind: Image
