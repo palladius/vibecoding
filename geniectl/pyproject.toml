@@ -34,3 +34,6 @@ dev = [
     "build",
     "twine",
 ]
+
+[tool.pytest.ini_options]
+python_files = "*_test.py"

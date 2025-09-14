@@ -1,4 +1,5 @@
 import click
+import yaml
 from graphlib import TopologicalSorter, CycleError
 from .kinds.text import TextGenerationHandler
 from .kinds.audio import AudioGenerationHandler
@@ -13,6 +14,18 @@ class Engine:
     def __init__(self, output_dir):
         self.output_dir = output_dir
         self.resources = {}
+        self.config = self._load_config()
+
+    def _load_config(self):
+        try:
+            with open('geniectl/config.yaml', 'r') as f:
+                return yaml.safe_load(f)
+        except FileNotFoundError:
+            click.echo("Warning: config.yaml not found. Using default settings.", err=True)
+            return {}
+        except yaml.YAMLError as e:
+            click.echo(f"Warning: Error parsing config.yaml: {e}. Using default settings.", err=True)
+            return {}
 
     def _get_resource_key(self, doc):
         kind = doc.get('kind')
@@ -74,8 +87,10 @@ class Engine:
 
             handler_class = HANDLER_REGISTRY.get(kind)
             if handler_class:
-                handler = handler_class(doc, self.output_dir)
+                # Pass the full resource map and config to the handler
+                handler = handler_class(doc, self.output_dir, self.resources, self.config)
                 handler.generate()
         click.echo("--------------------------")
 
         click.echo("\n--- Engine Finished ---")
+

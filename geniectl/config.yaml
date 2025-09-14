@@ -1,0 +1,6 @@
+# Default configuration for Genie-CTL
+
+defaults:
+  models:
+    TextGeneration: "gemini-2.5-flash"
+    AudioGeneration: "chirp3"

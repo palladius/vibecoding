@@ -26,6 +26,11 @@ publish-test:
 publish:
     twine upload dist/*
 
+# --- Testing ---
+
+test:
+    pytest
+
 
 # run-test:
 #     uv run python src/geniectl/cli.py apply -f etc/story-generation.yaml --verbose

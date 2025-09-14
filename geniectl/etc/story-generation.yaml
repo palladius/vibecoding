@@ -5,7 +5,7 @@ metadata:
 spec:
   prompt: "Write a short, imaginative bedtime story for a 5-year-old about a friendly robot who explores the moon."
   output:
-    path: "story-en.md"
+    path: "bedtime-story-en.md"
 
 ---
 
@@ -16,7 +16,7 @@ metadata:
 spec:
   depends_on:
     - "TextGeneration/bedtime-story-text"
-  model: "chirp"
+  model: "chirp3"
   language: "en"
   output:
-    path: "bedtime-story-en.mp3"
+    path: "bedtime-story-en.wav"
