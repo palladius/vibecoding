@@ -10,7 +10,7 @@ install:
 
 # Run the geniectl script
 run:
-    uv run geniectl apply -f kubegen/etc/story-generation.yaml
+    uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml
 
 # --- Publishing ---
 
