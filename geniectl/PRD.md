@@ -29,12 +29,16 @@ It should contain a target_folder somewhere in the stanza.
 I'd like to create an application, in whichever language you prefer (possibly ruby but Im ok with go/python/..), which:
 
 1. Defines the structure of these YAMLs. It should be similar to kubernetes and support multiple Kinds.
-2. Simple Kinds should be at least *Video*, **Image**, **Music**, **Audio**, **Markdown** (the simplest generation from prompt to markdown, you can find a better name, like 'Generation' or 'Text').
+2. Simple Kinds should be at least **Video**, **Image**, **Music**, **Audio**, **Markdown** (the simplest generation from prompt to markdown, you can find a better name, like 'Generation' or 'Text').
 3. There should be more complex "arrays" of these original stuff. For instance I can think of:
    1. A **StoryBoard** which represents a real movie made of an array of **Scenes** plus some metadata.
    2. A **Scene** (or StoryScene) which represents an array of N Video takes, possibly a subtitle (string with positioning/coloring), possibly a Music, possibly a Audio, and possibly a "voiceover text" argument which can become an Audio once actuated.
 4. We can start by creating a sample `etc/sample_story.yaml` and build the software form this example.
 5. Ideally we should be able to create **dependencies**, like "this image has a prompt which points to the solution to this story input prompt", meaning that first we need to have LLM take storyprompt -> story.md and then use the output of that as an input, maybe with some `$ kube_object.output_file` ot similar.
+6. there should also be a **GeminiCLI** type for random file-system instructions which can be very laser focused. Like:
+   1. Concatenate file1.txt with file2.txt (output_file: file3.txt)
+   2. Translate file1.txt into Italian (output_file: file1_it.txt)
+   3. Generate an image of this type: (output_file: image.png)
 
 Now I'm not sure how to do it, but once the config file has been actuated additional values need to be added somewhere (eg solution_image_1234 have been created and i have an array of 4 output files).
 * We can either put them in the YAML itself under some `output` stanza, or create a secondary deterministic file, like "input_file.yaml" -> "input_file.hydrated.yaml" so the script can check if we already have the output and we can skip.

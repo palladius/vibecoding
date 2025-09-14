@@ -1,6 +1,7 @@
 import click
 import yaml
 import os
+import re
 import subprocess
 from graphlib import TopologicalSorter, CycleError
 from .kinds.text import TextGenerationHandler
@@ -38,6 +39,41 @@ class Engine:
 
     def _get_dependencies(self, doc):
         return doc.get('spec', {}).get('depends_on', [])
+
+    def _substitute_variables(self, text):
+        pattern = r'\$\{([^}]+)\}'
+
+        def replace_func(match):
+            var_path = match.group(1)
+            parts = var_path.split('.')
+            if len(parts) != 3 or parts[1] != 'output':
+                return match.group(0) # Return original if format is not supported
+
+            resource_key = parts[0]
+            field = parts[2]
+
+            dep_doc = self.resources.get(resource_key)
+            if not dep_doc:
+                return match.group(0)
+
+            output_path = dep_doc.get('spec', {}).get('output', {}).get('path')
+            if not output_path:
+                return match.group(0)
+
+            full_output_path = os.path.join(self.output_dir, output_path)
+
+            if field == 'path':
+                return full_output_path
+            elif field == 'content':
+                if not os.path.exists(full_output_path):
+                    # This should be caught by the dependency check, but as a safeguard:
+                    raise Exception(f"Dependency output file not found: {full_output_path}")
+                with open(full_output_path, 'r') as f:
+                    return f.read()
+            else:
+                return match.group(0) # Unsupported field
+
+        return re.sub(pattern, replace_func, text)
 
     def _build_graph(self, documents):
         self.resources = {self._get_resource_key(doc): doc for doc in documents if self._get_resource_key(doc)}
@@ -148,6 +184,11 @@ class Engine:
 
             handler_class = HANDLER_REGISTRY.get(kind)
             if handler_class:
+                # Substitute variables in the prompt
+                prompt = doc.get('spec', {}).get('prompt')
+                if prompt:
+                    doc['spec']['prompt'] = self._substitute_variables(prompt)
+
                 # Pass the full resource map and config to the handler
                 handler = handler_class(doc, self.output_dir, self.resources, self.config)
                 handler.generate()

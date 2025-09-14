@@ -20,9 +20,20 @@ just install
 
 ## Usage
 
+Some examples:
+
 ```bash
 genectl apply -f etc/sample_story.yaml
 ```
+
+```bash
+$ just plan # Executes a DRY RUN execution
+--- Execution Plan ---
+🟢 TextGeneration/bedtime-story-text (Ready to go)
+🟡 TextGeneration/bedtime-story-text-it -> depends on [TextGeneration/bedtime-story-text] (Unsatisfied dependency: TextGeneration/bedtime-story-text (output not found))
+🟡 AudioGeneration/bedtime-story-audio-it -> depends on [TextGeneration/bedtime-story-text-it] (Unsatisfied dependency: TextGeneration/bedtime-story-text-it (output not found))
+```
+
 
 ## Project Structure
 

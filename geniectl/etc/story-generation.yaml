@@ -10,13 +10,26 @@ spec:
 ---
 
 apiVersion: kine-matic.io/v1alpha1
-kind: AudioGeneration
+kind: TextGeneration
 metadata:
-  name: bedtime-story-audio
+  name: bedtime-story-text-it
 spec:
+  prompt: "Translate the following text to Italian: ${TextGeneration/bedtime-story-text.output.content}"
+  output:
+    path: "bedtime-story-it.md"
   depends_on:
     - "TextGeneration/bedtime-story-text"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: AudioGeneration
+metadata:
+  name: bedtime-story-audio-it
+spec:
+  depends_on:
+    - "TextGeneration/bedtime-story-text-it"
   model: "chirp3"
-  language: "en"
+  language: "it"
   output:
-    path: "bedtime-story-en.wav"
+    path: "bedtime-story-it.wav"
