@@ -11,7 +11,8 @@ def cli():
 @cli.command()
 @click.option('-f', '--file', 'filepath', type=click.Path(exists=True, file_okay=True, dir_okay=True, readable=True), required=True, help='The YAML file or directory to apply.')
 @click.option('--output-dir', default='out/', help='The directory to save the generated assets.')
-def apply(filepath, output_dir):
+@click.option('--plan', '--dry-run', 'dry_run', is_flag=True, help='Show the execution plan without running it.')
+def apply(filepath, output_dir, dry_run):
     """Apply a configuration from a YAML file or directory."""
     click.echo(f"Applying from path: {filepath}")
 
@@ -36,7 +37,7 @@ def apply(filepath, output_dir):
             return
 
         e = engine.Engine(output_dir=output_dir)
-        e.run(documents)
+        e.run(documents, dry_run=dry_run)
 
     except Exception as e:
         click.echo(f"An error occurred: {e}", err=True)

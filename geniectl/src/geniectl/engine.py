@@ -76,7 +76,7 @@ class Engine:
         except subprocess.CalledProcessError as e:
             click.echo(f"--- Error generating PNG: {e} ---", err=True)
 
-    def run(self, documents):
+    def run(self, documents, dry_run=False):
         click.echo("--- Starting Engine: Building Dependency Graph ---")
         try:
             graph = self._build_graph(documents)
@@ -97,13 +97,44 @@ class Engine:
             dependencies = self._get_dependencies(doc)
             dep_string = f" -> depends on [{ ', '.join(dependencies) }]" if dependencies else ""
 
+            output_path = doc.get('spec', {}).get('output', {}).get('path')
+            full_output_path = os.path.join(self.output_dir, output_path) if output_path else None
+
+            status = "🟢"
+            status_text = "Ready to go"
+
             if api_version.split('/')[0] != 'kine-matic.io':
-                click.echo(f"🟡 Skipping {key}{dep_string} (unknown apiVersion '{api_version}')")
+                status = "🔴"
+                status_text = f"Unknown apiVersion '{api_version}'"
             elif kind not in HANDLER_REGISTRY:
-                click.echo(f"🟡 Skipping {key}{dep_string} (handler not implemented)")
-            else:
-                click.echo(f"🟢 Running  {key}{dep_string}")
+                status = "🔴"
+                status_text = "Handler not implemented"
+            elif full_output_path and os.path.exists(full_output_path):
+                status = "⚪️"
+                status_text = "Done (file already exists)"
+            
+            # Check dependencies
+            if status == "🟢":
+                for dep_key in dependencies:
+                    dep_doc = self.resources.get(dep_key)
+                    if not dep_doc:
+                        status = "🟡"
+                        status_text = f"Unsatisfied dependency: {dep_key} (not found)"
+                        break
+                    dep_output_path = dep_doc.get('spec', {}).get('output', {}).get('path')
+                    dep_full_output_path = os.path.join(self.output_dir, dep_output_path) if dep_output_path else None
+                    if not dep_full_output_path or not os.path.exists(dep_full_output_path):
+                        status = "🟡"
+                        status_text = f"Unsatisfied dependency: {dep_key} (output not found)"
+                        break
+
+            click.echo(f"{status} {key}{dep_string} ({status_text})")
+
         click.echo("----------------------")
+
+        if dry_run:
+            click.echo("\n--- Dry Run Finished ---")
+            return
 
         # --- Execution Phase ---
         click.echo("\n--- Processing Resources ---")

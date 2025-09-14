@@ -17,18 +17,22 @@ install:
 run:
     timeout 30 uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml
 
+plan:
+    uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml --plan
+
 # --- Publishing ---
 
 # Build the package for distribution
 build:
-    python -m build
+    uv run python -m build
 
 # Publish the package to TestPyPI (requires a TestPyPI account)
 publish-test:
     twine upload --repository testpypi dist/*
 
 # Publish the package to PyPI (requires a PyPI account)
-publish:
+publish: build
+    #echo 'Make sure you just build before publishing!'
     uv run twine upload dist/*
 
 # --- Testing ---
@@ -39,3 +43,35 @@ test:
 
 # run-test:
 #     uv run python src/geniectl/cli.py apply -f etc/story-generation.yaml --verbose
+
+auth:
+    #!/bin/bash
+
+    set -euo pipefail
+    . .env
+    echo "Setting up environment variables for authentication..."
+    echo "- GOOGLE_CLOUD_PROJECT: $GOOGLE_CLOUD_PROJECT"
+    echo "- GOOGLE_CLOUD_LOCATION: ${GOOGLE_CLOUD_LOCATION}"
+    gcloud config set project $GOOGLE_CLOUD_PROJECT
+    gcloud config set compute/region $GOOGLE_CLOUD_LOCATION
+    gcloud auth application-default login
+    gcloud auth application-default print-access-token
+
+grant-iam:
+    #!/bin/bash
+
+    set -euo pipefail
+    . .env
+    gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+        --member="user:ricc@google.com" \
+        --role="roles/aiplatform.user"
+
+revoke-iam:
+    #!/bin/bash
+
+    set -euo pipefail
+    . .env
+    gcloud projects remove-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+        --member="user:ricc@google.com" \
+        --role="roles/aiplatform.user"
+
