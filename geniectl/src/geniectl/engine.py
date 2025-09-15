@@ -161,7 +161,7 @@ class Engine:
                     p = Path(output_path)
                     base_name = p.stem
                     extension = p.suffix
-                    output_filename_display = f"💾 {base_name}_{{0..{replicas-1}}}{extension}"
+                    output_filename_display = f"💾 {base_name}_{{1..{replicas}}}{extension}"
                 else:
                     output_filename_display = f"💾 {output_path}"
 
@@ -235,7 +235,7 @@ class Engine:
                         p = Path(dep_output_path)
                         base_name = p.stem
                         extension = p.suffix
-                        dep_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(dep_replicas)]
+                        dep_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(1, dep_replicas + 1)]
                         if not all(os.path.exists(f) for f in dep_files):
                             status = "🟡"
                             status_text = f"Unsatisfied dependency: {dep_key} (outputs not found)"
@@ -288,7 +288,7 @@ class Engine:
                         p = Path(output_path)
                         base_name = p.stem
                         extension = p.suffix
-                        expected_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(replicas)]
+                        expected_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(1, replicas + 1)]
                         
                         for f_path in expected_files:
                             if not os.path.exists(f_path):
