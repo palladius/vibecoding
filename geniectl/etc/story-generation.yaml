@@ -52,3 +52,54 @@ spec:
   output:
     # note that this should create 4 files: story-illustration_1.png, story-illustration_2.png, ...
     path: "story-illustration.png"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: AudioGeneration
+metadata:
+  name: bedtime-story-audio-en
+spec:
+  depends_on:
+    - "TextGeneration/bedtime-story-text"
+  model: "chirp3"
+  language: "english"
+  engine: GeminiCLI
+  output:
+    path: "bedtime-story-en.wav"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: TextGeneration
+metadata:
+  name: final-story-en
+spec:
+  prompt: |
+    Create a markdown file content as described below.
+
+    **Remember** to output ONLY the content of the markdown file, and nothing else.
+
+    Also add a markdown link to the audio, if at all possible: "bedtime-story-en.wav".
+    If not, link it like a normal link: [bedtime-story-en.wav](bedtime-story-en.wav).
+
+    ```markdown
+    # <Gemini: A title for the story>
+
+    [bedtime-story-en.wav](bedtime-story-en.wav) <-- Gemini: link to audio file if possible!
+    ![Story Illustration 1](story-illustration_1.png)
+    ![Story Illustration 2](story-illustration_2.png)
+    ![Story Illustration 3](story-illustration_3.png)
+    ![Story Illustration 4](story-illustration_4.png)
+
+    # Story
+
+    ${TextGeneration/bedtime-story-text.output.content}
+    ```
+  engine: GeminiCLI
+  output:
+    path: "FINAL_STORY.EN.md"
+  depends_on:
+    - "TextGeneration/bedtime-story-text"
+    - "AudioGeneration/bedtime-story-audio-en"
+    - "ImageGeneration/story-illustration"

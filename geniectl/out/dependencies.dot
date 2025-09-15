@@ -7,4 +7,10 @@ digraph dependencies {
   "TextGeneration/bedtime-story-text-it" -> "AudioGeneration/bedtime-story-audio-it";
   "ImageGeneration/story-illustration";
   "TextGeneration/bedtime-story-text" -> "ImageGeneration/story-illustration";
+  "AudioGeneration/bedtime-story-audio-en";
+  "TextGeneration/bedtime-story-text" -> "AudioGeneration/bedtime-story-audio-en";
+  "TextGeneration/final-story-en";
+  "TextGeneration/bedtime-story-text" -> "TextGeneration/final-story-en";
+  "AudioGeneration/bedtime-story-audio-en" -> "TextGeneration/final-story-en";
+  "ImageGeneration/story-illustration" -> "TextGeneration/final-story-en";
 }

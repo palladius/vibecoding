@@ -39,9 +39,13 @@ class GeminiCLI(BaseHandler):
 
         try:
             click.echo(f"   - Executing: {' '.join(gemini_command)}")
-            # We don't redirect stdout here because the GeminiCLI kind is expected
-            # to handle its own output, potentially modifying files directly.
-            subprocess.run(gemini_command, check=True)
+            result = subprocess.run(gemini_command, check=True, capture_output=True, text=True)
+            if output_path:
+                with open(output_path, "w") as f:
+                    f.write(result.stdout)
+                click.echo(f"   - Saved to: {output_path}")
+            else:
+                click.echo(result.stdout)
         except FileNotFoundError:
             click.echo("   - Error: 'gemini' command not found. Make sure the Gemini CLI is installed and in your PATH.", err=True)
             raise
