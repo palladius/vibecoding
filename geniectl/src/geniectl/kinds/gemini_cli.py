@@ -35,8 +35,7 @@ class GeminiCLI(BaseHandler):
 
         # The prompt for this kind is the full command for the gemini cli
         click.echo(click.style(f"   - Prompt: {prompt}", fg='blue'))
-        gemini_cli_path = os.path.expanduser('~/go/bin/gemini-cli')
-        gemini_command = [gemini_cli_path, "-p", prompt]
+        gemini_command = self._gemini_command_from_prompt(prompt)
 
         try:
             click.echo(f"   - Executing: {' '.join(gemini_command)}")

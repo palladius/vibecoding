@@ -174,7 +174,7 @@ class Engine:
                     p = Path(output_path)
                     base_name = p.stem
                     extension = p.suffix
-                    replica_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(replicas)]
+                    replica_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(1, replicas + 1)]
                     existing_count = sum(1 for f in replica_files if os.path.exists(f))
 
                     if existing_count == replicas:
@@ -278,6 +278,7 @@ class Engine:
                 # Pass the full resource map and config to the handler
                 handler = handler_class(doc, self.output_dir, self.resources, self.config)
                 handler.generate()
+                handler._post_generate_check()
 
                 # Verification Step
                 output_path = doc.get('spec', {}).get('output', {}).get('path')

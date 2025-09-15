@@ -57,22 +57,20 @@ class AudioGenerationHandler(BaseHandler):
 
         # 3. Construct the prompt
         prompt = f'Generate audio from text using chirp_tts tool with {model} model and choosing a voice from language "{language}". Use as text the following: {input_text}'
-        full_prompt = f'''{prompt}.
+        full_prompt = f'''{prompt}. 
 
-        **IMPORTANT** The output file should be {full_output_path}. If the file created has a different name, remember to rename it appropriately!
-        '''
+ **IMPORTANT** The output file should be {full_output_path}. If the file created has a different name, remember to rename it appropriately!'''
 
         click.echo(click.style(f"   - Prompt: {full_prompt}", fg='blue'))
 
         # 4. Execute the command
-        gemini_cli_path = os.path.expanduser('~/go/bin/gemini-cli')
-        gemini_command = [gemini_cli_path, "-p", full_prompt]
+        gemini_command = self._gemini_command_from_prompt(full_prompt)
         try:
             click.echo(f"   - Requesting audio generation via Gemini CLI...")
             subprocess.run(gemini_command, check=True)
             click.echo(f"   - Successfully requested audio generation for: {full_output_path}")
         except FileNotFoundError:
-            click.echo("   - Error: 'gemini-cli' command not found. Make sure the Gemini CLI is installed and in your PATH.", err=True)
+            click.echo("   - Error: 'gemini' command not found. Make sure the Gemini CLI is installed and in your PATH.", err=True)
         except subprocess.CalledProcessError as e:
             click.echo(f"   - Error executing Gemini CLI: {e}", err=True)
 
@@ -80,3 +78,9 @@ class AudioGenerationHandler(BaseHandler):
         message = "The 'MCP' engine for AudioGeneration is not implemented yet."
         click.echo(f"   - 🚧 Error: {message}", err=True)
         raise NotImplementedEngineError(message)
+
+    def _post_generate_check(self):
+        output_path = self.spec.get('output', {}).get('path')
+        if output_path:
+            full_output_path = os.path.join(self.output_dir, output_path)
+            self._verify_file_type(full_output_path, ["audio", "wave"])

@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 import click
+import subprocess
+import os
 
 class BaseHandler(ABC):
     """Abstract base class for all Kind handlers."""
@@ -40,3 +42,30 @@ class BaseHandler(ABC):
     def _generate_mcp(self):
         """Generates the asset using the MCP engine."""
         pass
+
+    def _post_generate_check(self):
+        """Optional post-generation checks for the created asset."""
+        pass
+
+    def _verify_file_type(self, file_path, keywords):
+        """Uses the 'file' command to verify the type of a file."""
+        if not os.path.exists(file_path):
+            return
+
+        try:
+            result = subprocess.run(["file", file_path], check=True, capture_output=True, text=True)
+            file_type = result.stdout.lower()
+            
+            if not any(keyword in file_type for keyword in keywords):
+                click.echo(f"   - ❌ Error: Verification failed. Expected a file containing one of '{keywords}', but type was: {result.stdout.strip()}", err=True)
+            else:
+                click.echo(f"   - ✅ Verification successful: Output file type is correct.")
+
+        except FileNotFoundError:
+            click.echo("   - Warning: 'file' command not found. Skipping file type verification.", err=True)
+        except subprocess.CalledProcessError as e:
+            click.echo(f"   - Warning: 'file' command failed during verification: {e}", err=True)
+
+    def _gemini_command_from_prompt(self, prompt):
+        """Constructs the standard gemini command list from a prompt string."""
+        return ["gemini", "-c", "--approval-mode", "auto_edit", "--prompt", prompt]

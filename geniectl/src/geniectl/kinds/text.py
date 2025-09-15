@@ -57,7 +57,7 @@ Error: {e}'''
         click.echo(f"   - Saved to: {full_output_path}")
 
     def _generate_geminicli(self):
-        """Generates text by shelling out to the 'gemini' CLI tool."""
+        """Generates text by shelling out to the 'gemini-cli' tool and capturing stdout."""
         output_spec = self.spec.get('output', {})
         output_path = output_spec.get('path')
 
@@ -73,8 +73,8 @@ Error: {e}'''
 
         prompt = self.spec.get('prompt', 'No prompt provided.')
         click.echo(click.style(f"   - Prompt: {prompt}", fg='blue'))
-        gemini_cli_path = os.path.expanduser('~/go/bin/gemini-cli')
-        gemini_command = [gemini_cli_path, "-p", prompt]
+        
+        gemini_command = self._gemini_command_from_prompt(prompt)
 
         try:
             os.makedirs(os.path.dirname(full_output_path), exist_ok=True)
@@ -82,6 +82,8 @@ Error: {e}'''
                 subprocess.run(gemini_command, stdout=f, check=True)
             click.echo(f"   - Saved to: {full_output_path}")
         except FileNotFoundError:
-            click.echo("   - Error: 'gemini' command not found. Make sure the Gemini CLI is installed and in your PATH.", err=True)
+            message = f"'{gemini_cli_path}' command not found. Make sure it is installed and in your PATH."
+            click.echo(f"   - 🚧 Error: {message}", err=True)
+            raise FileNotFoundError(message)
         except subprocess.CalledProcessError as e:
             click.echo(f"   - Error executing Gemini CLI: {e}", err=True)
