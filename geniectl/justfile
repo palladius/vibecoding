@@ -59,17 +59,17 @@ auth:
     gcloud auth application-default print-access-token
 
 # --- GCP Setup ---
-gcp-create-service-account:
-    bin/gcp-setup.sh create-service-account
+# gcp-create-service-account:
+#     bin/gcp-setup.sh create-service-account
 
-gcp-grant-iam-to-service-account:
-    bin/gcp-setup.sh grant-iam-to-service-account
+# gcp-grant-iam-to-service-account:
+#     bin/gcp-setup.sh grant-iam-to-service-account
 
-gcp-create-service-account-key:
-    bin/gcp-setup.sh create-service-account-key
+# gcp-create-service-account-key:
+#     bin/gcp-setup.sh create-service-account-key
 
-gcp-revoke-iam:
-    bin/gcp-setup.sh revoke-iam
+# gcp-revoke-iam:
+#     bin/gcp-setup.sh revoke-iam
 
-gcp-grant-iam:
-    bin/gcp-setup.sh grant-iam
+# gcp-grant-iam:
+#     bin/gcp-setup.sh grant-iam

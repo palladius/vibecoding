@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🐛 Fixed
 
+- **Audio File Naming**: Implemented the same "parse and rename" strategy for audio generation as was done for images. This fixes a bug where `gemini-cli` would not rename the output file correctly.
 - **`gemini-cli` Command**: Corrected the command format to `gemini-cli -p "..."` in all handlers.
 - **`PATH` for CLI**: Automatically adds `~/go/bin` to the `PATH` to help locate the `gemini-cli` executable.
 - **Gemini Emoji**: Corrected the emoji for the `GeminiCLI` engine to the proper zodiac sign (♊).

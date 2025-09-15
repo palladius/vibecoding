@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import click
 import subprocess
 import os
+import json
 
 class BaseHandler(ABC):
     """Abstract base class for all Kind handlers."""
@@ -16,7 +17,7 @@ class BaseHandler(ABC):
     def generate(self):
         """Dispatches to the correct engine implementation."""
         engine = self.spec.get('engine', 'Native')
-        
+
         click.echo(f"-> Generating for '{self.metadata.get('name')}' using [{engine}] engine...")
 
         if engine == 'Native':
@@ -55,9 +56,14 @@ class BaseHandler(ABC):
         try:
             result = subprocess.run(["file", file_path], check=True, capture_output=True, text=True)
             file_type = result.stdout.lower()
-            
+
             if not any(keyword in file_type for keyword in keywords):
                 click.echo(f"   - ❌ Error: Verification failed. Expected a file containing one of '{keywords}', but type was: {result.stdout.strip()}", err=True)
+                try:
+                    os.remove(file_path)
+                    click.echo(f"     - Removed invalid file: {file_path}", err=True)
+                except OSError as e:
+                    click.echo(f"     - Failed to remove invalid file: {e}", err=True)
             else:
                 click.echo(f"   - ✅ Verification successful: Output file type is correct.")
 
@@ -68,4 +74,26 @@ class BaseHandler(ABC):
 
     def _gemini_command_from_prompt(self, prompt):
         """Constructs the standard gemini command list from a prompt string."""
-        return ["gemini", "-c", "--approval-mode", "auto_edit", "--prompt", prompt]
+        return [
+            "gemini", "-c",
+            "--approval-mode", "auto_edit",
+            "--session-summary", ".tmp.session-summary.json",
+            "--prompt", prompt]
+
+    def _parse_json_from_gemini_output(self, raw_output):
+        """
+        Parses a JSON object from the raw output of the Gemini CLI,
+        stripping markdown fences if they exist.
+        """
+        json_string = raw_output
+        if "```json" in json_string:
+            json_string = json_string.split("```json")[1].split("```")[0]
+
+        json_string = json_string.strip()
+
+        try:
+            return json.loads(json_string)
+        except json.JSONDecodeError:
+            click.echo("   - 🚧 Error: Failed to parse JSON output from Gemini CLI.", err=True)
+            click.echo(f"     Raw output: {raw_output}", err=True)
+            return None
