@@ -18,6 +18,11 @@ run:
     export PATH=~/go/bin/:$PATH
     bash -c "uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml"
 
+run-on-another-dir:
+    #!/bin/bash
+    export PATH=~/go/bin/:$PATH
+    bash -c "uv run geniectl apply -f ./etc/story-generation.yaml  --output-dir out2/"
+
 plan:
     uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml --plan
 

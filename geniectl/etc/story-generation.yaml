@@ -99,6 +99,18 @@ spec:
   engine: GeminiCLI
   output:
     path: "FINAL_STORY.EN.md"
+  eval:
+    # TODO: Check with Gemini CLI
+    prompt: |
+      Ensure it's a markdown file with the specified structure.
+    deterministic:
+      file_exists: "FINAL_STORY.EN.md"
+    solution: rename
+      # TODO ricc think maybe its too much? Default should be DELETE.
+      # - type: notify
+      #   message: "The final story in English has been generated and saved to FINAL_STORY.EN.md"
+      # - type: resolve
+      #   action: delete
   depends_on:
     - "TextGeneration/bedtime-story-text"
     - "AudioGeneration/bedtime-story-audio-en"
