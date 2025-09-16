@@ -17,7 +17,8 @@ def cli():
 @click.option('-f', '--file', 'filepath', type=click.Path(exists=True, file_okay=True, dir_okay=True, readable=True), required=True, help='The YAML file or directory to apply.')
 @click.option('--output-dir', default='out/', help='The directory to save the generated assets.')
 @click.option('--plan', '--dry-run', 'dry_run', is_flag=True, help='Show the execution plan without running it.')
-def apply(filepath, output_dir, dry_run):
+@click.option('--verbose', is_flag=True, help='Enable verbose output.')
+def apply(filepath, output_dir, dry_run, verbose):
     """Apply a configuration from a YAML file or directory."""
     click.echo(f"Applying from path: {filepath}")
 
@@ -50,6 +51,37 @@ def apply(filepath, output_dir, dry_run):
     except Exception as e:
         click.echo(f"An error occurred: {e}", err=True)
         sys.exit(1)
+
+@cli.command()
+@click.option('-f', '--file', 'filepath', type=click.Path(exists=True, file_okay=True, dir_okay=True, readable=True), required=True, help='The YAML file or directory to evaluate.')
+@click.option('--output-dir', default='out/', help='The directory where assets are located.')
+def eval(filepath, output_dir):
+    """Evaluate a configuration from a YAML file or directory."""
+    click.echo(f"Evaluating from path: {filepath}")
+
+    try:
+        documents = []
+        if os.path.isfile(filepath):
+            documents.extend(parser.parse_manifest(filepath))
+        elif os.path.isdir(filepath):
+            for root, _, files in os.walk(filepath):
+                for f in sorted(files):
+                    if f.endswith(('.yaml', '.yml')):
+                        manifest_path = os.path.join(root, f)
+                        click.echo(f"- Found manifest: {manifest_path}")
+                        documents.extend(parser.parse_manifest(manifest_path))
+
+        if not documents:
+            click.echo("No YAML files found in the specified path.", err=True)
+            return
+
+        e = engine.Engine(output_dir=output_dir)
+        e.run(documents, eval_only=True)
+
+    except Exception as e:
+        click.cho(f"An error occurred: {e}", err=True)
+        sys.exit(1)
+
 
 
 if __name__ == '__main__':

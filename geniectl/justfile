@@ -16,15 +16,22 @@ install:
 run:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
-    bash -c "uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml"
+    export GENIECTL_EVAL=false
+    bash -c "uv run geniectl apply -f etc/story-generation.yaml"
 
-run-on-another-dir:
+run-on-another-dir-and-eval:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
-    bash -c "uv run geniectl apply -f ./etc/story-generation.yaml  --output-dir out2/"
+    export GENIECTL_EVAL=true
+    bash -c "uv run geniectl apply -f etc/story-generation.yaml  --output-dir out2/"
 
 plan:
-    uv run geniectl apply -f /Users/ricc/git/vibecoding/geniectl/etc/story-generation.yaml --plan
+    uv run geniectl apply -f etc/story-generation.yaml --plan
+
+eval:
+    #!/bin/bash
+    export PATH=~/go/bin/:$PATH
+    bash -c "uv run geniectl eval -f etc/story-generation.yaml"
 
 # --- Publishing ---
 
@@ -47,8 +54,8 @@ test:
     uv run pytest
 
 
-# run-test:
-#     uv run python src/geniectl/cli.py apply -f etc/story-generation.yaml --verbose
+run-test:
+    uv run geniectl apply -f etc/story-generation.yaml --verbose
 
 auth:
     #!/bin/bash

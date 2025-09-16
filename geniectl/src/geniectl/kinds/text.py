@@ -77,9 +77,9 @@ Error: {e}'''
         gemini_command = self._gemini_command_from_prompt(prompt)
 
         try:
-            os.makedirs(os.path.dirname(full_output_path), exist_ok=True)
-            with open(full_output_path, "w") as f:
-                subprocess.run(gemini_command, stdout=f, check=True)
+            os.makedirs(self.output_dir, exist_ok=True)
+            with open(os.path.join(self.output_dir, output_path), "w") as f:
+                subprocess.run(gemini_command, stdout=f, check=True, cwd=self.output_dir)
             click.echo(f"   - Saved to: {full_output_path}")
         except FileNotFoundError:
             message = f"'{gemini_cli_path}' command not found. Make sure it is installed and in your PATH."

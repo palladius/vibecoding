@@ -59,7 +59,7 @@ class ImageGenerationHandler(BaseHandler):
                 if "error" in data:
                     click.echo(f"   - 🚧 Error from Gemini CLI: {data['error']}", err=True)
                     return
-                
+
                 generated_files = data.get("result", [])
                 if len(generated_files) != len(expected_files):
                     click.echo(f"   - 🚧 Error: Gemini CLI generated {len(generated_files)} files, but we expected {len(expected_files)}.", err=True)

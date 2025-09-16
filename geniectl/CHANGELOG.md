@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2025-09-16
+
+### ✨ Features
+
+- **`eval` command**: Added a new `eval` command to run only the evaluations.
+- **`GENIECTL_EVAL` environment variable**: Added a new environment variable to enable/disable evaluations.
+- **`file_type_match` deterministic check**: Added a new deterministic check to verify the file type of the generated assets.
+- **`rename` solution**: Added a new `rename` solution for failed evaluations.
+- **`${kine.output_dir}` variable**: Added a new `${kine.output_dir}` variable to be used in the prompts.
+
+### 🐛 Fixed
+
+- **Incorrect paths in generated markdown**: Fixed a bug where the paths to the images and audio files in the generated markdown file were not correct.
+
 ## [0.4.0] - 2025-09-14
 
 ### ✨ Features

@@ -46,6 +46,7 @@ class Engine:
         return doc.get('spec', {}).get('depends_on', [])
 
     def _substitute_variables(self, text):
+        text = text.replace('${kine.output_dir}', self.output_dir.rstrip('/'))
         pattern = r'\$\{([^}]+)\}'
 
         def replace_func(match):
@@ -82,12 +83,12 @@ class Engine:
 
     def _build_graph(self, documents):
         self.resources = {self._get_resource_key(doc): doc for doc in documents if self._get_resource_key(doc)}
-        
+
         graph_dict = {}
         for key, doc in self.resources.items():
             dependencies = self._get_dependencies(doc)
             graph_dict[key] = set(dependencies)
-            
+
         ts = TopologicalSorter(graph_dict)
         return ts
 
@@ -117,7 +118,7 @@ class Engine:
         except subprocess.CalledProcessError as e:
             click.echo(f"--- Error generating PNG: {e} ---", err=True)
 
-    def run(self, documents, dry_run=False):
+    def run(self, documents, dry_run=False, eval_only=False):
         click.echo("--- Starting Engine: Building Dependency Graph ---")
         try:
             graph = self._build_graph(documents)
@@ -131,7 +132,7 @@ class Engine:
 
         # --- Planning Phase ---
         click.echo("\n--- Execution Plan ---")
-        
+
         ENGINE_EMOJIS = {
             "Native": "🐍",
             "GeminiCLI": "♊",
@@ -144,7 +145,7 @@ class Engine:
             kind = doc.get('kind', 'Unknown')
             engine = spec.get('engine', 'Native') # Default to Native
             engine_emoji = ENGINE_EMOJIS.get(engine, "❓")
-            
+
             api_version = doc.get('apiVersion', 'Unknown')
             dependencies = self._get_dependencies(doc)
             dep_string = f" -> depends on [{ ', '.join(dependencies) }]" if dependencies else ""
@@ -206,7 +207,7 @@ class Engine:
             elif output_path:
                 if replicas and replicas > 1:
                     if existing_count == replicas:
-                        status = "⚪️"
+                        status = "◽️"
                         status_text = "Done (all files exist)"
                     elif existing_count > 0:
                         status = "🟠"
@@ -223,7 +224,7 @@ class Engine:
                         status = "🟡"
                         status_text = f"Unsatisfied dependency: {dep_key} (not found)"
                         break
-                    
+
                     dep_output_path = dep_doc.get('spec', {}).get('output', {}).get('path')
                     if not dep_output_path:
                         # This case should ideally be caught by a validator
@@ -246,7 +247,7 @@ class Engine:
                             status = "🟡"
                             status_text = f"Unsatisfied dependency: {dep_key} (output not found)"
                             break
-            
+
             key_styled = click.style(f"{key}{replica_display}", fg='bright_cyan', bold=True)
             output_display_styled = click.style(output_filename_display, fg=output_color)
 
@@ -277,26 +278,32 @@ class Engine:
 
                 # Pass the full resource map and config to the handler
                 handler = handler_class(doc, self.output_dir, self.resources, self.config)
-                handler.generate()
-                handler._post_generate_check()
+                if not eval_only:
+                    handler.generate()
+                    handler._post_generate_check()
+
+                # Evaluation Step
+                if os.environ.get('GENIECTL_EVAL', 'true').lower() == 'true':
+                    handler._handle_eval()
 
                 # Verification Step
-                output_path = doc.get('spec', {}).get('output', {}).get('path')
-                if output_path:
-                    replicas = doc.get('spec', {}).get('replicas')
-                    if replicas and replicas > 1:
-                        p = Path(output_path)
-                        base_name = p.stem
-                        extension = p.suffix
-                        expected_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(1, replicas + 1)]
-                        
-                        for f_path in expected_files:
-                            if not os.path.exists(f_path):
-                                click.echo(f"   - ❌ Error: Expected output file was not created: {f_path}", err=True)
-                    else:
-                        full_output_path = os.path.join(self.output_dir, output_path)
-                        if not os.path.exists(full_output_path):
-                            click.echo(f"   - ❌ Error: Expected output file was not created: {full_output_path}", err=True)
+                if not eval_only:
+                    output_path = doc.get('spec', {}).get('output', {}).get('path')
+                    if output_path:
+                        replicas = doc.get('spec', {}).get('replicas')
+                        if replicas and replicas > 1:
+                            p = Path(output_path)
+                            base_name = p.stem
+                            extension = p.suffix
+                            expected_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(1, replicas + 1)]
+
+                            for f_path in expected_files:
+                                if not os.path.exists(f_path):
+                                    click.echo(f"   - ❌ Error: Expected output file was not created: {f_path}", err=True)
+                        else:
+                            full_output_path = os.path.join(self.output_dir, output_path)
+                            if not os.path.exists(full_output_path):
+                                click.echo(f"   - ❌ Error: Expected output file was not created: {full_output_path}", err=True)
         click.echo("--------------------------")
 
         click.echo("\n--- Engine Finished ---")
