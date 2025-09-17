@@ -65,6 +65,23 @@ class Engine:
 
         return list(dependencies)
 
+    def _get_formatted_resource_key(self, key):
+        doc = self.resources.get(key)
+        if not doc:
+            return key
+
+        kind = doc.get('kind', 'Unknown')
+        handler_class = HANDLER_REGISTRY.get(kind)
+        emoji = "❓"
+        if handler_class:
+            # This is not ideal, as it instantiates the handler just for the emoji.
+            # A better approach would be to have a static method on the handler class.
+            handler = handler_class(doc, self.output_dir, self.resources, self.config)
+            emoji = handler.emoji()
+
+        name = key.split('/')[1]
+        return f"{emoji}/{name}"
+
     def _substitute_variables(self, text):
         pattern = r'\$\{([^}]+)\}'
 
@@ -166,7 +183,8 @@ class Engine:
 
             api_version = doc.get('apiVersion', 'Unknown')
             dependencies = self._get_dependencies(doc)
-            dep_string = f" -> depends on [{ ', '.join(dependencies) }]" if dependencies else ""
+            formatted_dependencies = [self._get_formatted_resource_key(dep) for dep in dependencies]
+            dep_string = f" -> depends on [{ ', '.join(formatted_dependencies) }]" if formatted_dependencies else ""
 
             output_path = spec.get('output', {}).get('path')
             full_output_path = os.path.join(self.output_dir, output_path) if output_path else None
@@ -240,7 +258,7 @@ class Engine:
                     dep_doc = self.resources.get(dep_key)
                     if not dep_doc:
                         status = "🟡"
-                        status_text = f"Unsatisfied dependency: {dep_key} (not found)"
+                        status_text = f"Unsatisfied dependency: {self._get_formatted_resource_key(dep_key)} (not found)"
                         break
 
                     dep_output_path = dep_doc.get('spec', {}).get('output', {}).get('path')
@@ -257,22 +275,17 @@ class Engine:
                         dep_files = [os.path.join(self.output_dir, f"{base_name}_{i}{extension}") for i in range(1, dep_replicas + 1)]
                         if not all(os.path.exists(f) for f in dep_files):
                             status = "🟡"
-                            status_text = f"Unsatisfied dependency: {dep_key} (outputs not found)"
+                            status_text = f"Unsatisfied dependency: {self._get_formatted_resource_key(dep_key)} (outputs not found)"
                             break
                     else:
                         dep_full_output_path = os.path.join(self.output_dir, dep_output_path)
                         if not os.path.exists(dep_full_output_path):
                             status = "🟡"
-                            status_text = f"Unsatisfied dependency: {dep_key} (output not found)"
+                            status_text = f"Unsatisfied dependency: {self._get_formatted_resource_key(dep_key)} (output not found)"
                             break
 
-            handler_class = HANDLER_REGISTRY.get(kind)
-            emoji = "❓"
-            if handler_class:
-                handler = handler_class(doc, self.output_dir, self.resources, self.config)
-                emoji = handler.emoji()
-
-            key_styled = click.style(f"{emoji}/{key.split('/')[1]}{replica_display}", fg='bright_cyan', bold=True)
+            formatted_key = self._get_formatted_resource_key(key)
+            key_styled = click.style(f"{formatted_key}{replica_display}", fg='bright_cyan', bold=True)
             output_display_styled = click.style(output_filename_display, fg=output_color)
 
             click.echo(f"{status} {engine_emoji} {key_styled} {dep_string} {output_file_status_emoji} {output_display_styled} ({status_text})")

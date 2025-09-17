@@ -39,8 +39,12 @@ eval2:
 
 # --- Publishing ---
 
+# Clean the dist directory
+clean:
+    rm -rf dist
+
 # Build the package for distribution
-build:
+build: clean
     uv run python -m build
 
 # Publish the package to TestPyPI (requires a TestPyPI account)
