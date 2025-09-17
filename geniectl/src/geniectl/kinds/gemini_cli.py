@@ -55,3 +55,6 @@ class GeminiCLI(BaseHandler):
 
     def _generate_mcp(self):
         click.echo("   - Error: The 'MCP' engine is not applicable to the GeminiCLI kind.", err=True)
+
+    def emoji(self):
+        return "♊"

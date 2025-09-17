@@ -1,3 +1,7 @@
+"""
+This module defines the MusicGeneration kind, which is used to generate music.
+"""
+
 import os
 import click
 import subprocess
@@ -5,19 +9,17 @@ import json
 from .base import BaseHandler
 from ..exceptions import NotImplementedEngineError
 
-class AudioGenerationHandler(BaseHandler):
-    """Handler for the AudioGeneration kind."""
+class MusicGenerationHandler(BaseHandler):
+    """Handler for the MusicGeneration kind."""
 
     def _generate_native(self):
-        message = "The 'Native' engine for AudioGeneration is not implemented yet."
+        message = "The 'Native' engine for MusicGeneration is not implemented yet."
         click.echo(f"   - 🚧 Error: {message}", err=True)
         raise NotImplementedEngineError(message)
 
     def _generate_geminicli(self):
-        """Generates audio, parses JSON output, and renames the file."""
+        """Generates music, parses JSON output, and renames the file."""
         # 1. Get spec parameters
-        model = self.spec.get('model', 'unknown')
-        language = self.spec.get('language', 'en')
         output_path = self.spec.get('output', {}).get('path')
 
         if not output_path:
@@ -31,34 +33,10 @@ class AudioGenerationHandler(BaseHandler):
             return
 
         # 2. Get input text from dependency
-        input_text = ""
-        dependencies = self.spec.get('depends_on', [])
-        if not dependencies:
-            click.echo(f"   - Error: AudioGeneration requires a dependency to provide the input text.", err=True)
-            return
-
-        dep_key = dependencies[0]
-        dep_doc = self.all_resources.get(dep_key)
-        if not dep_doc:
-            click.echo(f"   - Error: Dependency '{dep_key}' not found.", err=True)
-            return
-
-        dep_output_path = dep_doc.get('spec', {}).get('output', {}).get('path')
-        if not dep_output_path:
-            click.echo(f"   - Error: Dependency '{dep_key}' has no output path defined.", err=True)
-            return
-
-        dep_full_path = os.path.join(self.output_dir, dep_output_path)
-        try:
-            with open(dep_full_path, 'r') as f:
-                input_text = f.read()
-        except FileNotFoundError:
-            click.echo(f"   - Error: Dependency output file not found at {dep_full_path}", err=True)
-            return
+        prompt = self.spec.get('prompt', '')
 
         # 3. Construct the prompt
-        prompt = f'Generate audio from text using chirp_tts tool with {model} model and choosing a voice from language "{language}". Use as text the following: {input_text}'
-        full_prompt = f'''{prompt}.
+        full_prompt = f'''Generate music from text. Use as text the following: {prompt}
 
         ## Important
 
@@ -76,7 +54,7 @@ class AudioGenerationHandler(BaseHandler):
         # 4. Execute the command
         gemini_command = self._gemini_command_from_prompt(full_prompt)
         try:
-            click.echo(f"   - Requesting audio generation via Gemini CLI...")
+            click.echo(f"   - Requesting music generation via Gemini CLI...")
             result = subprocess.run(gemini_command, check=True, capture_output=True, text=True)
             stdout = result.stdout
             data = self._parse_json_from_gemini_output(stdout)
@@ -105,7 +83,7 @@ class AudioGenerationHandler(BaseHandler):
             click.echo(f"   - Error executing Gemini CLI: {e}\nSTDOUT: {e.stdout}\nSTDERR: {e.stderr}", err=True)
 
     def _generate_mcp(self):
-        message = "The 'MCP' engine for AudioGeneration is not implemented yet."
+        message = "The 'MCP' engine for MusicGeneration is not implemented yet."
         click.echo(f"   - 🚧 Error: {message}", err=True)
         raise NotImplementedEngineError(message)
 
@@ -113,21 +91,7 @@ class AudioGenerationHandler(BaseHandler):
         output_path = self.spec.get('output', {}).get('path')
         if output_path:
             full_output_path = os.path.join(self.output_dir, output_path)
-            self._verify_file_type(full_output_path, ["audio", "wave"])
+            self._verify_file_type(full_output_path, ["audio"])
 
     def emoji(self):
-        return "🔊"
-
-    def _parse_json_from_gemini_output(self, stdout: str) -> dict:
-        """Parses the Gemini CLI output to find and decode a JSON object."""
-        try:
-            # Find the start and end of the JSON object
-            start_index = stdout.find('{')
-            end_index = stdout.rfind('}') + 1
-            if start_index != -1 and end_index != 0:
-                json_str = stdout[start_index:end_index]
-                return json.loads(json_str)
-        except json.JSONDecodeError as e:
-            click.echo(f"   - 🚧 Error: Failed to decode JSON from Gemini CLI output: {e}", err=True)
-            click.echo(f"   - Raw output: {stdout}", err=True)
-        return None
+        return "🎵"

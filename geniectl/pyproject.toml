@@ -1,6 +1,6 @@
 [project]
 name = "geniectl"
-version = "0.5.0"
+version = "0.7.0"
 description = "A tool to declaratively generate multimedia assets using Kubernetes-like YAML files."
 readme = "README.md"
 license = { file = "LICENSE" }

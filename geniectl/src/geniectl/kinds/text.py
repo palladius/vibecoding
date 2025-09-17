@@ -16,45 +16,24 @@ class TextGenerationHandler(BaseHandler):
         except Exception as e:
             click.echo(f"Warning: Could not configure Generative AI for Native engine: {e}", err=True)
 
+    def _generate_native(self):
+        message = "The 'Native' engine for TextGeneration is not implemented yet."
+        click.echo(f"   - 🚧 Error: {message}", err=True)
+        raise NotImplementedEngineError(message)
+
     def _generate_mcp(self):
         message = "The 'MCP' engine for TextGeneration is not implemented yet."
         click.echo(f"   - 🚧 Error: {message}", err=True)
         raise NotImplementedEngineError(message)
 
-    def _generate_native(self):
-        """Generates text using the google-generativeai library directly."""
-        output_spec = self.spec.get('output', {})
-        output_path = output_spec.get('path')
+    def _post_generate_check(self):
+        output_path = self.spec.get('output', {}).get('path')
+        if output_path:
+            full_output_path = os.path.join(self.output_dir, output_path)
+            self._verify_file_type(full_output_path, ["text", "markdown"])
 
-        if not output_path:
-            click.echo(f"   - Error: Resource is missing spec.output.path.", err=True)
-            return
-
-        full_output_path = os.path.join(self.output_dir, output_path)
-
-        if os.path.exists(full_output_path):
-            click.echo(f"   - Skipping: File already exists at {full_output_path}")
-            return
-
-        default_model = self.config.get('defaults', {}).get('models', {}).get('TextGeneration', 'gemini-1.5-flash')
-        model_name = self.spec.get('model', default_model)
-        prompt = self.spec.get('prompt', 'No prompt provided.')
-
-        try:
-            model = genai.GenerativeModel(model_name)
-            response = model.generate_content(prompt)
-            content = response.text
-        except Exception as e:
-            click.echo(f"   - Error calling Gemini API: {e}", err=True)
-            content = f'''--- ERROR DURING GENERATION ---
-Prompt: "{prompt}"
-Error: {e}'''
-
-        os.makedirs(os.path.dirname(full_output_path), exist_ok=True)
-        with open(full_output_path, 'w') as f:
-            f.write(content)
-
-        click.echo(f"   - Saved to: {full_output_path}")
+    def emoji(self):
+        return "📝"
 
     def _generate_geminicli(self):
         """Generates text by shelling out to the 'gemini-cli' tool and capturing stdout."""

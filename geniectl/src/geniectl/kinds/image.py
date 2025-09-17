@@ -99,3 +99,6 @@ class ImageGenerationHandler(BaseHandler):
                 replica_filename = f"{base_name}_{i}{extension}"
                 full_output_path = os.path.join(self.output_dir, replica_filename)
                 self._verify_file_type(full_output_path, ["png image data", "jpeg image data"])
+
+    def emoji(self):
+        return "🏞️"

@@ -9,6 +9,8 @@ from .kinds.text import TextGenerationHandler
 from .kinds.audio import AudioGenerationHandler
 from .kinds.gemini_cli import GeminiCLI
 from .kinds.image import ImageGenerationHandler
+from .kinds.custom_gemini_cli import CustomGeminiCLIGeneration
+from .kinds.music import MusicGenerationHandler
 
 # Handler registry maps Kind names to their handler classes
 HANDLER_REGISTRY = {
@@ -16,6 +18,8 @@ HANDLER_REGISTRY = {
     "AudioGeneration": AudioGenerationHandler,
     "ImageGeneration": ImageGenerationHandler,
     "GeminiCLI": GeminiCLI,
+    "CustomGeminiCLIGeneration": CustomGeminiCLIGeneration,
+    "MusicGeneration": MusicGenerationHandler,
 }
 
 class Engine:
@@ -43,7 +47,23 @@ class Engine:
         return f"{kind}/{name}"
 
     def _get_dependencies(self, doc):
-        return doc.get('spec', {}).get('depends_on', [])
+        dependencies = set(doc.get('spec', {}).get('depends_on', []))
+        prompt = doc.get('spec', {}).get('prompt', '')
+
+        if not prompt:
+            return list(dependencies)
+
+        # Find all variable substitutions in the prompt
+        pattern = r'\$\{([^}]+)\}'
+        matches = re.findall(pattern, prompt)
+
+        for match in matches:
+            parts = match.split('.')
+            if len(parts) == 3 and parts[1] == 'output':
+                resource_key = parts[0]
+                dependencies.add(resource_key)
+
+        return list(dependencies)
 
     def _substitute_variables(self, text):
         pattern = r'\$\{([^}]+)\}'
@@ -82,7 +102,6 @@ class Engine:
 
     def _build_graph(self, documents):
         self.resources = {self._get_resource_key(doc): doc for doc in documents if self._get_resource_key(doc)}
-
         graph_dict = {}
         for key, doc in self.resources.items():
             dependencies = self._get_dependencies(doc)
@@ -105,12 +124,12 @@ class Engine:
                 for dep_key in dependencies:
                     f.write(f'  "{dep_key}" -> "{key}";\n')
             f.write("}\n")
-        click.echo(f"💾 Saved dependency graph to {dot_path} ---")
+        click.echo(f"፨ Saved dependency graph .DOT 💾 {dot_path}")
 
         # Attempt to generate PNG visualization
         try:
             subprocess.run(['dot', '-Tpng', dot_path, '-o', png_path], check=True)
-            click.echo(f"💾 Generated dependency graph PNG: {png_path} ---")
+            click.echo(f"፨ => Generated dep graph .PNG 🩻  {png_path}")
         except FileNotFoundError:
             click.echo("🟨 Warning: 'dot' command not found. Skipping PNG generation. ---", err=True)
             click.echo("🟨 To generate the PNG, install graphviz (e.g., 'brew install graphviz') ---", err=True)
@@ -118,7 +137,7 @@ class Engine:
             click.echo(f"--- Error generating PNG: {e} ---", err=True)
 
     def run(self, documents, dry_run=False, eval_only=False):
-        click.echo("⚙️  Starting Engine: ፨ Building Dependency Graph")
+        click.echo("፨ Starting Engine: ⚙️ Building Dependency Graph")
         try:
             graph = self._build_graph(documents)
             execution_order = list(graph.static_order())
@@ -207,13 +226,13 @@ class Engine:
                 if replicas and replicas > 1:
                     if existing_count == replicas:
                         status = "☑️" # 🟩
-                        status_text = "Done (all files exist)"
+                        status_text = "ok - all files exist"
                     elif existing_count > 0:
                         status = "🟠"
-                        status_text = f"Partially done ({existing_count}/{replicas} exist)"
+                        status_text = f"Partially done - {existing_count}/{replicas} exist"
                 elif full_output_path and os.path.exists(full_output_path):
                     status = "☑️"
-                    status_text = "Done (file already exists)"
+                    status_text = "ok - file already exists"
 
             # Check dependencies
             if status in ["🟢", "🟠"]:
@@ -247,7 +266,13 @@ class Engine:
                             status_text = f"Unsatisfied dependency: {dep_key} (output not found)"
                             break
 
-            key_styled = click.style(f"{key}{replica_display}", fg='bright_cyan', bold=True)
+            handler_class = HANDLER_REGISTRY.get(kind)
+            emoji = "❓"
+            if handler_class:
+                handler = handler_class(doc, self.output_dir, self.resources, self.config)
+                emoji = handler.emoji()
+
+            key_styled = click.style(f"{emoji}/{key.split('/')[1]}{replica_display}", fg='bright_cyan', bold=True)
             output_display_styled = click.style(output_filename_display, fg=output_color)
 
             click.echo(f"{status} {engine_emoji} {key_styled} {dep_string} {output_file_status_emoji} {output_display_styled} ({status_text})")

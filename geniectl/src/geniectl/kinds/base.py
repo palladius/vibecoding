@@ -74,7 +74,7 @@ class BaseHandler(ABC):
                 solution = eval_config.get('solution', 'delete') # Default to delete
                 self._run_solution(solution)
                 return
-        
+
         # If we are here, all evaluations passed, so we can run the notify action
         # self._run_actions(True) # All evaluations passed
 
@@ -97,7 +97,7 @@ class BaseHandler(ABC):
         if not os.path.exists(full_path):
             click.echo(f"   - ❌ FAIL: File '{file_path_pattern}' does not exist.", err=True)
             return False
-        
+
         click.echo(f"   - ✅ PASS: File '{file_path_pattern}' exists.")
         return True
 
@@ -228,6 +228,9 @@ class BaseHandler(ABC):
             "--approval-mode", "auto_edit",
             "--session-summary", ".tmp.session-summary.json",
             "--prompt", prompt]
+
+    def emoji(self):
+        return "🤷‍♂️_NOT_IMPL_🤷‍♂️"
 
     def _parse_json_from_gemini_output(self, raw_output):
         """

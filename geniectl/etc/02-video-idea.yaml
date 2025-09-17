@@ -1,0 +1,77 @@
+apiVersion: kine-matic.io/v1alpha1
+kind: TextGeneration
+metadata:
+  name: rubycon-story-text-en
+spec:
+  prompt: |
+    We want to launch
+
+    Write a nice cinematic storyboard in 6 chapters,
+    about a big Event we're launching. The event is called Rubycon,
+    it's a Ruby conference organized in Rimini, a few KMs from the river Rubicon.
+
+    We want to attract Ruby developers and fans from all over the world,
+    and also use the Italian cuisine et al.
+  engine: GeminiCLI
+  output:
+    path: "rubycon-storyboard.en.md"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: TextGeneration
+metadata:
+  name: rubycon-story-text-it
+spec:
+  prompt: |
+    Translate to Italian the following original_content:
+
+    <original_content>
+
+    ${TextGeneration/rubycon-story-text-en.output.content}
+
+    </original_content>
+  engine: GeminiCLI
+  output:
+    path: "rubycon-storyboard.it.md"
+
+---
+apiVersion: kine-matic.io/v1alpha1
+kind: MusicGeneration
+metadata:
+  name: rubycon-story-soundtrack
+spec:
+  prompt: |
+    Create an epic music inspired by this video:
+
+    <original_content>
+
+    ${TextGeneration/rubycon-story-text-en.output.content}
+
+    </original_content>
+  engine: GeminiCLI
+  output:
+    path: "rubycon-soundtrack.wav"
+
+---
+apiVersion: kine-matic.io/v1alpha1
+apiVersion: kine-matic.io/v1alpha1
+kind: CustomGeminiCLIGeneration
+metadata:
+  name: rubycon-storyboard-chapters
+spec:
+  replicas: 6
+  prompt: |
+    Break down the original story in 6 files so it's easier to work with them:
+
+    <original_content>
+
+    ${TextGeneration/rubycon-story-text-en.output.content}
+
+    </original_content>
+  engine: GeminiCLI
+  output:
+    path: "rubycon-array-of-scenes.md"
+  eval:
+    prompt: |
+      Ensure exactly six files are generated which match the ${self.output.path}

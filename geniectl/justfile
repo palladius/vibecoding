@@ -89,3 +89,9 @@ auth:
 
 # gcp-grant-iam:
 #     bin/gcp-setup.sh grant-iam
+
+plan2:
+    uv run geniectl apply -f etc/02-video-idea.yaml --plan --verbose -d out/rubycon/
+
+gemini:
+    gemini -c -y
