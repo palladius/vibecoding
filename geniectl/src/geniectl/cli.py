@@ -4,6 +4,8 @@ import sys
 from . import parser
 from . import engine
 from .exceptions import NotImplementedEngineError
+from .samples import SAMPLE_STORY
+
 
 @click.group()
 def cli():
@@ -12,6 +14,13 @@ def cli():
     go_bin_path = os.path.expanduser('~/go/bin')
     if go_bin_path not in os.environ['PATH']:
         os.environ['PATH'] = f"{go_bin_path}:{os.environ['PATH']}"
+
+@cli.command('generate-sample')
+def generate_sample():
+    """Generates a sample story YAML file."""
+    with open('sample-story.yaml', 'w') as f:
+        f.write(SAMPLE_STORY)
+    click.echo("Generated sample-story.yaml")
 
 @cli.command()
 @click.option('-f', '--file', 'filepath', type=click.Path(exists=True, file_okay=True, dir_okay=True, readable=True), required=True, help='The YAML file or directory to apply.')

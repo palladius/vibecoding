@@ -24,3 +24,4 @@ out/
 .service-account.json
 .tmp.session-summary.json
 out2
+sample-story.yaml

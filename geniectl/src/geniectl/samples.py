@@ -1,0 +1,146 @@
+SAMPLE_STORY = """
+apiVersion: kine-matic.io/v1alpha1
+kind: TextGeneration
+metadata:
+  name: bedtime-story-text
+spec:
+  prompt: "Write a short, imaginative bedtime story for a 5-year-old about a friendly robot who explores the moon."
+  engine: GeminiCLI
+  output:
+    path: "bedtime-story-en.md"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: TextGeneration
+metadata:
+  name: bedtime-story-text-it
+spec:
+  prompt: "Translate the following text to Italian: ${TextGeneration/bedtime-story-text.output.content}"
+  engine: GeminiCLI
+  output:
+    path: "bedtime-story-it.md"
+  depends_on:
+    - "TextGeneration/bedtime-story-text"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: AudioGeneration
+metadata:
+  name: bedtime-story-audio-it
+spec:
+  depends_on:
+    - "TextGeneration/bedtime-story-text-it" # translate from EN to IT
+  model: "chirp3"
+  language: "italian" # it-IT-Chirp3-HD-Achernar
+  engine: GeminiCLI
+  output:
+    path: "bedtime-story-it.wav"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: ImageGeneration
+metadata:
+  name: story-illustration
+spec:
+  replicas: 4
+  depends_on:
+    - "TextGeneration/bedtime-story-text" # Use plot to constuct image
+  prompt: "A beautiful, colorful illustration of a friendly robot exploring the moon, for a children's bedtime story. The style should be whimsical and dreamlike. Based on the story: ${TextGeneration/bedtime-story-text.output.content}"
+  engine: GeminiCLI
+  output:
+    # note that this should create 4 files: story-illustration_1.png, story-illustration_2.png, ...
+    path: "story-illustration.png"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: AudioGeneration
+metadata:
+  name: bedtime-story-audio-en
+spec:
+  depends_on:
+    - "TextGeneration/bedtime-story-text"
+  model: "chirp3"
+  language: "english"
+  engine: GeminiCLI
+  output:
+    path: "bedtime-story-en.wav"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: TextGeneration
+metadata:
+  name: final-story-en
+spec:
+  prompt: |
+    Create a markdown file content as described below.
+
+    **Remember** to output ONLY the content of the markdown file, and nothing else.
+    All paths should be relative to the current directory.
+
+    Also add a markdown link to the audio, if at all possible: "bedtime-story-en.wav".
+    If not, link it like a normal link: [bedtime-story-en.wav](bedtime-story-en.wav).
+
+    ```markdown
+    # <Gemini: A title for the story>
+
+    [bedtime-story-en.wav](bedtime-story-en.wav) <-- Gemini: link to audio file if possible!
+    ![Story Illustration 1](story-illustration_1.png)
+    ![Story Illustration 2](story-illustration_2.png)
+    ![Story Illustration 3](story-illustration_3.png)
+    ![Story Illustration 4](story-illustration_4.png)
+
+    # Story
+
+    ${TextGeneration/bedtime-story-text.output.content}
+    ```
+  engine: GeminiCLI
+  output:
+    path: "FINAL_STORY.EN.md"
+  depends_on:
+    - "TextGeneration/bedtime-story-text"
+    - "AudioGeneration/bedtime-story-audio-en"
+    - "ImageGeneration/story-illustration"
+
+---
+
+apiVersion: kine-matic.io/v1alpha1
+kind: TextGeneration
+metadata:
+  name: final-story-it
+spec:
+  # NOTE the image and audio links should point to the LOCAL folder, so its all ./file.EXT, no need to add the folder
+  prompt: |
+    Create a markdown file content as described below.
+
+    **Remember** to output ONLY the content of the markdown file, and nothing else.
+    All paths should be relative to the current directory.
+
+    Also add a markdown link to the audio, if at all possible: "bedtime-story-it.wav".
+    If not, link it like a normal link: [bedtime-story-it.wav](bedtime-story-it.wav).
+
+    ```markdown
+    # <Gemini: A title for the story in Italian>
+
+    [bedtime-story-it.wav](bedtime-story-it.wav) <-- Gemini: link to audio file if possible!
+    ![Story Illustration 1](story-illustration_1.png)
+    ![Story Illustration 2](story-illustration_2.png)
+    ![Story Illustration 3](story-illustration_3.png)
+    ![Story Illustration 4](story-illustration_4.png)
+
+    # Story (in Italian)
+
+    ${TextGeneration/bedtime-story-text-it.output.content}
+    ```
+  engine: GeminiCLI
+  output:
+    path: "FINAL_STORY.IT.md"
+  depends_on:
+    - "TextGeneration/bedtime-story-text-it"
+    - "AudioGeneration/bedtime-story-audio-it"
+    - "ImageGeneration/story-illustration"
+"""

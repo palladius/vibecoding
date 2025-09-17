@@ -4,7 +4,8 @@ metadata:
   name: rubycon-story-text-en
 spec:
   prompt: |
-    We want to launch
+    We want to launch a big Event called Rubycon,
+    a Ruby conference organized in Rimini, a few KMs from the river Rubicon.
 
     Write a nice cinematic storyboard in 6 chapters,
     about a big Event we're launching. The event is called Rubycon,
