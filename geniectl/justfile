@@ -32,6 +32,10 @@ eval:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
     bash -c "uv run geniectl eval -f etc/story-generation.yaml"
+eval2:
+    #!/bin/bash
+    export PATH=~/go/bin/:$PATH
+    bash -c "uv run geniectl eval -f etc/story-generation.yaml --output-dir out2/"
 
 # --- Publishing ---
 

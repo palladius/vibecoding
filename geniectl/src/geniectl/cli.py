@@ -15,7 +15,7 @@ def cli():
 
 @cli.command()
 @click.option('-f', '--file', 'filepath', type=click.Path(exists=True, file_okay=True, dir_okay=True, readable=True), required=True, help='The YAML file or directory to apply.')
-@click.option('--output-dir', default='out/', help='The directory to save the generated assets.')
+@click.option('-d', '--output-dir',  default='out/', help='The directory to save the generated assets.')
 @click.option('--plan', '--dry-run', 'dry_run', is_flag=True, help='Show the execution plan without running it.')
 @click.option('--verbose', is_flag=True, help='Enable verbose output.')
 def apply(filepath, output_dir, dry_run, verbose):
@@ -57,7 +57,7 @@ def apply(filepath, output_dir, dry_run, verbose):
 @click.option('--output-dir', default='out/', help='The directory where assets are located.')
 def eval(filepath, output_dir):
     """Evaluate a configuration from a YAML file or directory."""
-    click.echo(f"Evaluating from path: {filepath}")
+    click.echo(f"👀 Evaluating from path: {filepath}")
 
     try:
         documents = []

@@ -79,18 +79,19 @@ spec:
     Create a markdown file content as described below.
 
     **Remember** to output ONLY the content of the markdown file, and nothing else.
+    All paths should be relative to the current directory.
 
-    Also add a markdown link to the audio, if at all possible: "${kine.output_dir}/bedtime-story-en.wav".
-    If not, link it like a normal link: [${kine.output_dir}/bedtime-story-en.wav](${kine.output_dir}/bedtime-story-en.wav).
+    Also add a markdown link to the audio, if at all possible: "bedtime-story-en.wav".
+    If not, link it like a normal link: [bedtime-story-en.wav](bedtime-story-en.wav).
 
     ```markdown
     # <Gemini: A title for the story>
 
-    [${kine.output_dir}/bedtime-story-en.wav](${kine.output_dir}/bedtime-story-en.wav) <-- Gemini: link to audio file if possible!
-    ![Story Illustration 1](${kine.output_dir}/story-illustration_1.png)
-    ![Story Illustration 2](${kine.output_dir}/story-illustration_2.png)
-    ![Story Illustration 3](${kine.output_dir}/story-illustration_3.png)
-    ![Story Illustration 4](${kine.output_dir}/story-illustration_4.png)
+    [bedtime-story-en.wav](bedtime-story-en.wav) <-- Gemini: link to audio file if possible!
+    ![Story Illustration 1](story-illustration_1.png)
+    ![Story Illustration 2](story-illustration_2.png)
+    ![Story Illustration 3](story-illustration_3.png)
+    ![Story Illustration 4](story-illustration_4.png)
 
     # Story
 
@@ -99,13 +100,6 @@ spec:
   engine: GeminiCLI
   output:
     path: "FINAL_STORY.EN.md"
-  eval:
-    prompt: |
-      Ensure it's a markdown file with the specified structure.
-      Ensure all linked resources (audio, images) reference EXISTING files.
-    # deterministic:
-    #   file_exists: "FINAL_STORY.EN.md"
-    solution: rename
   depends_on:
     - "TextGeneration/bedtime-story-text"
     - "AudioGeneration/bedtime-story-audio-en"
@@ -118,22 +112,24 @@ kind: TextGeneration
 metadata:
   name: final-story-it
 spec:
+  # NOTE the image and audio links should point to the LOCAL folder, so its all ./file.EXT, no need to add the folder
   prompt: |
     Create a markdown file content as described below.
 
     **Remember** to output ONLY the content of the markdown file, and nothing else.
+    All paths should be relative to the current directory.
 
-    Also add a markdown link to the audio, if at all possible: "${kine.output_dir}/bedtime-story-it.wav".
-    If not, link it like a normal link: [${kine.output_dir}/bedtime-story-it.wav](${kine.output_dir}/bedtime-story-it.wav).
+    Also add a markdown link to the audio, if at all possible: "bedtime-story-it.wav".
+    If not, link it like a normal link: [bedtime-story-it.wav](bedtime-story-it.wav).
 
     ```markdown
     # <Gemini: A title for the story in Italian>
 
-    [${kine.output_dir}/bedtime-story-it.wav](${kine.output_dir}/bedtime-story-it.wav) <-- Gemini: link to audio file if possible!
-    ![Story Illustration 1](${kine.output_dir}/story-illustration_1.png)
-    ![Story Illustration 2](${kine.output_dir}/story-illustration_2.png)
-    ![Story Illustration 3](${kine.output_dir}/story-illustration_3.png)
-    ![Story Illustration 4](${kine.output_dir}/story-illustration_4.png)
+    [bedtime-story-it.wav](bedtime-story-it.wav) <-- Gemini: link to audio file if possible!
+    ![Story Illustration 1](story-illustration_1.png)
+    ![Story Illustration 2](story-illustration_2.png)
+    ![Story Illustration 3](story-illustration_3.png)
+    ![Story Illustration 4](story-illustration_4.png)
 
     # Story (in Italian)
 

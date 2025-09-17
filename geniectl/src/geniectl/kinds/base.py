@@ -154,6 +154,7 @@ class BaseHandler(ABC):
                 click.echo(f"   - 🚧 Warning: Output file not found at {full_output_path}. Cannot include content in prompt.", err=True)
 
         command = self._gemini_command_from_prompt(prompt)
+        command.extend(["--include-directories", self.output_dir])
 
         try:
             result = subprocess.run(command, check=True, capture_output=True, text=True)

@@ -75,6 +75,7 @@ Error: {e}'''
         click.echo(click.style(f"   - Prompt: {prompt}", fg='blue'))
         
         gemini_command = self._gemini_command_from_prompt(prompt)
+        gemini_command.extend(["--include-directories", os.getcwd()])
 
         try:
             os.makedirs(self.output_dir, exist_ok=True)

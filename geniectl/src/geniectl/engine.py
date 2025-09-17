@@ -46,7 +46,6 @@ class Engine:
         return doc.get('spec', {}).get('depends_on', [])
 
     def _substitute_variables(self, text):
-        text = text.replace('${kine.output_dir}', self.output_dir.rstrip('/'))
         pattern = r'\$\{([^}]+)\}'
 
         def replace_func(match):
@@ -106,20 +105,20 @@ class Engine:
                 for dep_key in dependencies:
                     f.write(f'  "{dep_key}" -> "{key}";\n')
             f.write("}\n")
-        click.echo(f"--- Saved dependency graph to {dot_path} ---")
+        click.echo(f"💾 Saved dependency graph to {dot_path} ---")
 
         # Attempt to generate PNG visualization
         try:
             subprocess.run(['dot', '-Tpng', dot_path, '-o', png_path], check=True)
-            click.echo(f"--- Generated dependency graph PNG: {png_path} ---")
+            click.echo(f"💾 Generated dependency graph PNG: {png_path} ---")
         except FileNotFoundError:
-            click.echo("--- Warning: 'dot' command not found. Skipping PNG generation. ---", err=True)
-            click.echo("--- To generate the PNG, install graphviz (e.g., 'brew install graphviz') ---", err=True)
+            click.echo("🟨 Warning: 'dot' command not found. Skipping PNG generation. ---", err=True)
+            click.echo("🟨 To generate the PNG, install graphviz (e.g., 'brew install graphviz') ---", err=True)
         except subprocess.CalledProcessError as e:
             click.echo(f"--- Error generating PNG: {e} ---", err=True)
 
     def run(self, documents, dry_run=False, eval_only=False):
-        click.echo("--- Starting Engine: Building Dependency Graph ---")
+        click.echo("⚙️  Starting Engine: ፨ Building Dependency Graph")
         try:
             graph = self._build_graph(documents)
             execution_order = list(graph.static_order())
@@ -131,7 +130,7 @@ class Engine:
         self._export_graph_to_dot()
 
         # --- Planning Phase ---
-        click.echo("\n--- Execution Plan ---")
+        click.echo("\n📋 Execution Plan 📋")
 
         ENGINE_EMOJIS = {
             "Native": "🐍",
@@ -207,13 +206,13 @@ class Engine:
             elif output_path:
                 if replicas and replicas > 1:
                     if existing_count == replicas:
-                        status = "◽️"
+                        status = "☑️" # 🟩
                         status_text = "Done (all files exist)"
                     elif existing_count > 0:
                         status = "🟠"
                         status_text = f"Partially done ({existing_count}/{replicas} exist)"
                 elif full_output_path and os.path.exists(full_output_path):
-                    status = "⚪️"
+                    status = "☑️"
                     status_text = "Done (file already exists)"
 
             # Check dependencies
@@ -253,7 +252,7 @@ class Engine:
 
             click.echo(f"{status} {engine_emoji} {key_styled} {dep_string} {output_file_status_emoji} {output_display_styled} ({status_text})")
 
-        click.echo("----------------------")
+        click.echo(" /Execution END ")
 
         if dry_run:
             click.echo("\n--- Dry Run Finished ---")
