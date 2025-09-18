@@ -1,7 +1,7 @@
 // src/app/lib/data.ts
 import { db } from '../../lib/db';
 
-import { slugify } from '../../lib/utils';
+import { slugify, formatDate } from '../../lib/utils';
 
 // Server-side function
 export async function getTalks() {
@@ -13,7 +13,7 @@ export async function getTalks() {
     });
     return talks.map((talk) => ({
         ...talk,
-        slug: `${talk.date}-${slugify(talk.title)}`
+        slug: `${formatDate(talk.date)}-${slugify(talk.title)}`
     }));
   } catch (error) {
     console.error('Error fetching talks:', error);
@@ -31,7 +31,7 @@ export async function getArticles() {
     });
     return articles.map((article) => ({
       ...article,
-      slug: `${article.publish_date}-${slugify(article.title)}`,
+      slug: `${formatDate(new Date(article.publish_date))}-${slugify(article.title)}`,
       type: 'article'
     }));
   } catch (error) {
@@ -62,13 +62,13 @@ export async function getFutureTalks() {
     },
     where: {
       date: {
-        gte: new Date().toISOString().split('T')[0],
+        gte: new Date()
       }
     }
   });
   return talks.map((talk) => ({
     ...talk,
-    slug: `${talk.date}-${slugify(talk.title)}`
+    slug: `${formatDate(talk.date)}-${slugify(talk.title)}`
   }));
 }
 
@@ -79,13 +79,13 @@ export async function getPastTalks() {
     },
     where: {
       date: {
-        lt: new Date().toISOString().split('T')[0],
+        lt: new Date()
       }
     }
   });
   return talks.map((talk) => ({
     ...talk,
-    slug: `${talk.date}-${slugify(talk.title)}`
+    slug: `${formatDate(talk.date)}-${slugify(talk.title)}`
   }));
 }
 
@@ -104,7 +104,7 @@ export async function getHighlightedTalks() {
     });
     return talks.map((talk) => ({
         ...talk,
-        slug: `${talk.date}-${slugify(talk.title)}`
+        slug: `${formatDate(talk.date)}-${slugify(talk.title)}`
     }));
 }
 
@@ -122,7 +122,6 @@ export async function getHighlightedArticles() {
     });
     return articles.map((article) => ({
         ...article,
-        slug: `${article.publish_date}-${slugify(article.title)}`
+        slug: `${formatDate(new Date(article.publish_date))}-${slugify(article.title)}`
     }));
 }
-
