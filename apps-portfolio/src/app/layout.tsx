@@ -36,7 +36,7 @@ export default function RootLayout({
   const version = fs.readFileSync(path.join(process.cwd(), "VERSION"), "utf8").trim();
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"));
   const appName = packageJson.name;
-  const repoUrl = packageJson.repository ? packageJson.repository.replace(/\.git$/, '') : '';
+  const repoUrl = packageJson.repository ? packageJson.repository.url.replace(/\.git$/, '') : '';
   const appProdUrl = "https://portfolio-app-272932496670.europe-west1.run.app/";
 
   return (
