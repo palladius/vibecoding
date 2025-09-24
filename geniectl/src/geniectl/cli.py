@@ -33,7 +33,9 @@ def apply(filepath, output_dir, dry_run, verbose):
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-        click.echo(f"Created output directory: {output_dir}")
+        click.echo(f"📂 Created output directory: {output_dir}")
+    else:
+        click.echo(f"📂 Output directory: {output_dir}")
 
     try:
         documents = []
@@ -67,6 +69,7 @@ def apply(filepath, output_dir, dry_run, verbose):
 def eval(filepath, output_dir):
     """Evaluate a configuration from a YAML file or directory."""
     click.echo(f"👀 Evaluating from path: {filepath}")
+    click.echo(f"📂 Output directory: {output_dir}")
 
     try:
         documents = []
