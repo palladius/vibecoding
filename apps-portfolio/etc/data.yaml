@@ -167,17 +167,9 @@ talks:
     session_url: https://sessionize.com/s/riccardo-carlesso/agenti-in-volo-unanalisi-approfondita-sulla-creazi/140909
     sheetless_id: 9746
     talk_description: >
-      In 2025, an LLM agent needs to do more than just talk. It needs to do.
-      This presentation is a hands-on look at building a truly useful AI travel
-      agent with a multi-agent framework. Forget abstract concepts; we're diving
-      straight into the code of a live demo that queries real APIs for flights,
-      hotels 🏨, and AirB&Bs. We will cover how to structure a multi-agent
-      system to handle complex, real-world tasks: validating budgets, managing
-      user preferences, and visualizing results. You will learn how to implement
-      an advanced, modular system that can be deployed on any cloud with any
-      LLM. This is a technical L200-L300 session designed for developers who
-      want to see how to coordinate agents and tools to create a seamless,
-      end-to-end user experience.
+      In this session, we'll reveal the Gemini CLI as two revolutionary tools in one. First, we'll demo the "Haunted Browser": a web developer's dream. See how the Model Context Protocol (MCP) connects the LLM to Playwright, automating tedious web tasks like clicking buttons, logging in, and navigating sites—a true "new age curl".
+      Then, for something completely different, we'll unveil the "AI Cinema": a creator's studio. Watch as we use the CLI to direct and generate entire, multi-step video storylines from a single prompt. 🤖
+      Two powerful demos, one tool, and we'll show how we can automate in the cloud with GitHub Actions.
     image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
   - title: "Incident Management at Google"
     event: "Sharp 4 Dev"
