@@ -164,7 +164,7 @@ talks:
       - wow
       - MCP
     status: confirmed
-    session_url: https://sessionize.com/s/riccardo-carlesso/agenti-in-volo-unanalisi-approfondita-sulla-creazi/140909
+    session_url: https://sessionize.com/app/speaker/session/1032701
     sheetless_id: 9746
     talk_description: >
       In this session, we'll reveal the Gemini CLI as two revolutionary tools in one. First, we'll demo the "Haunted Browser": a web developer's dream. See how the Model Context Protocol (MCP) connects the LLM to Playwright, automating tedious web tasks like clicking buttons, logging in, and navigating sites—a true "new age curl".
