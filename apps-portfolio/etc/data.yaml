@@ -95,7 +95,7 @@ talks:
     sheetless_id: 9691
     image: /images/events/gdg-pescara24.jpg
 
-  
+
   - title: Create a Rails8 responsive app with Gemini and RubyLLM
     event: Railshock at Renuo
     date: '2025-06-19'
@@ -150,7 +150,7 @@ talks:
       - Ruby
       - Rails
       - Zurich
-  
+
   - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
     event: DevFest Modena 2025
     date: '2025-10-04'
@@ -216,7 +216,7 @@ talks:
       The talk is for operators and leaders dedicated to building a culture of
       real resilience.
     image: /images/events/cloudconf25-riccardo-as-a-speaker.jpg
-  
+
   - title: '[workshop]Create a responsive Rails 8 app with Gemini [tentative]'
     event: Euruko 2025
     date: '2025-09-18'
@@ -482,6 +482,22 @@ talks:
       - highlight
       - CICD
     image: /images/generated/Cloud-Next-2024-04-11.jpeg
+  - title: "Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI"
+    event: "Cloud Day"
+    date: '2025-11-20'
+    location: "Milan, Italy"
+    country_code: "it"
+    status: confirmed
+    talk_description: |
+      Since it came out, Gemini CLI has revolutionised the Open Source AI world. 2 demos: The "Haunted Browser": a web developer's dream. See how MCP Playwright, automates tedious web tasks like clicking buttons, logging in, and navigating sites - a "curl v2". "AI Cinema": a creator's studio. Watch as we use the CLI to direct and generate entire, multi-step video storylines from a single prompt. 🤖 Two powerful demos, one tool, and we'll show how both can be automated in the cloud with GitHub Actions.
+    tags:
+      - Gemini CLI
+      - Playwright
+      - AI
+      - GitHub Actions
+    session_url: https://sessionize.com/app/speaker/session/1035962
+    bug_id: 445100645
+    sheetless_id: 9799
 articles:
   - title: Autotranslate my Hugo blog with Gemini
     url: >-

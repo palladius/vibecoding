@@ -68,6 +68,7 @@ export default async function TalkPage({ params }: { params: { slug: string } })
             {talk.slides_url && <Link href={talk.slides_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📊 View Slides</Link>}
             {talk.video_url && <Link href={talk.video_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📹 Watch Video</Link>}
             {talk.sheetless_id && <Link href={`https://sheetless-das.googleplex.com/event/view?id=${talk.sheetless_id}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🛌 Sheetless Link</Link>}
+            {talk.bug_id && <Link href={`https://b/${talk.bug_id}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🐛 Bug</Link>}
           </div>
 
           {tags && tags.length > 0 && (

@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.14.0 - 2025-09-25
+
+### 🚀 Features
+
+*   ✨ Added `bug_id` to talks, with a link and emoji in the UI.
+
 ## v0.13.7 - 2025-08-13
 
 ### 🐛 Bug Fixes
