@@ -166,6 +166,7 @@ talks:
     status: confirmed
     session_url: https://sessionize.com/app/speaker/session/955848
     bug_id: 443928105
+    sheetless_id: 9746
     talk_description: |
       Hai mai desiderato creare il tuo gemini.google.com, ma con molta più personalità? ✨
       In questo workshop, prenderai un'app Rails di esempio e le infonderai la magia di Gemini.
