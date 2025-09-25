@@ -95,6 +95,7 @@ talks:
       - DevFest
       - Italian
     session_url: https://sessionize.com/app/speaker/session/991415
+    event_url: https://gdg.community.dev/events/details/google-gdg-pescara-presents-devfest-pescara-2025/
     sheetless_id: 9691
     image: /images/events/gdg-pescara24.jpg
     bug_id: 442546985
