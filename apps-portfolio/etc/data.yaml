@@ -499,6 +499,7 @@ talks:
     session_url: https://sessionize.com/app/speaker/session/1035962
     bug_id: 445100645
     sheetless_id: 9799
+    image: /images/events/cloud-day-2025.png
 articles:
   - title: Autotranslate my Hugo blog with Gemini
     url: >-
