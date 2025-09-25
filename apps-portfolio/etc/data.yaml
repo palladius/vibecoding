@@ -165,8 +165,17 @@ talks:
       - MCP
     status: confirmed
     session_url: https://sessionize.com/app/speaker/session/955848
+    bug_id: 443928105
     talk_description: |
-      Hai mai desiderato creare il tuo gemini.google.com, ma con molta più personalità? ✨ In questo workshop, prenderai un'app Rails di esempio e le infonderai la magia di Gemini. Inizieremo aggiungendo un "tocco di brio" generando immagini divertenti 🖼️. Poi, costruiremo il cuore tecnico: il tuo server "Model Context Protocol" (MCP). Questo MCP �� esporrà le tue entità ActiveRecord, permettendo al tuo editor locale (o a Gemini CLI) di interrogare il tuo database usando nient'altro che il linguaggio naturale!
+      Hai mai desiderato creare il tuo gemini.google.com, ma con molta più personalità? ✨
+      In questo workshop, prenderai un'app Rails di esempio e le infonderai la magia di Gemini.
+
+      Inizieremo aggiungendo un "tocco di brio" generando immagini divertenti 🖼️.
+
+      Poi, costruiremo il cuore tecnico: il tuo server "Model Context Protocol" (MCP).
+
+      Questo MCP esporrà le tue entità ActiveRecord, permettendo al tuo editor locale (o a Gemini CLI) di interrogare il
+      tuo database usando nient'altro che il linguaggio naturale!
     image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
   - title: 'Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI'
     event: DevFest Modena 2025
