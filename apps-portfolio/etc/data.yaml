@@ -61,20 +61,20 @@ about_me:
       emoji: 📰
       importance: low
 talks:
-  - title: "Ruby on Rails in the Cloud"
-    event: Rubycon
-    date: '2026-05-08'
-    location: Online
-    country_code: remote
-    status: confirmed
-    talk_description: "A talk about running Ruby on Rails applications in the cloud."
-    tags:
-      - Ruby
-      - Rails
-      - Cloud
-    video: https://www.youtube.com/watch?v=pk74HwwpOhA
-    event_url: https://rubycon.me
-    image: /images/events/rubycon.jpeg
+#   - title: "Ruby on Rails in the Cloud"
+#     event: Rubycon
+#     date: '2026-05-08'
+#     location: Online
+#     country_code: remote
+#     status: confirmed
+#     talk_description: "A talk about running Ruby on Rails applications in the cloud."
+#     tags:
+#       - Ruby
+#       - Rails
+#       - Cloud
+#     video: https://www.youtube.com/watch?v=pk74HwwpOhA
+#     event_url: https://rubycon.me
+#     image: /images/events/rubycon.jpeg
 
 
   - title: "Agenti in Volo: Un'Analisi Approfondita sulla Creazione di un Agente di Viaggio in Tempo Reale ✈️"
