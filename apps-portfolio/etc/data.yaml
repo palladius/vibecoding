@@ -151,6 +151,20 @@ talks:
       - Rails
       - Zurich
 
+  - title: '[WS] Rails + Gemini + MCP: Parla con il tuo DB, Crea Immagini Divertenti 🖼️'
+    event: DevFest Modena 2025
+    date: '2025-10-04'
+    location: Modena, Italy
+    country_code: it
+    event_url: https://devfest.modena.it/
+    tags:
+      - GenAI
+      - DevFest
+      - demo
+      - wow
+      - MCP
+    status: confirmed
+    image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
   - title: 'Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI'
     event: DevFest Modena 2025
     date: '2025-10-04'
