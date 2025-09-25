@@ -488,6 +488,7 @@ talks:
     location: "Milan, Italy"
     country_code: "it"
     status: confirmed
+    event_url: https://www.cloudday.it/
     talk_description: |
       Since it came out, Gemini CLI has revolutionised the Open Source AI world. 2 demos: The "Haunted Browser": a web developer's dream. See how MCP Playwright, automates tedious web tasks like clicking buttons, logging in, and navigating sites - a "curl v2". "AI Cinema": a creator's studio. Watch as we use the CLI to direct and generate entire, multi-step video storylines from a single prompt. 🤖 Two powerful demos, one tool, and we'll show how both can be automated in the cloud with GitHub Actions.
     tags:

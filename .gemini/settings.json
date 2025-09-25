@@ -1,7 +1,4 @@
 {
-  "model": {
-    "maxSessionTurns": 50
-  },
   "mcpServers": {
     "playwright": {
       "command": "npx",
