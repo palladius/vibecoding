@@ -231,6 +231,7 @@ talks:
       - SRE
       - Postmortem
       - Culture
+      - highlight
     talk_description: >
       This session addresses the challenges of postmortems, aiming to shift from
       a culture of blame to one of genuine learning. Riccardo Carlesso, an
@@ -320,7 +321,6 @@ talks:
       - AI
       - Gemini
       - workshop
-      - highlight
       - PHP
     image: /images/generated/We-are-Developers-2025-2025-07-10.jpeg
   - title: 'SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
