@@ -17,7 +17,7 @@ run:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
     export GENIECTL_EVAL=false
-    bash -c "uv run geniectl apply -f etc/story-generation.yaml"
+    bash -c "uv run geniectl apply -f etc/story-generation.yaml  --output-dir out/story-generation/"
 
 run-on-another-dir-and-eval:
     #!/bin/bash
@@ -26,12 +26,12 @@ run-on-another-dir-and-eval:
     bash -c "uv run geniectl apply -f etc/story-generation.yaml  --output-dir out2/"
 
 plan:
-    uv run geniectl apply -f etc/story-generation.yaml --plan
+    uv run geniectl apply -f etc/story-generation.yaml --plan --output-dir out/story-generation/
 
 eval:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
-    bash -c "uv run geniectl eval -f etc/story-generation.yaml"
+    bash -c "uv run geniectl eval -f etc/story-generation.yaml --output-dir out/story-generation/"
 eval2:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
