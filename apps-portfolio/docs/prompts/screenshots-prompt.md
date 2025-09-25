@@ -4,7 +4,7 @@ Use playwright tool to take screenshots of the portfolio application.
 
 The application is running on http://localhost:3001.
 
-Take screenshots of the homepage /, /about page, /talks page, and /articles and /next-talks page, and /config. For those pages with buttons which allow you to select a different view, take a screenshot both of the Card and Calendar/List view.
+Take screenshots of the homepage `/`, `/about` page, `/talks` page, and `/articles` and `/next-talks` page, and `/config`. For those pages with buttons which allow you to select a different view, take a screenshot both of the Card and Calendar/List view.
 Also take a sample of:
 
 * Sample Talk: `/talks/2025-11-15-beyond-blame-the-art-of-the-postmortem`
@@ -22,12 +22,7 @@ Now do the same as above for https://portfolio-app-272932496670.europe-west1.run
 and put the screenshots under `docs/screenshots/prod/`.
 
 
+## WAD Jurre - Zurich Max
 
-
-
-
-## WAD Jurre test
-
-Now compare /talks in PROD and in LOCALHOST and show the difference between the two images.
+Now compare /talks in PROD and in LOCALHOST and show the difference between the two images and put them in docs/screenshots/diff/ and add a README.md there
 Do you spot any difference?
-

@@ -57,3 +57,4 @@ prisma/portfolio.sqlite3.derek
 .QUESTO_BUONO
 ../german-card-game/.gemini/
 .gemini/
+.playwright-mcp/
