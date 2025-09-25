@@ -1,13 +1,17 @@
 {
-  "maxSessionTurns": 50,
-  "telemetry": {
-    "enabled": false,
-    "target": "gcp"
+  "model": {
+    "maxSessionTurns": 50
   },
   "mcpServers": {
     "playwright": {
-        "command": "npx",
-        "args": ["@playwright/mcp@latest"]
-      }
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+  },
+  "telemetry": {
+    "enabled": false,
+    "target": "gcp"
   }
 }

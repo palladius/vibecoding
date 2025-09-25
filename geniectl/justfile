@@ -95,3 +95,9 @@ plan2:
 
 gemini:
     gemini -c --approval-mode auto_edit
+
+test-json:
+    @echo This only works with gemini-cli v0.6.0 or later
+    gemini -v
+    gemini  --output-format json --yolo -p 'show me the PATH env, and tell me if ~/go/bin is in the PATH' # | jq .
+
