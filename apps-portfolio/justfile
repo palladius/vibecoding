@@ -16,6 +16,8 @@ run:
 install:
     npm install
 
+dev: run-dev
+
 run-dev:
     @echo "Running development server on port 3001..."
     DATABASE_URL="file:$(pwd)/db/portfolio.sqlite3" API_URL=http://localhost:3001 NEXT_PUBLIC_API_URL=http://localhost:3001 npm run dev -- -p 3001 2>&1 | tee log/dev.log
@@ -170,3 +172,7 @@ yolo-update-sample:
 
 gemini-invoke-sre-agent:
     gemini -e sre-apps-portfolio-agent -y -p "Check current Build status and logs and version matching."
+
+
+clean:
+    rm .playwright-mcp/*png
