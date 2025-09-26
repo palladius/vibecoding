@@ -16,8 +16,22 @@ install:
 run:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
+
+    set -euo pipefail
+    . .env
+
     export GENIECTL_EVAL=false
     bash -c "uv run geniectl apply -f etc/story-generation.yaml  --output-dir out/story-generation/"
+
+run-story:
+    #!/bin/bash
+    export PATH=~/go/bin/:$PATH
+
+    set -euo pipefail
+    . .env
+
+    export GENIECTL_EVAL=false
+    bash -c "uv run geniectl apply -f story.yaml  --output-dir out/uk-demo01/"
 
 run-on-another-dir-and-eval:
     #!/bin/bash
@@ -93,11 +107,18 @@ auth:
 plan2:
     uv run geniectl apply -f etc/02-video-idea.yaml --plan --verbose -d out/rubycon/
 
-gemini:
+gemini: gemini-geniectl
+
+gemini-geniectl:
+    #!/bin/bash
+    echo '🌱🪄🎦 Setting up GENIECTL for success...'
+    export PATH=~/go/bin/:$PATH
+    . .env
     gemini -c --approval-mode auto_edit
 
 test-json:
     @echo This only works with gemini-cli v0.6.0 or later
+
     gemini -v
-    gemini  --output-format json --yolo -p 'show me the PATH env, and tell me if ~/go/bin is in the PATH' # | jq .
+    gemini  --output-format json --yolo -p 'show me the PATH env, and tell me if ~/go/bin is in the PATH' | jq .
 
