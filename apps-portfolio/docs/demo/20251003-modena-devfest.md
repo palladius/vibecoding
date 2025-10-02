@@ -74,11 +74,10 @@ Chapeau.
 ```markdown
 
 1. Ensure the app is started and is logging to log/ .
-2. Use Chrome Dev Tools MCP server to check for client-side JS errors in the main endpoints (/, /talks, /about, ..)
+2. Use Chrome Dev Tools MCP server to check for client-side JS errors in the main endpoints (/, /talks, /about, ..).
+   Also visit a sample talk (/talks/TALK_NAME) and a sample article page. Any errors there?
 3. If you find any errors, enumerate them and add context in docs/investigations/chrome-devtool-clientside-errors.md
-
+4. Finally, repeat the same experiement in PROD with the prod url. Is there some bug there?
+   Add some h2 "## In production" section with any different findings, if any.
 ```
 
-## BugFix HARD = magari salta
-
-`docs/CUJ/` and paste
