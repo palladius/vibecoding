@@ -131,6 +131,9 @@ check-port-3001:
      sudo lsof -i :3001
      # kill them all: lsof -t -i:3001 | xargs kill -9
 
+gemini:
+    gemini-permissive
+
 # lets try this instead
 gemini-take-screenshots-via-playwright:
     @echo "Taking screenshots using Gemini CLI... Note that in headless mode I observe many 429s.."

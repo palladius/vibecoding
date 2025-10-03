@@ -14,13 +14,14 @@ just run-dev
 just gemini-take-screenshots-via-playwright
 ```
 
-## 2. Add/Edit event
 
 On another terminal, you will need this:
 
 ```bash
 gemini -c -y
 ```
+
+## 2. Add/Edit event - Modena 4oct
 
 Prompt:
 
@@ -35,10 +36,35 @@ I'm presenting at a *DevFest Modena* event super-soon on "Sat 4 oct"!
 Finally, please add this to my Apps Portoflio yaml in etc/ and update the DB.
 ```
 
+## 2. Edit event - Pescara ugly picture
+
+1. Show people the current next events..
+
+```bash
+open http://localhost:3001/next-talks
+```
+
+Give Gemini cli this prompt:
+
+```
+I know we have a DevFest Pescara in november. I dont like the current picture,
+can you just google it and find a better picture? I remember that this year they
+have a new version 2025 inspired to Man in black. Check if you find something appropriate.
+
+If yes, change the yaml, and apply it the changes.
+```
+
+
 ### If necessary, ask to find discrepancies
 
 ```
-Check on https://devfest.modena.it/ and find discrepancies, if any.
+This week I'm in Modena for DevFest.
+Check my event on YAML.
+Then check on https://devfest.modena.it/ , look for my talks and sessions,
+and find discrepancies, if any.
+If you find discrepancies, shows them visually to me as a table with 1 row per discrepancy
+and 2 columns: "Ours" (our web app) and "Theirs" (the official version on the web).
+So I can propose a change visually.
 ```
 
 Awesome result:
@@ -77,7 +103,7 @@ Chapeau.
 2. Use Chrome Dev Tools MCP server to check for client-side JS errors in the main endpoints (/, /talks, /about, ..).
    Also visit a sample talk (/talks/TALK_NAME) and a sample article page. Any errors there?
 3. If you find any errors, enumerate them and add context in docs/investigations/chrome-devtool-clientside-errors.md
-4. Finally, repeat the same experiement in PROD with the prod url. Is there some bug there?
+4. Finally, repeat the same experiment in PROD with the prod url. Is there some bug there?
    Add some h2 "## In production" section with any different findings, if any.
 ```
 
