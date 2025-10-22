@@ -138,7 +138,7 @@ gemini:
 gemini-take-screenshots-via-playwright:
     @echo "Taking screenshots using Gemini CLI... Note that in headless mode I observe many 429s.."
     which gemini
-    gemini -y -d -p "Execute logic in docs/prompts/screenshots-prompt.md"
+    gemini -y -d -p "use the Playwright MCP tool to navigate through Chrome to Execute logic in docs/prompts/screenshots-prompt.md"
 
 # This doesnt work now, i need more ENVs.
 gemini-backgroundjob-check-latest-cloudbuild:

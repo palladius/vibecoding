@@ -8,7 +8,7 @@ One one window, run the server:
 just run-dev
 ```
 
-## 1. Screenshots
+## 1. DEMO1 - Screenshots
 
 ```bash
 just gemini-take-screenshots-via-playwright
@@ -19,6 +19,25 @@ On another terminal, you will need this:
 
 ```bash
 gemini -c -y
+```
+
+
+## 2. Add event GDG DevFest Roma
+
+Prompt:
+
+```
+I've just been invited to talk at devfest Rome.
+Please add a talk on this event, and update the YAML.
+
+* Saturday 25oct 2025.
+* in Rome
+* Devfest Rome (unknown URL - find it!)
+* Demo on Gemini CLI.
+* Organized by GDG Roma: https://gdg.community.dev/gdg-roma-citta/
+* ensure hashtag DevFest and PendingWifeApproval since I'm not sure my wife wil approve this trip.
+
+find a picture of the event online, if it doesnt work just find an image of the colosseum.
 ```
 
 ## 2. Add/Edit event - Modena 4oct
@@ -52,6 +71,7 @@ can you just google it and find a better picture? I remember that this year they
 have a new version 2025 inspired to Man in black. Check if you find something appropriate.
 
 If yes, change the yaml, and apply it the changes.
+Download the image LOCALLY and do NOT change any typescript or any other files. just the YAML.
 ```
 
 
@@ -107,3 +127,8 @@ Chapeau.
    Add some h2 "## In production" section with any different findings, if any.
 ```
 
+## Cleanup
+
+```bash
+git restore db/ etc/ scripts/ public/
+```

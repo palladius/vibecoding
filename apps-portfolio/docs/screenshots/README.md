@@ -1,47 +1,23 @@
-# Application Screenshots
+# Screenshots
 
-Screenshots taken on 2025-09-24.
+This document lists the screenshots taken of the portfolio application.
 
-## Localhost (`http://localhost:3001`)
+**Start Time:** Thu Oct 16 15:19:30 CEST 2025
+**End Time:** Thu Oct 16 15:20:17 CEST 2025
 
-### Dev Screenshots
+## Dev Screenshots
 
-- [Homepage](./dev/homepage.png)
-- [About](./dev/about.png)
-- [Talks (Card View)](./dev/talks-card.png)
-- [Talks (List View)](./dev/talks-list.png)
-- [Articles (Card View)](./dev/articles-card.png)
-- [Articles (List View)](./dev/articles-list.png)
-- [Next Talks](./dev/next-talks.png)
-- [Config](./dev/config.png)
-- [Sample Talk](./dev/sample-talk.png)
-- [Sample Article](./dev/sample-article.png)
+*   [homepage.png](dev/homepage.png)
+*   [about.png](dev/about.png)
+*   [talks-card.png](dev/talks-card.png)
+*   [talks-list.png](dev/talks-list.png)
+*   [articles-card.png](dev/articles-card.png)
+*   [articles-list.png](dev/articles-list.png)
+*   [next-talks.png](dev/next-talks.png)
+*   [config.png](dev/config.png)
+*   [sample-talk.png](dev/sample-talk.png)
+*   [sample-article.png](dev/sample-article.png)
 
-### Errors Spotted
+## Prod Screenshots
 
-- The `/talks` page is empty.
-- The `/config` page shows "Loading...".
-
-## Production (`https://portfolio-app-272932496670.europe-west1.run.app/`)
-
-- [Homepage](./prod/homepage.png)
-- [About](./prod/about.png)
-- [Talks (Card View)](./prod/talks-card.png)
-- [Talks (List View)](./prod/talks-list.png)
-- [Articles (Card View)](./prod/articles-card.png)
-- [Articles (List View)](./prod/articles-list.png)
-- [Next Talks](./prod/next-talks.png)
-- [Config](./prod/config.png)
-- [Sample Talk](./prod/sample-talk.png)
-- [Sample Article](./prod/sample-article.png)
-
-### Errors Spotted
-
-- The `/talks` page is empty.
-- The `/config` page shows "Error: Failed to fetch config".
-- The sample talk page returns a 404 error.
-- The sample article page returns a 404 error.
-
-## Comparison
-
-I have compared the `/talks` page on both the local and production environments. Both pages are empty, so there is no difference between them.
+*   [homepage.png](prod/homepage.png)
