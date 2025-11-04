@@ -363,7 +363,7 @@ talks:
       - Ruby
       - DevFest
     image: /images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
-  - title: 'News Crawler via Langchain.RB and Gemini APIs'
+  - title: News Crawler via Langchain.RB and Gemini APIs
     event: GDG Devfest Modena
     date: '2024-10-12'
     location: Modena, Italy
