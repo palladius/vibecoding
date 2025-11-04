@@ -78,26 +78,26 @@ talks:
 
 
 #  - title: "Agenti in Volo: Un'Analisi Approfondita sulla Creazione di un Agente di Viaggio in Tempo Reale ✈️"
-  - title: "Gemini CLI e Agenti: migliori amici ✈️"
+  - title: "Browser Infestati, AI Cinema: Dirigere la Tua Storia con Gemini CLI"
     event: Devfest Pescara 2025
     date: '2025-11-08'
     location: Pescara, Italy
     country_code: it
     status: accepted
-    talk_description: >
-      **TODO(ricc): Questo talk è stato accettato, ma il contenuto verra' cambiato.**
-
-      Nel 2025, un agente basato su LLM deve fare più che parlare. Deve agire. Questa presentazione è uno sguardo pratico alla costruzione di un agente di viaggio IA realmente utile, utilizzando un framework multi-agente.
-
-      Dimentica i concetti astratti: ci tufferemo direttamente nel codice di una demo live che interroga API reali per voli, hotel  e AirB&B. Vedremo come strutturare un sistema multi-agente per gestire compiti complessi e reali: validare budget, gestire le preferenze dell'utente e visualizzare i risultati. Imparerai come implementare un sistema avanzato e modulare che può essere distribuito su qualsiasi cloud e con qualsiasi LLM.
+    talk_description: |
+      In questa sessione, riveleremo Gemini CLI come due strumenti rivoluzionari in uno. Per prima cosa, mostreremo il "Browser Infestato": il sogno di ogni sviluppatore web. Vedremo come il Model Context Protocol (MCP) connette l'LLM a Playwright, automatizzando noiose attività web come cliccare pulsanti, effettuare il login e navigare siti, un vero "nuovo curl". Poi, per qualcosa di completamente diverso, sveleremo l'"AI Cinema": uno studio per creatori. Guarda come usiamo la CLI per dirigere e generare intere trame video multi-step da un singolo prompt. 🤖 Due potenti demo, un unico strumento, e mostreremo come entrambi possono essere automatizzati nel cloud con GitHub Actions.
     tags:
       - GenAI
       - DevFest
       - Italian
+      - Playwright
+      - AI
+      - Gemini CLI
+      - demo
     session_url: https://sessionize.com/app/speaker/session/991415
-    event_url: https://gdg.community.dev/events/details/google-gdg-pescara-presents-devfest-pescara-2025/
+    event_url: https://devfest.gdgpescara.it/
     sheetless_id: 9691
-    image: /images/events/gdg-pescara24.jpg
+    image: /images/events/devfest-pescara-2025.png
     bug_id: 442546985
 
 
