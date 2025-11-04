@@ -154,11 +154,13 @@ export async function getTalksAndArticlesByTag(tag: string) {
     return {
       talks: talks.map((talk) => ({
         ...talk,
-        slug: `${talk.date}-${slugify(talk.title)}`,
+        date: talk.date.toString(),
+        slug: `${talk.date.toString()}-${slugify(talk.title)}`,
       })),
       articles: articles.map((article) => ({
         ...article,
-        slug: `${article.publish_date}-${slugify(article.title)}`,
+        publish_date: article.publish_date.toString(),
+        slug: `${article.publish_date.toString()}-${slugify(article.title)}`,
         type: 'article',
       })),
     };

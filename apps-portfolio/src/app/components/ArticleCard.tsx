@@ -20,8 +20,7 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
   }
 
   return (
-    <Link href={`/articles/${article.slug}`}>
-      <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white">
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white">
         <div className="relative" style={{ paddingBottom: '75%' }}>
           {article.image ? (
             <Image src={article.image || '/images/placeholder-image.png'} alt={article.title} fill style={{ objectFit: 'cover' }} />
@@ -38,7 +37,9 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
           )}
         </div>
         <div className="p-4">
-          <p className="text-lg font-bold mb-2">{article.title}</p>
+          <Link href={`/articles/${article.slug}`}>
+            <p className="text-lg font-bold mb-2">{article.title}</p>
+          </Link>
           <p className="text-sm text-gray-400 mb-2">{article.publish_date}</p>
           <p className="text-sm text-gray-400 mb-2">{article.resource_type}</p>
           <div>
@@ -54,7 +55,6 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
           </div>
         </div>
       </div>
-    </Link>
   );
 };
 
