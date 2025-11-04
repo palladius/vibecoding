@@ -126,3 +126,45 @@ export async function getHighlightedArticles() {
     }));
 }
 
+// Server-side function
+export async function getTalksAndArticlesByTag(tag: string) {
+  try {
+    const talks = await db.talk.findMany({
+      where: {
+        tags: {
+          contains: tag,
+        },
+      },
+      orderBy: {
+        date: 'desc',
+      },
+    });
+
+    const articles = await db.article.findMany({
+      where: {
+        tags: {
+          contains: tag,
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    return {
+      talks: talks.map((talk) => ({
+        ...talk,
+        slug: `${talk.date}-${slugify(talk.title)}`,
+      })),
+      articles: articles.map((article) => ({
+        ...article,
+        slug: `${article.publish_date}-${slugify(article.title)}`,
+        type: 'article',
+      })),
+    };
+  } catch (error) {
+    console.error('Error fetching talks and articles by tag:', error);
+    return { talks: [], articles: [] };
+  }
+}
+
