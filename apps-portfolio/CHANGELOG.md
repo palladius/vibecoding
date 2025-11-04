@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.14.3 - 2025-11-06
+
+### 🚀 Features
+
+*   ✨ Implemented a tag cloud on the `/tags` page, where the font size of each tag is proportional to its count.
+*   ✨ Removed the tag count from the tag display for a cleaner look.
+
+### 🐛 Bug Fixes
+
+*   🐛 Fixed a bug where the `/tags` page was broken due to a missing `getAllTags` function.
+*   🐛 Removed a duplicate "Tags" link in the main navigation header.
+
 ## v0.14.1 - 2025-11-04
 
 ### 🚀 Features

@@ -154,19 +154,40 @@ export async function getTalksAndArticlesByTag(tag: string) {
     return {
       talks: talks.map((talk) => ({
         ...talk,
-        date: talk.date.toString(),
-        slug: `${talk.date.toString()}-${slugify(talk.title)}`,
+        slug: `${talk.date}-${slugify(talk.title)}`,
       })),
       articles: articles.map((article) => ({
         ...article,
-        publish_date: article.publish_date.toString(),
-        slug: `${article.publish_date.toString()}-${slugify(article.title)}`,
+        slug: `${article.publish_date}-${slugify(article.title)}`,
         type: 'article',
       })),
     };
   } catch (error) {
     console.error('Error fetching talks and articles by tag:', error);
     return { talks: [], articles: [] };
+  }
+}
+
+// Server-side function
+export async function getAllTags() {
+  try {
+    const talks = await db.talk.findMany();
+    const articles = await db.article.findMany();
+
+    const allTags = [...talks, ...articles].flatMap(item => item.tags ? item.tags.split(',').map(tag => tag.trim()) : []);
+
+    const tagCounts = allTags.reduce((acc, tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    return Object.entries(tagCounts).map(([name, count]) => ({
+      name,
+      count,
+    })).sort((a, b) => b.count - a.count);
+  } catch (error) {
+    console.error('Error fetching all tags:', error);
+    return [];
   }
 }
 

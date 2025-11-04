@@ -60,6 +60,9 @@ export default function RootLayout({
               <Link href="/next-talks" className="text-yellow-400 hover:text-yellow-300">
                 Next Talks
               </Link>
+              <Link href="/tags" className="text-yellow-400 hover:text-yellow-300">
+                ☁️ Tags
+              </Link>
             </div>
           </div>
         </nav>
