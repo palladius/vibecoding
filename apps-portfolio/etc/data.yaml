@@ -375,6 +375,7 @@ talks:
       - GenAI
       - Gemini
       - Ruby
+      - DevFest
     image: /images/generated/GDG-Devfest-Modena-2024-10-12.jpeg
   - title: 'Keynote: Dove l''SRE può andare storto'
     event: DevSecOps day
