@@ -182,7 +182,7 @@ talks:
 
       Questo MCP esporrà le tue entità ActiveRecord, permettendo al tuo editor locale (o a Gemini CLI) di interrogare il
       tuo database usando nient'altro che il linguaggio naturale!
-    image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
+    image: /images/events/devfest-modena-2025.png
   - title: 'Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI'
     event: DevFest Modena 2025
     date: '2025-10-04'
@@ -203,7 +203,7 @@ talks:
       In this session, we'll reveal the Gemini CLI as two revolutionary tools in one. First, we'll demo the "Haunted Browser": a web developer's dream. See how the Model Context Protocol (MCP) connects the LLM to Playwright, automating tedious web tasks like clicking buttons, logging in, and navigating sites—a true "new age curl".
       Then, for something completely different, we'll unveil the "AI Cinema": a creator's studio. Watch as we use the CLI to direct and generate entire, multi-step video storylines from a single prompt. 🤖
       Two powerful demos, one tool, and we'll show how we can automate in the cloud with GitHub Actions.
-    image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
+    image: /images/events/devfest-modena-2025.png
   - title: "Incident Management at Google"
     event: "Sharp 4 Dev"
     date: '2025-10-03'
