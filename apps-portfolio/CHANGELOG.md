@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.14.1 - 2025-11-04
+
+### 🚀 Features
+
+*   ✨ Updated "Devfest Pescara 2025" talk with new title, abstract, tags, and image.
+
 ## v0.14.0 - 2025-09-25
 
 ### 🚀 Features
