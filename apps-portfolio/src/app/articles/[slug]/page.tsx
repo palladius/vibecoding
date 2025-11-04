@@ -38,7 +38,9 @@ export default async function ArticlePage({ params }: { params: { slug: string }
               <h3 className="text-lg font-semibold mb-2">Tags</h3>
               <div className="flex flex-wrap gap-2">
                 {tags.map(tag => (
-                  <span key={tag} className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">#{tag}</span>
+                  <Link key={tag} href={`/tags/${tag.toLowerCase()}`}>
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm hover:bg-gray-600">#{tag}</span>
+                  </Link>
                 ))}
               </div>
             </div>
