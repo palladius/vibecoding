@@ -45,7 +45,7 @@ const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximit
           <div className="flex justify-between items-center">
             <div>
               {talk.tags.split(',').map((tag) => (
-                <Link key={tag} href={`/tags/${tag.toLowerCase()}`}>
+                <Link key={tag} href={`/tags/${tag.toLowerCase().replace(/ /g, '_')}`}>
                   <span
                     className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full px-2 py-1 text-xs font-semibold mr-2 mb-2"
                   >

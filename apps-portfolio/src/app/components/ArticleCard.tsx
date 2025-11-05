@@ -44,7 +44,7 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
           <p className="text-sm text-gray-400 mb-2">{article.resource_type}</p>
           <div>
             {article.tags.split(',').map((tag) => (
-              <Link key={tag} href={`/tags/${tag.toLowerCase()}`}>
+              <Link key={tag} href={`/tags/${tag.toLowerCase().replace(/ /g, '_')}`}>
                 <span
                   className="inline-block bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full px-2 py-1 text-xs font-semibold mr-2 mb-2"
                 >
