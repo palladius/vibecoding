@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.14.2 - 2025-11-05
+
+### 🐛 Bug Fixes
+
+*   Fixed syntax errors in `src/app/talks/[slug]/page.tsx` related to `generateMetadata` function and `params.slug` usage.
+*   Updated dependencies in `package.json` and `package-lock.json`.
+*   Added `src/lib/server-polyfills.ts` and its import in `src/app/layout.tsx`.
+
 ## v0.14.1 - 2025-11-04
 
 ### 🚀 Features
