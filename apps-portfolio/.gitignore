@@ -37,7 +37,8 @@ next-env.d.ts
 
 # riccardo
 .env2
-log/
+#log/
+log/dev.log
 .DS_Store
 t.sh
 TODO-ricc.md

@@ -30,7 +30,7 @@ run-dev-p3002:
     @echo "DATABASE_URL:        $DATABASE_URL"
     DATABASE_URL="file:./db/portfolio.sqlite3" API_URL=http://localhost:3002 NEXT_PUBLIC_API_URL=http://localhost:3002 npm run dev -- -p 3002 2>&1 | tee log/dev.log
 
-# View the development log
+# View the development log, Note Gemini CANNOT read logs since they're git ignored
 log:
     cat log/dev.log
 
