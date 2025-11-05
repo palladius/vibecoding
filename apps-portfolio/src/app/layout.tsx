@@ -1,4 +1,5 @@
 
+import "@/lib/server-polyfills"; // Import server-side polyfills
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

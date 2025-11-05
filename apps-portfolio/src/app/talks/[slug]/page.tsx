@@ -5,7 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const talk = await getTalk(params.slug);
+  const slug = params.slug;
+  const talk = await getTalk(slug);
+
   if (!talk) {
     return { title: 'Talk not found' };
   }
@@ -14,7 +16,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function TalkPage({ params }: { params: { slug: string } }) {
-  const talk = await getTalk(params.slug);
+  const slug = params.slug;
+  const talk = await getTalk(slug); // Use the awaited slug
 
   if (!talk) {
     notFound();
