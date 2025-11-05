@@ -6,7 +6,7 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
   const { talks, articles } = await getTalksAndArticlesByTag(params.tag);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-4">
+    <main className="flex min-h-screen flex-col items-center justify-start p-4">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <h1 className="text-4xl font-bold">#{params.tag}</h1>
       </div>
