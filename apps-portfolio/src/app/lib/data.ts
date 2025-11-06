@@ -190,7 +190,7 @@ export async function getAllTags() {
       }
     });
 
-    return Object.entries(tagCounts).map(([lowerCaseName, { count, originalName }]) => ({
+    return Object.entries(tagCounts).map(([, { count, originalName }]) => ({
       name: originalName,
       count,
     })).sort((a, b) => b.count - a.count);
