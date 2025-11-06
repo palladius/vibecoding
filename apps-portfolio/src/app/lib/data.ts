@@ -154,13 +154,11 @@ export async function getTalksAndArticlesByTag(tag: string) {
     return {
       talks: talks.map((talk) => ({
         ...talk,
-        date: talk.date.toString(),
-        slug: `${talk.date.toString()}-${slugify(talk.title)}`,
+        slug: `${talk.date}-${slugify(talk.title)}`,
       })),
       articles: articles.map((article) => ({
         ...article,
-        publish_date: article.publish_date.toString(),
-        slug: `${article.publish_date.toString()}-${slugify(article.title)}`,
+        slug: `${article.publish_date}-${slugify(article.title)}`,
         type: 'article',
       })),
     };
@@ -170,29 +168,35 @@ export async function getTalksAndArticlesByTag(tag: string) {
   }
 }
 
+// Server-side function
 export async function getAllTags() {
-  const talks = await db.talk.findMany({
-    select: {
-      tags: true,
-    },
-  });
+  try {
+    const talks = await db.talk.findMany();
+    const articles = await db.article.findMany();
 
-  const articles = await db.article.findMany({
-    select: {
-      tags: true,
-    },
-  });
+    const allTags = [...talks, ...articles].flatMap(item => item.tags ? item.tags.split(',').map(tag => tag.trim()) : []);
 
-  const allTags = [...talks, ...articles].flatMap((item) => item.tags.split(','));
+    const tagCounts: Record<string, { count: number; originalName: string }> = {};
 
-  const tagCounts = allTags.reduce((acc, tag) => {
-    acc[tag] = (acc[tag] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+    allTags.forEach(tag => {
+      const lowerCaseTag = tag.toLowerCase();
+      if (tagCounts[lowerCaseTag]) {
+        tagCounts[lowerCaseTag].count++;
+      } else {
+        tagCounts[lowerCaseTag] = {
+          count: 1,
+          originalName: tag,
+        };
+      }
+    });
 
-  return Object.entries(tagCounts).map(([name, count]) => ({
-    name,
-    count,
-  }));
+    return Object.entries(tagCounts).map(([, { count, originalName }]) => ({
+      name: originalName,
+      count,
+    })).sort((a, b) => b.count - a.count);
+  } catch (error) {
+    console.error('Error fetching all tags:', error);
+    return [];
+  }
 }
 
