@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.14.2 - 2025-11-05
+
+### 🚀 Features
+
+*   ✨ Implemented a "Semantic Tag Cloud" on the `/tags` page.
+*   ✨ Added a test to verify that the `/tags` page contains at least "GenAI" and "Gemini".
+
+### 🐛 Bug Fixes
+
+*   🔵 fix(data): Corrected the data for the DevFest Modena 2024 talk (title, date, and tags).
+*   🔵 fix(ui): Fixed hydration errors on the tag pages by removing nested `<a>` tags.
+*   🔵 fix(ui): Adjusted the vertical alignment on the tag pages to remove extra spacing.
+*   🔵 fix(tags): Implemented a fix to handle tags with spaces by converting spaces to underscores in the URL.
+*   🔵 fix(test): Corrected the assertion for the talk title in the integration test.
+
 ## v0.14.1 - 2025-11-04
 
 ### 🚀 Features
