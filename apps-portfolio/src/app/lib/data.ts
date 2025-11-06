@@ -176,13 +176,22 @@ export async function getAllTags() {
 
     const allTags = [...talks, ...articles].flatMap(item => item.tags ? item.tags.split(',').map(tag => tag.trim()) : []);
 
-    const tagCounts = allTags.reduce((acc, tag) => {
-      acc[tag] = (acc[tag] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const tagCounts: Record<string, { count: number; originalName: string }> = {};
 
-    return Object.entries(tagCounts).map(([name, count]) => ({
-      name,
+    allTags.forEach(tag => {
+      const lowerCaseTag = tag.toLowerCase();
+      if (tagCounts[lowerCaseTag]) {
+        tagCounts[lowerCaseTag].count++;
+      } else {
+        tagCounts[lowerCaseTag] = {
+          count: 1,
+          originalName: tag,
+        };
+      }
+    });
+
+    return Object.entries(tagCounts).map(([lowerCaseName, { count, originalName }]) => ({
+      name: originalName,
       count,
     })).sort((a, b) => b.count - a.count);
   } catch (error) {

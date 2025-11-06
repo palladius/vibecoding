@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.14.4 - 2025-11-06
+
+### 🚀 Features
+
+*   ✨ Enhanced the tag cloud with a more dynamic and visually appealing design, featuring:
+    *   Logarithmic font scaling for a more dramatic size difference between tags.
+    *   Alphabetical sorting for a cleaner and more organized appearance.
+    *   Use of the four Google colors for a vibrant and on-brand look.
+    *   Removal of the '#' prefix and underscores from tag names for improved readability.
+
+### 🐛 Bug Fixes
+
+*   🐛 Merged tags with different casing (e.g., "cicd" and "CICD") to avoid duplicates.
+
 ## v0.14.3 - 2025-11-06
 
 ### 🚀 Features
