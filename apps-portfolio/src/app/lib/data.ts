@@ -126,3 +126,73 @@ export async function getHighlightedArticles() {
     }));
 }
 
+// Server-side function
+export async function getTalksAndArticlesByTag(tag: string) {
+  try {
+    const talks = await db.talk.findMany({
+      where: {
+        tags: {
+          contains: tag,
+        },
+      },
+      orderBy: {
+        date: 'desc',
+      },
+    });
+
+    const articles = await db.article.findMany({
+      where: {
+        tags: {
+          contains: tag,
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    return {
+      talks: talks.map((talk) => ({
+        ...talk,
+        date: talk.date.toString(),
+        slug: `${talk.date.toString()}-${slugify(talk.title)}`,
+      })),
+      articles: articles.map((article) => ({
+        ...article,
+        publish_date: article.publish_date.toString(),
+        slug: `${article.publish_date.toString()}-${slugify(article.title)}`,
+        type: 'article',
+      })),
+    };
+  } catch (error) {
+    console.error('Error fetching talks and articles by tag:', error);
+    return { talks: [], articles: [] };
+  }
+}
+
+export async function getAllTags() {
+  const talks = await db.talk.findMany({
+    select: {
+      tags: true,
+    },
+  });
+
+  const articles = await db.article.findMany({
+    select: {
+      tags: true,
+    },
+  });
+
+  const allTags = [...talks, ...articles].flatMap((item) => item.tags.split(','));
+
+  const tagCounts = allTags.reduce((acc, tag) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+  return Object.entries(tagCounts).map(([name, count]) => ({
+    name,
+    count,
+  }));
+}
+
