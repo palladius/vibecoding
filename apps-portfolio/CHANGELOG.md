@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.14.5 - 2025-11-18
+
+### 🐛 Bug Fixes
+
+*   fix(next/image): add sizes prop to Image components with fill. This resolves warnings and improves image optimization and performance.
+
 ## v0.14.4 - 2025-11-06
 
 ### 🚀 Features
