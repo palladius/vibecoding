@@ -16,6 +16,8 @@ run:
 install:
     npm install
 
+dev: run-dev
+
 run-dev:
     @echo "Running development server on port 3001..."
     DATABASE_URL="file:$(pwd)/db/portfolio.sqlite3" API_URL=http://localhost:3001 NEXT_PUBLIC_API_URL=http://localhost:3001 npm run dev -- -p 3001 2>&1 | tee log/dev.log
@@ -28,7 +30,7 @@ run-dev-p3002:
     @echo "DATABASE_URL:        $DATABASE_URL"
     DATABASE_URL="file:./db/portfolio.sqlite3" API_URL=http://localhost:3002 NEXT_PUBLIC_API_URL=http://localhost:3002 npm run dev -- -p 3002 2>&1 | tee log/dev.log
 
-# View the development log
+# View the development log, Note Gemini CANNOT read logs since they're git ignored
 log:
     cat log/dev.log
 
@@ -129,11 +131,14 @@ check-port-3001:
      sudo lsof -i :3001
      # kill them all: lsof -t -i:3001 | xargs kill -9
 
+gemini:
+    gemini-permissive
+
 # lets try this instead
 gemini-take-screenshots-via-playwright:
     @echo "Taking screenshots using Gemini CLI... Note that in headless mode I observe many 429s.."
     which gemini
-    gemini -y -d -p "Execute logic in docs/prompts/screenshots-prompt.md"
+    gemini -y -d -p "use the Playwright MCP tool to navigate through Chrome to Execute logic in docs/prompts/screenshots-prompt.md"
 
 # This doesnt work now, i need more ENVs.
 gemini-backgroundjob-check-latest-cloudbuild:
@@ -170,3 +175,7 @@ yolo-update-sample:
 
 gemini-invoke-sre-agent:
     gemini -e sre-apps-portfolio-agent -y -p "Check current Build status and logs and version matching."
+
+
+clean:
+    rm .playwright-mcp/*png

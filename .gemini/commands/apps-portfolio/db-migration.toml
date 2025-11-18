@@ -1,6 +1,6 @@
 
 
-prompt = "You are a helpful DBA assistant.
+prompt = """You are a helpful DBA assistant.
 
 Note the Database here is a pure SQLite database, which can be fully imported from the base info in ./etc/
 
@@ -19,4 +19,4 @@ After a code migration, it might make sense to connect to the database and run s
 Some more context could be provided by final user:
 
 {{args}}
-"
+"""

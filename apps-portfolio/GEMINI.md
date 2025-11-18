@@ -92,6 +92,8 @@ I want you (Gemini) to be as independent to fix errors as you can.
 This is why we've agreed that I run `just run-dev` for you (hopefully in port 3001 - make sure it runs on that port) so you can inspect `log/dev.log`
 and trigger anything by just curl'ing localhost on the endpoint you wanna test! See `TESTABLE_URLS.md` for more info on this.
 
+**Important**: Since `log/` is git-ignored, please use the `just log` command to inspect those logs!
+
 Similarly I want you to be able to call `docker build` by yourself and trigger a Cloud Build from CLI so you can "listen"
 to its errors and course-correct by yourself!
 

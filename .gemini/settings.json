@@ -1,24 +1,16 @@
 {
-  "mcpServers":{
-    //"steren-cloud-run": {
-    //  "command": "npx", "args": ["-y", "https://github.com/GoogleCloudPlatform/cloud-run-mcp"]
-    //},
+  "mcpServers": {
     "playwright": {
-        "command": "npx",
-        "args": ["@playwright/mcp@latest"]
-      },
-    "airbnb": {
       "command": "npx",
-      "args": [        "-y",        "@openbnb/mcp-server-airbnb",        "--ignore-robots-txt"]
+      "args": [ "@playwright/mcp@latest"]
     },
-    "riccardo-turbo-rails8-chat": {
-              "type": "streamablehttp",
-              "url": "https://rails8-turbo-chat-dev-272932496670.europe-west10.run.app/mcp/sse"
-    }
-    // "context7": {
-    //   "type": "http",
-    //   "url": "https://mcp.context7.com/mcp"
-    // }
-
+      "chrome-devtools": {
+        "command": "npx",
+        "args": ["chrome-devtools-mcp@latest"]
+      }
+  },
+  "telemetry": {
+    "enabled": false,
+    "target": "gcp"
   }
 }

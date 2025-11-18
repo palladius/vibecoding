@@ -61,41 +61,46 @@ about_me:
       emoji: 📰
       importance: low
 talks:
-  - title: "Ruby on Rails in the Cloud"
-    event: Rubycon
-    date: '2026-05-08'
-    location: Online
-    country_code: remote
-    status: confirmed
-    talk_description: "A talk about running Ruby on Rails applications in the cloud."
-    tags:
-      - Ruby
-      - Rails
-      - Cloud
-    video: https://www.youtube.com/watch?v=pk74HwwpOhA
-    event_url: https://rubycon.me
-    image: /images/events/rubycon.jpeg
+#   - title: "Ruby on Rails in the Cloud"
+#     event: Rubycon
+#     date: '2026-05-08'
+#     location: Online
+#     country_code: remote
+#     status: confirmed
+#     talk_description: "A talk about running Ruby on Rails applications in the cloud."
+#     tags:
+#       - Ruby
+#       - Rails
+#       - Cloud
+#     video: https://www.youtube.com/watch?v=pk74HwwpOhA
+#     event_url: https://rubycon.me
+#     image: /images/events/rubycon.jpeg
 
 
-  - title: "Agenti in Volo: Un'Analisi Approfondita sulla Creazione di un Agente di Viaggio in Tempo Reale ✈️"
+#  - title: "Agenti in Volo: Un'Analisi Approfondita sulla Creazione di un Agente di Viaggio in Tempo Reale ✈️"
+  - title: "Browser Infestati, AI Cinema: Dirigere la Tua Storia con Gemini CLI"
     event: Devfest Pescara 2025
     date: '2025-11-08'
     location: Pescara, Italy
     country_code: it
-    status: cfp_applied
-    talk_description: >
-      Nel 2025, un agente basato su LLM deve fare più che parlare. Deve agire. Questa presentazione è uno sguardo pratico alla costruzione di un agente di viaggio IA realmente utile, utilizzando un framework multi-agente.
-
-      Dimentica i concetti astratti: ci tufferemo direttamente nel codice di una demo live che interroga API reali per voli, hotel  e AirB&B. Vedremo come strutturare un sistema multi-agente per gestire compiti complessi e reali: validare budget, gestire le preferenze dell'utente e visualizzare i risultati. Imparerai come implementare un sistema avanzato e modulare che può essere distribuito su qualsiasi cloud e con qualsiasi LLM.
+    status: accepted
+    talk_description: |
+      In questa sessione, riveleremo Gemini CLI come due strumenti rivoluzionari in uno. Per prima cosa, mostreremo il "Browser Infestato": il sogno di ogni sviluppatore web. Vedremo come il Model Context Protocol (MCP) connette l'LLM a Playwright, automatizzando noiose attività web come cliccare pulsanti, effettuare il login e navigare siti, un vero "nuovo curl". Poi, per qualcosa di completamente diverso, sveleremo l'"AI Cinema": uno studio per creatori. Guarda come usiamo la CLI per dirigere e generare intere trame video multi-step da un singolo prompt. 🤖 Due potenti demo, un unico strumento, e mostreremo come entrambi possono essere automatizzati nel cloud con GitHub Actions.
     tags:
       - GenAI
       - DevFest
       - Italian
+      - Playwright
+      - AI
+      - Gemini CLI
+      - demo
     session_url: https://sessionize.com/app/speaker/session/991415
+    event_url: https://devfest.gdgpescara.it/
     sheetless_id: 9691
-    image: /images/events/gdg-pescara24.jpg
+    image: /images/events/devfest-pescara-2025.png
+    bug_id: 442546985
 
-  
+
   - title: Create a Rails8 responsive app with Gemini and RubyLLM
     event: Railshock at Renuo
     date: '2025-06-19'
@@ -150,8 +155,8 @@ talks:
       - Ruby
       - Rails
       - Zurich
-  
-  - title: 'Agents on a Plane: A Deep Dive into Building a Real-Time Travel Agent ✈️'
+
+  - title: '[WS] Rails + Gemini + MCP: Parla con il tuo DB, Crea Immagini Divertenti 🖼️'
     event: DevFest Modena 2025
     date: '2025-10-04'
     location: Modena, Italy
@@ -164,21 +169,41 @@ talks:
       - wow
       - MCP
     status: confirmed
-    session_url: https://sessionize.com/s/riccardo-carlesso/agenti-in-volo-unanalisi-approfondita-sulla-creazi/140909
+    session_url: https://sessionize.com/app/speaker/session/955848
+    bug_id: 443928105
     sheetless_id: 9746
-    talk_description: >
-      In 2025, an LLM agent needs to do more than just talk. It needs to do.
-      This presentation is a hands-on look at building a truly useful AI travel
-      agent with a multi-agent framework. Forget abstract concepts; we're diving
-      straight into the code of a live demo that queries real APIs for flights,
-      hotels 🏨, and AirB&Bs. We will cover how to structure a multi-agent
-      system to handle complex, real-world tasks: validating budgets, managing
-      user preferences, and visualizing results. You will learn how to implement
-      an advanced, modular system that can be deployed on any cloud with any
-      LLM. This is a technical L200-L300 session designed for developers who
-      want to see how to coordinate agents and tools to create a seamless,
-      end-to-end user experience.
-    image: /images/generated/DevFest-Modena-2025-2025-10-04.jpeg
+    talk_description: |
+      Hai mai desiderato creare il tuo gemini.google.com, ma con molta più personalità? ✨
+      In questo workshop, prenderai un'app Rails di esempio e le infonderai la magia di Gemini.
+
+      Inizieremo aggiungendo un "tocco di brio" generando immagini divertenti 🖼️.
+
+      Poi, costruiremo il cuore tecnico: il tuo server "Model Context Protocol" (MCP).
+
+      Questo MCP esporrà le tue entità ActiveRecord, permettendo al tuo editor locale (o a Gemini CLI) di interrogare il
+      tuo database usando nient'altro che il linguaggio naturale!
+    image: /images/events/devfest-modena-2025.png
+  - title: 'Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI'
+    event: DevFest Modena 2025
+    date: '2025-10-04'
+    location: Modena, Italy
+    country_code: it
+    event_url: https://devfest.modena.it/
+    tags:
+      - GenAI
+      - DevFest
+      - demo
+      - wow
+      - MCP
+    status: confirmed
+    session_url: https://sessionize.com/app/speaker/session/1032701
+    sheetless_id: 9746
+    bug_id: 443928875
+    talk_description: |
+      In this session, we'll reveal the Gemini CLI as two revolutionary tools in one. First, we'll demo the "Haunted Browser": a web developer's dream. See how the Model Context Protocol (MCP) connects the LLM to Playwright, automating tedious web tasks like clicking buttons, logging in, and navigating sites—a true "new age curl".
+      Then, for something completely different, we'll unveil the "AI Cinema": a creator's studio. Watch as we use the CLI to direct and generate entire, multi-step video storylines from a single prompt. 🤖
+      Two powerful demos, one tool, and we'll show how we can automate in the cloud with GitHub Actions.
+    image: /images/events/devfest-modena-2025.png
   - title: "Incident Management at Google"
     event: "Sharp 4 Dev"
     date: '2025-10-03'
@@ -199,6 +224,7 @@ talks:
     location: Milan, Italy
     country_code: it
     sheetless_id: 9677
+    bug_id: 423807471
     session_url: https://sessionize.com/s/riccardo-carlesso/beyond-blame-the-art-of-the-postmortem/142465
     event_url: https://conferences.codemotion.com/milan2025/
     status: confirmed
@@ -206,6 +232,7 @@ talks:
       - SRE
       - Postmortem
       - Culture
+      - highlight
     talk_description: >
       This session addresses the challenges of postmortems, aiming to shift from
       a culture of blame to one of genuine learning. Riccardo Carlesso, an
@@ -216,7 +243,7 @@ talks:
       The talk is for operators and leaders dedicated to building a culture of
       real resilience.
     image: /images/events/cloudconf25-riccardo-as-a-speaker.jpg
-  
+
   - title: '[workshop]Create a responsive Rails 8 app with Gemini [tentative]'
     event: Euruko 2025
     date: '2025-09-18'
@@ -295,7 +322,6 @@ talks:
       - AI
       - Gemini
       - workshop
-      - highlight
       - PHP
     image: /images/generated/We-are-Developers-2025-2025-07-10.jpeg
   - title: 'SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
@@ -337,7 +363,7 @@ talks:
       - Ruby
       - DevFest
     image: /images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
-  - title: News Crawler via Langchain.RB and Gemini APIs
+  - title: News Crawler via Langchain.RB and Ruby APIs
     event: GDG Devfest Modena
     date: '2024-10-12'
     location: Modena, Italy
@@ -349,6 +375,7 @@ talks:
       - GenAI
       - Gemini
       - Ruby
+      - DevFest
     image: /images/generated/GDG-Devfest-Modena-2024-10-12.jpeg
   - title: 'Keynote: Dove l''SRE può andare storto'
     event: DevSecOps day
@@ -482,6 +509,24 @@ talks:
       - highlight
       - CICD
     image: /images/generated/Cloud-Next-2024-04-11.jpeg
+  - title: "Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI"
+    event: "Cloud Day"
+    date: '2025-11-20'
+    location: "Milan, Italy"
+    country_code: "it"
+    status: confirmed
+    event_url: https://www.cloudday.it/
+    talk_description: |
+      Since it came out, Gemini CLI has revolutionised the Open Source AI world. 2 demos: The "Haunted Browser": a web developer's dream. See how MCP Playwright, automates tedious web tasks like clicking buttons, logging in, and navigating sites - a "curl v2". "AI Cinema": a creator's studio. Watch as we use the CLI to direct and generate entire, multi-step video storylines from a single prompt. 🤖 Two powerful demos, one tool, and we'll show how both can be automated in the cloud with GitHub Actions.
+    tags:
+      - Gemini CLI
+      - Playwright
+      - AI
+      - GitHub Actions
+    session_url: https://sessionize.com/app/speaker/session/1035962
+    bug_id: 445100645
+    sheetless_id: 9799
+    image: /images/events/cloud-day-2025.png
 articles:
   - title: Autotranslate my Hugo blog with Gemini
     url: >-

@@ -17,6 +17,19 @@ class TextGenerationHandler(BaseHandler):
             click.echo(f"Warning: Could not configure Generative AI for Native engine: {e}", err=True)
 
     def _generate_native(self):
+        output_spec = self.spec.get('output', {})
+        output_path = output_spec.get('path')
+
+        if not output_path:
+            click.echo(f"   - Error: Resource is missing spec.output.path.", err=True)
+            return
+
+        full_output_path = os.path.join(self.output_dir, output_path)
+
+        if os.path.exists(full_output_path):
+            click.echo(f"   - Skipping: File already exists at {full_output_path}")
+            return
+            
         message = "The 'Native' engine for TextGeneration is not implemented yet."
         click.echo(f"   - 🚧 Error: {message}", err=True)
         raise NotImplementedEngineError(message)

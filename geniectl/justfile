@@ -16,8 +16,22 @@ install:
 run:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
+
+    set -euo pipefail
+    . .env
+
     export GENIECTL_EVAL=false
-    bash -c "uv run geniectl apply -f etc/story-generation.yaml"
+    bash -c "uv run geniectl apply -f etc/story-generation.yaml  --output-dir out/story-generation/"
+
+run-story:
+    #!/bin/bash
+    export PATH=~/go/bin/:$PATH
+
+    set -euo pipefail
+    . .env
+
+    export GENIECTL_EVAL=false
+    bash -c "uv run geniectl apply -f story.yaml  --output-dir out/uk-demo01/"
 
 run-on-another-dir-and-eval:
     #!/bin/bash
@@ -26,12 +40,12 @@ run-on-another-dir-and-eval:
     bash -c "uv run geniectl apply -f etc/story-generation.yaml  --output-dir out2/"
 
 plan:
-    uv run geniectl apply -f etc/story-generation.yaml --plan
+    uv run geniectl apply -f etc/story-generation.yaml --plan --output-dir out/story-generation/
 
 eval:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
-    bash -c "uv run geniectl eval -f etc/story-generation.yaml"
+    bash -c "uv run geniectl eval -f etc/story-generation.yaml --output-dir out/story-generation/"
 eval2:
     #!/bin/bash
     export PATH=~/go/bin/:$PATH
@@ -74,24 +88,22 @@ auth:
     gcloud auth application-default login
     gcloud auth application-default print-access-token
 
-# --- GCP Setup ---
-# gcp-create-service-account:
-#     bin/gcp-setup.sh create-service-account
-
-# gcp-grant-iam-to-service-account:
-#     bin/gcp-setup.sh grant-iam-to-service-account
-
-# gcp-create-service-account-key:
-#     bin/gcp-setup.sh create-service-account-key
-
-# gcp-revoke-iam:
-#     bin/gcp-setup.sh revoke-iam
-
-# gcp-grant-iam:
-#     bin/gcp-setup.sh grant-iam
 
 plan2:
     uv run geniectl apply -f etc/02-video-idea.yaml --plan --verbose -d out/rubycon/
 
-gemini:
+gemini: gemini-geniectl
+
+gemini-geniectl:
+    #!/bin/bash
+    echo '🌱🪄🎦 Setting up GENIECTL for success...'
+    export PATH=~/go/bin/:$PATH
+    . .env
     gemini -c --approval-mode auto_edit
+
+test-json:
+    @echo This only works with gemini-cli v0.6.0 or later
+
+    gemini -v
+    gemini  --output-format json --yolo -p 'show me the PATH env, and tell me if ~/go/bin is in the PATH' | jq .
+

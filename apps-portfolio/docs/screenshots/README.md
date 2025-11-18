@@ -1,21 +1,23 @@
-# Application Screenshots
+# Screenshots
 
-Screenshots taken between 2025-07-11 10:55:00 and 2025-07-11 10:56:00.
+This document lists the screenshots taken of the portfolio application.
 
-## Localhost (http://localhost:3001)
+**Start Time:** Thu Oct 16 15:19:30 CEST 2025
+**End Time:** Thu Oct 16 15:20:17 CEST 2025
 
-### Pages
+## Dev Screenshots
 
-- [Homepage (Card View)](./homepage.png)
-- [About Me](./about.png)
-- [Talks (Card View)](./talks-card.png)
-- [Talks (List View)](./talks-list.png)
-- [Articles (Card View)](./articles-card.png)
-- [Articles (List View)](./articles-list.png)
-- [Next Talks (Card View)](./next-talks-card.png)
-- [Next Talks (Calendar View)](./next-talks-calendar.png)
-- [Config](./config.png)
+*   [homepage.png](dev/homepage.png)
+*   [about.png](dev/about.png)
+*   [talks-card.png](dev/talks-card.png)
+*   [talks-list.png](dev/talks-list.png)
+*   [articles-card.png](dev/articles-card.png)
+*   [articles-list.png](dev/articles-list.png)
+*   [next-talks.png](dev/next-talks.png)
+*   [config.png](dev/config.png)
+*   [sample-talk.png](dev/sample-talk.png)
+*   [sample-article.png](dev/sample-article.png)
 
-## Errors Spotted
+## Prod Screenshots
 
-No new errors were spotted during this screenshot process. All pages loaded successfully.
+*   [homepage.png](prod/homepage.png)

@@ -23,8 +23,7 @@ const statusEmojis: { [key: string]: string } = {
 const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximity }) => {
   const cardClasses = `max-w-sm rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white ${proximity ? 'col-span-2' : ''}`;
   return (
-    <Link href={`/talks/${talk.slug}`}>
-      <div className={cardClasses}>
+    <div className={cardClasses}>
         <div className="relative" style={{ paddingBottom: '75%' }}>
           <Image src={talk.image} alt={talk.title} fill style={{ objectFit: 'cover' }} />
           {proximity && (
@@ -34,7 +33,9 @@ const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximit
           )}
         </div>
         <div className="p-4">
-          <h3 className="text-lg font-bold mb-2">{talk.title}</h3>
+          <Link href={`/talks/${talk.slug}`}>
+            <h3 className="text-lg font-bold mb-2">{talk.title}</h3>
+          </Link>
           <p className="text-sm text-cyan-300 mb-2">{talk.event} {talk.sheetless_id ? '🛌' : '-'} {talk.date}</p>
           {talk.status && (
             <p className="text-sm text-gray-400 mb-2">
@@ -44,12 +45,13 @@ const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximit
           <div className="flex justify-between items-center">
             <div>
               {talk.tags.split(',').map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full px-2 py-1 text-xs font-semibold mr-2 mb-2"
-                >
-                  #{tag}
-                </span>
+                <Link key={tag} href={`/tags/${tag.toLowerCase().replace(/ /g, '_')}`}>
+                  <span
+                    className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full px-2 py-1 text-xs font-semibold mr-2 mb-2"
+                  >
+                    #{tag}
+                  </span>
+                </Link>
               ))}
             </div>
             <Image
@@ -62,7 +64,6 @@ const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximit
           </div>
         </div>
       </div>
-    </Link>
   );
 };
 

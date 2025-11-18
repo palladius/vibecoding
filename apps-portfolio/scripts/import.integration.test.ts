@@ -27,6 +27,12 @@ describe('just import', () => {
   it('should render the talks page', async () => {
     const { stdout } = await execAsync('curl http://localhost:3001/talks');
     expect(stdout).toContain('Next Talks');
-    expect(stdout).toContain('BEYOND BLAME: THE ART OF THE POSTMORTEM');
+    expect(stdout).toContain('Beyond Blame: The Art of the Postmortem');
+  });
+
+  it('should render the tags page with at least GenAI and Gemini', async () => {
+    const { stdout } = await execAsync('curl http://localhost:3001/tags');
+    expect(stdout).toContain('GenAI');
+    expect(stdout).toContain('Gemini');
   });
 });

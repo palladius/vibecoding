@@ -28,6 +28,7 @@ model Talk {
   talk_description    String?
   event_url           String?
   sheetless_id        Int?
+  bug_id              Int?
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 }

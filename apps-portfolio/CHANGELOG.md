@@ -1,5 +1,64 @@
 # Changelog
 
+## v0.14.5 - 2025-11-18
+
+### 🐛 Bug Fixes
+
+*   fix(next/image): add sizes prop to Image components with fill. This resolves warnings and improves image optimization and performance.
+
+## v0.14.4 - 2025-11-06
+
+### 🚀 Features
+
+*   ✨ Enhanced the tag cloud with a more dynamic and visually appealing design, featuring:
+    *   Logarithmic font scaling for a more dramatic size difference between tags.
+    *   Alphabetical sorting for a cleaner and more organized appearance.
+    *   Use of the four Google colors for a vibrant and on-brand look.
+    *   Removal of the '#' prefix and underscores from tag names for improved readability.
+
+### 🐛 Bug Fixes
+
+*   🐛 Merged tags with different casing (e.g., "cicd" and "CICD") to avoid duplicates.
+
+## v0.14.3 - 2025-11-06
+
+### 🚀 Features
+
+*   ✨ Implemented a tag cloud on the `/tags` page, where the font size of each tag is proportional to its count.
+*   ✨ Removed the tag count from the tag display for a cleaner look.
+
+### 🐛 Bug Fixes
+
+*   🐛 Fixed a bug where the `/tags` page was broken due to a missing `getAllTags` function.
+*   🐛 Removed a duplicate "Tags" link in the main navigation header.
+
+## v0.14.2 - 2025-11-05
+
+### 🚀 Features
+
+*   ✨ Implemented a "Semantic Tag Cloud" on the `/tags` page.
+*   ✨ Added a test to verify that the `/tags` page contains at least "GenAI" and "Gemini".
+
+### 🐛 Bug Fixes
+
+*   🔵 fix(data): Corrected the data for the DevFest Modena 2024 talk (title, date, and tags).
+*   🔵 fix(ui): Fixed hydration errors on the tag pages by removing nested `<a>` tags.
+*   🔵 fix(ui): Adjusted the vertical alignment on the tag pages to remove extra spacing.
+*   🔵 fix(tags): Implemented a fix to handle tags with spaces by converting spaces to underscores in the URL.
+*   🔵 fix(test): Corrected the assertion for the talk title in the integration test.
+
+## v0.14.1 - 2025-11-04
+
+### 🚀 Features
+
+*   ✨ Updated "Devfest Pescara 2025" talk with new title, abstract, tags, and image.
+
+## v0.14.0 - 2025-09-25
+
+### 🚀 Features
+
+*   ✨ Added `bug_id` to talks, with a link and emoji in the UI.
+
 ## v0.13.7 - 2025-08-13
 
 ### 🐛 Bug Fixes

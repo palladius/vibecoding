@@ -1,4 +1,5 @@
 
+import "@/lib/server-polyfills"; // Import server-side polyfills
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -36,7 +37,7 @@ export default function RootLayout({
   const version = fs.readFileSync(path.join(process.cwd(), "VERSION"), "utf8").trim();
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"));
   const appName = packageJson.name;
-  const repoUrl = packageJson.repository ? packageJson.repository.replace(/\.git$/, '') : '';
+  const repoUrl = packageJson.repository ? packageJson.repository.url.replace(/\.git$/, '') : '';
   const appProdUrl = "https://portfolio-app-272932496670.europe-west1.run.app/";
 
   return (
@@ -59,6 +60,9 @@ export default function RootLayout({
               </Link>
               <Link href="/next-talks" className="text-yellow-400 hover:text-yellow-300">
                 Next Talks
+              </Link>
+              <Link href="/tags" className="text-yellow-400 hover:text-yellow-300">
+                ☁️ Tags
               </Link>
             </div>
           </div>

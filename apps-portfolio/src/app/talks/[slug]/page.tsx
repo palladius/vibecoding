@@ -5,7 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const talk = await getTalk(params.slug);
+  const slug = params.slug;
+  const talk = await getTalk(slug);
+
   if (!talk) {
     return { title: 'Talk not found' };
   }
@@ -14,7 +16,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function TalkPage({ params }: { params: { slug: string } }) {
-  const talk = await getTalk(params.slug);
+  const slug = params.slug;
+  const talk = await getTalk(slug); // Use the awaited slug
 
   if (!talk) {
     notFound();
@@ -68,6 +71,7 @@ export default async function TalkPage({ params }: { params: { slug: string } })
             {talk.slides_url && <Link href={talk.slides_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📊 View Slides</Link>}
             {talk.video_url && <Link href={talk.video_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">📹 Watch Video</Link>}
             {talk.sheetless_id && <Link href={`https://sheetless-das.googleplex.com/event/view?id=${talk.sheetless_id}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🛌 Sheetless Link</Link>}
+            {talk.bug_id && <Link href={`https://b/${talk.bug_id}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">🐛 Bug</Link>}
           </div>
 
           {tags && tags.length > 0 && (
@@ -75,7 +79,9 @@ export default async function TalkPage({ params }: { params: { slug: string } })
               <h3 className="text-lg font-semibold mb-2">Tags</h3>
               <div className="flex flex-wrap gap-2">
                 {tags.map(tag => (
-                  <span key={tag} className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">#{tag}</span>
+                  <Link key={tag} href={`/tags/${tag.toLowerCase()}`}>
+                    <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm hover:bg-gray-600">#{tag}</span>
+                  </Link>
                 ))}
               </div>
             </div>

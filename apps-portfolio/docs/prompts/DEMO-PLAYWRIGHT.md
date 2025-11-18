@@ -2,9 +2,6 @@ Use playwright tool to take screenshots of the portfolio application. The applic
 
 
 
-
-
-
 ## Test 1.
 
 Navigate to the /next-talks endpoint. Any event happening TODAY with today in a yellow button?

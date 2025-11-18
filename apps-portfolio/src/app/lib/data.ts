@@ -125,3 +125,77 @@ export async function getHighlightedArticles() {
         slug: `${formatDate(new Date(article.publish_date))}-${slugify(article.title)}`
     }));
 }
+
+// Server-side function
+export async function getTalksAndArticlesByTag(tag: string) {
+  try {
+    const talks = await db.talk.findMany({
+      where: {
+        tags: {
+          contains: tag,
+        },
+      },
+      orderBy: {
+        date: 'desc',
+      },
+    });
+
+    const articles = await db.article.findMany({
+      where: {
+        tags: {
+          contains: tag,
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    return {
+      talks: talks.map((talk) => ({
+        ...talk,
+        slug: `${formatDate(talk.date)}-${slugify(talk.title)}`,
+      })),
+      articles: articles.map((article) => ({
+        ...article,
+        slug: `${formatDate(new Date(article.publish_date))}-${slugify(article.title)}`,
+        type: 'article',
+      })),
+    };
+  } catch (error) {
+    console.error('Error fetching talks and articles by tag:', error);
+    return { talks: [], articles: [] };
+  }
+}
+
+// Server-side function
+export async function getAllTags() {
+  try {
+    const talks = await db.talk.findMany();
+    const articles = await db.article.findMany();
+
+    const allTags = [...talks, ...articles].flatMap(item => item.tags ? item.tags.split(',').map(tag => tag.trim()) : []);
+
+    const tagCounts: Record<string, { count: number; originalName: string }> = {};
+
+    allTags.forEach(tag => {
+      const lowerCaseTag = tag.toLowerCase();
+      if (tagCounts[lowerCaseTag]) {
+        tagCounts[lowerCaseTag].count++;
+      } else {
+        tagCounts[lowerCaseTag] = {
+          count: 1,
+          originalName: tag,
+        };
+      }
+    });
+
+    return Object.entries(tagCounts).map(([, { count, originalName }]) => ({
+      name: originalName,
+      count,
+    })).sort((a, b) => b.count - a.count);
+  } catch (error) {
+    console.error('Error fetching all tags:', error);
+    return [];
+  }
+}

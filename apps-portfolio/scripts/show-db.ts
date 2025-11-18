@@ -10,9 +10,9 @@ async function showDbContent() {
   if (talks.length === 0) {
     console.log('  (No talks found)');
   } else {
-    talks.forEach((talk) => {
-      console.log(`  ${talk.date} - ${talk.title}`);
-    });
+  talks.forEach(talk => {
+    console.log(`  ${talk.date} - ${talk.title} (Bug ID: ${talk.bug_id || 'N/A'})`);
+  });
   }
 
   console.log('\n✨ Articles:');
