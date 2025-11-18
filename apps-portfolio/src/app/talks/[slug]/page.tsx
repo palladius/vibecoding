@@ -4,8 +4,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const slug = params.slug;
+export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
   const talk = await getTalk(slug);
 
   if (!talk) {
@@ -15,8 +14,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return { title: `${emoji}${talk.title}` };
 }
 
-export default async function TalkPage({ params }: { params: { slug: string } }) {
-  const slug = params.slug;
+export default async function TalkPage({ params: { slug } }: { params: { slug: string } }) {
   const talk = await getTalk(slug); // Use the awaited slug
 
   if (!talk) {
@@ -94,6 +92,7 @@ export default async function TalkPage({ params }: { params: { slug: string } })
                 src={talk.image}
                 alt={talk.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover rounded-lg border-2 border-gray-700 opacity-90 shadow-lg"
               />
             </div>

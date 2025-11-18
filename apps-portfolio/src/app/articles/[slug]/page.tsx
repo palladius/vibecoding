@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = await getArticle(params.slug);
+export default async function ArticlePage({ params: { slug } }: { params: { slug: string } }) {
+  const article = await getArticle(slug);
 
   if (!article) {
     notFound();
@@ -53,6 +53,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 src={article.image}
                 alt={article.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover rounded-lg border-2 border-gray-700 opacity-90 shadow-lg"
               />
             </div>
