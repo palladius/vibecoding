@@ -4,7 +4,9 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const awaitedParams = await params;
+  const slug = awaitedParams.slug;
   const talk = await getTalk(slug);
 
   if (!talk) {
@@ -14,7 +16,9 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
   return { title: `${emoji}${talk.title}` };
 }
 
-export default async function TalkPage({ params: { slug } }: { params: { slug: string } }) {
+export default async function TalkPage({ params }: { params: { slug:string } }) {
+  const awaitedParams = await params;
+  const slug = awaitedParams.slug;
   const talk = await getTalk(slug); // Use the awaited slug
 
   if (!talk) {

@@ -4,7 +4,9 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function ArticlePage({ params: { slug } }: { params: { slug: string } }) {
+export default async function ArticlePage({ params }: { params: { slug: string } }) {
+  const awaitedParams = await params;
+  const slug = awaitedParams.slug;
   const article = await getArticle(slug);
 
   if (!article) {
