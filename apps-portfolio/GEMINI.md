@@ -176,5 +176,6 @@ I've noticed you make a lot of mistakes on the dates. Let's clarify this.
 ## Custom commands
 
 * to commit, use '/ricc:commit_and_push' command.
-* To interact with github, use the '/github:issue' command.
+* To interact with github, use the '/github:issue' command. You can also create issues with `gh` (remember to use a tmp file for the body, or we inevitable run into bash quoting issues.)
 * To check for failed builds, use '/apps-portfolio:check-failed-builds'
+
