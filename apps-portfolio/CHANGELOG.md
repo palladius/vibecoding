@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.14.6 - 2025-11-27
+
+### 🐛 Bug Fixes
+
+*   fix(prisma): use `DATABASE_URL` env var in `schema.prisma` to fix production 404s. This ensures the correct database path is used in both local and Docker environments.
+
 ## v0.14.5 - 2025-11-18
 
 ### 🐛 Bug Fixes
