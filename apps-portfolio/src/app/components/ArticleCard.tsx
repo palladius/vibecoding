@@ -23,7 +23,7 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white">
         <div className="relative" style={{ paddingBottom: '75%' }}>
           {article.image ? (
-            <Image src={article.image || '/images/placeholder-image.png'} alt={article.title} fill style={{ objectFit: 'cover' }} />
+            <Image src={article.image || '/images/placeholder-image.png'} alt={article.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
           ) : article.video_url ? (
             <iframe
               src={article.video_url.replace("watch?v=", "embed/")}
@@ -33,7 +33,7 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
               className="absolute top-0 left-0 w-full h-full"
             ></iframe>
           ) : (
-            <Image src={'/images/placeholder-image.png'} alt="Placeholder" fill style={{ objectFit: 'cover' }} />
+            <Image src={'/images/placeholder-image.png'} alt="Placeholder" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
           )}
         </div>
         <div className="p-4">

@@ -25,7 +25,7 @@ const TalkCard: React.FC<{ talk: Talk, proximity?: string }> = ({ talk, proximit
   return (
     <div className={cardClasses}>
         <div className="relative" style={{ paddingBottom: '75%' }}>
-          <Image src={talk.image} alt={talk.title} fill style={{ objectFit: 'cover' }} />
+          <Image src={talk.image} alt={talk.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
           {proximity && (
             <div className="absolute top-0 left-0 bg-yellow-400 text-black text-2xl font-bold p-2">
               {proximity}

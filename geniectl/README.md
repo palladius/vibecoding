@@ -1,7 +1,9 @@
 # Genie-CTL (`geniectl`)
 
 PyPI: https://pypi.org/project/geniectl/
-Github:
+Github: TODO
+
+![Logo image](.grid-image.png)
 
 Genie-CTL is a command-line tool that uses Kubernetes-like YAML manifests to declaratively define, generate, and manage complex multimedia assets. It orchestrates calls to various generative APIs, handles dependencies between assets, and ensures that generation is idempotent.
 
