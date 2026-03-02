@@ -689,14 +689,19 @@ articles:
     image: >-
       /images/generated/Vodafone--A-DevOps-approach-to-AI-ML-through-cloud-native-CI-CD-pipelines.jpeg
     resource_type: article
-  - title: Reimagining customer services with GenAI and multi-modal interaction
+  - title: "Reimagining Customer Services with GenAI and Multi-Modal Interaction (George UX)"
     url: https://www.youtube.com/watch?v=WRNncVe5yJQ
     publish_date: "2023-01-01"
+    description: >
+      Riccardo Carlesso presents at George UX conference on how GenAI and
+      multi-modal interaction can reimagine customer services. Covers real-world
+      use cases with Google Cloud AI.
     tags:
       - GenAI
       - UX
-    image_old: >-
-      /images/generated/Reimagining-customer-services-with-GenAI-and-multi-modal-interaction.jpeg
+      - highlight
+      - video
+      - GUX
     image: /images/events/georgeux-conf.png
     resource_type: video
   - title: The Art of SLOs
