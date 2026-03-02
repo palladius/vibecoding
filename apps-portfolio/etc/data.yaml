@@ -406,11 +406,14 @@ talks:
     location: Bologna, Italy
     country_code: it
     session_url: https://www.devsecopsday.it/talks_speakers/
+    event_url: https://www.devsecopsday.it/
+    video: https://www.youtube.com/watch?v=OmrghN6Y9CQ
     status: delivered
     tags:
       - SRE
       - Keynote
       - Culture
+      - video
     image: /images/generated/DevSecOps-day-2024-10-11.jpeg
   - title: SRE Jumpstart
     event: GDG Budapest
