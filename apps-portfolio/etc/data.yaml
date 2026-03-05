@@ -61,6 +61,26 @@ about_me:
       emoji: 📰
       importance: low
 talks:
+  - title: "Welcome to Rubycon Italy 2026 (Opening Keynote)"
+    event: Rubycon Italy 2026
+    date: "2026-05-08"
+    location: Rimini, Italy
+    country_code: it
+    status: confirmed
+    event_url: https://rubycon.it/
+    talk_description: >
+      Riccardo opens Rubycon Italy 2026 in Rimini with a welcoming keynote. 
+      Serving as the Master of Ceremonies, he sets the stage for Italy's 
+      premier Ruby conference, highlighting the importance of community 
+      innovation and the vibrant future of the Ruby ecosystem.
+    tags:
+      - Ruby
+      - Keynote
+      - Rimini
+      - Italy
+      - MC
+    image: /images/events/rubycon.jpeg
+
   - title: "Startup Culture at Google (Italiano)"
     event: Indie SaaS Day Modena 2026
     date: "2026-02-28"
@@ -560,6 +580,22 @@ talks:
     sheetless_id: 9799
     image: /images/events/cloud-day-2025.png
 articles:
+  - title: "Welcome to Rubycon Italy 2026 (Opening Keynote)"
+    url: https://rubycon.it/schedule/
+    publish_date: "2026-05-08"
+    description: >
+      The opening keynote for Rubycon Italy 2026 in Rimini. Riccardo Carlesso, 
+      serving as the Master of Ceremonies, welcomes the Ruby community and 
+      kicks off the conference with an inspiring message about innovation 
+      and collaboration.
+    tags:
+      - Ruby
+      - Keynote
+      - Rimini
+      - MC
+    image: /images/events/rubycon.jpeg
+    resource_type: video
+
   - title: "How Google SREs Use Gemini CLI to Solve Real-World Outages"
     url: https://cloud.google.com/blog/topics/developers-practitioners/how-google-sres-use-gemini-cli-to-solve-real-world-outages
     publish_date: "2026-03-02"

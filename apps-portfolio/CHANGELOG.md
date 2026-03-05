@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.14.8 - 2026-03-05
+
+### 🚀 Features
+
+*   🔵 data: add Riccardo's Opening Keynote at Rubycon Italy 2026 (Rimini, May 8th).
+
 ## v0.14.7 - 2026-03-05
 
 ### 🚀 Features
