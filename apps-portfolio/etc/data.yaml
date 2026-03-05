@@ -68,6 +68,9 @@ talks:
     country_code: it
     status: delivered
     event_url: https://indiesaashub.com/it/eventi/indie-saas-day-modena/
+    sheetless_id: 9946
+    bug_id: 489735314
+    session_url: https://sheetless-das.googleplex.com/event/view?id=9946
     event_description: >
       A hands-on day for founders, solopreneurs and micro-teams building a SaaS
       or digital product. Organized by Davide Muzzarelli. Morning training,
@@ -75,9 +78,12 @@ talks:
       companies. Venue: Laboratorio Aperto di Modena (ex Centrale AEM),
       Viale Buon Pastore 43, Modena.
     talk_description: >
-      Riccardo talks about Google's startup culture from 1998 to today. A lot
-      has changed, but some things remain: a passion for innovation, trust in
-      people, and the courage to experiment.
+      In questa sessione, Riccardo esplora l'evoluzione della cultura delle
+      startup in Google, dalle sue radici nel 1998 fino ai giorni nostri.
+      Scopriremo cosa è cambiato e quali valori fondamentali sono rimasti
+      immutati: la passione per l'innovazione, la fiducia nelle persone e
+      l'audacia di sperimentare. Un'occasione per riflettere su come scalare
+      una cultura senza perdere lo spirito imprenditoriale delle origini.
     tags:
       - Culture
       - Italian
@@ -575,10 +581,11 @@ articles:
     url: https://speakerdeck.com/palladius/startup-culture-at-google-italiano
     publish_date: "2026-02-28"
     description: >
-      A slide deck presented at Indie SaaS Day Modena 2026. Riccardo talks about
-      Google's startup culture from 1998 to today — what changed and what
-      endured: a passion for innovation, trust in people, and the courage to
-      experiment.
+      In questa sessione, Riccardo esplora l'evoluzione della cultura delle
+      startup in Google, dalle sue radici nel 1998 fino ai giorni nostri.
+      Scopriremo cosa è cambiato e quali valori fondamentali sono rimasti
+      immutati: la passione per l'innovazione, la fiducia nelle persone e
+      l'audacia di sperimentare.
     tags:
       - Culture
       - Google
