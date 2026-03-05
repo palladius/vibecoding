@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.14.9 - 2026-03-05
+
+### 🚀 Features
+
+*   🔵 data: add missing image for "Startup Culture at Google (Italiano)" talk at Indie SaaS Day Modena 2026.
+
 ## v0.14.8 - 2026-03-05
 
 ### 🚀 Features
