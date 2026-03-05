@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.14.7 - 2026-03-05
+
+### 🚀 Features
+
+*   🔵 data: enrich "Indie SaaS Day Modena 2026" talk with Buganizer (489735314), Sheetless ID (9946), and a refined English abstract.
+*   🔵 data: update the corresponding slides resource with the same abstract.
+
 ## v0.14.6 - 2025-11-27
 
 ### 🐛 Bug Fixes
