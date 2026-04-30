@@ -68,7 +68,6 @@ talks:
     country_code: it
     status: submitted
     event_url: https://sessionize.com/codemotion-milan-26
-    talk_url: https://sessionize.com/app/speaker/session/1222188
     talk_description: 'Let’s be honest: debugging production at scale is manual labor.
       🫠 At Google, we decided making SREs act like human search engines was a bug,
       not a feature. Enter the Agentic SRE Extension—a skill-based framework that
@@ -90,6 +89,7 @@ talks:
       - Milan
       - Italy
     image: /images/events/codemotion.png
+    session_url: https://sessionize.com/app/speaker/session/1222188
   - title: Welcome to Rubycon Italy 2026 (Opening Keynote)
     event: Rubycon Italy 2026
     date: '2026-05-08'
@@ -628,33 +628,6 @@ talks:
     bug_id: 445100645
     sheetless_id: 9799
     image: /images/events/cloud-day-2025.png
-  - title: 'Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀'
-    event: Codemotion Milan 2026
-    date: '2026-10-28'
-    location: Milan, Italy
-    country_code: it
-    status: proposed
-    event_url: https://sessionize.com/codemotion-milan-26
-    talk_description: 'Let’s be honest: debugging production at scale is soul-crushing
-      manual labor. At Google, we decided making thousands of SREs act like human
-      search engines in 2026 was a bug, not a feature. Enter the Agentic SRE Extension—a
-      skill-based framework that lives in your terminal and actually knows its way
-      around Kubernetes. In this high-energy deep dive, I’m showing you exactly how
-      we use modular skills and MCP to chain diagnostic tools, analyze metric regressions,
-      and execute safe mitigations without the "deleted production" anxiety. We’ll
-      dissect the "Outage Investigator" agent''s logic loop, see it draft a technical
-      postmortem in seconds, and discuss why we built this as a portable framework
-      whose skills can be easily leveraged by any modern AI harness. You’ll leave
-      with the code to wire up your own Kubernetes stack and let the agent''s skills
-      do the heavy lifting while you drink espresso.
-
-      '
-    tags:
-      - SRE
-      - AI
-      - Kubernetes
-      - MCP
-      - Operations
 articles:
   - title: Welcome to Rubycon Italy 2026 (Opening Keynote)
     url: https://rubycon.it/schedule/
