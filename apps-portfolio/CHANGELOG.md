@@ -3,6 +3,10 @@
 ## v0.14.9 - 2026-03-05
 
 ### 🚀 Features
+## [0.12.3] - 2026-04-30
+
+*   🔵 [apps-portfolio] feat: Add Codemotion Milan 2026 (Agentic SRE) to talks.
+
 
 *   🔵 data: add missing image for "Startup Culture at Google (Italiano)" talk at Indie SaaS Day Modena 2026.
 

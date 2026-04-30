@@ -12,3 +12,7 @@ Apps created with vibecoding, one folder each.
 - `research`: Research-related files.
 - `ruby-serper-mcp-server`: A Ruby server for Serper MCP.
 - `vibecheck`: An application to check system health and perform maintenance.
+## Architecture Diagram
+
+![Architecture Diagram](architecture_diagram.png)
+
