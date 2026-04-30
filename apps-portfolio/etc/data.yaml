@@ -1,21 +1,21 @@
-schema_version: "1.2"
+schema_version: '1.2'
 about_me:
-  bio: >
-    Former network administrator, sysadmin, and Ruby on Rails developer,
-    Riccardo has been in operations for 20+ years and still likes to spend time
-    coding (better if Ruby). He loves engaging with customers and help them run
-    their operations reliably and successfully in the cloud. Riccardo loves
-    caipirinhas and 🍷 Amarone, playing 🎹 piano and 🏊🏻🚴🏿🏃‍♀️ triathlons;
-    he's been passionate about Mathematics since he was 4.
+  bio: 'Former network administrator, sysadmin, and Ruby on Rails developer, Riccardo
+    has been in operations for 20+ years and still likes to spend time coding (better
+    if Ruby). He loves engaging with customers and help them run their operations
+    reliably and successfully in the cloud. Riccardo loves caipirinhas and 🍷 Amarone,
+    playing 🎹 piano and 🏊🏻🚴🏿🏃‍♀️ triathlons; he''s been passionate about Mathematics
+    since he was 4.
 
-    Riccardo Carlesso is a Developer Advocate at Google Cloud, where he helps
-    developers build amazing applications. He is a passionate software engineer
-    with a love for Ruby, Bash, and all things cloud. When he's not coding, you
-    can find him speaking at conferences, writing articles, or watching Sacha
-    Baron Cohen movies.
+    Riccardo Carlesso is a Developer Advocate at Google Cloud, where he helps developers
+    build amazing applications. He is a passionate software engineer with a love for
+    Ruby, Bash, and all things cloud. When he''s not coding, you can find him speaking
+    at conferences, writing articles, or watching Sacha Baron Cohen movies.
 
-    Note: this is a public facing version of my pvt go/ricc-conferences where I
-    hold state (like Manager/Wife approval).
+    Note: this is a public facing version of my pvt go/ricc-conferences where I hold
+    state (like Manager/Wife approval).
+
+    '
   links:
     - url: https://twitter.com/palladius
       title: Twitter
@@ -61,18 +61,48 @@ about_me:
       emoji: 📰
       importance: low
 talks:
-  - title: "Welcome to Rubycon Italy 2026 (Opening Keynote)"
+  - title: 'Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀'
+    event: Codemotion Milan 2026
+    date: '2026-10-20'
+    location: Milan, Italy
+    country_code: it
+    status: submitted
+    event_url: https://sessionize.com/codemotion-milan-26
+    talk_url: https://sessionize.com/app/speaker/session/1222188
+    talk_description: 'Let’s be honest: debugging production at scale is manual labor.
+      🫠 At Google, we decided making SREs act like human search engines was a bug,
+      not a feature. Enter the Agentic SRE Extension—a skill-based framework that
+      lives in your terminal and knows its way around Kubernetes. 🚀 In this deep dive,
+      I’ll show you how we use modular skills and MCP to chain diagnostic tools, analyze
+      metric regressions, and execute safe mitigations without "deleted production"
+      anxiety. 🔥 We’ll dissect the "Outage Investigator" agent''s logic loop, see
+      it draft a technical postmortem in seconds, and discuss why we built this as
+      a portable framework whose skills can be leveraged by any modern AI harness.
+      You’ll leave with the code to wire up your own Kubernetes stack and let the
+      agent''s skills do the heavy lifting while you drink espresso. ☕️ No fluff,
+      no 101s. Just AI agents, specialized skills, and less toil.'
+    tags:
+      - SRE
+      - AI
+      - Gemini
+      - Kubernetes
+      - Agentic
+      - Milan
+      - Italy
+    image: /images/events/codemotion.png
+  - title: Welcome to Rubycon Italy 2026 (Opening Keynote)
     event: Rubycon Italy 2026
-    date: "2026-05-08"
+    date: '2026-05-08'
     location: Rimini, Italy
     country_code: it
     status: confirmed
     event_url: https://rubycon.it/
-    talk_description: >
-      Riccardo opens Rubycon Italy 2026 in Rimini with a welcoming keynote. 
-      Serving as the Master of Ceremonies, he sets the stage for Italy's 
-      premier Ruby conference, highlighting the importance of community 
-      innovation and the vibrant future of the Ruby ecosystem.
+    talk_description: 'Riccardo opens Rubycon Italy 2026 in Rimini with a welcoming
+      keynote.  Serving as the Master of Ceremonies, he sets the stage for Italy''s  premier
+      Ruby conference, highlighting the importance of community  innovation and the
+      vibrant future of the Ruby ecosystem.
+
+      '
     tags:
       - Ruby
       - Keynote
@@ -80,10 +110,9 @@ talks:
       - Italy
       - MC
     image: /images/events/rubycon.jpeg
-
-  - title: "Startup Culture at Google (Italiano)"
+  - title: Startup Culture at Google (Italiano)
     event: Indie SaaS Day Modena 2026
-    date: "2026-02-28"
+    date: '2026-02-28'
     location: Laboratorio Aperto di Modena, Modena, Italy
     country_code: it
     status: delivered
@@ -91,19 +120,21 @@ talks:
     sheetless_id: 9946
     bug_id: 489735314
     session_url: https://sheetless-das.googleplex.com/event/view?id=9946
-    event_description: >
-      A hands-on day for founders, solopreneurs and micro-teams building a SaaS
-      or digital product. Organized by Davide Muzzarelli. Morning training,
-      afternoon practice: best practices, sales pitch creation and matching with
-      companies. Venue: Laboratorio Aperto di Modena (ex Centrale AEM),
-      Viale Buon Pastore 43, Modena.
-    talk_description: >
-      In this session, Riccardo explores the evolution of Google's startup
-      culture, from its roots in 1998 to the present day. We will discover what
-      has changed and which core values have remained constant: a passion for
-      innovation, trust in people, and the courage to experiment. It is an
-      opportunity to reflect on how to scale a culture without losing the
-      entrepreneurial spirit of its origins.
+    event_description: 'A hands-on day for founders, solopreneurs and micro-teams
+      building a SaaS or digital product. Organized by Davide Muzzarelli. Morning
+      training, afternoon practice: best practices, sales pitch creation and matching
+      with companies. Venue: Laboratorio Aperto di Modena (ex Centrale AEM), Viale
+      Buon Pastore 43, Modena.
+
+      '
+    talk_description: 'In this session, Riccardo explores the evolution of Google''s
+      startup culture, from its roots in 1998 to the present day. We will discover
+      what has changed and which core values have remained constant: a passion for
+      innovation, trust in people, and the courage to experiment. It is an opportunity
+      to reflect on how to scale a culture without losing the entrepreneurial spirit
+      of its origins.
+
+      '
     tags:
       - Culture
       - Italian
@@ -112,31 +143,23 @@ talks:
       - SaaS
     slides_url: https://speakerdeck.com/palladius/startup-culture-at-google-italiano
     image: /images/generated/startup-culture-at-google-italiano.jpeg
-
-  #   - title: "Ruby on Rails in the Cloud"
-  #     event: Rubycon
-  #     date: '2026-05-08'
-  #     location: Online
-  #     country_code: remote
-  #     status: confirmed
-  #     talk_description: "A talk about running Ruby on Rails applications in the cloud."
-  #     tags:
-  #       - Ruby
-  #       - Rails
-  #       - Cloud
-  #     video: https://www.youtube.com/watch?v=pk74HwwpOhA
-  #     event_url: https://rubycon.me
-  #     image: /images/events/rubycon.jpeg
-
-  #  - title: "Agenti in Volo: Un'Analisi Approfondita sulla Creazione di un Agente di Viaggio in Tempo Reale ✈️"
-  - title: "Browser Infestati, AI Cinema: Dirigere la Tua Storia con Gemini CLI"
+  - title: 'Browser Infestati, AI Cinema: Dirigere la Tua Storia con Gemini CLI'
     event: Devfest Pescara 2025
-    date: "2025-11-08"
+    date: '2025-11-08'
     location: Pescara, Italy
     country_code: it
     status: accepted
-    talk_description: |
-      In questa sessione, riveleremo Gemini CLI come due strumenti rivoluzionari in uno. Per prima cosa, mostreremo il "Browser Infestato": il sogno di ogni sviluppatore web. Vedremo come il Model Context Protocol (MCP) connette l'LLM a Playwright, automatizzando noiose attività web come cliccare pulsanti, effettuare il login e navigare siti, un vero "nuovo curl". Poi, per qualcosa di completamente diverso, sveleremo l'"AI Cinema": uno studio per creatori. Guarda come usiamo la CLI per dirigere e generare intere trame video multi-step da un singolo prompt. 🤖 Due potenti demo, un unico strumento, e mostreremo come entrambi possono essere automatizzati nel cloud con GitHub Actions.
+    talk_description: 'In questa sessione, riveleremo Gemini CLI come due strumenti
+      rivoluzionari in uno. Per prima cosa, mostreremo il "Browser Infestato": il
+      sogno di ogni sviluppatore web. Vedremo come il Model Context Protocol (MCP)
+      connette l''LLM a Playwright, automatizzando noiose attività web come cliccare
+      pulsanti, effettuare il login e navigare siti, un vero "nuovo curl". Poi, per
+      qualcosa di completamente diverso, sveleremo l''"AI Cinema": uno studio per
+      creatori. Guarda come usiamo la CLI per dirigere e generare intere trame video
+      multi-step da un singolo prompt. 🤖 Due potenti demo, un unico strumento, e mostreremo
+      come entrambi possono essere automatizzati nel cloud con GitHub Actions.
+
+      '
     tags:
       - GenAI
       - DevFest
@@ -150,41 +173,42 @@ talks:
     sheetless_id: 9691
     image: /images/events/devfest-pescara-2025.png
     bug_id: 442546985
-
   - title: Create a Rails8 responsive app with Gemini and RubyLLM
     event: Railshock at Renuo
-    date: "2025-06-19"
+    date: '2025-06-19'
     location: Wallisellen, ZH
     country_code: ch
     status: delivered
-    talk_description: >
-      The creation of a responsive chat application using Ruby on Rails 8, the
-      `ruby_llm` gem, and the Model Context Protocol (MCP).
+    talk_description: 'The creation of a responsive chat application using Ruby on
+      Rails 8, the `ruby_llm` gem, and the Model Context Protocol (MCP).
+
+      '
     tags:
       - Ruby
       - Rails
       - Gemini
       - RubyLLM
       - MCP
-    slides_url: >-
-      https://speakerdeck.com/palladius/print2-create-a-rails8-responsive-app-with-gemini-and-rubyllm
+    slides_url: https://speakerdeck.com/palladius/print2-create-a-rails8-responsive-app-with-gemini-and-rubyllm
     video: https://www.youtube.com/watch?v=BOI5CB1ksCQ
     image: /images/events/railshock2025.webp
-  - title: "Gemini CLI: Your New Best Friend for local development"
+  - title: 'Gemini CLI: Your New Best Friend for local development'
     event: We are Developers 2025
-    date: "2025-07-11"
+    date: '2025-07-11'
     location: Berlin, Germany
     country_code: de
     status: confirmed
     session_url: https://www.wearedevelopers.com/world-congress/workshops#sz-tab-45848
     event_url: https://www.wearedevelopers.com/world-congress
-    talk_description: >
-      A deep dive into the Gemini CLI, showcasing how it can revolutionize your
-      software engineering workflow with powerful AI assistance.
-    event_description: >
-      WAD is the biggest dev event in Europe, with over 10,000
-      attendees and 200+ speakers. Riccardo will lead a workshop on how to use
-      AI to improve DevOps practices.
+    talk_description: 'A deep dive into the Gemini CLI, showcasing how it can revolutionize
+      your software engineering workflow with powerful AI assistance.
+
+      '
+    event_description: 'WAD is the biggest dev event in Europe, with over 10,000 attendees
+      and 200+ speakers. Riccardo will lead a workshop on how to use AI to improve
+      DevOps practices.
+
+      '
     tags:
       - Gemini
       - CLI
@@ -193,7 +217,7 @@ talks:
     image: /images/me/we-are-developers-2025.png
   - title: Railshöck at Renuo
     event: Railshöck at Renuo
-    date: "2025-06-18"
+    date: '2025-06-18'
     location: Wallisellen, ZH
     video: https://www.youtube.com/watch?v=BOI5CB1ksCQ
     country_code: ch
@@ -205,10 +229,10 @@ talks:
       - Ruby
       - Rails
       - Zurich
-
-  - title: "[WS] Rails + Gemini + MCP: Parla con il tuo DB, Crea Immagini Divertenti 🖼️"
+  - title: '[WS] Rails + Gemini + MCP: Parla con il tuo DB, Crea Immagini Divertenti
+      🖼️'
     event: DevFest Modena 2025
-    date: "2025-10-04"
+    date: '2025-10-04'
     location: Modena, Italy
     country_code: it
     event_url: https://devfest.modena.it/
@@ -222,20 +246,29 @@ talks:
     session_url: https://sessionize.com/app/speaker/session/955848
     bug_id: 443928105
     sheetless_id: 9746
-    talk_description: |
-      Hai mai desiderato creare il tuo gemini.google.com, ma con molta più personalità? ✨
-      In questo workshop, prenderai un'app Rails di esempio e le infonderai la magia di Gemini.
+    talk_description: 'Hai mai desiderato creare il tuo gemini.google.com, ma con
+      molta più personalità? ✨
+
+      In questo workshop, prenderai un''app Rails di esempio e le infonderai la magia
+      di Gemini.
+
 
       Inizieremo aggiungendo un "tocco di brio" generando immagini divertenti 🖼️.
 
+
       Poi, costruiremo il cuore tecnico: il tuo server "Model Context Protocol" (MCP).
 
-      Questo MCP esporrà le tue entità ActiveRecord, permettendo al tuo editor locale (o a Gemini CLI) di interrogare il
-      tuo database usando nient'altro che il linguaggio naturale!
+
+      Questo MCP esporrà le tue entità ActiveRecord, permettendo al tuo editor locale
+      (o a Gemini CLI) di interrogare il
+
+      tuo database usando nient''altro che il linguaggio naturale!
+
+      '
     image: /images/events/devfest-modena-2025.png
-  - title: "Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI"
+  - title: 'Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI'
     event: DevFest Modena 2025
-    date: "2025-10-04"
+    date: '2025-10-04'
     location: Modena, Italy
     country_code: it
     event_url: https://devfest.modena.it/
@@ -249,18 +282,28 @@ talks:
     session_url: https://sessionize.com/app/speaker/session/1032701
     sheetless_id: 9746
     bug_id: 443928875
-    talk_description: |
-      In this session, we'll reveal the Gemini CLI as two revolutionary tools in one. First, we'll demo the "Haunted Browser": a web developer's dream. See how the Model Context Protocol (MCP) connects the LLM to Playwright, automating tedious web tasks like clicking buttons, logging in, and navigating sites—a true "new age curl".
-      Then, for something completely different, we'll unveil the "AI Cinema": a creator's studio. Watch as we use the CLI to direct and generate entire, multi-step video storylines from a single prompt. 🤖
-      Two powerful demos, one tool, and we'll show how we can automate in the cloud with GitHub Actions.
+    talk_description: 'In this session, we''ll reveal the Gemini CLI as two revolutionary
+      tools in one. First, we''ll demo the "Haunted Browser": a web developer''s dream.
+      See how the Model Context Protocol (MCP) connects the LLM to Playwright, automating
+      tedious web tasks like clicking buttons, logging in, and navigating sites—a
+      true "new age curl".
+
+      Then, for something completely different, we''ll unveil the "AI Cinema": a creator''s
+      studio. Watch as we use the CLI to direct and generate entire, multi-step video
+      storylines from a single prompt. 🤖
+
+      Two powerful demos, one tool, and we''ll show how we can automate in the cloud
+      with GitHub Actions.
+
+      '
     image: /images/events/devfest-modena-2025.png
-  - title: "Incident Management at Google"
-    event: "Sharp 4 Dev"
-    date: "2025-10-03"
-    location: "Microsoft Via Avignone 10, Roma"
+  - title: Incident Management at Google
+    event: Sharp 4 Dev
+    date: '2025-10-03'
+    location: Microsoft Via Avignone 10, Roma
     country_code: it
     status: confirmed
-    talk_description: "Incident Management at Google"
+    talk_description: Incident Management at Google
     tags:
       - SRE
       - Incident Management
@@ -268,9 +311,9 @@ talks:
     event_url: https://sharp4dev.sharpcoding.it/
     session_url: https://sessionize.com/sharp4Dev2025/
     image: /images/events/sharp4dev-2025.png
-  - title: "Beyond Blame: The Art of the Postmortem"
+  - title: 'Beyond Blame: The Art of the Postmortem'
     event: Codemotion Milan 2025
-    date: "2025-10-14"
+    date: '2025-10-14'
     location: Milan, Italy
     country_code: it
     sheetless_id: 9677
@@ -283,20 +326,19 @@ talks:
       - Postmortem
       - Culture
       - highlight
-    talk_description: >
-      This session addresses the challenges of postmortems, aiming to shift from
-      a culture of blame to one of genuine learning. Riccardo Carlesso, an
-      Italian SRE expert at Google, will dissect the anatomy of an effective
-      postmortem, sharing real-world stories and insights. Attendees will learn
-      when a postmortem is essential, how to adapt Google's foundational
-      techniques, and how to transform failures into powerful business insights.
-      The talk is for operators and leaders dedicated to building a culture of
-      real resilience.
-    image: /images/events/cloudconf25-riccardo-as-a-speaker.jpg
+    talk_description: 'This session addresses the challenges of postmortems, aiming
+      to shift from a culture of blame to one of genuine learning. Riccardo Carlesso,
+      an Italian SRE expert at Google, will dissect the anatomy of an effective postmortem,
+      sharing real-world stories and insights. Attendees will learn when a postmortem
+      is essential, how to adapt Google''s foundational techniques, and how to transform
+      failures into powerful business insights. The talk is for operators and leaders
+      dedicated to building a culture of real resilience.
 
-  - title: "[workshop]Create a responsive Rails 8 app with Gemini [tentative]"
+      '
+    image: /images/events/cloudconf25-riccardo-as-a-speaker.jpg
+  - title: '[workshop]Create a responsive Rails 8 app with Gemini [tentative]'
     event: Euruko 2025
-    date: "2025-09-18"
+    date: '2025-09-18'
     location: Viana do Castelo, Portugal
     country_code: pt
     session_url: https://2025.euruko.org/speakers/riccardo_carlesso
@@ -306,9 +348,8 @@ talks:
       - Ruby
       - Rails
       - workshop
-    talk_description: >
-      In this workshop, we will create a Rails 8 app from scratch, using the
-      latest
+    talk_description: 'In this workshop, we will create a Rails 8 app from scratch,
+      using the latest
 
       features of Ruby on Rails. We will cover topics such as:
 
@@ -323,49 +364,49 @@ talks:
       - Using Google Cloud Logging to log the app
 
       - Using Google Cloud Storage to store files
+
+      '
     image: /images/generated/Euruko-2025-2025-09-18.jpeg
-  - title: "From Monolith 🗿 to Magic ✨: An AI-Powered DevOps Workshop"
+  - title: 'From Monolith 🗿 to Magic ✨: An AI-Powered DevOps Workshop'
     event: We are Developers 2025
-    date: "2025-07-10"
+    date: '2025-07-10'
     location: Berlin, Germany
     country_code: de
-    session_url: >-
-      https://www.wearedevelopers.com/world-congress/agenda-overview?_gl=1%2a18o7uk4%2a_up%2aMQ..%2a_gs%2aMQ..&gclid=CjwKCAjw9anCBhAWEiwAqBJ-cwOlrjXaoNq5uIjxOKitDJ6olzgF4dPBqzAOwMfxulLxQLPG_QHGVxoCWaYQAvD_BwE&gbraid=0AAAAADEgEv_NMlk7LrLlKXLsAtS8tqeml#
+    session_url: https://www.wearedevelopers.com/world-congress/agenda-overview?_gl=1%2a18o7uk4%2a_up%2aMQ..%2a_gs%2aMQ..&gclid=CjwKCAjw9anCBhAWEiwAqBJ-cwOlrjXaoNq5uIjxOKitDJ6olzgF4dPBqzAOwMfxulLxQLPG_QHGVxoCWaYQAvD_BwE&gbraid=0AAAAADEgEv_NMlk7LrLlKXLsAtS8tqeml#
     event_url: https://www.wearedevelopers.com/world-congress
-    #session_url: 'https://www.wearedevelopers.com/world-congress/workshops#sz-tab-45848'
     status: confirmed
-    event_description: >
-      WAD is the biggest dev event in Europe, with over 10,000
+    event_description: 'WAD is the biggest dev event in Europe, with over 10,000
 
-      attendees and 200+ speakers. Riccardo will lead a workshop on how to use
-      AI
+      attendees and 200+ speakers. Riccardo will lead a workshop on how to use AI
 
       to improve DevOps practices.
-    talk_description: >
-      Tired of the slow, manual grind of modernizing applications? What if you
-      could containerize 📦, deploy 🚀, refactor, and add powerful new AI
-      features with seamless automation? In this hands-on workshop, we'll do
-      exactly that.
+
+      '
+    talk_description: 'Tired of the slow, manual grind of modernizing applications?
+      What if you could containerize 📦, deploy 🚀, refactor, and add powerful new AI
+      features with seamless automation? In this hands-on workshop, we''ll do exactly
+      that.
 
 
-      For all the DevOps gurus, we'll roll up our sleeves and tame the beast 🗿.
-      You'll get hands-on experience containerizing a legacy app with Docker,
-      deploying it to the serverless bliss of Google Cloud Run, and building a
-      rock-solid, fully automated CI/CD pipeline. We'll even use Gemini to help
-      us refactor and clean up our code, because who doesn't love AI-powered
-      code reviews? 🔧
+      For all the DevOps gurus, we''ll roll up our sleeves and tame the beast 🗿. You''ll
+      get hands-on experience containerizing a legacy app with Docker, deploying it
+      to the serverless bliss of Google Cloud Run, and building a rock-solid, fully
+      automated CI/CD pipeline. We''ll even use Gemini to help us refactor and clean
+      up our code, because who doesn''t love AI-powered code reviews? 🔧
 
 
-      And for the AI adventurers, prepare for the WOW moment! We'll unleash the
-      power of Generative AI by building an event-driven function that uses the
-      Gemini Vision model to automatically analyze images the moment they're
-      uploaded. The secret sauce? A "magic" 🪄 Cloud Run file mount that makes
-      our AI integration seamless, powerful, and ridiculously cool. 🤖✨
+      And for the AI adventurers, prepare for the WOW moment! We''ll unleash the power
+      of Generative AI by building an event-driven function that uses the Gemini Vision
+      model to automatically analyze images the moment they''re uploaded. The secret
+      sauce? A "magic" 🪄 Cloud Run file mount that makes our AI integration seamless,
+      powerful, and ridiculously cool. 🤖✨
 
 
-      This isn't just a talk; it's a hands-on lab where you'll leave with a
-      deployed, AI-enhanced application and the skills to automate and innovate
-      in your own work. Let's build something awesome together!
+      This isn''t just a talk; it''s a hands-on lab where you''ll leave with a deployed,
+      AI-enhanced application and the skills to automate and innovate in your own
+      work. Let''s build something awesome together!
+
+      '
     tags:
       - CICD
       - CloudRun
@@ -374,9 +415,9 @@ talks:
       - workshop
       - PHP
     image: /images/generated/We-are-Developers-2025-2025-07-10.jpeg
-  - title: "SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)"
+  - title: 'SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
     event: CloudConf
-    date: "2025-03-26"
+    date: '2025-03-26'
     location: Turin, Italy
     country_code: it
     session_url: https://2025.cloudconf.it/en/schedule.html
@@ -386,9 +427,9 @@ talks:
       - SRE
       - CloudConf
     image: /images/events/cloudconf2025-new-2.png
-  - title: "Keynote: SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)"
+  - title: 'Keynote: SRE Gone Wrong: Top 7 Errors (and How to Avoid Them)'
     event: SRE Day
-    date: "2024-11-21"
+    date: '2024-11-21'
     location: Amsterdam, Netherlands
     country_code: nl
     session_url: https://sreday.com/2024-amsterdam/#modal-speaker-0
@@ -401,7 +442,7 @@ talks:
     image: /images/generated/SRE-Day-2024-11-21.jpeg
   - title: News Crawler via Langchain.RB and Gemini APIs
     event: GDG Devfest Pescara
-    date: "2024-11-08"
+    date: '2024-11-08'
     location: Pescara, Italy
     country_code: it
     session_url: https://sessionize.com/app/speaker/session/739236
@@ -415,7 +456,7 @@ talks:
     image: /images/generated/GDG-Devfest-Pescara-2024-11-08.jpeg
   - title: News Crawler via Langchain.RB and Ruby APIs
     event: GDG Devfest Modena
-    date: "2024-10-12"
+    date: '2024-10-12'
     location: Modena, Italy
     country_code: it
     session_url: https://sessionize.com/app/speaker/session/745608
@@ -427,9 +468,9 @@ talks:
       - Ruby
       - DevFest
     image: /images/generated/GDG-Devfest-Modena-2024-10-12.jpeg
-  - title: "Keynote: Dove l'SRE può andare storto"
+  - title: 'Keynote: Dove l''SRE può andare storto'
     event: DevSecOps day
-    date: "2024-10-11"
+    date: '2024-10-11'
     location: Bologna, Italy
     country_code: it
     session_url: https://www.devsecopsday.it/talks_speakers/
@@ -444,7 +485,7 @@ talks:
     image: /images/generated/DevSecOps-day-2024-10-11.jpeg
   - title: SRE Jumpstart
     event: GDG Budapest
-    date: "2024-09-17"
+    date: '2024-09-17'
     location: Budapest, Hungary (remote)
     country_code: hu
     status: delivered
@@ -454,9 +495,9 @@ talks:
       - GDG
     image: /images/events/gdg-budapest-24.png
     video: https://www.youtube.com/watch?v=i96qBPyn2dw
-  - title: "Workshop: Bring your Ruby app in the Cloud"
+  - title: 'Workshop: Bring your Ruby app in the Cloud'
     event: Euruko 2024
-    date: "2024-09-11"
+    date: '2024-09-11'
     location: Sarajevo, Bosnia and Herzegovina
     country_code: ba
     session_url: https://2024.euruko.org/speakers/riccardo_carlesso
@@ -469,7 +510,7 @@ talks:
     image: /images/generated/Euruko-2024-2024-09-11.jpeg
   - title: News Crawler via Langchain.RB and Gemini APIs
     event: Railshöck at Puzzle
-    date: "2024-08-21"
+    date: '2024-08-21'
     location: Zurich, Switzerland
     country_code: ch
     status: delivered
@@ -481,7 +522,7 @@ talks:
     image: /images/events/railshock2024.png
   - title: News Crawler via Langchain.RB and Gemini APIs
     event: RubyDay
-    date: "2024-05-31"
+    date: '2024-05-31'
     location: Verona, Italy
     country_code: it
     session_url: https://2024.rubyday.it/talks_speakers/
@@ -493,7 +534,7 @@ talks:
     image: /images/generated/RubyDay-2024-05-31.jpeg
   - title: Software development with Google
     event: CloudConf
-    date: "2024-05-29"
+    date: '2024-05-29'
     location: Turin, Italy
     country_code: it
     session_url: https://2024.cloudconf.it/index.html
@@ -504,73 +545,80 @@ talks:
     image: /images/generated/CloudConf-2024-05-29.jpeg
   - title: How to fail your SRE adoption (for Enterprises) | DOD Warsaw 2023
     event: DevOpsDays Warsaw 2023
-    date: "2023-12-31"
+    date: '2023-12-31'
     location: Warsaw, Poland
     country_code: pl
     session_url: https://www.youtube.com/watch?v=iSOSsnV1tJ0
     event_url: https://2023.devopsdays.pl/
-    event_description: >
-      What is DevOpsDays Warsaw?
+    event_description: 'What is DevOpsDays Warsaw?
 
 
-      DevOpsDays is more than just a conference—it’s a global movement bringing
-      together DevOps enthusiasts, developers, IT operations, management, CTOs,
-      CEOs, sysadmins, and even sales & marketing teams. It’s where software
-      development meets IT infrastructure, and where innovation, automation,
-      security, and culture collide.
+      DevOpsDays is more than just a conference—it’s a global movement bringing together
+      DevOps enthusiasts, developers, IT operations, management, CTOs, CEOs, sysadmins,
+      and even sales & marketing teams. It’s where software development meets IT infrastructure,
+      and where innovation, automation, security, and culture collide.
 
 
-      The first-ever Polish edition took place over a decade ago, drawing in
-      experts from all over Europe. Now, we’re back with an even bigger and
-      better edition—ready to inspire, educate, and connect.
-    talk_description: >
-      I’ve been talking to customers re their SRE adoption since 2019.
-      Oftentimes, they struggled in their effort to apply the Google methodology
-      within their company. In this talk Riccardo will first set an introduction
-      to SRE, then try to explain what failures patterns he's observed (partly
-      contained in Enterprise Roadmap to SRE report)
+      The first-ever Polish edition took place over a decade ago, drawing in experts
+      from all over Europe. Now, we’re back with an even bigger and better edition—ready
+      to inspire, educate, and connect.
 
-      Topics: - What SRE is. - What SRE is not. - Anti-patterns in SRE adoption
-      - How to make it work for your company
+      '
+    talk_description: 'I’ve been talking to customers re their SRE adoption since
+      2019. Oftentimes, they struggled in their effort to apply the Google methodology
+      within their company. In this talk Riccardo will first set an introduction to
+      SRE, then try to explain what failures patterns he''s observed (partly contained
+      in Enterprise Roadmap to SRE report)
+
+      Topics: - What SRE is. - What SRE is not. - Anti-patterns in SRE adoption -
+      How to make it work for your company
 
       DevOpsDays Warsaw: https://devopsdays.pl/
+
+      '
     status: delivered
     tags:
       - SRE
       - Culture
     image: /images/generated/DevOpsDays-Warsaw-2023-2023-12-31.jpeg
-  - title: "Goodbye, deployment headaches: Cloud Deploy and Vertex AI unite"
+  - title: 'Goodbye, deployment headaches: Cloud Deploy and Vertex AI unite'
     event: Cloud Next
-    date: "2024-04-11"
+    date: '2024-04-11'
     location: Las Vegas, NV, USA
     country_code: us
     session_url: https://cloud.withgoogle.com/next?session=DEV302
     video: https://www.youtube.com/watch?v=_NlGk9Ao_oA
     slides_url: https://assets.swoogo.com/uploads/3794522-661c3c8fe0cf9.pdf
     status: delivered
-    talk_description: >-
-      Continuous Deployment can be a roadblock in the MLOps lifecycle, often
-      requiring custom pipelines and complex configurations. Solution? The new
-      integrations of Google Cloud Deploy and Vertex AI revolutionizes machine
-      learning (ML) deployment by automating the entire process, and makes it
-      easy to roll back through idempotent releases. The groundbreaking
-      integration of Cloud Deploy and Vertex AI lets you test, validate, and
-      deploy your ML models in minutes, without writing a single line of code.
+    talk_description: Continuous Deployment can be a roadblock in the MLOps lifecycle,
+      often requiring custom pipelines and complex configurations. Solution? The new
+      integrations of Google Cloud Deploy and Vertex AI revolutionizes machine learning
+      (ML) deployment by automating the entire process, and makes it easy to roll
+      back through idempotent releases. The groundbreaking integration of Cloud Deploy
+      and Vertex AI lets you test, validate, and deploy your ML models in minutes,
+      without writing a single line of code.
     tags:
       - CloudDeploy
       - MLOps
       - highlight
       - CICD
     image: /images/generated/Cloud-Next-2024-04-11.jpeg
-  - title: "Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI"
-    event: "Cloud Day"
-    date: "2025-11-20"
-    location: "Milan, Italy"
-    country_code: "it"
+  - title: 'Haunted Browsers, AI Cinema: Directing Your Story with Gemini CLI'
+    event: Cloud Day
+    date: '2025-11-20'
+    location: Milan, Italy
+    country_code: it
     status: confirmed
     event_url: https://www.cloudday.it/
-    talk_description: |
-      Since it came out, Gemini CLI has revolutionised the Open Source AI world. 2 demos: The "Haunted Browser": a web developer's dream. See how MCP Playwright, automates tedious web tasks like clicking buttons, logging in, and navigating sites - a "curl v2". "AI Cinema": a creator's studio. Watch as we use the CLI to direct and generate entire, multi-step video storylines from a single prompt. 🤖 Two powerful demos, one tool, and we'll show how both can be automated in the cloud with GitHub Actions.
+    talk_description: 'Since it came out, Gemini CLI has revolutionised the Open Source
+      AI world. 2 demos: The "Haunted Browser": a web developer''s dream. See how
+      MCP Playwright, automates tedious web tasks like clicking buttons, logging in,
+      and navigating sites - a "curl v2". "AI Cinema": a creator''s studio. Watch
+      as we use the CLI to direct and generate entire, multi-step video storylines
+      from a single prompt. 🤖 Two powerful demos, one tool, and we''ll show how both
+      can be automated in the cloud with GitHub Actions.
+
+      '
     tags:
       - Gemini CLI
       - Playwright
@@ -580,31 +628,42 @@ talks:
     bug_id: 445100645
     sheetless_id: 9799
     image: /images/events/cloud-day-2025.png
-  - title: "Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀"
+  - title: 'Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀'
     event: Codemotion Milan 2026
-    date: "2026-10-28"
+    date: '2026-10-28'
     location: Milan, Italy
     country_code: it
     status: proposed
     event_url: https://sessionize.com/codemotion-milan-26
-    talk_description: >
-      Let’s be honest: debugging production at scale is soul-crushing manual labor. At Google, we decided making thousands of SREs act like human search engines in 2026 was a bug, not a feature. Enter the Agentic SRE Extension—a skill-based framework that lives in your terminal and actually knows its way around Kubernetes. In this high-energy deep dive, I’m showing you exactly how we use modular skills and MCP to chain diagnostic tools, analyze metric regressions, and execute safe mitigations without the "deleted production" anxiety. We’ll dissect the "Outage Investigator" agent's logic loop, see it draft a technical postmortem in seconds, and discuss why we built this as a portable framework whose skills can be easily leveraged by any modern AI harness. You’ll leave with the code to wire up your own Kubernetes stack and let the agent's skills do the heavy lifting while you drink espresso.
+    talk_description: 'Let’s be honest: debugging production at scale is soul-crushing
+      manual labor. At Google, we decided making thousands of SREs act like human
+      search engines in 2026 was a bug, not a feature. Enter the Agentic SRE Extension—a
+      skill-based framework that lives in your terminal and actually knows its way
+      around Kubernetes. In this high-energy deep dive, I’m showing you exactly how
+      we use modular skills and MCP to chain diagnostic tools, analyze metric regressions,
+      and execute safe mitigations without the "deleted production" anxiety. We’ll
+      dissect the "Outage Investigator" agent''s logic loop, see it draft a technical
+      postmortem in seconds, and discuss why we built this as a portable framework
+      whose skills can be easily leveraged by any modern AI harness. You’ll leave
+      with the code to wire up your own Kubernetes stack and let the agent''s skills
+      do the heavy lifting while you drink espresso.
+
+      '
     tags:
       - SRE
       - AI
       - Kubernetes
       - MCP
       - Operations
-
 articles:
-  - title: "Welcome to Rubycon Italy 2026 (Opening Keynote)"
+  - title: Welcome to Rubycon Italy 2026 (Opening Keynote)
     url: https://rubycon.it/schedule/
-    publish_date: "2026-05-08"
-    description: >
-      The opening keynote for Rubycon Italy 2026 in Rimini. Riccardo Carlesso, 
-      serving as the Master of Ceremonies, welcomes the Ruby community and 
-      kicks off the conference with an inspiring message about innovation 
-      and collaboration.
+    publish_date: '2026-05-08'
+    description: 'The opening keynote for Rubycon Italy 2026 in Rimini. Riccardo Carlesso,  serving
+      as the Master of Ceremonies, welcomes the Ruby community and  kicks off the
+      conference with an inspiring message about innovation  and collaboration.
+
+      '
     tags:
       - Ruby
       - Keynote
@@ -612,15 +671,15 @@ articles:
       - MC
     image: /images/events/rubycon.jpeg
     resource_type: video
-
-  - title: "How Google SREs Use Gemini CLI to Solve Real-World Outages"
+  - title: How Google SREs Use Gemini CLI to Solve Real-World Outages
     url: https://cloud.google.com/blog/topics/developers-practitioners/how-google-sres-use-gemini-cli-to-solve-real-world-outages
-    publish_date: "2026-03-02"
-    description: >
-      See how Google SREs use Gemini CLI and Gemini 3 to automate incident
-      response, from paging to postmortem. Co-authored by Riccardo Carlesso
-      and Ramón Medrano Llamas. Covers how AI helps eliminate toil and reduce
-      Bad Customer Minutes safely without removing operator control.
+    publish_date: '2026-03-02'
+    description: 'See how Google SREs use Gemini CLI and Gemini 3 to automate incident
+      response, from paging to postmortem. Co-authored by Riccardo Carlesso and Ramón
+      Medrano Llamas. Covers how AI helps eliminate toil and reduce Bad Customer Minutes
+      safely without removing operator control.
+
+      '
     tags:
       - SRE
       - Gemini CLI
@@ -629,15 +688,15 @@ articles:
       - highlight
     image: /images/generated/how-google-sres-use-gemini-cli.jpeg
     resource_type: article
-
-  - title: "Startup Culture at Google (Indie SaaS Day Modena 2026)"
+  - title: Startup Culture at Google (Indie SaaS Day Modena 2026)
     url: https://speakerdeck.com/palladius/startup-culture-at-google-italiano
-    publish_date: "2026-02-28"
-    description: >
-      In this session, Riccardo explores the evolution of Google's startup
-      culture, from its roots in 1998 to the present day. We will discover what
-      has changed and which core values have remained constant: a passion for
-      innovation, trust in people, and the courage to experiment.
+    publish_date: '2026-02-28'
+    description: 'In this session, Riccardo explores the evolution of Google''s startup
+      culture, from its roots in 1998 to the present day. We will discover what has
+      changed and which core values have remained constant: a passion for innovation,
+      trust in people, and the courage to experiment.
+
+      '
     tags:
       - Culture
       - Google
@@ -647,9 +706,8 @@ articles:
     image: /images/generated/startup-culture-at-google-italiano.jpeg
     resource_type: slides
   - title: Autotranslate my Hugo blog with Gemini
-    url: >-
-      https://ricc.rocks/en/posts/medium/2024-11-11-geminocks-translating-my-hugo-site/
-    publish_date: "2024-02-05"
+    url: https://ricc.rocks/en/posts/medium/2024-11-11-geminocks-translating-my-hugo-site/
+    publish_date: '2024-02-05'
     tags:
       - GenAI
       - Hugo
@@ -657,7 +715,7 @@ articles:
     resource_type: article
   - title: A deep dive in Cloud Run for Rails
     url: https://ricc.rocks/en/posts/medium/2024-10-19-level-up-rails/
-    publish_date: "2024-01-23"
+    publish_date: '2024-01-23'
     video: https://www.youtube.com/watch?v=vpPftSHE9kM
     tags:
       - CloudRun
@@ -668,59 +726,49 @@ articles:
     image: /images/generated/A-deep-dive-in-Cloud-Run-for-Rails.jpeg
     resource_type: article
   - title: Hey Gemini, explain me these pictures - in bash
-    url: >-
-      https://blog.devops.dev/hey-gemini-explain-me-these-pictures-in-bash-06c03d0d0512
-    publish_date: "2023-12-29"
+    url: https://blog.devops.dev/hey-gemini-explain-me-these-pictures-in-bash-06c03d0d0512
+    publish_date: '2023-12-29'
     tags:
       - GenAI
       - Bash
     image: /images/generated/Hey-Gemini--explain-me-these-pictures---in-bash.jpeg
     resource_type: article
   - title: Hey Bard, write a responsive Javascript Search Engine app for me..
-    url: >-
-      https://medium.com/@palladiusbonton/hey-bard-write-a-responsive-javascript-search-engine-app-for-me-b2585e55385e
-    publish_date: "2023-11-20"
+    url: https://medium.com/@palladiusbonton/hey-bard-write-a-responsive-javascript-search-engine-app-for-me-b2585e55385e
+    publish_date: '2023-11-20'
     tags:
       - GenAI
       - Javascript
-    image: >-
-      /images/generated/Hey-Bard,-write-a-responsive-Javascript-Search-Engine-app-for-me...jpeg
+    image: /images/generated/Hey-Bard,-write-a-responsive-Javascript-Search-Engine-app-for-me...jpeg
     resource_type: article
   - title: Automated insights on Medium articles with GenAI and Ruby!
-    url: >-
-      https://blog.devops.dev/parse-medium-articles-with-genai-and-add-some-fun-02fe9d30475a
-    publish_date: "2023-11-16"
+    url: https://blog.devops.dev/parse-medium-articles-with-genai-and-add-some-fun-02fe9d30475a
+    publish_date: '2023-11-16'
     tags:
       - GenAI
       - Medium
       - Ruby
-    image: >-
-      /images/generated/Automated-insights-on-Medium-articles-with-GenAI-and-Ruby-.jpeg
+    image: /images/generated/Automated-insights-on-Medium-articles-with-GenAI-and-Ruby-.jpeg
     resource_type: article
   - title: My Mac’s battery🔋 on Google Cloud Monitoring — send SMS if low 🪫
-    url: >-
-      https://medium.com/google-cloud/my-macs-battery-on-google-cloud-monitoring-with-sms-if-its-low-a1ccd70485fe?source=rss-b5293b96912f------2
-    publish_date: "2022-01-01"
+    url: https://medium.com/google-cloud/my-macs-battery-on-google-cloud-monitoring-with-sms-if-its-low-a1ccd70485fe?source=rss-b5293b96912f------2
+    publish_date: '2022-01-01'
     tags:
       - GCP
       - Monitoring
-    image: >-
-      /images/generated/My-Mac-s-battery---on-Google-Cloud-Monitoring---send-SMS-if-low---.jpeg
+    image: /images/generated/My-Mac-s-battery---on-Google-Cloud-Monitoring---send-SMS-if-low---.jpeg
     resource_type: article
   - title: Migrate ☁️ GCP projects across organizations, the gcloud way
-    url: >-
-      https://medium.com/google-cloud/how-to-migrate-projects-across-organizations-c7e254ab90af?source=rss-b5293b96912f------2
-    publish_date: "2023-04-18"
+    url: https://medium.com/google-cloud/how-to-migrate-projects-across-organizations-c7e254ab90af?source=rss-b5293b96912f------2
+    publish_date: '2023-04-18'
     tags:
       - GCP
       - gcloud
-    image: >-
-      /images/generated/Migrate----GCP-projects-across-organizations--the-gcloud-way.jpeg
+    image: /images/generated/Migrate----GCP-projects-across-organizations--the-gcloud-way.jpeg
     resource_type: article
   - title: 🐤 Canary Deployment on GCP with Cloud Deploy
-    url: >-
-      https://medium.com/google-cloud/draft-canarying-on-gcp-with-cloud-deploy-91b3e4d0ee9a
-    publish_date: "2022-02-13"
+    url: https://medium.com/google-cloud/draft-canarying-on-gcp-with-cloud-deploy-91b3e4d0ee9a
+    publish_date: '2022-02-13'
     tags:
       - cicd
       - cloud_deploy
@@ -729,32 +777,31 @@ articles:
     image: /images/generated/---Canary-Deployment-on-GCP-with-Cloud-Deploy.jpeg
     resource_type: article
   - title: Setting a ★ Cloud Build trigger with Pulumi in Python
-    url: >-
-      https://medium.com/google-cloud/setting-cloudbuild-with-pulumi-in-python-330e8b54b2cf
-    publish_date: "2022-01-01"
+    url: https://medium.com/google-cloud/setting-cloudbuild-with-pulumi-in-python-330e8b54b2cf
+    publish_date: '2022-01-01'
     tags:
       - GCP
       - Pulumi
       - Python
     image: /images/articles/setting-cloudbuild-with-pulumi-in-python.png
     resource_type: article
-  - title: "Vodafone: A DevOps approach to AI/ML through cloud-native CI/CD pipelines"
-    url: >-
-      https://cloud.google.com/blog/products/devops-sre/how-vodafone-uses-cicd-to-speed-up-ml-pipelines
-    publish_date: "2022-01-01"
+  - title: 'Vodafone: A DevOps approach to AI/ML through cloud-native CI/CD pipelines'
+    url: https://cloud.google.com/blog/products/devops-sre/how-vodafone-uses-cicd-to-speed-up-ml-pipelines
+    publish_date: '2022-01-01'
     tags:
       - MLOps
       - Vodafone
-    image: >-
-      /images/generated/Vodafone--A-DevOps-approach-to-AI-ML-through-cloud-native-CI-CD-pipelines.jpeg
+    image: /images/generated/Vodafone--A-DevOps-approach-to-AI-ML-through-cloud-native-CI-CD-pipelines.jpeg
     resource_type: article
-  - title: "Reimagining Customer Services with GenAI and Multi-Modal Interaction (George UX)"
+  - title: Reimagining Customer Services with GenAI and Multi-Modal Interaction (George
+      UX)
     url: https://www.youtube.com/watch?v=WRNncVe5yJQ
-    publish_date: "2023-01-01"
-    description: >
-      Riccardo Carlesso presents at George UX conference on how GenAI and
-      multi-modal interaction can reimagine customer services. Covers real-world
+    publish_date: '2023-01-01'
+    description: 'Riccardo Carlesso presents at George UX conference on how GenAI
+      and multi-modal interaction can reimagine customer services. Covers real-world
       use cases with Google Cloud AI.
+
+      '
     tags:
       - GenAI
       - UX
@@ -765,16 +812,17 @@ articles:
     resource_type: video
   - title: The Art of SLOs
     url: https://www.youtube.com/watch?v=E3ReKuJ8ewA
-    publish_date: "2021-01-01"
+    publish_date: '2021-01-01'
     tags:
       - SRE
       - SLOs
       - highlight
     image: /images/generated/The-Art-of-SLOs.jpeg
     resource_type: video
-    description: >
-      Want to learn the Art of SLOs and get access to a free workshop? In this
-      episode, Google Cloud Developer Advocate Riccardo Carlesso shares the Art
-      of SLOs (Service Level Objectives) so you can ensure Reliability is a key
-      feature of your service. Watch to learn about SLOs, SLIs, and choosing
-      the right reliability target metrics for your application!
+    description: 'Want to learn the Art of SLOs and get access to a free workshop?
+      In this episode, Google Cloud Developer Advocate Riccardo Carlesso shares the
+      Art of SLOs (Service Level Objectives) so you can ensure Reliability is a key
+      feature of your service. Watch to learn about SLOs, SLIs, and choosing the right
+      reliability target metrics for your application!
+
+      '
