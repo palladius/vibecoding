@@ -799,3 +799,16 @@ articles:
       reliability target metrics for your application!
 
       '
+  - title: "Ops I did it again: The SRE Extension is out!"
+    url: https://ricc.rocks/en/posts/technology/2026-06-05-ops-i-did-it-again-the-sre-extension-is-out/
+    publish_date: '2026-06-12'
+    description: "Site Reliability Engineering (SRE) meets agentic AI with the official release of the SRE Extension for Gemini and Antigravity CLIs."
+    tags:
+      - SRE
+      - AI
+      - Google Cloud
+      - Gemini CLI
+      - Antigravity
+      - DevOps
+    image: /images/articles/2026-06-05-ops-i-did-it-again-the-sre-extension-is-out.png
+    resource_type: article
