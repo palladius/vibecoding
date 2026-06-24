@@ -21,3 +21,26 @@ Learned a crucial lesson regarding robust Docker image version tagging in Cloud 
     - The actions are fast as they leverage the same underlying image layers (like creating a symlink).
 
 **Note:** While ideally `v<VERSION>` would be created first and `latest` later, the current setup works with an existing `latest` image, and this order is acceptable for now.
+
+## Video Resource Type and Custom Schema Addition (2026-06-24)
+
+### Problem:
+- Riccardo wanted to add Videos as a first-class resource type in his portfolio.
+- He wanted to support rich features:
+  - Custom CTAs (specific text & links).
+  - Presentation slides links (`slides_url`).
+  - Buganizer bugs (`bug_id`) linked to issuetracker.google.com.
+  - Descriptions formatted with Markdown.
+  - Additional related links (with optional custom emojis, defaulting to `🔹`).
+  - Optional thumbnails that dynamically fallback to standard YouTube thumbnail patterns (`https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg`) if not explicitly provided.
+  - Video items should live in a separate file (`etc/videos.yaml`) for easier maintainability and conflict-free git rebases.
+  - Added a `relevance` rating (1-10) to help filter or sort entries.
+
+### Solution:
+- **Database Schema**: Updated Prisma `Article` model with optional fields: `slides_url`, `bug_id`, `cta_text`, `cta_url`, `links` (JSON string), and `relevance` (Int). Synced using `prisma db push`.
+- **YouTube Parsing**: Made the regex in `extractYouTubeVideoId` in `src/lib/utils.ts` robust to query parameters (like `&list=...` and `&index=1`), ensuring it doesn't crash on standard playlist URLs.
+- **YAML Split**: Updated `import-yaml.ts` to look for both `etc/data.yaml` and `etc/videos.yaml` (if present), merge the parsed lists, and write them dynamically to the `Article` database model.
+- **Dynamic Thumbnails**: If the `image` field is not provided, `ArticleCard` automatically extracts the YouTube Video ID from `video_url` and retrieves `https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg` for a clean loading card state.
+- **Markdown Descriptions**: Custom regex-based Markdown renderer added directly to `ArticlePage` component to format `**bold**`, `*italics*`, and `` `code` `` tags cleanly without needing dynamic npm parsers.
+- **Custom Links & CTAs**: Link list JSON parsed and mapped dynamically in details page using custom emojis or `🔹`.
+
