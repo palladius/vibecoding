@@ -17,4 +17,9 @@ describe('extractYouTubeVideoId', () => {
     const emptyUrl = '';
     expect(extractYouTubeVideoId(emptyUrl)).toBeNull();
   });
+
+  it('should extract the video ID from a YouTube URL with query parameters', () => {
+    const url = 'https://www.youtube.com/watch?v=fN4l5MdrCus&list=PLBN2vYvV7Y5euAbxoU3jhhDfZnL3EPkyG&index=1';
+    expect(extractYouTubeVideoId(url)).toBe('fN4l5MdrCus');
+  });
 });

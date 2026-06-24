@@ -43,6 +43,12 @@ model Article {
   resource_type String?
   description   String?
   video_url     String?
+  slides_url    String?
+  bug_id        Int?
+  cta_text      String?
+  cta_url       String?
+  links         String?
+  relevance     Int?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }

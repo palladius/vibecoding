@@ -29,6 +29,13 @@ export interface Article {
   image?: string;
   resource_type?: string;
   description?: string;
+  video_url?: string;
+  slides_url?: string;
+  bug_id?: number;
+  cta_text?: string;
+  cta_url?: string;
+  links?: string;
+  relevance?: number;
   created_at: string;
   updated_at: string;
   type: 'article';

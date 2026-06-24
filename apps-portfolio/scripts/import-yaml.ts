@@ -31,14 +31,19 @@ interface Talk {
 
 interface Article {
   title: string;
-  url: string;
+  url?: string;
   publish_date: string;
-  tags: string[];
-  image: string;
+  tags?: string[];
+  image?: string;
   video?: string;
+  slides_url?: string;
+  bug_id?: number;
+  cta?: { text: string; url: string };
+  links?: Array<{ text: string; url: string; emoji?: string }>;
   image_old?: string;
   resource_type: string;
-  description: string;
+  description?: string;
+  relevance?: number;
 }
 
 interface Data {
@@ -55,7 +60,21 @@ export async function importData() {
 
   const fileContents = fs.readFileSync('etc/data.yaml', 'utf8');
   const data = yaml.load(fileContents) as Data;
-  console.log(`Loaded ${data.talks.length} talks and ${data.articles.length} articles from YAML.`);
+
+  let videoArticles: Article[] = [];
+  if (fs.existsSync('etc/videos.yaml')) {
+    const videoContents = fs.readFileSync('etc/videos.yaml', 'utf8');
+    const videoData = yaml.load(videoContents) as { videos: Article[] };
+    if (videoData && videoData.videos) {
+      videoArticles = videoData.videos.map(v => ({
+        ...v,
+        resource_type: v.resource_type || 'video'
+      }));
+    }
+  }
+
+  const allArticles = [...data.articles, ...videoArticles];
+  console.log(`Loaded ${data.talks.length} talks, ${data.articles.length} articles, and ${videoArticles.length} videos from YAML.`);
 
   // Insert talks
   for (const talk of data.talks) {
@@ -90,21 +109,27 @@ export async function importData() {
     }
   }
 
-  // Insert articles
-  for (const article of data.articles) {
-    process.stdout.write(`Importing article: ${article.title}... `);
+  // Insert articles & videos
+  for (const article of allArticles) {
+    process.stdout.write(`Importing resource (${article.resource_type || 'article'}): ${article.title}... `);
     try {
       const tags = Array.isArray(article.tags) ? article.tags.join(',') : '';
       await db.article.create({
         data: {
           title: article.title,
-          url: article.url,
+          url: article.url || null,
           publish_date: parseDateString(article.publish_date).toISOString().split('T')[0],
           tags: tags,
-          image: article.image,
-          
+          image: article.image || null,
+          video_url: article.video || null,
+          slides_url: article.slides_url || null,
+          bug_id: article.bug_id || null,
+          cta_text: article.cta?.text || null,
+          cta_url: article.cta?.url || null,
+          links: article.links ? JSON.stringify(article.links) : null,
+          relevance: article.relevance || null,
           resource_type: article.resource_type,
-          description: article.description,
+          description: article.description || null,
         },
       });
       console.log('✅');

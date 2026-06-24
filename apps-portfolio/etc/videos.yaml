@@ -1,0 +1,83 @@
+videos:
+  - title: "Welcome to Rubycon Italy 2026 (Opening Keynote)"
+    video: "https://www.youtube.com/watch?v=EpuEfwT-QTM"
+    publish_date: "2026-05-08"
+    description: "**Welcome remarks** and opening MC keynote by *Riccardo Carlesso* at Rubycon Italy 2026."
+    tags:
+      - Ruby
+      - Keynote
+      - Rimini
+      - MC
+      - video
+      - highlight
+    resource_type: video
+    relevance: 8
+    cta:
+      text: "Visit Rubycon.it"
+      url: "https://rubycon.it"
+    slides_url: "https://speakerdeck.com/palladius/rubycon-opening-remarks"
+    links:
+      - text: "Rubycon Italy Schedule"
+        url: "https://rubycon.it/schedule/"
+        emoji: "📅"
+  - title: "Rubycon Italy 2026 — Official Aftermovie"
+    video: "https://www.youtube.com/watch?v=fN4l5MdrCus&list=PLBN2vYvV7Y5euAbxoU3jhhDfZnL3EPkyG&index=1"
+    publish_date: "2026-05-08"
+    description: "The official highlights montage (montaggio) of the event featuring a **heavy metal soundtrack** created entirely with **Lyria3**! 🎸"
+    tags:
+      - Rubycon
+      - Lyria3
+      - Heavy Metal
+      - GenAI
+      - video
+      - highlight
+    resource_type: video
+    relevance: 8
+    cta:
+      text: "Visit Rubycon.it"
+      url: "https://rubycon.it"
+    links:
+      - text: "Google Lyria3 Model Info"
+        url: "https://deepmind.google/technologies/lyria/"
+        emoji: "🎵"
+  - title: "SRE Extension Intro Video on GTC"
+    video: "https://www.youtube.com/watch?v=W1RMWhSDnvI"
+    publish_date: "2026-06-05"
+    description: "Walkthrough showing how the **SRE Extension** automates diagnostics and mitigations inside the *Gemini* and *Antigravity* CLIs."
+    tags:
+      - SRE
+      - Gemini CLI
+      - Antigravity
+      - GTC
+      - video
+      - highlight
+    resource_type: video
+    relevance: 8
+    cta:
+      text: "SRE Ext on GitHub"
+      url: "https://github.com/gemini-cli-extensions/sre"
+    bug_id: 123456789
+    links:
+      - text: "Antigravity CLI documentation"
+        url: "https://github.com/google-gemini/gemini-cli"
+        emoji: "🤖"
+  - title: "SRE Extension 02: Outage Investigation Demo on GKE"
+    video: "https://www.youtube.com/watch?v=bPCznsjW8BU"
+    publish_date: "2026-06-05"
+    description: "Watch the *Outage Investigator* agent triage a production outage in GKE and generate a **markdown postmortem**."
+    tags:
+      - SRE
+      - Gemini CLI
+      - Antigravity
+      - GKE
+      - Kubernetes
+      - video
+      - highlight
+    resource_type: video
+    relevance: 8
+    cta:
+      text: "SRE Ext on GitHub"
+      url: "https://github.com/gemini-cli-extensions/sre"
+    links:
+      - text: "Outage Investigator agent instructions"
+        url: "https://github.com/gemini-cli-extensions/sre/blob/main/skills/investigation-entrypoint/SKILL.md"
