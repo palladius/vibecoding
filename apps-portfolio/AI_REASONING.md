@@ -44,3 +44,17 @@ Learned a crucial lesson regarding robust Docker image version tagging in Cloud 
 - **Markdown Descriptions**: Custom regex-based Markdown renderer added directly to `ArticlePage` component to format `**bold**`, `*italics*`, and `` `code` `` tags cleanly without needing dynamic npm parsers.
 - **Custom Links & CTAs**: Link list JSON parsed and mapped dynamically in details page using custom emojis or `🔹`.
 
+## Rails-style Videos Index vs Show Routes (2026-06-24)
+
+### Problem:
+- Riccardo requested a Rails-like index/show approach for videos.
+- Clicking on a video image or title should navigate to a detailed video show page rather than the generic `/articles/[slug]`.
+
+### Solution:
+- **Routes**: Created a dynamic route at `/videos/[slug]` to render detailed information specifically for videos (fetching with `getArticle(slug)` and confirming `resource_type === 'video'`).
+- **Global Navigation**: Added `/videos` ("Videos") to the navbar in `src/app/layout.tsx`.
+- **Dynamic Linking**: Updated `ArticleCard.tsx` and `ListView.tsx` to conditionally route to `/videos/[slug]` if `resource_type === 'video'`, and `/articles/[slug]` otherwise.
+- **Improved UX**: Added clean `← Back to Videos` / `← Back to Articles` / `← Back to Talks` navigation links on the respective details/show pages to make navigation super smooth.
+- **Build & Quality**: Verified that the entire project builds successfully with `DATABASE_URL` set, and ran `npm run lint` with 0 warnings/errors.
+
+

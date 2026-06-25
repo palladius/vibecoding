@@ -42,21 +42,25 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
     displayImage = '/images/placeholder-image.png';
   }
 
+  const detailHref = article.resource_type === 'video' ? `/videos/${article.slug}` : `/articles/${article.slug}`;
+
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white flex flex-col justify-between h-full border border-gray-700">
       <div>
         <div className="relative" style={{ paddingBottom: '56.25%' }}> {/* 16:9 ratio for video thumbnails */}
-          <Image 
-            src={displayImage} 
-            alt={article.title} 
-            fill 
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
-            style={{ objectFit: 'cover' }} 
-            className="transition-opacity duration-300 hover:opacity-90"
-          />
+          <Link href={detailHref}>
+            <Image 
+              src={displayImage} 
+              alt={article.title} 
+              fill 
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+              style={{ objectFit: 'cover' }} 
+              className="transition-opacity duration-300 hover:opacity-90 cursor-pointer"
+            />
+          </Link>
         </div>
         <div className="p-4">
-          <Link href={`/articles/${article.slug}`}>
+          <Link href={detailHref}>
             <p className="text-lg font-bold mb-2 hover:text-yellow-400 transition-colors duration-200">{article.title}</p>
           </Link>
           <div className="flex justify-between items-center text-sm text-gray-400 mb-3">
@@ -102,7 +106,7 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
           </a>
         ) : (
           <Link
-            href={`/articles/${article.slug}`}
+            href={detailHref}
             className="block w-full border border-gray-600 hover:bg-gray-700 text-gray-300 text-center font-semibold py-2 px-4 rounded text-sm transition-colors duration-200"
           >
             View Details

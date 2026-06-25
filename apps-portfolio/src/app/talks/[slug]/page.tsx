@@ -28,7 +28,17 @@ export default async function TalkPage({ params }: { params: { slug:string } }) 
   const tags = talk.tags?.split(',').map(tag => tag.trim());
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 md:p-8 max-w-5xl">
+      {/* Back button */}
+      <div className="mb-6">
+        <Link 
+          href="/" 
+          className="inline-flex items-center text-yellow-400 hover:text-yellow-300 font-semibold transition-colors duration-200"
+        >
+          ← Back to Talks
+        </Link>
+      </div>
+
       <div className="flex flex-col md:flex-row gap-8">
         <div className="w-full md:w-2/3">
           <h1 className="text-3xl font-bold mb-2">{talk.title}</h1>

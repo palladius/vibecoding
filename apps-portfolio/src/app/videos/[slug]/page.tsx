@@ -1,4 +1,4 @@
-// src/app/articles/[slug]/page.tsx
+// src/app/videos/[slug]/page.tsx
 import { getArticle } from '../../lib/data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -25,12 +25,23 @@ function renderMarkdown(text: string) {
   });
 }
 
-export default async function ArticlePage({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { slug: string } }) {
   const awaitedParams = await params;
   const slug = awaitedParams.slug;
   const article = await getArticle(slug);
 
-  if (!article) {
+  if (!article || article.resource_type !== 'video') {
+    return { title: 'Video not found' };
+  }
+  return { title: `📹 ${article.title} - Video details` };
+}
+
+export default async function VideoPage({ params }: { params: { slug: string } }) {
+  const awaitedParams = await params;
+  const slug = awaitedParams.slug;
+  const article = await getArticle(slug);
+
+  if (!article || article.resource_type !== 'video') {
     notFound();
   }
 
@@ -54,10 +65,10 @@ export default async function ArticlePage({ params }: { params: { slug: string }
       {/* Back button */}
       <div className="mb-6">
         <Link 
-          href="/articles" 
+          href="/videos" 
           className="inline-flex items-center text-yellow-400 hover:text-yellow-300 font-semibold transition-colors duration-200"
         >
-          ← Back to Articles
+          ← Back to Videos
         </Link>
       </div>
 
@@ -68,7 +79,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
           <div className="flex items-center text-sm text-gray-400 mb-6 gap-4">
             <span>🗓️ {article.publish_date}</span>
             <span className="capitalize px-2 py-0.5 rounded bg-gray-800 text-gray-300">
-              {article.resource_type === 'video' ? '📹 Video' : article.resource_type === 'slides' ? '📊 Slides' : '📄 Article'}
+              📹 Video
             </span>
           </div>
 
@@ -122,7 +133,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 rel="noopener noreferrer" 
                 className="border border-yellow-400 text-yellow-400 px-6 py-2 rounded font-semibold hover:bg-yellow-400 hover:text-black transition-all"
               >
-                🔗 {article.resource_type === 'video' ? 'Watch on YouTube' : 'Read Article'}
+                🔗 Watch on YouTube
               </a>
             )}
 
