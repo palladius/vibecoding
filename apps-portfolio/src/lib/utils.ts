@@ -1,4 +1,10 @@
 // src/lib/utils.ts
+
+export const formatDate = (date: Date): string => {
+  if (!date) return '';
+  return new Date(date).toISOString().split('T')[0];
+};
+
 export const slugify = (str: string) => {
   if (!str) return '';
   const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúúūǘůűųẃẍÿýžźż·/_,:;'
@@ -31,5 +37,3 @@ export function parseDateString(dateString: string): Date {
   const [year, month, day] = dateString.split('-').map(Number);
   return new Date(year, month - 1, day);
 }
-
-
