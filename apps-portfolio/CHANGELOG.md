@@ -1,13 +1,32 @@
 # Changelog
 
+## v0.15.0 - 2026-09-23
+
+### 🚀 Features & Data Sync
+
+*   🔵 **2026 Delivered Talks & Events**:
+    *   Added **DevFest Campobasso 2026** (`2026-09-19`, `b/550379844`) — *The Day I Left My Linux Machine Running: A Love Story with OpenClaw & Hermes* (IT slide deck v0.6 + Campobasso Rock Karaoke on Storagify + event flyer).
+    *   Added **GDG Cloud Zürich 2026** (`2026-09-03`, `b/550379844`) — *The Day I Left My Linux Machine Running: A Love Story with OpenClaw 🦞, Hermes 🪽 & Antigravity* (live frozen deck v0.3.158 on Storagify + event logo).
+    *   Added **WeAreDevelopers World Congress 2026** (`2026-07-08`, Berlin, `sheetless_id: 9966`, `b/521338384`) — *From Pager to Postmortem: How Google is Shaping OSS Agentic SRE 🐉*.
+    *   Added **Wednesday Build Hour** (`2026-06-30`, `b/529722864`) — *Automating Outage Investigations with the Agentic SRE Extension*.
+    *   Added **Google Cloud Summit DACH 2026** (`2026-06-09`, Zürich, `b/521335177`) — *Hands-on Lab & Workshop: Agentic SRE & Cloud Operations with Gemini*.
+    *   Added **LBG Engineering Summit Edinburgh 2026** (`2026-05-19`, `b/495360914`) — *Agentic SRE Talk & Live Demo in Edinburgh*.
+    *   Updated **Rubycon Italy 2026** (`2026-05-08`, Rimini, `sheetless_id: 9945`, `b/509403105`) status to `delivered` and synced official aftermovie & keynote video metadata.
+    *   Added **HSLU Guest Lecture — Spring 2026** (`2026-03-26`, Rotkreuz, `b/496520210`).
+*   🔵 **2026 Upcoming Talks & Events**:
+    *   Added **DevFest Modena 2026** (`2026-10-03`, Modena, `sheetless_id: 9988`, `b/523213663`) — *Quella volta che ho lasciato il mio Linux acceso* with live Storagify Hub (`hub.html` bundling IT/EN decks + Lyria 3.5 Karaoke Grande & Piccolo).
+    *   Updated **Codemotion Milan 2026** (`2026-10-28`, Milan, `sheetless_id: 9971`, `b/503694315`) — *Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀* (`status: confirmed`, exact dates `2026-10-28`–`2026-10-29`, Sessionize `#1222188`).
+    *   Added **HSLU Guest Lecture — Autumn 2026** (`2026-11-12`, Rotkreuz, `b/553447964`) — *The History of Everything: From Attention to Agentic Harnesses & Enterprise AI*.
+*   🔵 **2026 Articles, Slide Decks, Codelabs & Videos**:
+    *   Added 8 Medium articles (`2026-01-06` Semantic CUJs `b/442396418`, `2026-04-28` SRE Extension `b/520314033`, `2026-05-05` Crescendo Part 1 `b/522674543`, `2026-05-15` Crescendo Part 2 `b/520305371`, `2026-07-14` 20-Worker Fan-Out Skill `b/534594102`, `2026-08-27` Antigravity Ruby SDK `b/545986615`, `2026-09-12` First Presentation with Antigravity `b/556567108`), 1 Google Codelab (`b/530075298`), 3 interactive Storagify slide/karaoke resources, and fixed Buganizer IDs in `etc/videos.yaml`.
+*   🔵 Imported all records into `db/portfolio.sqlite3` (`35 talks, 26 articles, 4 videos`).
+
 ## v0.14.9 - 2026-03-05
 
 ### 🚀 Features
 ## [0.12.3] - 2026-04-30
 
 *   🔵 [apps-portfolio] feat: Add Codemotion Milan 2026 (Agentic SRE) to talks.
-
-
 *   🔵 data: add missing image for "Startup Culture at Google (Italiano)" talk at Indie SaaS Day Modena 2026.
 
 ## v0.14.8 - 2026-03-05

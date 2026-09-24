@@ -2,6 +2,67 @@ This page contains the title of my talks by date, particularly the ones I can't 
 
 I also have a private (for Googlers only): 📢 go/ricc-talks 🗣️
 
+## 2026
+
+### The History of Everything: From Attention to Agentic Harnesses & Enterprise AI (Rotkreuz, 12 Nov 2026)
+
+* Event Link: https://www.hslu.ch/
+* When: November 12, 2026
+* Where: Rotkreuz, Switzerland
+* Event: HSLU Guest Lecture — Autumn 2026
+
+### Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀 (Milan, 28 Oct 2026)
+
+* Session Link: https://sessionize.com/app/speaker/session/1222188
+* Event Link: https://conferences.codemotion.com/milan2026/
+* When: October 28-29, 2026
+* Where: Milan, Italy
+* Event: Codemotion Milan 2026
+
+#### Abstract
+
+Let’s be honest: debugging production at scale is manual labor. 🫠 At Google, we decided making SREs act like human search engines was a bug, not a feature. Enter the Agentic SRE Extension—a skill-based framework that lives in your terminal and knows its way around Kubernetes. 🚀 In this deep dive, I’ll show you how we use modular skills and MCP to chain diagnostic tools, analyze metric regressions, and execute safe mitigations without "deleted production" anxiety. 🔥 We’ll dissect the "Outage Investigator" agent's logic loop, see it draft a technical postmortem in seconds, and discuss why we built this as a portable framework whose skills can be leveraged by any modern AI harness. You’ll leave with the code to wire up your own Kubernetes stack and let the agent's skills do the heavy lifting while you drink espresso. ☕️ No fluff, no 101s. Just AI agents, specialized skills, and less toil.
+
+### Quella volta che ho lasciato il mio Linux acceso: Una storia d'amore con OpenClaw 🦞, Hermes 🪽 e Antigravity (Modena, 3 Oct 2026)
+
+* Slides & Karaoke Hub: https://storage.googleapis.com/palladius-genai-storagify/devfest-modena-2026/hub.html
+* Event Link: https://devfest.modena.it/
+* When: October 3-4, 2026
+* Where: Modena, Italy
+* Event: DevFest Modena 2026
+
+### The Day I Left My Linux Machine Running: A Love Story with OpenClaw & Hermes (Campobasso, 19 Sep 2026)
+
+* Slides Link: https://storage.googleapis.com/palladius-genai-storagify/devfest-campobasso-2026/index.html
+* Karaoke Link: https://storage.googleapis.com/palladius-genai-storagify/devfest-campobasso-2026/campobasso-karaoke.html
+* Event Link: https://gdg.community.dev/gdg-campobasso/
+* When: September 19, 2026
+* Where: Samnium Innovation Hub, Campobasso, Italy
+* Event: DevFest Campobasso 2026
+
+### The Day I Left My Linux Machine Running: A Love Story with OpenClaw 🦞, Hermes 🪽 & Antigravity (Zürich, 3 Sep 2026)
+
+* Slides Link: https://storage.googleapis.com/palladius-genai-storagify/gdg-zurich-2026/index.html
+* Event Link: https://gdg.community.dev/events/details/google-gdg-cloud-zurich-presents-on-site-how-to-avoid-ai-slop-in-development-with-google-cloud-devrel/
+* When: September 3, 2026
+* Where: Google EURF, Zürich, Switzerland
+* Event: GDG Cloud Zürich
+
+### From Pager to Postmortem: How Google is Shaping OSS Agentic SRE 🐉 (Berlin, 8 Jul 2026)
+
+* Event Link: https://www.wearedevelopers.com/world-congress
+* When: July 8-10, 2026
+* Where: Messe Berlin, Germany
+* Event: WeAreDevelopers World Congress 2026
+
+### Welcome to Rubycon Italy 2026 (Opening Keynote) (Rimini, 8 May 2026)
+
+* Video Link: https://www.youtube.com/watch?v=xY7mYcbBssM
+* Event Link: https://rubycon.it/
+* When: May 8, 2026
+* Where: Palacongressi di Rimini, Italy
+* Event: Rubycon Italy 2026
+
 ## 2025
 
 ### SRE Gone Wrong: Top 7 Errors (and How to Avoid Them) (Turin, 26 Mar 25)

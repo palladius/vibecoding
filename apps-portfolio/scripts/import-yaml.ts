@@ -73,8 +73,44 @@ export async function importData() {
     }
   }
 
-  const allArticles = [...data.articles, ...videoArticles];
-  console.log(`Loaded ${data.talks.length} talks, ${data.articles.length} articles, and ${videoArticles.length} videos from YAML.`);
+  const articleMap = new Map<string, Article>();
+
+  // Add articles from data.yaml
+  for (const art of data.articles) {
+    const key = art.title.toLowerCase().trim();
+    articleMap.set(key, art);
+  }
+
+  // Merge articles/videos from videos.yaml
+  for (const vid of videoArticles) {
+    const key = vid.title.toLowerCase().trim();
+    const existing = articleMap.get(key);
+    if (existing) {
+      existing.video = vid.video || existing.video;
+      existing.slides_url = vid.slides_url || existing.slides_url;
+      existing.bug_id = vid.bug_id || existing.bug_id;
+      existing.cta = vid.cta || existing.cta;
+      existing.links = vid.links || existing.links;
+      existing.relevance = vid.relevance || existing.relevance;
+      existing.resource_type = 'video'; // Upgrade to video
+      if (vid.description) {
+        existing.description = vid.description;
+      }
+      if (vid.tags && existing.tags) {
+        existing.tags = Array.from(new Set([...existing.tags, ...vid.tags]));
+      } else if (vid.tags) {
+        existing.tags = vid.tags;
+      }
+      if (vid.image) {
+        existing.image = vid.image;
+      }
+    } else {
+      articleMap.set(key, vid);
+    }
+  }
+
+  const allArticles = Array.from(articleMap.values());
+  console.log(`Loaded ${data.talks.length} talks, ${data.articles.length} articles, and ${videoArticles.length} videos from YAML (Merged into ${allArticles.length} total articles/videos).`);
 
   // Insert talks
   for (const talk of data.talks) {

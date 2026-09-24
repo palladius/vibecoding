@@ -16,6 +16,7 @@ videos:
       text: "Visit Rubycon.it"
       url: "https://rubycon.it"
     slides_url: "https://speakerdeck.com/palladius/rubycon-opening-remarks"
+    bug_id: 509403105
     links:
       - text: "Rubycon Italy Schedule"
         url: "https://rubycon.it/schedule/"
@@ -56,7 +57,7 @@ videos:
     cta:
       text: "SRE Ext on GitHub"
       url: "https://github.com/gemini-cli-extensions/sre"
-    bug_id: 123456789
+    bug_id: 515006834
     links:
       - text: "Antigravity CLI documentation"
         url: "https://github.com/google-gemini/gemini-cli"
@@ -75,6 +76,7 @@ videos:
       - highlight
     resource_type: video
     relevance: 8
+    bug_id: 515007780
     cta:
       text: "SRE Ext on GitHub"
       url: "https://github.com/gemini-cli-extensions/sre"

@@ -50,6 +50,14 @@ Code proficiency:
 
 Medium ([main page](https://medium.com/@palladiusbonton/) - [RSS feed](https://medium.com/feed/@palladiusbonton)) Blog:
 
+* 2026-09-12 [How I Wrote My First Presentation with Antigravity (and Abandoned Google Slides)](https://medium.com/@palladiusbonton/how-i-wrote-my-first-presentation-with-antigravity-and-abandoned-google-slides-a47d60136270) #Antigravity #Gemini #OpenClaw #Slides
+* 2026-08-27 [Building an Agentic Telegram Bot in Ruby with Google's Antigravity SDK](https://medium.com/@palladiusbonton/building-an-agentic-telegram-bot-in-ruby-with-googles-antigravity-sdk-453f59ab07c0) #Ruby #Antigravity #Telegram #Agents
+* 2026-07-14 [How I built a skill to fan out 20 workers to fix my old Rails App on Antigravity (steal my prompt!)](https://medium.com/google-cloud/how-i-built-a-skill-to-fan-out-20-workers-to-fix-my-old-rails-app-on-antigravity-steal-my-prompt-55ef85595605) #Antigravity #Rails #Ruby #MultiAgent
+* 2026-05-15 [Orchestrating with Antigravity: A Crescendo of Agents (Part 2)](https://medium.com/google-cloud/orchestrating-with-antigravity-a-crescendo-of-agents-part-2-855fb8e29629) #Antigravity #ADK #Agents
+* 2026-05-05 [Orchestrating with Antigravity: A Crescendo of Agents (Part 1)](https://medium.com/google-cloud/orchestrating-with-antigravity-a-crescendo-of-agents-part-1-44cb31c54607) #Antigravity #ADK #Agents
+* 2026-04-28 [Ops I did it again: The SRE Extension is out!](https://medium.com/google-cloud/ops-i-did-it-again-the-sre-extension-is-out-0b9a9597101f) #SRE #GeminiCLI #GKE
+* 2026-03-11 [How Google SREs Use Gemini CLI to Solve Real-World Outages](https://cloud.google.com/blog/topics/developers-practitioners/how-google-sres-use-gemini-cli-to-solve-real-world-outages/) #SRE #GeminiCLI #GoogleCloudBlog
+* 2026-01-06 [Testing in the Era of Agentic AI: Semantic CUJs and Vibecoding](https://medium.com/@palladiusbonton/testing-in-the-era-of-agentic-ai-semantic-cujs-and-vibecoding-3d1d93f1a46a) #Testing #Vibecoding #CUJ
 * 2024-02-05 [Autotranslate my Hugo blog with Gemini](https://ricc.rocks/en/blog/autotranslate-my-hugo-blog-with-gemini/)
 * 2024-01-23 [A deep dive in Cloud Run for Rails](https://ricc.rocks/en/blog/a-deep-dive-in-cloud-run-for-rails/)
 * 2024-01-12 [My 2023 in review](https://ricc.rocks/en/blog/my-2023-in-review/)
@@ -65,10 +73,13 @@ Medium ([main page](https://medium.com/@palladiusbonton/) - [RSS feed](https://m
 
 Google Cloud Blog:
 
+* 2026-03-11 [How Google SREs Use Gemini CLI to Solve Real-World Outages](https://cloud.google.com/blog/topics/developers-practitioners/how-google-sres-use-gemini-cli-to-solve-real-world-outages/) #SRE #GeminiCLI
 * [Vodafone: A DevOps approach to AI/ML through cloud-native CI/CD pipelines](https://cloud.google.com/blog/products/devops-sre/how-vodafone-uses-cicd-to-speed-up-ml-pipelines) #MLOps
 
 Videos:
 
+* [Welcome to Rubycon Italy 2026 (Opening Keynote)](https://www.youtube.com/watch?v=xY7mYcbBssM) (Rubycon Italy 2026, 🇮🇹Rimini)
+* [SRE Extension Intro Video on GTC](https://www.youtube.com/watch?v=sL_nK3qfcCA) #SRE #GeminiCLI
 * [Reimagining customer services with GenAI and multi-modal interaction](https://www.youtube.com/watch?v=WRNncVe5yJQ) (George UX Conf, 🇦🇹Vienna)
 * [The Art of SLOs ](https://www.youtube.com/watch?v=E3ReKuJ8ewA) - My very first video on Google Cloud! #SRE #SLOs ([More on Art of SLOs](https://sre.google/resources/practices-and-processes/art-of-slos/))
 
@@ -78,6 +89,21 @@ Videos:
 Traveling around the world (..) and delivering sessions on SRE, How Google does Software Development, ..
 
 More info on my talks are in [talks](talks.md).
+
+**2026**
+
+* 2026-11-12 **[The History of Everything: From Attention to Agentic Harnesses & Enterprise AI](https://www.hslu.ch/)** (HSLU, 🇨🇭Rotkreuz) - *Confirmed*.
+* 2026-10-28 **[Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀](https://sessionize.com/app/speaker/session/1222188)** ([Codemotion Milan 2026, 🇮🇹Milan](https://conferences.codemotion.com/milan2026/)) - *Confirmed*.
+* 2026-10-03 **[Quella volta che ho lasciato il mio Linux acceso: Una storia d'amore con OpenClaw 🦞, Hermes 🪽 e Antigravity](https://storage.googleapis.com/palladius-genai-storagify/devfest-modena-2026/hub.html)** ([DevFest Modena 2026, 🇮🇹Modena](https://devfest.modena.it/)) - *Confirmed* - [Interactive Hub & Karaoke](https://storage.googleapis.com/palladius-genai-storagify/devfest-modena-2026/hub.html)
+* 2026-09-19 **[The Day I Left My Linux Machine Running: A Love Story with OpenClaw & Hermes](https://storage.googleapis.com/palladius-genai-storagify/devfest-campobasso-2026/index.html)** ([DevFest Campobasso 2026, 🇮🇹Campobasso](https://gdg.community.dev/gdg-campobasso/)) - [Slides](https://storage.googleapis.com/palladius-genai-storagify/devfest-campobasso-2026/index.html) - [Campobasso Rock Karaoke](https://storage.googleapis.com/palladius-genai-storagify/devfest-campobasso-2026/campobasso-karaoke.html)
+* 2026-09-03 **[The Day I Left My Linux Machine Running: A Love Story with OpenClaw 🦞, Hermes 🪽 & Antigravity](https://storage.googleapis.com/palladius-genai-storagify/gdg-zurich-2026/index.html)** ([GDG Cloud Zürich, 🇨🇭Zürich](https://gdg.community.dev/events/details/google-gdg-cloud-zurich-presents-on-site-how-to-avoid-ai-slop-in-development-with-google-cloud-devrel/)) - [Slides](https://storage.googleapis.com/palladius-genai-storagify/gdg-zurich-2026/index.html)
+* 2026-07-08 **[From Pager to Postmortem: How Google is Shaping OSS Agentic SRE 🐉](https://www.wearedevelopers.com/world-congress)** ([WeAreDevelopers World Congress 2026, 🇩🇪Berlin](https://www.wearedevelopers.com/world-congress))
+* 2026-06-30 **[Wednesday Build Hour: Automating Outage Investigations with the Agentic SRE Extension](https://github.com/gemini-cli-extensions/sre)** (Google Cloud OnAir, 🌐Online)
+* 2026-06-09 **[Hands-on Lab & Workshop: Agentic SRE & Cloud Operations with Gemini](https://cloudonair.withgoogle.com/events/summit-zurich-2026)** (Google Cloud Summit DACH 2026, 🇨🇭Zürich)
+* 2026-05-19 **Agentic SRE Talk & Live Demo in Edinburgh** (Lloyds Banking Group Engineering Summit, 🇬🇧Edinburgh)
+* 2026-05-08 **[Welcome to Rubycon Italy 2026 (Opening Keynote)](https://www.youtube.com/watch?v=xY7mYcbBssM)** ([Rubycon Italy 2026, 🇮🇹Rimini](https://rubycon.it/)) - [Video](https://www.youtube.com/watch?v=xY7mYcbBssM)
+* 2026-03-26 **Introduction to Google Cloud & Modern Cloud Architecture** (HSLU, 🇨🇭Rotkreuz)
+* 2026-03-06 **[Startup Culture at Google (Italiano)](https://storage.googleapis.com/palladius-genai-storagify/indie-saas-day-2026/Startup_Culture_at_Google.pdf)** ([Indie SaaS Day Modena 2026, 🇮🇹Modena](https://indiesaasday.it/))
 
 **2025**
 
