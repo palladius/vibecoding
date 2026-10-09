@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.15.1 - 2026-10-09
+
+### 🚀 Features, Data Sync & TDD Bug Fixes
+
+*   🔵 **Added Missing 2026 Talks, Keynotes, Workshops & Masterclasses**:
+    *   Added **DevFest Prague 2026 (DevFest.cz)** (`2026-10-30`, Prague 🇨🇿, `sheetless_id: 10005`, `b/569926254`).
+    *   Added **SREday Warsaw 2026 Q4** (`2026-10-22`, Warsaw 🇵🇱, `sheetless_id: 10010`, `b/569967910`) — *Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🐉*.
+    *   Added **Google Cloud AI Live + Labs Zurich 2026** (`2026-10-20`, Zürich 🇨🇭, `b/558209863`) — *[Workshop] Bring your Rails 8 app to GCP with Antigravity 2.0!*.
+    *   Added **Wednesday Build Hour: Rails 8 on Antigravity Codelab** (`2026-10-07`, Online EMEA, `sheetless_id: 10009`, `b/570951353`, `status: delivered`, 288 live attendees).
+    *   Updated **DevFest Modena 2026 Keynote** (`2026-10-03`, Modena 🇮🇹, `sheetless_id: 9988`, `b/523213663`, `status: delivered`) with `Keynote` title & tag.
+    *   Added **DevFest Modena 2026 Workshop** (`2026-10-03`, Modena 🇮🇹, `sheetless_id: 9988`, `b/558209863`, `status: delivered`) — *[Workshop] Vibe-Coda la Tua Prima App Rails 8 con Gemini* (with Emiliano Della Casa) + official **Rails 8 on Google Cloud Codelab** resource.
+    *   Added **GDG Napoli Masterclass** (`2026-09-18`, Naples 🇮🇹, `b/534733532`, `status: delivered`) — *[Masterclass] Agentic Apps con Google Gemini SDK e TypeScript* (co-presented with GDE Fabio Biondi at Università Federico II Scampia).
+*   🧪 **TDD Fix for Past Events in `/next-talks`**:
+    *   Added unit tests in `src/app/next-talks/page.test.tsx` and integration tests in `src/app/lib/data.integration.test.ts` (Red -> Green TDD) guaranteeing that `/next-talks` never renders past events (like `2026-05-08` Rubycon Italy 2026) or delivered sessions.
+    *   Added `export const dynamic = "force-dynamic"` to `src/app/next-talks/page.tsx`, `src/app/talks/page.tsx`, and `src/app/page.tsx`, and added client-side date/status filtering in `NextTalksClientPage.tsx` and `getFutureTalks()`.
+
 ## v0.15.0 - 2026-09-23
 
 ### 🚀 Features & Data Sync

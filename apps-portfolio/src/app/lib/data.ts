@@ -63,7 +63,10 @@ export async function getFutureTalks() {
     where: {
       date: {
         gte: new Date().toISOString().split('T')[0],
-      }
+      },
+      status: {
+        not: 'delivered',
+      },
     }
   });
   return talks.map((talk) => ({

@@ -57,4 +57,12 @@ Learned a crucial lesson regarding robust Docker image version tagging in Cloud 
 - **Improved UX**: Added clean `← Back to Videos` / `← Back to Articles` / `← Back to Talks` navigation links on the respective details/show pages to make navigation super smooth.
 - **Build & Quality**: Verified that the entire project builds successfully with `DATABASE_URL` set, and ran `npm run lint` with 0 warnings/errors.
 
+## Dynamic Rendering for Date-Filtered Pages (`v0.15.1` — 2026-10-06)
 
+### Problem:
+- Next.js 15 App Router defaults to static rendering (`○ Static`) at `next build` time for server components that do not read request headers/cookies/searchParams.
+- Because `/next-talks`, `/talks`, and `/` filter talks by comparing `talk.date` against `new Date()`, baking those pages statically at Docker build time froze the Past vs. Future boundary at the day the container image was built (e.g. `v0.12.3` built on `2026-04-30` kept showing Rubycon `2026-05-08` in `/next-talks` months later).
+
+### Solution:
+- Added `export const dynamic = "force-dynamic";` to `src/app/next-talks/page.tsx`, `src/app/talks/page.tsx`, and `src/app/page.tsx` so `new Date()` is evaluated on every request.
+- Synced all 2026 talks, keynotes, workshops, and masterclasses across `etc/data.yaml`, Sheetless (`drc sheetless sync`), Buganizer (`componentid:1524969+` & `313764`), and Obsidian (`~/obsidian-pbt/`).

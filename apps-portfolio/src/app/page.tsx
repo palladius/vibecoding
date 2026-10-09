@@ -2,6 +2,8 @@ import { getTalks, getArticles } from "./lib/data";
 import { Talk, Article } from "../lib/types";
 import ViewSwitcher from "./components/ViewSwitcher";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const talksData = await getTalks();
   const articlesData = await getArticles();

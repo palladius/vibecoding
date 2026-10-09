@@ -80,6 +80,29 @@ talks:
       - Switzerland
       - Governance
     image: /images/events/railshock2025.webp
+  - title: 'The Day I Left My Linux Machine Running: A Love Story with OpenClaw 🦞, Hermes 🪽 & Antigravity'
+    event: DevFest Prague 2026 (DevFest.cz)
+    date: '2026-10-30'
+    location: Prague, Czech Republic
+    country_code: cz
+    status: confirmed
+    sheetless_id: 10005
+    bug_id: 569926254
+    event_url: https://devfest.cz/
+    session_url: https://sessionize.com/riccardo-carlesso
+    event_description: 'DevFest.cz 2026 — Prague''s flagship GDG developer conference & festival covering AI agents, generative UI, cloud & backends, and web/mobile engineering.'
+    talk_description: 'A 3-act journey of serendipity and digital alchemy: how leaving my home Linux server (Pupurabbux) running while flying to South Africa evolved into a multi-agent ecosystem (OpenClaw, Hermes, Karpathy Wiki memory, self-patching loops) and enterprise-grade AI governance with Google Antigravity, Gemini Spark, and Google Workspace MCP.'
+    tags:
+      - AI
+      - GenAI
+      - OpenClaw
+      - Hermes
+      - Antigravity
+      - Gemini
+      - DevFest
+      - Prague
+      - Czechia
+    image: /images/events/devfest-pescara-2025.png
   - title: 'Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀'
     event: Codemotion Milan 2026
     date: '2026-10-28'
@@ -87,7 +110,7 @@ talks:
     country_code: it
     status: confirmed
     sheetless_id: 9971
-    bug_id: 503694315
+    bug_id: 569926156
     event_url: https://conferences.codemotion.com/milan2026/
     talk_description: 'Let’s be honest: debugging production at scale is manual labor.
       🫠 At Google, we decided making SREs act like human search engines was a bug,
@@ -112,20 +135,89 @@ talks:
       - Codemotion
     image: /images/events/codemotion.jpg
     session_url: https://sessionize.com/app/speaker/session/1222188
-  - title: 'Quella volta che ho lasciato il mio Linux acceso: Una storia d''amore con OpenClaw 🦞, Hermes 🪽 e Antigravity'
+  - title: 'Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🐉'
+    event: SREday Warsaw 2026 Q4
+    date: '2026-10-22'
+    location: Google for Startups Campus, Warsaw, Poland
+    country_code: pl
+    status: confirmed
+    sheetless_id: 10010
+    bug_id: 569967910
+    event_url: https://sreday.com/2026-warsaw-q4/
+    session_url: https://sreday.com/2026-warsaw-q4/Riccardo_Carlesso_Google_Stop_Grepping__Start_Reasoning_SkillBased_Agentic_SRE_.html#speakers-section
+    event_description: 'SREday Warsaw 2026 Q4 — Conference on Site Reliability Engineering, Cloud, Kubernetes, and DevOps at Google for Startups Campus, Warsaw, Poland.'
+    talk_description: 'Let’s be honest: debugging production at scale is soul-crushing manual labor. At Google, we decided making thousands of SREs act like human search engines in 2026 was a bug, not a feature. Enter the Agentic SRE Extension — a skill-based framework that lives in your terminal and actually knows its way around Kubernetes. In this high-energy deep dive, I’ll show how we use modular skills and MCP to chain diagnostic tools, analyze metric regressions, and execute safe mitigations without "deleted production" anxiety, including live outage investigation and postmortem generation.'
+    tags:
+      - SRE
+      - AI
+      - Gemini
+      - Kubernetes
+      - Agentic
+      - SREday
+      - Warsaw
+      - Poland
+    image: /images/events/SREDAY-2024.png
+  - title: '[Workshop] Bring your Rails 8 app to GCP with Antigravity 2.0!'
+    event: Google Cloud AI Live + Labs Zurich 2026
+    date: '2026-10-20'
+    location: Google Zürich (Europaallee 36), Zürich, Switzerland
+    country_code: ch
+    status: confirmed
+    bug_id: 558209863
+    event_url: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
+    slides_url: https://palladius.github.io/rails8-app-on-gcp/slides/antigravity.en.html
+    session_url: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
+    event_description: 'Google Cloud AI Live + Labs Zurich 2026 — Flagship hands-on developer & practitioner event at Google Zürich (Europaallee 36, Room Heidi).'
+    talk_description: 'This hands-on Developer Track lab has two orthogonal goals: deploying a modern Rails 8 application to Google Cloud, and using Antigravity 2.0 like a pro to build and ship applications to GCP. Discover how to take a feature-rich Rails 8 monolith from a local Docker Compose setup to production on Google Cloud—leveraging Cloud Run, GCS asset storage, and best practices for databases and secrets management, automated through Terraform recipes and Antigravity 2.0.'
+    tags:
+      - Workshop
+      - LiveLabs
+      - AI
+      - Antigravity
+      - Rails8
+      - Ruby
+      - CloudRun
+      - Zurich
+      - Switzerland
+    image: /images/events/cloud-day-2025.png
+  - title: 'Wednesday Build Hour: Rails 8 on Antigravity Codelab 🚂'
+    event: Google Cloud Wednesday Build Hour (EMEA)
+    date: '2026-10-07'
+    location: Online / Zürich, Switzerland
+    country_code: ch
+    status: delivered
+    sheetless_id: 10009
+    bug_id: 570951353
+    event_url: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
+    slides_url: https://palladius.github.io/rails8-app-on-gcp/slides/antigravity.en.html
+    session_url: https://github.com/palladius/rails8-app-on-gcp
+    event_description: 'Wednesday Build Hour (7 October 2026) — Live virtual hands-on workshop across EMEA with 317 registrations and 288 live attendees (90.9% show-up rate!).'
+    talk_description: 'Interactive live build session walking 288 live developers through vibe-coding and deploying a production-ready Ruby on Rails 8 application (Solid Cable, Turbo 8, GCS image uploads, Secret Manager) to Google Cloud Run using Google Antigravity and Gemini CLI.'
+    tags:
+      - Workshop
+      - Ruby
+      - Rails
+      - Rails8
+      - Antigravity
+      - Gemini
+      - CloudRun
+      - Codelab
+    image: /images/events/railshock2025.webp
+  - title: 'Keynote: Quella volta che ho lasciato il mio Linux acceso: Una storia d''amore con OpenClaw 🦞, Hermes 🪽 e Antigravity'
     event: DevFest Modena 2026
     date: '2026-10-03'
-    location: Modena, Italy
+    location: Fondazione San Carlo, Modena, Italy
     country_code: it
-    status: confirmed
+    status: delivered
     sheetless_id: 9988
     bug_id: 523213663
     event_url: https://devfest.modena.it/
     slides_url: https://storage.googleapis.com/palladius-genai-storagify/devfest-modena-2026/hub.html
     session_url: https://storage.googleapis.com/palladius-genai-storagify/devfest-modena-2026/index.html
-    event_description: 'DevFest Modena 2026 (3-4 Ottobre 2026) — Uno dei più grandi eventi GDG in Italia, dedicato a Cloud, AI, Mobile, Web e Community.'
-    talk_description: 'Una storia in 3 atti di serendipità, alchimia digitale e del giorno in cui il mio server Linux di casa (Pupurabbux) ha iniziato a gestire la mia vita mentre ero in Sudafrica. Esploriamo l''ecosistema multi-agente (OpenClaw/Lobby sul Mac Mini, Hermes/Ermete Bottazzi, memoria condivisa Obsidian/Karpathy Wiki, auto-patching e sintesi diagrammi Draw.io), la governance enterprise con Google Antigravity Fleet, Gemini Spark e Google Workspace MCP con Gemini Enterprise, accompagnati dall''inno ufficiale Pop-Punk & Karaoke generato con Lyria 3.5!'
+    event_description: 'DevFest Modena 2026 (2-4 Ottobre 2026) — Uno dei più grandi eventi GDG in Italia, dedicato a Cloud, AI, Mobile, Web e Community presso la Fondazione San Carlo.'
+    talk_description: 'Keynote in 3 atti di serendipità, alchimia digitale e del giorno in cui il mio server Linux di casa (Pupurabbux) ha iniziato a gestire la mia vita mentre ero in Sudafrica. Esploriamo l''ecosistema multi-agente (OpenClaw/Lobby sul Mac Mini, Hermes/Ermete Bottazzi, memoria condivisa Obsidian/Karpathy Wiki, auto-patching e sintesi diagrammi Draw.io), la governance enterprise con Google Antigravity Fleet, Gemini Spark e Google Workspace MCP con Gemini Enterprise, accompagnati dall''inno ufficiale Pop-Punk & Karaoke generato con Lyria 3.5!'
     tags:
+      - Keynote
       - AI
       - Antigravity
       - OpenClaw
@@ -136,6 +228,31 @@ talks:
       - Modena
       - Italy
       - Italian
+    image: /images/events/devfest-modena-2025.png
+  - title: '[Workshop] Vibe-Coda la Tua Prima App Rails 8 con Gemini (Deploying Modern Rails 8 Applications to Google Cloud)'
+    event: DevFest Modena 2026
+    date: '2026-10-03'
+    location: Fondazione San Carlo, Modena, Italy
+    country_code: it
+    status: delivered
+    sheetless_id: 9988
+    bug_id: 558209863
+    event_url: https://devfest.modena.it/
+    slides_url: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
+    session_url: https://sessionize.com/s/riccardo-carlesso/vibe-code-your-first-rails-8-app-with-gemini/181499
+    event_description: 'Hands-on Workshop (120 min) at DevFest Modena 2026 co-presented by Riccardo Carlesso & Emiliano Della Casa.'
+    talk_description: 'Non serve conoscere Ruby. Non serve conoscere Rails. Ti bastano un portatile e 120 minuti! In questo laboratorio pratico con Emiliano Della Casa costruiamo da zero una vera applicazione web con Rails 8 (Solid Cable, Turbo 8, upload immagini) e Gemini CLI come AI pair programmer, fino al deploy containerizzato su Google Cloud Run con Secret Manager, Google Cloud Storage e un modello di workshop self-testing (73/73 asserzioni in <5s).'
+    tags:
+      - Workshop
+      - Ruby
+      - Rails
+      - Rails8
+      - Gemini
+      - CloudRun
+      - Vibecoding
+      - DevFest
+      - Modena
+      - Italy
     image: /images/events/devfest-modena-2025.png
   - title: 'The Day I Left My Linux Machine Running: A Love Story with OpenClaw & Hermes (Quella volta che ho lasciato il mio Linux acceso 🦞)'
     event: DevFest Campobasso 2026
@@ -162,6 +279,28 @@ talks:
       - Italy
       - Italian
     image: /images/events/devfest-campobasso-2026.png
+  - title: '[Masterclass] Agentic Apps con Google Gemini SDK e TypeScript (con Fabio Biondi)'
+    event: GDG Napoli Masterclass — Università Federico II (Scampia)
+    date: '2026-09-18'
+    location: Complesso Universitario di Scampia, Naples, Italy
+    country_code: it
+    status: delivered
+    bug_id: 534733532
+    event_url: https://gdg.community.dev/events/details/google-gdg-napoli-presents-agentic-apps-con-google-gemini-sdk-e-typescript/
+    event_description: 'Full-day Masterclass (09:00–17:00) at Università degli Studi di Napoli Federico II (Complesso Scampia) organized by GDG Napoli with 200+ developers.'
+    talk_description: 'Masterclass intensiva "Learn By Doing" co-condotta con il GDE Fabio Biondi presso l''Università Federico II di Napoli (Scampia): sviluppo di applicazioni agentiche con Google Gemini SDK, TypeScript, Function Calling e Cloud Credits Onramp, coronata dall''inno ufficiale "La Tarantella di Scampia" generato con Lyria 3.5!'
+    tags:
+      - Workshop
+      - Masterclass
+      - AI
+      - Gemini
+      - TypeScript
+      - Agentic
+      - GDG
+      - Naples
+      - Italy
+      - Italian
+    image: /images/events/devfest-napoli.jpeg
   - title: 'The Day I Left My Linux Machine Running: A Love Story with OpenClaw 🦞, Hermes 🪽 & Antigravity'
     event: GDG Cloud Zürich
     date: '2026-09-03'
@@ -1188,6 +1327,29 @@ articles:
       - highlight
     image: /images/articles/2026-06-05-ops-i-did-it-again-the-sre-extension-is-out.png
     resource_type: article
+  - title: "Rails 8 on Google Cloud: Vibe-Coding & Deploying a Modern Web App (Google Codelab)"
+    url: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
+    publish_date: '2026-09-23'
+    bug_id: 558209863
+    description: "Official self-testing Google Developers Codelab (73/73 assertions in <5s) co-authored with Emiliano Della Casa for building, vibe-coding with Gemini CLI, and deploying a modern Ruby on Rails 8 application on Google Cloud Run with Secret Manager and Cloud Storage."
+    cta:
+      text: "Open Google Codelab"
+      url: "https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud"
+    links:
+      - text: "GitHub Repository (rails8-app-on-gcp)"
+        url: "https://github.com/palladius/rails8-app-on-gcp"
+        emoji: "🐙"
+    tags:
+      - Ruby
+      - Rails
+      - Rails8
+      - Codelab
+      - CloudRun
+      - Gemini CLI
+      - Vibecoding
+      - highlight
+    image: /images/events/devfest-modena-2025.png
+    resource_type: codelab
   - title: "Investigate GKE Cluster Breakage Scenarios with Postmortem (Google Codelab)"
     url: https://codelabs.developers.google.com/codelabs/investigate-gke-cluster-breakage-scenarios-with-postmortem
     publish_date: '2026-06-05'

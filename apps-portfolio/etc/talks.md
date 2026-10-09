@@ -11,6 +11,13 @@ I also have a private (for Googlers only): 📢 go/ricc-talks 🗣️
 * Where: Rotkreuz, Switzerland
 * Event: HSLU Guest Lecture — Autumn 2026
 
+### The Day I Left My Linux Machine Running: A Love Story with OpenClaw 🦞, Hermes 🪽 & Antigravity (Prague, 30 Oct 2026)
+
+* Event Link: https://devfest.cz/
+* When: October 30, 2026
+* Where: Prague, Czech Republic
+* Event: DevFest Prague 2026 (DevFest.cz)
+
 ### Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀 (Milan, 28 Oct 2026)
 
 * Session Link: https://sessionize.com/app/speaker/session/1222188
@@ -23,13 +30,46 @@ I also have a private (for Googlers only): 📢 go/ricc-talks 🗣️
 
 Let’s be honest: debugging production at scale is manual labor. 🫠 At Google, we decided making SREs act like human search engines was a bug, not a feature. Enter the Agentic SRE Extension—a skill-based framework that lives in your terminal and knows its way around Kubernetes. 🚀 In this deep dive, I’ll show you how we use modular skills and MCP to chain diagnostic tools, analyze metric regressions, and execute safe mitigations without "deleted production" anxiety. 🔥 We’ll dissect the "Outage Investigator" agent's logic loop, see it draft a technical postmortem in seconds, and discuss why we built this as a portable framework whose skills can be leveraged by any modern AI harness. You’ll leave with the code to wire up your own Kubernetes stack and let the agent's skills do the heavy lifting while you drink espresso. ☕️ No fluff, no 101s. Just AI agents, specialized skills, and less toil.
 
-### Quella volta che ho lasciato il mio Linux acceso: Una storia d'amore con OpenClaw 🦞, Hermes 🪽 e Antigravity (Modena, 3 Oct 2026)
+### Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🐉 (Warsaw, 22 Oct 2026)
+
+* Session Link: https://sreday.com/2026-warsaw-q4/Riccardo_Carlesso_Google_Stop_Grepping__Start_Reasoning_SkillBased_Agentic_SRE_.html#speakers-section
+* Event Link: https://sreday.com/2026-warsaw-q4/
+* When: October 22, 2026
+* Where: Google for Startups Campus, Warsaw, Poland
+* Event: SREday Warsaw 2026 Q4
+
+### [Workshop] Bring your Rails 8 app to GCP with Antigravity 2.0! (Zürich, 20 Oct 2026)
+
+* Codelab Link: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
+* Slides Link: https://palladius.github.io/rails8-app-on-gcp/slides/antigravity.en.html
+* When: October 20, 2026
+* Where: Google Zürich (Europaallee 36), Zürich, Switzerland
+* Event: Google Cloud AI Live + Labs Zurich 2026
+
+### Wednesday Build Hour: Rails 8 on Antigravity Codelab 🚂 (Online / EMEA, 7 Oct 2026)
+
+* Codelab Link: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
+* Slides Link: https://palladius.github.io/rails8-app-on-gcp/slides/antigravity.en.html
+* When: October 7, 2026
+* Where: Online / EMEA
+* Event: Google Cloud Wednesday Build Hour (EMEA)
+
+### Keynote: Quella volta che ho lasciato il mio Linux acceso: Una storia d'amore con OpenClaw 🦞, Hermes 🪽 e Antigravity (Modena, 3 Oct 2026)
 
 * Slides & Karaoke Hub: https://storage.googleapis.com/palladius-genai-storagify/devfest-modena-2026/hub.html
 * Event Link: https://devfest.modena.it/
 * When: October 3-4, 2026
-* Where: Modena, Italy
+* Where: Fondazione San Carlo, Modena, Italy
 * Event: DevFest Modena 2026
+
+### [Workshop] Vibe-Coda la Tua Prima App Rails 8 con Gemini (Deploying Modern Rails 8 Applications to Google Cloud) (Modena, 3 Oct 2026)
+
+* Codelab Link: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
+* Session Link: https://sessionize.com/s/riccardo-carlesso/vibe-code-your-first-rails-8-app-with-gemini/181499
+* Event Link: https://devfest.modena.it/
+* When: October 3, 2026
+* Where: Fondazione San Carlo, Modena, Italy
+* Event: DevFest Modena 2026 (co-presented with Emiliano Della Casa)
 
 ### The Day I Left My Linux Machine Running: A Love Story with OpenClaw & Hermes (Campobasso, 19 Sep 2026)
 
@@ -39,6 +79,13 @@ Let’s be honest: debugging production at scale is manual labor. 🫠 At Google
 * When: September 19, 2026
 * Where: Samnium Innovation Hub, Campobasso, Italy
 * Event: DevFest Campobasso 2026
+
+### [Masterclass] Agentic Apps con Google Gemini SDK e TypeScript (Naples, 18 Sep 2026)
+
+* Event Link: https://gdg.community.dev/events/details/google-gdg-napoli-presents-agentic-apps-con-google-gemini-sdk-e-typescript/
+* When: September 18, 2026
+* Where: Università degli Studi di Napoli Federico II — Complesso Scampia, Naples, Italy
+* Event: GDG Napoli Masterclass (co-presented with Fabio Biondi)
 
 ### The Day I Left My Linux Machine Running: A Love Story with OpenClaw 🦞, Hermes 🪽 & Antigravity (Zürich, 3 Sep 2026)
 

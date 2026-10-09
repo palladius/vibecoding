@@ -1,4 +1,4 @@
-import { getTalk } from "./data";
+import { getTalk, getFutureTalks } from "./data";
 import { describe, it, expect } from "vitest";
 
 describe("getTalk Integration", () => {
@@ -9,16 +9,25 @@ describe("getTalk Integration", () => {
     expect(talk?.title).toBe("Beyond Blame: The Art of the Postmortem");
   });
 
-  it('should find the "Art of SLOs" article', async () => {
-    // Note: Articles might have a different slug format or be in a different table.
-    // Based on data.ts: slug: `${article.publish_date}-${slugify(article.title)}`
-    // And data.yaml: date: '2021-01-01', title: 'The Art of SLOs'
-    // But show-db.ts showed '2020-12-31'.
-    // Let's check what the slug actually is by fetching all articles or guessing.
-    // If the date is 2020-12-31, the slug would be 2020-12-31-the-art-of-slos
-    // Let's try the one from TESTABLE_URLS.md first, but maybe corrected.
-    // The user tried /articles/2021-01-01-the-art-of-slos and it failed.
-    // If the DB has 2020-12-31, then the slug is different.
-    // Let's just test the talk for now as it's the main issue.
+  it("getFutureTalks() should never return any event in the past (like 2026-05-08 Rubycon) and should return upcoming talks", async () => {
+    const todayStr = new Date().toISOString().split("T")[0];
+    const futureTalks = await getFutureTalks();
+
+    expect(futureTalks.every((t) => t.date >= todayStr)).toBe(true);
+    for (const talk of futureTalks) {
+      expect(talk.date >= todayStr).toBe(true);
+      expect(talk.status).not.toBe("delivered");
+      expect(talk.date).not.toBe("2026-05-08");
+      expect(talk.title).not.toContain("Rubycon Italy 2026");
+    }
+
+    if (todayStr <= "2026-10-20") {
+      const events = futureTalks.map((t) => t.event);
+      expect(events).toContain("Google Cloud AI Live + Labs Zurich 2026");
+      expect(events).toContain("SREday Warsaw 2026 Q4");
+      expect(events).toContain("Codemotion Milan 2026");
+      expect(events).toContain("DevFest Prague 2026 (DevFest.cz)");
+    }
   });
 });
+

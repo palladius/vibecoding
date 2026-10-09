@@ -20,6 +20,10 @@ const getProximity = (date: string) => {
 
 export default function NextTalksClientPage({ initialTalks }: { initialTalks: Talk[] }) {
   const [view, setView] = useState('card');
+  const todayStr = moment().format('YYYY-MM-DD');
+  const upcomingTalks = initialTalks.filter(
+    (talk) => talk.date >= todayStr && talk.status !== 'delivered'
+  );
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -39,9 +43,9 @@ export default function NextTalksClientPage({ initialTalks }: { initialTalks: Ta
         </button>
       </div>
       {view === 'card' ? (
-        initialTalks.length > 0 ? (
+        upcomingTalks.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {initialTalks.map((talk) => (
+            {upcomingTalks.map((talk) => (
               <TalkCard key={talk.id} talk={talk} proximity={getProximity(talk.date)} />
             ))}
           </div>
@@ -49,7 +53,7 @@ export default function NextTalksClientPage({ initialTalks }: { initialTalks: Ta
           <p>No upcoming talks found. Check back later!</p>
         )
       ) : (
-        <CalendarView talks={initialTalks} />
+        <CalendarView talks={upcomingTalks} />
       )}
     </div>
   );
