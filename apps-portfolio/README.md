@@ -79,9 +79,21 @@ npm install
 npm run dev
 ```
 
-## Deployment
+## Deployment & Auto-Deploy (GitHub Actions WIF ➔ Cloud Build)
 
-This application is set up for continuous deployment with Google Cloud Build and Cloud Run. See the `cloudbuild.yaml` file for details. The Terraform configuration in the `iac` directory will set up the necessary infrastructure.
+This application uses a **100% keyless Hybrid CI/CD pipeline**:
+1. **GitHub Actions (`.github/workflows/apps-portfolio-deploy.yml`)** triggers automatically on any push to `main` touching `apps-portfolio/**` (or via manual `workflow_dispatch`).
+2. It syncs `etc/data.yaml` ➔ `db/portfolio.sqlite3`, runs `vitest` unit/integration tests and `next lint`, authenticates to Google Cloud via **Workload Identity Federation (WIF)** (zero JSON keys!), and invokes `gcloud builds submit . --project=palladius-genai --config=apps-portfolio/cloudbuild.yaml`.
+3. **Google Cloud Build (`cloudbuild.yaml`)** builds the container image, pushes to Artifact Registry, and deploys to both `portfolio-app` (dev) and `portfolio-app-prod` (prod). You can inspect builds anytime with `just cloud-build-list`.
+
+## Terraform Setup
+
+All CI/CD & WIF resources (`tf-github-pool`, `tf-github-provider`, `tf-portfolio-gha-deployer@palladius-genai.iam.gserviceaccount.com`, and `tf-portfolio-app-main`) are managed declaratively in [`iac/main.tf`](iac/main.tf):
+
+```bash
+just terraform-init
+just terraform-apply
+```
 
 ## Dependency Graph
 

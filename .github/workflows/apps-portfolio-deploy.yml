@@ -1,0 +1,71 @@
+name: "🚀 Auto-Deploy apps-portfolio (WIF -> Cloud Build)"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps-portfolio/**"
+      - ".github/workflows/apps-portfolio-deploy.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: apps-portfolio-deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  test-and-trigger-cloud-build:
+    name: "🧪 Test (Vitest) & ☁️ Trigger Cloud Build"
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: "📥 Checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "🟢 Setup Node.js 22"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: "apps-portfolio/package-lock.json"
+
+      - name: "📦 Install dependencies & generate Prisma Client"
+        working-directory: apps-portfolio
+        run: |
+          npm ci --legacy-peer-deps || npm install
+          npx prisma generate
+
+      - name: "🗄️ Sync YAML -> SQLite (db/portfolio.sqlite3)"
+        working-directory: apps-portfolio
+        env:
+          DATABASE_URL: "file:../db/portfolio.sqlite3"
+        run: |
+          npx tsx scripts/import-yaml.ts
+
+      - name: "🧪 Run Unit & Integration Tests (Vitest + Dynamic NOW())"
+        working-directory: apps-portfolio
+        env:
+          DATABASE_URL: "file:../db/portfolio.sqlite3"
+        run: |
+          npx vitest run src/
+          npm run lint
+
+      - name: "🔐 Authenticate to Google Cloud via Workload Identity Federation (Keyless)"
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: "projects/272932496670/locations/global/workloadIdentityPools/tf-github-pool/providers/tf-github-provider"
+          service_account: "tf-portfolio-gha-deployer@palladius-genai.iam.gserviceaccount.com"
+
+      - name: "☁️ Setup gcloud SDK"
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: "🚀 Submit Build & Deploy to Cloud Build (palladius-genai)"
+        run: |
+          gcloud builds submit . \
+            --project="palladius-genai" \
+            --config="apps-portfolio/cloudbuild.yaml"

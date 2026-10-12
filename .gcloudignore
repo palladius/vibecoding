@@ -1,0 +1,19 @@
+# .gcloudignore for palladius/vibecoding monorepo
+# Ensures `gcloud builds submit .` only uploads source code (~15 MB) instead of 1.1 GiB of node_modules/.next!
+.gcloudignore
+.git
+.gitignore
+.gemini/
+**/.gemini/
+**/node_modules/
+**/.next/
+**/out/
+**/coverage/
+**/.venv/
+**/__pycache__/
+*.pyc
+**/.playwright-mcp/
+**/log/
+**/.env
+**/.env.*
+!apps-portfolio/.env.dist

@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.15.2 - 2026-10-12
+
+### 🚀 Auto-Deploy (Keyless WIF + GitHub Actions ➔ Cloud Build) & Terraform
+
+*   🔐 **Keyless Workload Identity Federation (WIF) in Terraform (`iac/main.tf`)**:
+    *   Provisioned `tf-github-pool`, `tf-github-provider` (`https://token.actions.githubusercontent.com`), and dedicated Service Account `tf-portfolio-gha-deployer@palladius-genai.iam.gserviceaccount.com` with least-privilege roles (`roles/cloudbuild.builds.editor`, `roles/storage.admin`, `roles/serviceusage.serviceUsageConsumer`, `roles/viewer`, `roles/iam.serviceAccountUser`) and repository-scoped `roles/iam.workloadIdentityUser` binding (`palladius/vibecoding`).
+*   🤖 **Hybrid GitHub Actions ➔ Cloud Build Workflow (`.github/workflows/apps-portfolio-deploy.yml`)**:
+    *   Automatically runs on every push to `main` touching `apps-portfolio/**` (or via manual `workflow_dispatch`):
+        1. Syncs `etc/data.yaml` ➔ `db/portfolio.sqlite3` (`scripts/import-yaml.ts`).
+        2. Runs the Vitest unit/integration suite (`npx vitest run src/`) and ESLint (`npm run lint`).
+        3. Authenticates keylessly via WIF and triggers `gcloud builds submit . --project=palladius-genai --config=apps-portfolio/cloudbuild.yaml` so all build logs remain visible via `just cloud-build-list`.
+*   ⚡ **Fast Cloud Build Source Upload (`.gcloudignore`)**:
+    *   Added root `.gcloudignore` excluding `**/node_modules/` and `**/.next/`, shrinking the Cloud Build source archive from `1.1 GiB` (35,000+ files) to `<15 MB`.
+
 ## v0.15.1 - 2026-10-09
 
 ### 🚀 Features, Data Sync & TDD Bug Fixes
