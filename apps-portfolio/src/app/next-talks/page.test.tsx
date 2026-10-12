@@ -44,7 +44,7 @@ describe("Next Talks — Never Feature Past Events relative to NOW() (TDD)", () 
       country_code: "pl",
       status: "confirmed",
       tags: "SRE,AI,Warsaw,Poland",
-      image: "/images/events/SREDAY-2024.png",
+      image: "/images/events/sreday-warsaw-2026-q4.png",
       slug: `${tomorrowStr}-stop-grepping-start-reasoning-skill-based-agentic-sre`,
     },
     {

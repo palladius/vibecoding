@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.15.3 - 2026-10-12
+
+### 🎨 Assets & Polish
+
+*   🇵🇱 **SREday Warsaw 2026 Q4 Official Speaker Card (`public/images/events/sreday-warsaw-2026-q4.png`)**:
+    *   Added official SREday Warsaw 2026 Q4 speaker card for *Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🐉* (`2026-10-22`, Google for Startups Campus, Warsaw) and updated `etc/data.yaml` and `db/portfolio.sqlite3`.
+
 ## v0.15.2 - 2026-10-12
 
 ### 🚀 Auto-Deploy (Keyless WIF + GitHub Actions ➔ Cloud Build) & Terraform

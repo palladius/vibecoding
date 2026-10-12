@@ -156,7 +156,7 @@ talks:
       - SREday
       - Warsaw
       - Poland
-    image: /images/events/SREDAY-2024.png
+    image: /images/events/sreday-warsaw-2026-q4.png
   - title: '[Workshop] Bring your Rails 8 app to GCP with Antigravity 2.0!'
     event: Google Cloud AI Live + Labs Zurich 2026
     date: '2026-10-20'
