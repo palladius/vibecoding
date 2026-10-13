@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.15.4 - 2026-10-13
+
+### 🎨 Assets & Polish
+
+*   🇮🇹 **Codemotion Milan 2026 Official Speaker Card (`public/images/events/codemotion-milan-2026.jpg`)**:
+    *   Added official Sessionize speaker card for *Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀* at **Codemotion AI & Tech Conference Milan 2026** (`2026-10-28`–`2026-10-29`) and linked the official Codemotion Magazine preview article.
+
 ## v0.15.3 - 2026-10-12
 
 ### 🎨 Assets & Polish

@@ -111,7 +111,8 @@ talks:
     status: confirmed
     sheetless_id: 9971
     bug_id: 569926156
-    event_url: https://conferences.codemotion.com/milan2026/
+    event_url: https://conferences.codemotion.com/milan/
+    event_description: 'Codemotion AI & Tech Conference Milan 2026 (28–29 Oct 2026, Superstudio Più) — Featured in Codemotion Magazine: https://www.codemotion.com/magazine/it/dev-life-it/eventi/multi-agent-e-troubleshooting-due-prospettive-sullai-agentica-a-codemotion-ai-tech-conference/'
     talk_description: 'Let’s be honest: debugging production at scale is manual labor.
       🫠 At Google, we decided making SREs act like human search engines was a bug,
       not a feature. Enter the Agentic SRE Extension—a skill-based framework that
@@ -133,7 +134,7 @@ talks:
       - Milan
       - Italy
       - Codemotion
-    image: /images/events/codemotion.jpg
+    image: /images/events/codemotion-milan-2026.jpg
     session_url: https://sessionize.com/app/speaker/session/1222188
   - title: 'Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🐉'
     event: SREday Warsaw 2026 Q4
