@@ -19,7 +19,7 @@ export default function ItemsList({ items }: { items: Item[] }) {
             date: item.date || '',
             location: item.location || '',
             tags: item.tags || '',
-            image: item.image || '/images/placeholder-image.png',
+            image: item.image || '/images/events/riccardo-stage-default.png',
             country_code: item.country_code || 'xx',
             slug: item.slug || '',
           };

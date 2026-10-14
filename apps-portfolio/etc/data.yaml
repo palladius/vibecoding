@@ -79,7 +79,7 @@ talks:
       - Lucerne
       - Switzerland
       - Governance
-    image: /images/events/railshock2025.webp
+    image: /images/events/riccardo-stage-yellow-blazer.png
   - title: 'The Day I Left My Linux Machine Running: A Love Story with OpenClaw 🦞, Hermes 🪽 & Antigravity'
     event: DevFest Prague 2026 (DevFest.cz)
     date: '2026-10-30'
@@ -102,7 +102,7 @@ talks:
       - DevFest
       - Prague
       - Czechia
-    image: /images/events/devfest-pescara-2025.png
+    image: /images/events/riccardo-stage-default.png
   - title: 'Stop Grepping, Start Reasoning: Skill-Based Agentic SRE 🚀'
     event: Codemotion Milan 2026
     date: '2026-10-28'
@@ -180,7 +180,7 @@ talks:
       - CloudRun
       - Zurich
       - Switzerland
-    image: /images/events/cloud-day-2025.png
+    image: /images/events/riccardo-stage-canary-tshirt-3.png
   - title: 'Wednesday Build Hour: Rails 8 on Antigravity Codelab 🚂'
     event: Google Cloud Wednesday Build Hour (EMEA)
     date: '2026-10-07'
@@ -203,7 +203,7 @@ talks:
       - Gemini
       - CloudRun
       - Codelab
-    image: /images/events/railshock2025.webp
+    image: /images/events/riccardo-stage-canary-tshirt-4.png
   - title: 'Keynote: Quella volta che ho lasciato il mio Linux acceso: Una storia d''amore con OpenClaw 🦞, Hermes 🪽 e Antigravity'
     event: DevFest Modena 2026
     date: '2026-10-03'
@@ -379,7 +379,7 @@ talks:
       - Workshop
       - Frankfurt
       - Germany
-    image: /images/events/cloud-day-2025.png
+    image: /images/events/riccardo-stage-default.png
   - title: 'Agentic SRE Talk & Live Demo in Edinburgh'
     event: LBG Engineering Summit Edinburgh 2026
     date: '2026-05-19'
@@ -435,7 +435,7 @@ talks:
       - HSLU
       - Lucerne
       - Switzerland
-    image: /images/events/railshock2025.webp
+    image: /images/events/riccardo-stage-white-shirt-italian.png
   - title: Startup Culture at Google (Italiano)
     event: Indie SaaS Day Modena 2026
     date: '2026-02-28'

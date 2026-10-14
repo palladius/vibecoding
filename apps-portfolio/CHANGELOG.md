@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.15.5 - 2026-10-14
+
+### 🎨 Assets & Default On-Stage Speaker Photos
+
+*   🏊‍♂️💛🧢 **New On-Stage Speaker Gallery & Default Talk Image (`public/images/events/riccardo-stage-default.png`)**:
+    *   Generated character-consistent, clean-shaven, slimmed (-20kg V-taper swimmer's chest) on-stage speaker photos of Riccardo wearing his Google Noogler propeller cap, discreet beige cheek microphone, and canary-yellow crew-neck t-shirt with a subtle tone-on-tone `Google` logo (`riccardo-stage-default.png`, `riccardo-stage-canary-tshirt-1.png`..`4.png`, `riccardo-stage-yellow-blazer.png`, `riccardo-stage-yellow-blazer-2k.png`, `riccardo-stage-white-shirt-italian.png`).
+    *   Set `/images/events/riccardo-stage-default.png` as the default fallback talk image in `scripts/import-yaml.ts`, `src/app/components/ItemsList.tsx`, `src/app/components/TalkCard.tsx`, and `src/app/talks/[slug]/page.tsx`.
+    *   Updated 2026 talks in `etc/data.yaml` and `db/portfolio.sqlite3` that previously used borrowed placeholder images (`DevFest Prague 2026`, `Google Cloud AI Live + Labs Zurich 2026`, `HSLU Guest Lecture — Autumn 2026`, `Wednesday Build Hour (EMEA)`, `Google Cloud Summit DACH 2026`, `HSLU Guest Lecture — Spring 2026`).
+
 ## v0.15.4 - 2026-10-13
 
 ### 🎨 Assets & Polish

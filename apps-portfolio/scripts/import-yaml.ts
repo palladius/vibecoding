@@ -21,7 +21,7 @@ interface Talk {
   slides_url: string;
   status: string;
   tags: string[];
-  image: string;
+  image?: string;
   event_description: string;
   talk_description: string;
   event_url?: string;
@@ -129,7 +129,7 @@ export async function importData() {
           slides_url: talk.slides_url,
           status: talk.status,
           tags: tags,
-          image: talk.image,
+          image: talk.image || '/images/events/riccardo-stage-default.png',
           event_description: talk.event_description,
           talk_description: talk.talk_description,
           event_url: talk.event_url,

@@ -100,17 +100,15 @@ export default async function TalkPage({ params }: { params: { slug:string } }) 
           )}
         </div>
         <div className="w-full md:w-1/3">
-          {talk.image && (
-            <div className="relative h-80 w-full">
-              <Image
-                src={talk.image}
-                alt={talk.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover rounded-lg border-2 border-gray-700 opacity-90 shadow-lg"
-              />
-            </div>
-          )}
+          <div className="relative h-80 w-full">
+            <Image
+              src={talk.image || '/images/events/riccardo-stage-default.png'}
+              alt={talk.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover rounded-lg border-2 border-gray-700 opacity-90 shadow-lg"
+            />
+          </div>
         </div>
       </div>
     </div>
