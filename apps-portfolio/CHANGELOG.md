@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.16.0 - 2026-11-05
+
+### 🚀 New Feature: `portfolio-app-cli` (`bin/portfolio-app-cli`) & November 2026 Data Sync
+
+*   🎤 **Standalone Portfolio CLI (`bin/portfolio-app-cli` + symlink in `~/bin/portfolio-app-cli`)**:
+    *   Added fast (<20ms startup, zero external gem dependencies) Ruby CLI reading directly from `etc/data.yaml` + `etc/videos.yaml`.
+    *   Supports `--next-events` / `--next` (default, including typo-tolerant normalization for `--next=-evemnts`), `--this-month` / `--month YYYY-MM`, `--all`, `--past`, `--articles` / `--resources`, `--stats`, `--stale`, `--year YYYY`, `--tag TAG`, `--limit N`, `--as-of YYYY-MM-DD`, `--json`, and `--markdown`.
+    *   Added `just next-events` and `just cli` recipes in `justfile`, plus 3 automated Vitest integration tests in `src/lib/portfolio-cli.test.ts`.
+*   📅 **November 2026 Event Sync (`etc/data.yaml` + `db/portfolio.sqlite3`)**:
+    *   Updated **HSLU CAS Cloud Architecture 01 (M3) — Autumn 2026** (`b/553447964`) to its official contract date **`2026-11-27`** at **Campus Zug-Rotkreuz (Room `I.S1A_411`), Rotkreuz, Switzerland** with full two-deck description (*"The History of AIverything: 1940 → 2026"* & *"Enterprise AI Governance, ROI & Agentic Riskscapes"*).
+    *   Marked the 4 completed late-October 2026 talks (`DevFest Prague 2026`, `Codemotion Milan 2026`, `SREday Warsaw 2026 Q4`, `Google Cloud AI Live + Labs Zurich 2026`) as `status: delivered`.
+*   🧹 **Repo Hygiene**:
+    *   Added `*.tfstate.backup` to `iac/.gitignore` and updated `AI_REASONING.md`.
+
 ## v0.15.5 - 2026-10-14
 
 ### 🎨 Assets & Default On-Stage Speaker Photos

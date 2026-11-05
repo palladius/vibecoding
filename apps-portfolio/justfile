@@ -65,6 +65,14 @@ db-migrate-test:
 db-show:
     npx tsx scripts/show-db.ts
 
+# [CLI] Show upcoming events/talks from portfolio-app-cli
+next-events *ARGS:
+    ./bin/portfolio-app-cli --next-events {{ARGS}}
+
+# [CLI] Run portfolio-app-cli with arbitrary flags (e.g. just cli --stats)
+cli *ARGS:
+    ./bin/portfolio-app-cli {{ARGS}}
+
 # [DOCKER] Build the Docker image
 docker-build:
     time docker build --build-arg DATABASE_URL="file:/app/db/portfolio.sqlite3" -t portfolio-app:v`cat VERSION` .

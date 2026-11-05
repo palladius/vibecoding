@@ -66,3 +66,13 @@ Learned a crucial lesson regarding robust Docker image version tagging in Cloud 
 ### Solution:
 - Added `export const dynamic = "force-dynamic";` to `src/app/next-talks/page.tsx`, `src/app/talks/page.tsx`, and `src/app/page.tsx` so `new Date()` is evaluated on every request.
 - Synced all 2026 talks, keynotes, workshops, and masterclasses across `etc/data.yaml`, Sheetless (`drc sheetless sync`), Buganizer (`componentid:1524969+` & `313764`), and Obsidian (`~/obsidian-pbt/`).
+
+## Keyless WIF Auto-Deploy & Default Speaker Photos (`v0.15.2`–`v0.15.5` — 2026-10-14)
+
+### Problem:
+1. Cloud Build GitHub triggers occasionally failed to fire automatically on pushes to `main`, and uploading the un-ignored repository root uploaded `1.1 GiB` of `node_modules/`.
+2. Talks without a dedicated conference banner were reusing other events' banners (`railshock2025.webp`, `devfest-pescara-2025.png`, `cloud-day-2025.png`) or an old blue-shirt photo.
+
+### Solution:
+- **Keyless WIF + GitHub Actions (`.github/workflows/apps-portfolio-deploy.yml` + `iac/main.tf`)**: Provisioned `tf-github-pool`, `tf-github-provider`, and `tf-portfolio-gha-deployer@palladius-genai.iam.gserviceaccount.com` in Terraform, plus a root `.gcloudignore` shrinking the Cloud Build archive to `<15 MB`. Every push to `main` touching `apps-portfolio/**` automatically runs `import-yaml.ts`, Vitest, ESLint, and `gcloud builds submit`.
+- **Curated On-Stage Speaker Gallery (`public/images/events/riccardo-stage-*.png`)**: Generated clean-shaven, slimmed (-20kg swimmer V-taper) on-stage speaker photos of Riccardo wearing his Google Noogler propeller cap and canary-yellow crew-neck t-shirt with a tone-on-tone `Google` logo, and set `/images/events/riccardo-stage-default.png` as the default fallback talk image across `scripts/import-yaml.ts`, `ItemsList.tsx`, `TalkCard.tsx`, and `talks/[slug]/page.tsx`.

@@ -1,0 +1,397 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# ==============================================================================
+# 🎤 portfolio-app-cli — Riccardo's Portfolio Command-Line Companion (💛🦖)
+# ==============================================================================
+# Queries and manages ~/git/vibecoding/apps-portfolio/etc/data.yaml directly
+# using Ruby standard library (zero external gems required, <20ms startup).
+#
+# Usage examples:
+#   portfolio-app-cli                    # Default: show upcoming events (--next-events)
+#   portfolio-app-cli --next-events      # Show upcoming talks/events + stale check
+#   portfolio-app-cli --all --year 2026  # Show all 2026 talks/events
+#   portfolio-app-cli --past --limit 10  # Show last 10 delivered talks
+#   portfolio-app-cli --articles         # Show articles, codelabs, slides & videos
+#   portfolio-app-cli --stats            # Show portfolio summary statistics
+#   portfolio-app-cli --stale            # List past talks still marked confirmed
+#   portfolio-app-cli --json             # Emit JSON output (composable with jq)
+#   portfolio-app-cli --markdown         # Emit Markdown output
+# ==============================================================================
+
+require 'yaml'
+require 'json'
+require 'date'
+require 'optparse'
+
+module PortfolioCLI
+  CLI_VERSION = '1.0.0'
+
+  # Resolve repository root by following symlinks from __FILE__ (e.g. ~/bin/portfolio-app-cli)
+  SCRIPT_REALPATH = File.realpath(__FILE__)
+  APP_ROOT = ENV['PORTFOLIO_APP_ROOT'] || File.expand_path('..', File.dirname(SCRIPT_REALPATH))
+  DATA_YAML_PATH = File.join(APP_ROOT, 'etc', 'data.yaml')
+  VIDEOS_YAML_PATH = File.join(APP_ROOT, 'etc', 'videos.yaml')
+  VERSION_FILE_PATH = File.join(APP_ROOT, 'VERSION')
+  LIVE_URL = 'https://portfolio-app-272932496670.europe-west1.run.app'
+
+  # ANSI color helpers (automatically disabled when stdout is not a TTY unless --color)
+  module Colors
+    RESET   = "\e[0m"
+    BOLD    = "\e[1m"
+    DIM     = "\e[2m"
+    RED     = "\e[31m"
+    GREEN   = "\e[32m"
+    YELLOW  = "\e[33m"
+    BLUE    = "\e[34m"
+    MAGENTA = "\e[35m"
+    CYAN    = "\e[36m"
+    WHITE   = "\e[37m"
+
+    def self.colorize(text, *codes, enabled: true)
+      return text.to_s unless enabled
+      "#{codes.join}#{text}#{RESET}"
+    end
+  end
+
+  # Converts a 2-letter ISO country code into a regional indicator flag emoji
+  def self.country_flag(code)
+    return '🌍' if code.nil? || code.strip.empty?
+    clean = code.strip.downcase
+    return '🌐' if clean == 'remote' || clean == 'xx'
+    return '🌍' unless clean.match?(/\A[a-z]{2}\z/)
+
+    clean.chars.map { |ch| (ch.ord - 'a'.ord + 0x1F1E6).chr(Encoding::UTF_8) }.join
+  end
+
+  # Status badge emoji
+  def self.status_emoji(status)
+    case status.to_s.downcase
+    when 'confirmed'   then '✅'
+    when 'delivered'   then '🎤'
+    when 'cfp_applied' then '🤞'
+    else '📌'
+    end
+  end
+
+  # Human-readable countdown relative to reference_date
+  def self.proximity_label(event_date, today)
+    diff = (event_date - today).to_i
+    if diff.zero?
+      '🔥 TODAY!'
+    elsif diff == 1
+      '⚡ Tomorrow!'
+    elsif diff > 1 && diff <= 7
+      "🗓️  in #{diff} days (this week)"
+    elsif diff > 7
+      "🗓️  in #{diff} days"
+    elsif diff == -1
+      'yesterday'
+    else
+      "#{diff.abs} days ago"
+    end
+  end
+
+  # Parse YYYY-MM-DD safely
+  def self.parse_date(val)
+    return val if val.is_a?(Date)
+    Date.parse(val.to_s)
+  rescue ArgumentError
+    Date.new(1970, 1, 1)
+  end
+
+  # Normalize friendly/typoed CLI flags (e.g. --next=-evemnts, --next-evemnts, next)
+  def self.normalize_argv(raw_argv)
+    raw_argv.flat_map do |arg|
+      case arg
+      when /\A--next[-_=]*[a-z]*\z/i, 'next', 'upcoming'
+        ['--next-events']
+      when /\A--(this-)?month\z/i, 'month', 'this-month'
+        ['--this-month']
+      when 'all', 'talks'
+        ['--all']
+      when 'past', 'delivered'
+        ['--past']
+      when 'articles', 'resources', 'videos'
+        ['--articles']
+      when 'stats', 'summary'
+        ['--stats']
+      when 'stale'
+        ['--stale']
+      else
+        [arg]
+      end
+    end
+  end
+
+  def self.load_data
+    unless File.exist?(DATA_YAML_PATH)
+      warn "Error: Cannot find data.yaml at #{DATA_YAML_PATH}"
+      exit 1
+    end
+
+    data = YAML.safe_load_file(DATA_YAML_PATH, permitted_classes: [Date, Time]) || {}
+    talks = Array(data['talks'])
+    articles = Array(data['articles'])
+
+    if File.exist?(VIDEOS_YAML_PATH)
+      vdata = YAML.safe_load_file(VIDEOS_YAML_PATH, permitted_classes: [Date, Time]) || {}
+      Array(vdata['videos']).each do |vid|
+        vid['resource_type'] ||= 'video'
+        unless articles.any? { |a| a['title'].to_s.strip.casecmp?(vid['title'].to_s.strip) }
+          articles << vid
+        end
+      end
+    end
+
+    app_version = File.exist?(VERSION_FILE_PATH) ? File.read(VERSION_FILE_PATH).strip : 'unknown'
+    { talks: talks, articles: articles, app_version: app_version }
+  end
+
+  def self.run(raw_argv = ARGV)
+    argv = normalize_argv(raw_argv)
+
+    options = {
+      mode: :next,
+      format: :pretty,
+      year: nil,
+      month: nil,
+      tag: nil,
+      limit: nil,
+      today: Date.today,
+      color: $stdout.tty?
+    }
+
+    parser = OptionParser.new do |opts|
+      opts.banner = "🎤 portfolio-app-cli v#{CLI_VERSION} — Riccardo's Portfolio CLI (💛🦖)\n" \
+                    "Usage: portfolio-app-cli [options]"
+
+      opts.separator "\nModes:"
+      opts.on('-n', '--next-events', '--next', 'Show upcoming talks & events (default)') { options[:mode] = :next }
+      opts.on('-M', '--this-month', 'Show talks & events in the current month') { options[:mode] = :this_month }
+      opts.on('--month YYYY-MM', String, 'Show talks & events in a specific month (e.g. 2026-11)') do |ym|
+        options[:mode] = :this_month
+        options[:month] = ym
+      end
+      opts.on('-a', '--all', 'Show all talks & events (past + upcoming)') { options[:mode] = :all }
+      opts.on('-p', '--past', 'Show delivered/past talks & events') { options[:mode] = :past }
+      opts.on('-r', '--articles', '--resources', 'Show articles, codelabs, slides & videos') { options[:mode] = :articles }
+      opts.on('-s', '--stats', 'Show portfolio summary statistics') { options[:mode] = :stats }
+      opts.on('--stale', 'Show past talks still marked as confirmed/cfp_applied') { options[:mode] = :stale }
+
+      opts.separator "\nFilters:"
+      opts.on('-y', '--year YEAR', Integer, 'Filter by year (e.g. 2026)') { |y| options[:year] = y }
+      opts.on('-t', '--tag TAG', String, 'Filter by tag substring (case-insensitive)') { |t| options[:tag] = t }
+      opts.on('-l', '--limit N', Integer, 'Limit number of items displayed') { |n| options[:limit] = n }
+      opts.on('--as-of DATE', String, 'Override today date (YYYY-MM-DD, useful for tests)') { |d| options[:today] = Date.parse(d) }
+
+      opts.separator "\nOutput Formats:"
+      opts.on('-j', '--json', 'Output as JSON') { options[:format] = :json }
+      opts.on('-m', '--markdown', 'Output as Markdown') { options[:format] = :markdown }
+      opts.on('--color', 'Force ANSI colors on') { options[:color] = true }
+      opts.on('--no-color', 'Disable ANSI colors') { options[:color] = false }
+
+      opts.separator "\nMisc:"
+      opts.on('-v', '--version', 'Print CLI and portfolio app version') do
+        store = load_data
+        puts "portfolio-app-cli v#{CLI_VERSION} (apps-portfolio v#{store[:app_version]})"
+        exit 0
+      end
+      opts.on('-h', '--help', 'Show this help message') do
+        puts opts
+        exit 0
+      end
+    end
+
+    parser.parse!(argv)
+    store = load_data
+    today = options[:today]
+    c = options[:color]
+
+    talks = store[:talks].map do |t|
+      d = parse_date(t['date'])
+      t.merge('_parsed_date' => d, '_flag' => country_flag(t['country_code']))
+    end
+
+    # Apply common filters
+    filter_items = lambda do |items, date_key|
+      res = items
+      res = res.select { |i| parse_date(i[date_key]).year == options[:year] } if options[:year]
+      if options[:tag]
+        needle = options[:tag].downcase
+        res = res.select { |i| Array(i['tags']).any? { |tg| tg.to_s.downcase.include?(needle) } }
+      end
+      res
+    end
+
+    case options[:mode]
+    when :next
+      upcoming = talks
+                 .select { |t| t['_parsed_date'] >= today && t['status'].to_s.downcase != 'delivered' }
+                 .sort_by { |t| t['_parsed_date'] }
+      upcoming = filter_items.call(upcoming, 'date')
+      upcoming = upcoming.first(options[:limit]) if options[:limit]
+
+      stale = talks
+              .select { |t| t['_parsed_date'] < today && t['status'].to_s.downcase != 'delivered' }
+              .sort_by { |t| t['_parsed_date'] }
+              .reverse
+
+      render_talks(upcoming, title: "🚀 Upcoming Talks & Events (as of #{today})", today: today, format: options[:format], color: c, stale: stale, app_version: store[:app_version])
+
+    when :this_month
+      target_ym = options[:month] || today.strftime('%Y-%m')
+      month_talks = talks
+                    .select { |t| t['_parsed_date'].strftime('%Y-%m') == target_ym }
+                    .sort_by { |t| t['_parsed_date'] }
+      month_talks = filter_items.call(month_talks, 'date')
+      month_talks = month_talks.first(options[:limit]) if options[:limit]
+      render_talks(month_talks, title: "📅 Talks & Events in #{target_ym} (as of #{today})", today: today, format: options[:format], color: c, stale: [], app_version: store[:app_version])
+
+    when :stale
+      stale = talks
+              .select { |t| t['_parsed_date'] < today && t['status'].to_s.downcase != 'delivered' }
+              .sort_by { |t| t['_parsed_date'] }
+              .reverse
+      render_talks(stale, title: "⚠️  Stale Talks (date < #{today} but status != delivered)", today: today, format: options[:format], color: c, stale: [], app_version: store[:app_version])
+
+    when :past
+      past = talks
+             .select { |t| t['_parsed_date'] < today || t['status'].to_s.downcase == 'delivered' }
+             .sort_by { |t| t['_parsed_date'] }
+             .reverse
+      past = filter_items.call(past, 'date')
+      past = past.first(options[:limit]) if options[:limit]
+      render_talks(past, title: "🎤 Past & Delivered Talks", today: today, format: options[:format], color: c, stale: [], app_version: store[:app_version])
+
+    when :all
+      all_talks = filter_items.call(talks.sort_by { |t| t['_parsed_date'] }.reverse, 'date')
+      all_talks = all_talks.first(options[:limit]) if options[:limit]
+      render_talks(all_talks, title: "📚 All Talks & Events (#{all_talks.size})", today: today, format: options[:format], color: c, stale: [], app_version: store[:app_version])
+
+    when :articles
+      arts = filter_items.call(store[:articles], 'publish_date')
+                         .sort_by { |a| parse_date(a['publish_date']) }
+                         .reverse
+      arts = arts.first(options[:limit]) if options[:limit]
+      render_articles(arts, format: options[:format], color: c)
+
+    when :stats
+      render_stats(talks, store[:articles], today: today, format: options[:format], color: c, app_version: store[:app_version])
+    end
+  end
+
+  def self.clean_item(item)
+    item.reject { |k, _| k.to_s.start_with?('_') }
+  end
+
+  def self.render_talks(talks, title:, today:, format:, color:, stale:, app_version:)
+    if format == :json
+      payload = {
+        as_of: today.to_s,
+        app_version: app_version,
+        count: talks.size,
+        talks: talks.map { |t| clean_item(t).merge('countdown_days' => (t['_parsed_date'] - today).to_i) }
+      }
+      payload[:stale_talks] = stale.map { |t| clean_item(t) } unless stale.empty?
+      puts JSON.pretty_generate(payload)
+      return
+    end
+
+    if format == :markdown
+      puts "## #{title}\n\n"
+      if talks.empty?
+        puts "_No matching talks found._"
+      else
+        talks.each do |t|
+          prox = proximity_label(t['_parsed_date'], today)
+          puts "- **#{t['date']}** (#{prox}) — #{t['_flag']} **#{t['event']}** (#{t['location']})"
+          puts "  - #{status_emoji(t['status'])} _#{t['title']}_ (`#{t['status']}`)"
+          links = []
+          links << "[Event](#{t['event_url']})" if t['event_url']
+          links << "[Session](#{t['session_url']})" if t['session_url']
+          links << "[Slides](#{t['slides_url']})" if t['slides_url']
+          links << "`b/#{t['bug_id']}`" if t['bug_id']
+          links << "`sheetless:#{t['sheetless_id']}`" if t['sheetless_id']
+          puts "  - #{links.join(' · ')}" unless links.empty?
+        end
+      end
+      return
+    end
+
+    # Pretty terminal output
+    puts Colors.colorize("═" * 78, Colors::CYAN, enabled: color)
+    puts Colors.colorize(" #{title}   [v#{app_version}]", Colors::BOLD, Colors::YELLOW, enabled: color)
+    puts Colors.colorize("═" * 78, Colors::CYAN, enabled: color)
+
+    if talks.empty?
+      puts Colors.colorize("  (No upcoming talks found matching your filters.)", Colors::DIM, enabled: color)
+    else
+      talks.each_with_index do |t, idx|
+        prox = proximity_label(t['_parsed_date'], today)
+        header = format("%2d. %s  %s %-36s  [%s]", idx + 1, t['date'], t['_flag'], t['event'], prox)
+        puts "\n" + Colors.colorize(header, Colors::BOLD, Colors::GREEN, enabled: color)
+        puts "    #{status_emoji(t['status'])} #{Colors.colorize(t['title'], Colors::BOLD, Colors::WHITE, enabled: color)}"
+        puts "    📍 #{t['location']}   •   Status: #{Colors.colorize(t['status'], Colors::CYAN, enabled: color)}"
+        meta = []
+        meta << "🐛 b/#{t['bug_id']}" if t['bug_id']
+        meta << "🛌 sheetless:#{t['sheetless_id']}" if t['sheetless_id']
+        meta << "🔗 #{t['event_url']}" if t['event_url']
+        meta << "📖 #{t['session_url']}" if t['session_url']
+        puts "    #{Colors.colorize(meta.join('  |  '), Colors::DIM, enabled: color)}" unless meta.empty?
+      end
+    end
+
+    unless stale.empty?
+      puts "\n" + Colors.colorize("─" * 78, Colors::YELLOW, enabled: color)
+      puts Colors.colorize(" ⚠️  Heads-up: #{stale.size} past talk(s) before #{today} still marked non-delivered:", Colors::BOLD, Colors::YELLOW, enabled: color)
+      stale.each do |s|
+        puts Colors.colorize("    • #{s['date']}  #{s['_flag']} #{s['event']} — #{s['title']} (status: #{s['status']})", Colors::YELLOW, enabled: color)
+      end
+    end
+
+    puts "\n" + Colors.colorize("🌐 Live App: #{LIVE_URL}/next-talks  |  Total shown: #{talks.size}", Colors::DIM, enabled: color)
+  end
+
+  def self.render_articles(articles, format:, color:)
+    if format == :json
+      puts JSON.pretty_generate(articles.map { |a| clean_item(a) })
+      return
+    end
+    puts Colors.colorize("📚 Articles, Codelabs, Slides & Videos (#{articles.size})", Colors::BOLD, Colors::YELLOW, enabled: color)
+    articles.each_with_index do |a, i|
+      rtype = a['resource_type'] || 'article'
+      puts format("%2d. [%s] (%-7s) %s", i + 1, a['publish_date'], rtype, a['title'])
+    end
+  end
+
+  def self.render_stats(talks, articles, today:, format:, color:, app_version:)
+    upcoming = talks.select { |t| t['_parsed_date'] >= today && t['status'].to_s.downcase != 'delivered' }
+    stale    = talks.select { |t| t['_parsed_date'] < today && t['status'].to_s.downcase != 'delivered' }
+    by_year  = talks.group_by { |t| t['_parsed_date'].year }.transform_values(&:size).sort.reverse.to_h
+    by_type  = articles.group_by { |a| a['resource_type'] || 'article' }.transform_values(&:size)
+
+    stats = {
+      app_version: app_version,
+      as_of: today.to_s,
+      talks_total: talks.size,
+      talks_upcoming: upcoming.size,
+      talks_stale_status: stale.size,
+      talks_by_year: by_year,
+      resources_total: articles.size,
+      resources_by_type: by_type
+    }
+
+    if format == :json
+      puts JSON.pretty_generate(stats)
+      return
+    end
+
+    puts Colors.colorize("📊 Portfolio App Statistics (v#{app_version} — as of #{today})", Colors::BOLD, Colors::YELLOW, enabled: color)
+    puts "  🎤 Total Talks:      #{talks.size} (#{upcoming.size} upcoming, #{stale.size} needing status->delivered update)"
+    puts "  📅 Talks by Year:    #{by_year.map { |y, n| "#{y}: #{n}" }.join(', ')}"
+    puts "  📚 Total Resources:  #{articles.size} (#{by_type.map { |k, n| "#{k}: #{n}" }.join(', ')})"
+  end
+end
+
+PortfolioCLI.run(ARGV) if $PROGRAM_NAME == __FILE__

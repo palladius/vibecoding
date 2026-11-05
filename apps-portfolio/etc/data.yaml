@@ -61,15 +61,15 @@ about_me:
       emoji: 📰
       importance: low
 talks:
-  - title: 'The History of Everything: From Attention to Agentic Harnesses & Enterprise AI'
-    event: HSLU Guest Lecture — Autumn 2026
-    date: '2026-11-12'
-    location: Lucerne, Switzerland
+  - title: 'The History of AIverything (1940 → 2026) & Enterprise AI Governance, ROI & Agentic Riskscapes'
+    event: HSLU CAS Cloud Architecture 01 (M3) — Autumn 2026
+    date: '2026-11-27'
+    location: Campus Zug-Rotkreuz (Room I.S1A_411), Rotkreuz, Switzerland
     country_code: ch
     status: confirmed
     bug_id: 553447964
     event_url: https://www.hslu.ch/
-    talk_description: 'A university guest lecture at Lucerne University of Applied Sciences and Arts (HSLU) tracing the evolution of Generative AI from Google''s seminal "Attention Is All You Need" paper to modern agentic harnesses, loop engineering, and enterprise AI governance.'
+    talk_description: 'Full-day university guest lecture at Lucerne University of Applied Sciences and Arts (HSLU Campus Zug-Rotkreuz, CAS Cloud Architecture 01 — Module M3: AI/ML Lösungen mit der Cloud, co-lectured with Nisanth Muthukirushnasamy) spanning two trilingual (EN/DE/IT) decks: Deck 1 ("The History of AIverything: 1940 → 2026", from Turing & Attention Is All You Need to MCP, ADK, OpenClaw & Hermes) and Deck 2 ("Enterprise AI Governance, ROI & The New Agentic Riskscapes", covering Token FinOps, Shadow MCP, Lethal Trifecta, Swiss FADP/FINMA/EU AI Act, and Inner vs Outer Loop velocity).'
     tags:
       - AI
       - GenAI
@@ -77,6 +77,7 @@ talks:
       - HSLU
       - University
       - Lucerne
+      - Rotkreuz
       - Switzerland
       - Governance
     image: /images/events/riccardo-stage-yellow-blazer.png
@@ -85,7 +86,7 @@ talks:
     date: '2026-10-30'
     location: Prague, Czech Republic
     country_code: cz
-    status: confirmed
+    status: delivered
     sheetless_id: 10005
     bug_id: 569926254
     event_url: https://devfest.cz/
@@ -108,7 +109,7 @@ talks:
     date: '2026-10-28'
     location: Milan, Italy
     country_code: it
-    status: confirmed
+    status: delivered
     sheetless_id: 9971
     bug_id: 569926156
     event_url: https://conferences.codemotion.com/milan/
@@ -141,7 +142,7 @@ talks:
     date: '2026-10-22'
     location: Google for Startups Campus, Warsaw, Poland
     country_code: pl
-    status: confirmed
+    status: delivered
     sheetless_id: 10010
     bug_id: 569967910
     event_url: https://sreday.com/2026-warsaw-q4/
@@ -163,7 +164,7 @@ talks:
     date: '2026-10-20'
     location: Google Zürich (Europaallee 36), Zürich, Switzerland
     country_code: ch
-    status: confirmed
+    status: delivered
     bug_id: 558209863
     event_url: https://codelabs.developers.google.com/codelabs/rails8-on-google-cloud
     slides_url: https://palladius.github.io/rails8-app-on-gcp/slides/antigravity.en.html
