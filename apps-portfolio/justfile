@@ -186,4 +186,4 @@ gemini-invoke-sre-agent:
 
 
 clean:
-    rm .playwright-mcp/*png
+    rm -rf .playwright-mcp/*png node_modules .next
