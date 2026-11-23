@@ -1232,13 +1232,17 @@ articles:
     image: /images/events/gdg-zurich-2026.jpg
     resource_type: article
   - title: "Building an Agentic Telegram Bot in Ruby with Google's Antigravity SDK"
-    url: https://ricc.rocks/en/posts/technology/2026-08-13-antigravity-ruby-sdk-nanobanana/
+    url: https://ricc.rocks/en/posts/technology/2026-08-13-antigravity-ruby-sdk-article/
     publish_date: '2026-08-13'
     bug_id: 545986615
     description: "What if your Ruby app could think, learn new skills at runtime, and tell you exactly what it is doing in real-time? Introducing the Antigravity Ruby SDK (`palladius/antigravity-ruby-sdk`) for Google's agentic harness."
     cta:
       text: "Antigravity Ruby SDK on GitHub"
       url: "https://github.com/palladius/antigravity-ruby-sdk"
+    links:
+      - text: "Read on Medium (Google Cloud Community)"
+        url: "https://medium.com/google-cloud/building-an-agentic-telegram-bot-in-ruby-with-googles-antigravity-sdk-c1ba2b0fe22d"
+        emoji: "📝"
     tags:
       - Google
       - Antigravity
